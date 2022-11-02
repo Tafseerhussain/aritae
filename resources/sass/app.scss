@@ -7,17 +7,51 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+body,html {
+	color: $dark-gray;
+}
 h1 {
 	font-size: 50px;
 	font-weight: 600;
 }
-a:focus {
+a:focus,
+.form-control:focus,
+.form-select:focus {
 	outline: 0;
+	box-shadow: none;
+	border-color: $purple;
+}
+.divider {
+	height: 1px;
+	width: 100%;
+	background: rgba($dark-gray, 0.1);
+	margin: 20px 0;
+}
+.form-check-input:checked {
+	background: $purple;
+	border-color: $purple;
+}
+.form-control,
+.form-select {
+	border-radius: 100px;
 }
 
 .navbar-brand {
 	font-family: $oswald;
 	font-weight: 700;
+}
+
+.btn {
+	border-radius: 100px;
+	padding: 12px 30px;
+}
+.btn-theme {
+	background: $purple;
+	border-radius: 100px;
+	color: $white;
+}
+.btn-theme:hover {
+	background: $purple;
 }
 
 nav.navbar {
@@ -56,7 +90,7 @@ nav.navbar {
 	padding: 220px 0 150px;
 	background: url('/public/assets/img/coaches-bg.jpg') no-repeat;
 	background-size: cover;
-	color: #fff;
+	color: $white;
 	h1 {
 		font-family: $oswald;
 	}
@@ -77,4 +111,171 @@ nav.navbar {
 
 .all-coaches {
 	padding: 100px 0;
+	.sorting {
+		span {
+			margin-right: 10px;
+			position: relative;
+			align-self: center;
+		}
+		select {
+			color: $purple;
+			font-weight: 500;
+			text-align-last: center;
+		}
+	}
+	.coaches-search {
+		width: 60%;
+		.form-control {
+			padding: 12px 20px;
+			border-right: 0;
+			&:focus {
+				border-color: #d2d2d2;
+			}
+		}
+		.input-group-text {
+			border-top-right-radius: 100px;
+			border-bottom-right-radius: 100px;
+			border-left: 0;
+			background: $white;
+		}
+	}
+	.filter-cards {
+		margin-top: 30px;
+		.filters {
+			background: #FBFBFB;
+			border-radius: $radius;
+			box-shadow: $shadow;
+			padding: 30px 20px;
+			h2 {
+				font-family: $oswald;
+				font-size: 24px;
+				font-weight: 500;
+				margin-bottom: 20px;
+			}
+			p {
+				font-size: .9rem;
+			}
+			.filter {
+				font-size: .8rem;
+				.filter-value {
+					margin-bottom: 10px;
+					input {
+						align-self: center;
+						height: 13px;
+						width: 13px;
+					}
+					label {
+						opacity: .5;
+						margin-left: 6px;
+					}
+				}
+				.gender-preference {
+					input, label {
+						align-self: center;
+					}
+					label {
+						margin-left: 6px;
+						margin-right: 10px;
+					}
+				}
+			}
+			#experience-slider,
+			#hourly-slider {
+			    height: 8px;
+			    margin-top: 30px;
+			    .noUi-tooltip {
+			    	background: #333;
+			    	color: $white;
+			    	border: 0;
+			    	padding: 2px 10px;
+			    	font-weight: 700;
+			    }
+			    .noUi-connect {
+				    background: $dark-gray;
+				    height: 4px;
+				    top: 1px;
+				}
+				.noUi-handle {
+				    height: 15px;
+				    width: 15px;
+				    top: -5px;
+				    right: -9px;
+				    border-radius: 9px;
+				    background: $purple;
+				    box-shadow: $shadow;
+				    border-color: $purple;
+				    cursor: pointer;
+				}
+			    .noUi-handle:before, .noUi-handle:after {
+					height: 7px;
+					width: 1px;
+					left: 5px;
+					top: 3px;
+					opacity: .5;
+				}
+				.noUi-handle:after {
+					left: 7px;
+				}
+			}
+
+		}
+	}
+	.profile-cards {
+		.profile-card {
+			transition: .3s;
+			border-radius: $radius;
+			background: $white;
+			overflow: hidden;
+			box-shadow: $shadow;
+			border: 2px solid $white;
+			text-align: center;
+			.card-cover {
+				height: 200px;
+			}
+			.card-profile-img {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				position: relative;
+				overflow: hidden;
+				text-align: center;
+				margin: -90px auto 0;
+				border: 2px solid $white;
+				box-shadow: $shadow;
+				img {
+					height: 100%;
+				}
+			}
+			.card-profile-meta {
+				padding: 10px 20px 20px;
+				.name {
+					font-size: 18px;
+					font-weight: 500;
+					color: $black;
+					font-family: $oswald;
+				}
+				.designation {
+					opacity: .5;
+					margin: 4px 0 10px;
+				}
+				.rating {
+					color: $golden;
+				}
+				.location {
+					opacity: .5;
+					margin-bottom: 20px;
+					font-weight: 14px;
+				}
+			}
+			.btn {
+				display: block;
+			}
+			&:hover {
+				border-color: $purple;
+			}
+		}
+
+	}
 }
+
+
