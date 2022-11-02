@@ -1,8 +1,80 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Titillium+Web:wght@200;300;400;600;700;900&display=swap');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+h1 {
+	font-size: 50px;
+	font-weight: 600;
+}
+a:focus {
+	outline: 0;
+}
+
+.navbar-brand {
+	font-family: $oswald;
+	font-weight: 700;
+}
+
+nav.navbar {
+	border-radius: 200px;
+	background: rgba(255,255,255,0.8);
+	box-shadow: $shadow;
+	padding: 20px 30px;
+	position: fixed;
+	z-index: 99;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 20px;
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+
+	.account-toggle {
+		margin-left: 20px;
+		&:after {
+			display: none;
+		}
+	}
+
+	.nav-item {
+		align-self: center;
+	}
+
+	ul.me-auto {
+		.nav-item {
+			margin-right: 20px;
+		}
+	}
+
+}
+
+.coaches-hero {
+	padding: 220px 0 150px;
+	background: url('/public/assets/img/coaches-bg.jpg') no-repeat;
+	background-size: cover;
+	color: #fff;
+	h1 {
+		font-family: $oswald;
+	}
+	p {
+		font-size: 20px;
+		margin: 20px 0;
+	}
+	.points {
+		font-size: 40px;
+		font-weight: 600;
+		img {
+			margin: 0 10px;
+			position: relative;
+			top: -5px;
+		}
+	}
+}
+
+.all-coaches {
+	padding: 100px 0;
+}
