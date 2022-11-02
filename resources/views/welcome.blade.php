@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="d-flex justify-content-between">
                         <div class="sorting d-flex">
                             <span class="text-nowrap">Sort by </span>
@@ -248,7 +248,7 @@
                 </div>
 
                 {{-- COACHES CARDS --}}
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="profile-cards">
                         <div class="row g-3">
                             <div class="col-lg-4 col-md-6">
