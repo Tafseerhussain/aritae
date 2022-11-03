@@ -53,9 +53,11 @@
                             <a class="dropdown-item" href="#">
                                 Link 1
                             </a>
+                            <hr class="dropdown-divider">
                             <a class="dropdown-item" href="#">
                                 Link 2
                             </a>
+                            <hr class="dropdown-divider">
                             <a class="dropdown-item" href="#">
                                 Link 3
                             </a>
@@ -70,6 +72,7 @@
                             <a class="dropdown-item" href="#">
                                 Login
                             </a>
+                            <hr class="dropdown-divider">
                             <a class="dropdown-item" href="#">
                                 Register
                             </a>

@@ -46,7 +46,7 @@
             <div class="row filter-cards">
 
                 {{-- FILTERS --}}
-                <div class="col-md-3">
+                <div class="col-lg-3">
                     <div class="filters">
                         <h2>
                             Filter Results
@@ -248,7 +248,7 @@
                 </div>
 
                 {{-- COACHES CARDS --}}
-                <div class="col-md-9">
+                <div class="col-lg-9">
                     <div class="profile-cards">
                         <div class="row g-3">
                             <div class="col-lg-4 col-md-6">
@@ -284,40 +284,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="profile-card">
-                                    <div class="card-cover">
-                                        <img src="{{ asset('assets/img/profile-1-bg.jpg') }}" alt="">
-                                    </div>
-                                    <div class="card-profile-img">
-                                        <img src="{{ asset('assets/img/profile-1.jpg') }}" alt="">
-                                    </div>
-                                    <div class="card-profile-meta">
-                                        <div class="name">
-                                            Alexander Martin
-                                        </div>
-                                        <div class="designation">
-                                            Football Coach
-                                        </div>
-                                        <div class="rating">
-                                            <span><i class="fa-solid fa-star"></i></span>
-                                            <span><i class="fa-solid fa-star"></i></span>
-                                            <span><i class="fa-solid fa-star"></i></span>
-                                            <span><i class="fa-solid fa-star"></i></span>
-                                            <span><i class="fa-regular fa-star"></i></span>
-                                        </div>
-                                        <div class="divider"></div>
-                                        <div class="location">
-                                            <i class="fa-solid fa-location-dot"></i>
-                                            <span>Auckland, Newzealand</span>
-                                        </div>
-                                        <a href="#" class="btn btn-theme">
-                                            View Profile
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
+                            <div class="col-lg-4 col-md-6">
                                 <div class="profile-card">
                                     <div class="card-cover">
                                         <img src="{{ asset('assets/img/profile-1-bg.jpg') }}" alt="">
@@ -383,7 +350,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-lg-4 col-md-6">
                                 <div class="profile-card">
                                     <div class="card-cover">
                                         <img src="{{ asset('assets/img/profile-1-bg.jpg') }}" alt="">
@@ -416,7 +383,40 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="profile-card">
+                                    <div class="card-cover">
+                                        <img src="{{ asset('assets/img/profile-1-bg.jpg') }}" alt="">
+                                    </div>
+                                    <div class="card-profile-img">
+                                        <img src="{{ asset('assets/img/profile-1.jpg') }}" alt="">
+                                    </div>
+                                    <div class="card-profile-meta">
+                                        <div class="name">
+                                            Alexander Martin
+                                        </div>
+                                        <div class="designation">
+                                            Football Coach
+                                        </div>
+                                        <div class="rating">
+                                            <span><i class="fa-solid fa-star"></i></span>
+                                            <span><i class="fa-solid fa-star"></i></span>
+                                            <span><i class="fa-solid fa-star"></i></span>
+                                            <span><i class="fa-solid fa-star"></i></span>
+                                            <span><i class="fa-regular fa-star"></i></span>
+                                        </div>
+                                        <div class="divider"></div>
+                                        <div class="location">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            <span>Auckland, Newzealand</span>
+                                        </div>
+                                        <a href="#" class="btn btn-theme">
+                                            View Profile
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
                                 <div class="profile-card">
                                     <div class="card-cover">
                                         <img src="{{ asset('assets/img/profile-1-bg.jpg') }}" alt="">
