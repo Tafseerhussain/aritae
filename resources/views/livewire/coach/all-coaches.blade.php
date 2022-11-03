@@ -228,6 +228,14 @@
             {{-- COACHES CARDS --}}
             <div class="col-lg-9">
                 <div class="profile-cards">
+                    @if ($coaches->isEmpty())
+
+                        <div class="mt-5 text-center">
+                            No Records Found for "{{ $search }}"...
+                        </div>
+
+                    @else
+
                     <div class="row g-3">
                         @foreach ($coaches as $coach)
                         
@@ -281,6 +289,9 @@
                             </div>
                         </div>
                     </div>
+
+                    @endif
+
                 </div>
             </div>
 
