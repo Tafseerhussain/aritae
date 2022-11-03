@@ -191,7 +191,7 @@
                                         {{ $coach->name }}
                                     </div>
                                     <div class="designation">
-                                        {{ $coach->designation }}
+                                        {{ $coach->sport }}
                                     </div>
                                     <div class="rating">
                                         @for ($i = 1; $i <= $coach->rating; $i++)
