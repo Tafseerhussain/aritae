@@ -69,13 +69,28 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">
-                                Login
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a class="dropdown-item" href="#">
-                                Register
-                            </a>
+                            @guest
+                                <a class="dropdown-item" href="{{ route('login') }}">
+                                    Login
+                                </a>
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item" href="{{ route('register') }}">
+                                    Register
+                                </a>
+                            @else
+                                <a class="dropdown-item" href="@">
+                                    Profile
+                                </a>
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            @endguest
                         </div>
                     </li>
                 </ul>
