@@ -15,7 +15,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -107,6 +107,7 @@
     <!-- Price nouislider-filter cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js"></script>
+    @livewireScripts
     @stack('custom-scripts')
 </body>
 </html>
