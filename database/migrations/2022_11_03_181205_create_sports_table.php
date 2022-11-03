@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coaches', function (Blueprint $table) {
+        Schema::create('sports', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('designation');
-            $table->unsignedInteger('rating');
-            $table->text('location');
-            $table->text('profile_img');
-            $table->text('cover_img');
-            $table->string('sport');
+            $table->string('category');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coaches');
+        Schema::dropIfExists('sports');
     }
 };

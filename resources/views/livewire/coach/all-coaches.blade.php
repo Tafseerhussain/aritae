@@ -34,78 +34,14 @@
                     </p>
                     <div class="filter">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Aerobics">
-                                    <label for="Aerobics">Aerobics</label>
+                            @foreach ($sports as $sport)
+                                <div class="col-lg-6">
+                                    <div class="filter-value d-flex">
+                                        <input class="form-check-input mt-0" name="sports[]" wire:model="sport" value="{{ $sport->name }}" type="checkbox" value="" id="{{ $sport->name }}">
+                                        <label for="{{ $sport->name }}">{{ $sport->name }}</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Archery">
-                                    <label for="Archery">Archery</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Baseball">
-                                    <label for="Baseball">Baseball</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Basketball">
-                                    <label for="Basketball">Basketball</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Badminton">
-                                    <label for="Badminton">Badminton</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Cricket">
-                                    <label for="Cricket">Cricket</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Curling">
-                                    <label for="Curling">Curling</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Canoeing">
-                                    <label for="Canoeing">Canoeing</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Discus-Throw">
-                                    <label for="Discus-Throw">Discus Throw</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Dodgeball">
-                                    <label for="Dodgeball">Dodgeball</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Equestrianism">
-                                    <label for="Equestrianism">Equestrianism</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Football">
-                                    <label for="Football">Football</label>
-                                </div>
-                            </div>
+                            @endforeach
                             <a href="#" class="more">more choices...</a>
                         </div>
                     </div>
@@ -222,6 +158,9 @@
                             <label for="female-coach">Female</label>
                         </div>
                     </div>
+                    <button class="btn btn-theme mt-4 d-block w-100" wire:click="filterResults">
+                        Filter Results
+                    </button>
                 </div>
             </div>
 
