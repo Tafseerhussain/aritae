@@ -20,6 +20,11 @@ class AllCoaches extends Component
         $this->resetPage();
     }
 
+    public function updatingSport()
+    {
+        $this->resetPage();
+    }
+
     public function filterResults()
     {
         dd(count($this->sport));

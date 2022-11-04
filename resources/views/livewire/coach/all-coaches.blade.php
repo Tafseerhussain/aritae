@@ -170,7 +170,10 @@
                     @if ($coaches->isEmpty())
 
                         <div class="mt-5 text-center">
-                            No Records Found for "{{ $search }}"...
+                            No Records Found 
+                            @if ($search != '')
+                                for "<span class="text-danger">{{ $search }}</span>"
+                            @endif
                         </div>
 
                     @else
@@ -191,7 +194,8 @@
                                         {{ $coach->name }}
                                     </div>
                                     <div class="designation">
-                                        {{ $coach->sport }}
+                                        <span>{{ $coach->designation }}</span> <br>
+                                        <span>{{ $coach->sport }}</span>
                                     </div>
                                     <div class="rating">
                                         @for ($i = 1; $i <= $coach->rating; $i++)

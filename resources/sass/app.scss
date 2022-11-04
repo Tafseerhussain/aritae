@@ -239,6 +239,7 @@ nav.navbar {
 	}
 	.profile-cards {
 		.profile-card {
+			position: relative;
 			transition: .3s;
 			border-radius: $radius;
 			background: $white;
@@ -256,7 +257,7 @@ nav.navbar {
 				position: relative;
 				overflow: hidden;
 				text-align: center;
-				margin: -90px auto 0;
+				margin: -70px auto 0;
 				border: 2px solid $white;
 				box-shadow: $shadow;
 				img {
@@ -272,8 +273,23 @@ nav.navbar {
 					font-family: $oswald;
 				}
 				.designation {
-					opacity: .5;
 					margin: 4px 0 10px;
+					span:first-child {
+						opacity: .5;
+					}
+					span:last-child {
+						font-size: 14px;
+						color: $white;
+						font-weight: 500;
+						opacity: 1;
+						position: absolute;
+						top: 10px;
+						right: 10px;
+						background: rgba($blue,0.9);
+						border-radius: 50px;
+						padding: 4px 10px;
+						box-shadow: $shadow;
+					}
 				}
 				.rating {
 					color: $golden;
