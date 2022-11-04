@@ -115,12 +115,12 @@
             {{-- COACHES CARDS --}}
             <div class="col-lg-9">
                 <div class="row loading-state my-5" wire:loading>
-                    {{-- <div class="col-12 text-center">
+                    <div class="col-12 text-center">
                         <div class="spinner-border" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                    </div>   --}}
-                    <div class="col-lg-4">
+                    </div>  
+                    {{-- <div class="col-lg-4">
                         <div class="card" aria-hidden="true">
                           <div class="placeholder img"></div>
                           <div class="card-body">
@@ -179,7 +179,7 @@
                             </div>
                           </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="profile-cards" wire:loading.remove>
                     @if ($coaches->isEmpty())
