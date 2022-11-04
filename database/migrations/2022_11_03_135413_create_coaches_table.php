@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('sport');
             $table->string('gender');
             $table->unsignedInteger('experience');
+            $table->unsignedInteger('hourly_rate');
             $table->timestamps();
         });
     }

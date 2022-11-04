@@ -53,8 +53,10 @@
                     </p>
                     <div class="filter">
                         <div id="experience-slider" wire:ignore></div>
-                        <input type="hidden" type="number" wire:model='minExp' id="minExp">
-                        <input type="hidden" type="number" wire:model='maxExp' id="maxExp">
+                        <div class="d-flex mt-3 filter-bar">
+                            <input type="number" class="form-control me-1" wire:model='minExp' id="minExp">
+                            <input type="number" class="form-control ms-1" wire:model='maxExp' id="maxExp">
+                        </div>
                     </div>
 
                     <div class="divider"></div>
@@ -64,6 +66,10 @@
                     </p>
                     <div class="filter">
                         <div id="hourly-slider" wire:ignore></div>
+                        <div class="d-flex mt-3 filter-bar">
+                            <input type="number" class="form-control me-1" wire:model='minRate' id="minRate">
+                            <input type="number" class="form-control ms-1" wire:model='maxRate' id="maxRate">
+                        </div>
                     </div>
 
                     <div class="divider"></div>
@@ -100,40 +106,20 @@
                             <label for="any-gender">Any</label>
                         </div>
                     </div>
-                    <button class="btn btn-theme mt-4 d-block w-100" wire:click="filterResults">
+                    {{-- <button class="btn btn-theme mt-4 d-block w-100" wire:click="filterResults">
                         Filter Results
-                    </button>
+                    </button> --}}
                 </div>
             </div>
 
             {{-- COACHES CARDS --}}
             <div class="col-lg-9">
                 <div class="row loading-state my-5" wire:loading>
-                    <div class="col-12 text-center">
+                    {{-- <div class="col-12 text-center">
                         <div class="spinner-border" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                    </div>  
-                    {{-- <div class="col-lg-4">
-                        <div class="card" aria-hidden="true">
-                          <div class="placeholder img"></div>
-                          <div class="card-body">
-                            <h5 class="card-title placeholder-glow">
-                              <span class="placeholder col-6"></span>
-                            </h5>
-                            <p class="card-text placeholder-glow">
-                              <span class="placeholder col-7"></span>
-                              <span class="placeholder col-4"></span>
-                              <span class="placeholder col-4"></span>
-                              <span class="placeholder col-6"></span>
-                              <span class="placeholder col-8"></span>
-                            </p>
-                            <div class="placeholder-glow">
-                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
+                    </div>   --}}
                     <div class="col-lg-4">
                         <div class="card" aria-hidden="true">
                           <div class="placeholder img"></div>
@@ -173,7 +159,27 @@
                             </div>
                           </div>
                         </div>
-                    </div> --}}
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card" aria-hidden="true">
+                          <div class="placeholder img"></div>
+                          <div class="card-body">
+                            <h5 class="card-title placeholder-glow">
+                              <span class="placeholder col-6"></span>
+                            </h5>
+                            <p class="card-text placeholder-glow">
+                              <span class="placeholder col-7"></span>
+                              <span class="placeholder col-4"></span>
+                              <span class="placeholder col-4"></span>
+                              <span class="placeholder col-6"></span>
+                              <span class="placeholder col-8"></span>
+                            </p>
+                            <div class="placeholder-glow">
+                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="profile-cards" wire:loading.remove>
                     @if ($coaches->isEmpty())
@@ -192,6 +198,9 @@
                         
                         <div class="col-lg-4 col-md-6">
                             <div class="profile-card h-100">
+                                <div class="rate">
+                                    ${{ $coach->hourly_rate }} <span>/h</span>
+                                </div>
                                 <div class="card-cover">
                                     <img src="{{ $coach->cover_img }}" alt="">
                                 </div>
@@ -203,7 +212,10 @@
                                         {{ $coach->name }}
                                     </div>
                                     <div class="designation">
-                                        <span>{{ $coach->designation }}</span> <br>
+                                        <span>{{ $coach->designation }}</span><br>
+                                        <span class="exp">
+                                            for {{ $coach->experience }} year(s)
+                                        </span>
                                         <span>{{ $coach->sport }}</span>
                                     </div>
                                     <div class="rating">
@@ -281,7 +293,7 @@
             });
 
            noUiSlider.create(hourlySlider, {
-               start: [10, 50],
+               start: [10, 100],
                connect: true,
                tooltips: {
                 to: function(numericValue) {
@@ -290,10 +302,15 @@
                },
                range: {
                    min: 10,
-                   max: 200
+                   max: 100
                },
-
            });
+
+           hourlySlider.noUiSlider.on('update', function (value) {
+                @this.set('minRate', value[0]);
+                @this.set('maxRate', value[1]);
+            });
+
        })     
     </script>
 @endpush

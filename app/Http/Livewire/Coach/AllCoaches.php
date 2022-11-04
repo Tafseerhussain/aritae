@@ -21,6 +21,9 @@ class AllCoaches extends Component
     public $minExp = 1;
     public $maxExp = 10;
 
+    public $minRate = 10;
+    public $maxRate = 100;
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -34,11 +37,6 @@ class AllCoaches extends Component
     public function updatingGender()
     {
         $this->resetPage();
-    }
-
-    public function filterResults()
-    {
-        dd(count($this->sport));
     }
 
     public function render()
@@ -58,6 +56,7 @@ class AllCoaches extends Component
                                 $q->where('gender', $this->gender);
                             })
                             ->whereBetween('experience', [$this->minExp, $this->maxExp])
+                            ->whereBetween('hourly_rate', [$this->minRate, $this->maxRate])
                             ->paginate(6),
             'sports' => Sport::all(),
             'locations' => Location::all(),

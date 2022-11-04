@@ -17,6 +17,7 @@ class CoacheSeeder extends Seeder
         $locations = ['Albania', 'Algeria', 'Antigua and Barbuda', 'Australia', 'Austria', 'Bahrain', 'Brazil', 'Canada'];
         $gender = ['male', 'female'];
         $experience = [1,3,2,4,5,6,3,2,4,5];
+        $rate = [20, 30, 40, 50, 60, 70, 80, 100, 10];
         $sports = [
             'Aerobics', 'Archery',
             'Baseball', 'Basketball',
@@ -30,6 +31,7 @@ class CoacheSeeder extends Seeder
             $s = array_rand($sports);
             $g = array_rand($gender);
             $e = array_rand($experience);
+            $r = array_rand($rate);
             DB::table('coaches')->insert([
                 'name' => $faker->name,
                 'designation' => $faker->jobTitle,
@@ -40,6 +42,7 @@ class CoacheSeeder extends Seeder
                 'sport' => $sports[$s],
                 'gender' => $gender[$g],
                 'experience' => $experience[$e],
+                'hourly_rate' => $rate[$r],
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
