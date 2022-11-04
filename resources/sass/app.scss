@@ -237,6 +237,21 @@ nav.navbar {
 
 		}
 	}
+	.loading-state {
+		.card {
+			border-radius: 20px;
+			overflow: hidden;
+			border-color: rgba(0,0,0,0.1);
+			border-width: 2px;
+			.placeholder {
+				background: rgba(0,0,0,0.3);
+				border-color: rgba(0,0,0,0.3);
+			}
+			.placeholder.img {
+				height: 200px;
+			}
+		}	
+	}
 	.profile-cards {
 		.profile-card {
 			position: relative;

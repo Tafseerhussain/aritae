@@ -1,4 +1,4 @@
-<div class="all-coaches">
+<div class="all-coaches position-relative">
     <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
@@ -52,7 +52,9 @@
                         Coach Experience (years)
                     </p>
                     <div class="filter">
-                        <div id="experience-slider"></div>
+                        <div id="experience-slider" wire:ignore></div>
+                        <input type="hidden" type="number" wire:model='minExp' id="minExp">
+                        <input type="hidden" type="number" wire:model='maxExp' id="maxExp">
                     </div>
 
                     <div class="divider"></div>
@@ -61,7 +63,7 @@
                         What is your hourly($) budget?
                     </p>
                     <div class="filter">
-                        <div id="hourly-slider"></div>
+                        <div id="hourly-slider" wire:ignore></div>
                     </div>
 
                     <div class="divider"></div>
@@ -69,78 +71,14 @@
                     <p>Where are you located?</p>
                     <div class="filter">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Albania">
-                                    <label for="Albania">Albania</label>
+                            @foreach ($locations as $location)
+                                <div class="col-lg-6">
+                                    <div class="filter-value d-flex">
+                                        <input class="form-check-input mt-0" name="locations[]" wire:model="location" value="{{ $location->location }}" type="checkbox" value="" id="{{ $location->location }}">
+                                        <label for="{{ $location->location }}">{{ $location->location }}</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Algeria">
-                                    <label for="Algeria">Algeria</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="AntiguaAndBarbuda">
-                                    <label for="AntiguaAndBarbuda">Antigua and Barbuda</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Australia">
-                                    <label for="Australia">Australia</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Austria">
-                                    <label for="Austria">Austria</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Bahrain">
-                                    <label for="Bahrain">Bahrain</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Brazil">
-                                    <label for="Brazil">Brazil</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Canada">
-                                    <label for="Canada">Canada</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Denmark">
-                                    <label for="Denmark">Denmark</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="France">
-                                    <label for="France">France</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Greece">
-                                    <label for="Greece">Greece</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="filter-value d-flex">
-                                    <input class="form-check-input mt-0" type="checkbox" value="" id="Hawaii">
-                                    <label for="Hawaii">Hawaii</label>
-                                </div>
-                            </div>
+                            @endforeach
                             <a href="#" class="more">more choices...</a>
                         </div>
                     </div>
@@ -150,12 +88,16 @@
                     <p>Which gender of coach do you prefer?</p>
                     <div class="filter d-flex">
                         <div class="d-flex gender-preference flex-fill">
-                            <input class="form-check-input mt-0" type="radio" value="" id="male-coach" name="coach-type">
+                            <input class="form-check-input mt-0" type="radio" wire:model="gender" value="male" id="male-coach">
                             <label for="male-coach">Male</label>
                         </div>
                         <div class="d-flex gender-preference flex-fill">
-                            <input class="form-check-input mt-0" type="radio" value="" id="female-coach" name="coach-type">
+                            <input class="form-check-input mt-0" type="radio" wire:model="gender" value="female" id="female-coach">
                             <label for="female-coach">Female</label>
+                        </div>
+                        <div class="d-flex gender-preference flex-fill">
+                            <input class="form-check-input mt-0" type="radio" wire:model="gender" value="any" id="any-gender" checked>
+                            <label for="any-gender">Any</label>
                         </div>
                     </div>
                     <button class="btn btn-theme mt-4 d-block w-100" wire:click="filterResults">
@@ -166,7 +108,74 @@
 
             {{-- COACHES CARDS --}}
             <div class="col-lg-9">
-                <div class="profile-cards">
+                <div class="row loading-state my-5" wire:loading>
+                    <div class="col-12 text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>  
+                    {{-- <div class="col-lg-4">
+                        <div class="card" aria-hidden="true">
+                          <div class="placeholder img"></div>
+                          <div class="card-body">
+                            <h5 class="card-title placeholder-glow">
+                              <span class="placeholder col-6"></span>
+                            </h5>
+                            <p class="card-text placeholder-glow">
+                              <span class="placeholder col-7"></span>
+                              <span class="placeholder col-4"></span>
+                              <span class="placeholder col-4"></span>
+                              <span class="placeholder col-6"></span>
+                              <span class="placeholder col-8"></span>
+                            </p>
+                            <div class="placeholder-glow">
+                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card" aria-hidden="true">
+                          <div class="placeholder img"></div>
+                          <div class="card-body">
+                            <h5 class="card-title placeholder-glow">
+                              <span class="placeholder col-6"></span>
+                            </h5>
+                            <p class="card-text placeholder-glow">
+                              <span class="placeholder col-7"></span>
+                              <span class="placeholder col-4"></span>
+                              <span class="placeholder col-4"></span>
+                              <span class="placeholder col-6"></span>
+                              <span class="placeholder col-8"></span>
+                            </p>
+                            <div class="placeholder-glow">
+                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card" aria-hidden="true">
+                          <div class="placeholder img"></div>
+                          <div class="card-body">
+                            <h5 class="card-title placeholder-glow">
+                              <span class="placeholder col-6"></span>
+                            </h5>
+                            <p class="card-text placeholder-glow">
+                              <span class="placeholder col-7"></span>
+                              <span class="placeholder col-4"></span>
+                              <span class="placeholder col-4"></span>
+                              <span class="placeholder col-6"></span>
+                              <span class="placeholder col-8"></span>
+                            </p>
+                            <div class="placeholder-glow">
+                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+                            </div>
+                          </div>
+                        </div>
+                    </div> --}}
+                </div>
+                <div class="profile-cards" wire:loading.remove>
                     @if ($coaches->isEmpty())
 
                         <div class="mt-5 text-center">
@@ -182,7 +191,7 @@
                         @foreach ($coaches as $coach)
                         
                         <div class="col-lg-4 col-md-6">
-                            <div class="profile-card">
+                            <div class="profile-card h-100">
                                 <div class="card-cover">
                                     <img src="{{ $coach->cover_img }}" alt="">
                                 </div>
@@ -241,3 +250,50 @@
         </div>
     </div>
 </div>
+
+
+@push('custom-scripts')
+    
+    <script>
+        $(function () {
+           // var $propertiesForm = $('.mall-category-filter');
+           var $body = $('body');
+           var experienceSlider = document.getElementById('experience-slider');
+           var hourlySlider = document.getElementById('hourly-slider');
+
+           noUiSlider.create(experienceSlider, {
+               start: [1, 10],
+               connect: true,
+               tooltips: {
+                to: function(numericValue) {
+                    return numericValue.toFixed(0);
+                }
+               },
+               range: {
+                   min: 1,
+                   max: 10
+               },
+           });
+
+            experienceSlider.noUiSlider.on('update', function (value) {
+                @this.set('minExp', value[0]);
+                @this.set('maxExp', value[1]);
+            });
+
+           noUiSlider.create(hourlySlider, {
+               start: [10, 50],
+               connect: true,
+               tooltips: {
+                to: function(numericValue) {
+                    return numericValue.toFixed(0);
+                }
+               },
+               range: {
+                   min: 10,
+                   max: 200
+               },
+
+           });
+       })     
+    </script>
+@endpush

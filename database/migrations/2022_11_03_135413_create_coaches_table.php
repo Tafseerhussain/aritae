@@ -22,6 +22,8 @@ return new class extends Migration
             $table->text('profile_img');
             $table->text('cover_img');
             $table->string('sport');
+            $table->string('gender');
+            $table->unsignedInteger('experience');
             $table->timestamps();
         });
     }
