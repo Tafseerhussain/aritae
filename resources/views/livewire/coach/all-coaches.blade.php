@@ -13,7 +13,7 @@
                             <option>Rating</option>
                         </select>
                     </div>
-                    <div class="input-group coaches-search">
+                    <div class="input-group standard-search">
                         <input type="text" class="form-control" placeholder="Search by name (first and last name)" wire:model="search">
                         <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
                     </div>   
@@ -34,6 +34,14 @@
                     </p>
                     <div class="filter">
                         <div class="row">
+                            <div class="col-12">
+                                <div class="input-group standard-search w-100">
+                                    <input type="text" class="form-control" placeholder="Search Coaches..." wire:model="searchCoach">
+                                    <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             @foreach ($sports as $sport)
                                 <div class="col-lg-6">
                                     <div class="filter-value d-flex">
@@ -42,7 +50,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <a href="#" class="more">more choices...</a>
+                            {{-- <a href="#" class="more">more choices...</a> --}}
                         </div>
                     </div>
 
@@ -77,6 +85,14 @@
                     <p>Where are you located?</p>
                     <div class="filter">
                         <div class="row">
+                            <div class="col-12">
+                                <div class="input-group standard-search w-100">
+                                    <input type="text" class="form-control" placeholder="Search Locations..." wire:model="searchLocation">
+                                    <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             @foreach ($locations as $location)
                                 <div class="col-lg-6">
                                     <div class="filter-value d-flex">
@@ -85,7 +101,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <a href="#" class="more">more choices...</a>
+                            {{-- <a href="#" class="more">more choices...</a> --}}
                         </div>
                     </div>
 

@@ -24,6 +24,9 @@ class AllCoaches extends Component
     public $minRate = 10;
     public $maxRate = 100;
 
+    public $searchCoach = '';
+    public $searchLocation = '';
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -58,8 +61,16 @@ class AllCoaches extends Component
                             ->whereBetween('experience', [$this->minExp, $this->maxExp])
                             ->whereBetween('hourly_rate', [$this->minRate, $this->maxRate])
                             ->paginate(6),
-            'sports' => Sport::all(),
-            'locations' => Location::all(),
+            'sports' => Sport::
+                        when($this->searchCoach != '', function($q) {
+                            $q->where('name', 'like', '%'.$this->searchCoach.'%');
+                        })
+                        ->get(),
+            'locations' => Location::
+                        when($this->searchLocation != '', function($q) {
+                            $q->where('location', 'like', '%'.$this->searchLocation.'%');
+                        })
+                        ->get(),
         ]);
     }
 }

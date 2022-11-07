@@ -103,6 +103,23 @@ nav.navbar {
 
 }
 
+.standard-search {
+	width: 60%;
+	.form-control {
+		padding: 12px 20px;
+		border-right: 0;
+		&:focus {
+			border-color: #d2d2d2;
+		}
+	}
+	.input-group-text {
+		border-top-right-radius: 100px;
+		border-bottom-right-radius: 100px;
+		border-left: 0;
+		background: $white;
+	}
+}
+
 .coaches-hero {
 	padding: 220px 0 150px;
 	background: url('/public/assets/img/coaches-bg.jpg') no-repeat;
@@ -140,21 +157,8 @@ nav.navbar {
 			text-align-last: center;
 		}
 	}
-	.coaches-search {
+	.standard-search {
 		width: 60%;
-		.form-control {
-			padding: 12px 20px;
-			border-right: 0;
-			&:focus {
-				border-color: #d2d2d2;
-			}
-		}
-		.input-group-text {
-			border-top-right-radius: 100px;
-			border-bottom-right-radius: 100px;
-			border-left: 0;
-			background: $white;
-		}
 	}
 	.filter-cards {
 		margin-top: 30px;
@@ -199,6 +203,18 @@ nav.navbar {
 					label {
 						margin-left: 6px;
 						margin-right: 10px;
+					}
+				}
+				.standard-search {
+					width: 100%;
+					margin-bottom: 10px;
+					margin-top: -6px;
+					input {
+						font-size: 12px;
+						padding: 4px 8px;
+					}
+					img {
+						height: 14px;
 					}
 				}
 			}
