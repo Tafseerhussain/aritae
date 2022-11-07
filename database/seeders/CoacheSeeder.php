@@ -26,6 +26,26 @@ class CoacheSeeder extends Seeder
             'Discus Throw', 'Dodgeball',
             'Equestrianism','Football'
         ];
+        $covers = [
+            'assets/img/sports/badminton.jpg',
+            'assets/img/sports/aerobics.jpg',
+            'assets/img/sports/basketball.jpg',
+            'assets/img/sports/cricket.jpg',
+            'assets/img/sports/football.jpg',
+            'assets/img/sports/swimming.jpg',
+            'assets/img/sports/baseball.jpg',
+            'assets/img/sports/eq.jpg',
+        ];
+        $players = [
+            'assets/img/players/1.jpg',
+            'assets/img/players/2.jpeg',
+            'assets/img/players/3.jpeg',
+            'assets/img/players/4.jpeg',
+            'assets/img/players/5.jpeg',
+            'assets/img/players/6.jpeg',
+            'assets/img/players/7.jpeg',
+            'assets/img/players/8.jpeg',
+        ];
         $faker = Faker::create();
         foreach ($locations as $key => $value) {
             $s = array_rand($sports);
@@ -37,8 +57,8 @@ class CoacheSeeder extends Seeder
                 'designation' => $faker->jobTitle,
                 'rating' => rand(1,5),
                 'location' => $value,
-                'profile_img' => 'https://api.lorem.space/image/face?w=150&h=150',
-                'cover_img' => 'https://api.lorem.space/image/house?w=400&h=200',
+                'profile_img' => $players[$key],
+                'cover_img' => $covers[$key],
                 'sport' => $sports[$s],
                 'gender' => $gender[$g],
                 'experience' => $experience[$e],

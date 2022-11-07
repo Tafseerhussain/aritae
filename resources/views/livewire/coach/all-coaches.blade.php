@@ -202,10 +202,10 @@
                                     ${{ $coach->hourly_rate }} <span>/h</span>
                                 </div>
                                 <div class="card-cover">
-                                    <img src="{{ $coach->cover_img }}" alt="">
+                                    <img src="{{ asset($coach->cover_img) }}" alt="">
                                 </div>
                                 <div class="card-profile-img">
-                                    <img src="{{ $coach->profile_img }}" alt="">
+                                    <img src="{{ asset($coach->profile_img) }}" alt="">
                                 </div>
                                 <div class="card-profile-meta">
                                     <div class="name">
