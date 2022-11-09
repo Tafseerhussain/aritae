@@ -1,8 +1,52 @@
-@extends('layouts.app')
+@extends('layouts.registration-app')
 
 @section('content')
-<div class="register-page page">
+<div class="register-page">
     <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="get-started">
+                    <div class="card">
+                        <div class="card-head text-center">
+                            <h2>
+                                Get Started For Free
+                            </h2>
+                            <p class="my-4">
+                                Aritae gives you access to high quality coaches and players. Get started now!
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a href="#" class="register-type">
+                                        <img src="{{ asset('assets/icons/player.svg') }}" alt="player">
+                                        <h2>
+                                            Join as a Player
+                                        </h2>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="#" class="register-type">
+                                        <img src="{{ asset('assets/icons/coach.svg') }}" alt="player">
+                                        <h2>
+                                            Join as a Coach
+                                        </h2>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="#" class="register-type">
+                                        <img src="{{ asset('assets/icons/parent.svg') }}" alt="player">
+                                        <h2>
+                                            Join as a Parent
+                                        </h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
