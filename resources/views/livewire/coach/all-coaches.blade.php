@@ -135,67 +135,7 @@
                         <div class="spinner-border" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                    </div>  
-                    {{-- <div class="col-lg-4">
-                        <div class="card" aria-hidden="true">
-                          <div class="placeholder img"></div>
-                          <div class="card-body">
-                            <h5 class="card-title placeholder-glow">
-                              <span class="placeholder col-6"></span>
-                            </h5>
-                            <p class="card-text placeholder-glow">
-                              <span class="placeholder col-7"></span>
-                              <span class="placeholder col-4"></span>
-                              <span class="placeholder col-4"></span>
-                              <span class="placeholder col-6"></span>
-                              <span class="placeholder col-8"></span>
-                            </p>
-                            <div class="placeholder-glow">
-                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
-                            </div>
-                          </div>
-                        </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="card" aria-hidden="true">
-                          <div class="placeholder img"></div>
-                          <div class="card-body">
-                            <h5 class="card-title placeholder-glow">
-                              <span class="placeholder col-6"></span>
-                            </h5>
-                            <p class="card-text placeholder-glow">
-                              <span class="placeholder col-7"></span>
-                              <span class="placeholder col-4"></span>
-                              <span class="placeholder col-4"></span>
-                              <span class="placeholder col-6"></span>
-                              <span class="placeholder col-8"></span>
-                            </p>
-                            <div class="placeholder-glow">
-                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card" aria-hidden="true">
-                          <div class="placeholder img"></div>
-                          <div class="card-body">
-                            <h5 class="card-title placeholder-glow">
-                              <span class="placeholder col-6"></span>
-                            </h5>
-                            <p class="card-text placeholder-glow">
-                              <span class="placeholder col-7"></span>
-                              <span class="placeholder col-4"></span>
-                              <span class="placeholder col-4"></span>
-                              <span class="placeholder col-6"></span>
-                              <span class="placeholder col-8"></span>
-                            </p>
-                            <div class="placeholder-glow">
-                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
-                            </div>
-                          </div>
-                        </div>
-                    </div> --}}
                 </div>
                 <div class="profile-cards" wire:loading.remove>
                     @if ($coaches->isEmpty())
@@ -218,28 +158,28 @@
                                     ${{ $coach->hourly_rate }} <span>/h</span>
                                 </div>
                                 <div class="card-cover">
-                                    <img src="{{ asset($coach->cover_img) }}" alt="">
+                                    <img src="{{ asset($coach->coach->cover_img) }}" alt="">
                                 </div>
                                 <div class="card-profile-img">
-                                    <img src="{{ asset($coach->profile_img) }}" alt="">
+                                    <img src="{{ asset($coach->coach->profile_img) }}" alt="">
                                 </div>
                                 <div class="card-profile-meta">
                                     <div class="name">
-                                        {{ $coach->name }}
+                                        {{ $coach->full_name }}
                                     </div>
                                     <div class="designation">
-                                        <span>{{ $coach->designation }}</span><br>
+                                        <span>{{ $coach->coach->designation }}</span><br>
                                         <span class="exp">
                                             for {{ $coach->experience }} year(s)
                                         </span>
                                         <span>{{ $coach->sport }}</span>
                                     </div>
                                     <div class="rating">
-                                        @for ($i = 1; $i <= $coach->rating; $i++)
+                                        @for ($i = 1; $i <= $coach->coach->rating; $i++)
                                             <span><i class="fa-solid fa-star"></i></span>
                                         @endfor
                                         @php
-                                            $starsLeft = 5 - $coach->rating;
+                                            $starsLeft = 5 - $coach->coach->rating;
                                         @endphp
                                         @for ($j = 1; $j <= $starsLeft; $j++)
                                             <span><i class="fa-regular fa-star"></i></span>
@@ -249,7 +189,7 @@
                                     <div class="divider"></div>
                                     <div class="location">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        <span>{{ $coach->location }}</span>
+                                        <span>{{ $coach->coach->location }}</span>
                                     </div>
                                     <a href="#" class="btn btn-theme">
                                         View Profile

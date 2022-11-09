@@ -52,9 +52,31 @@ class CoacheSeeder extends Seeder
             $g = array_rand($gender);
             $e = array_rand($experience);
             $r = array_rand($rate);
+
+            $fName = $faker->firstName;
+            $lName = $faker->lastName;
+            $jobTitle = $faker->jobTitle;
+
+            $userId = DB::table('users')->insertGetId([
+                'user_type_id' => 2,
+                'first_name' => $fName,
+                'last_name' => $lName,
+                'full_name' => $fName.' '.$lName,
+                'email' => $faker->unique()->email,
+                'email_verified_at' => now(),
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                'remember_token' => Str::random(10),
+                'area_of_focus' => $jobTitle,
+                'gender' => $gender[$g],
+                'experience' => $experience[$e],
+                'hourly_rate' => $rate[$r],
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
             DB::table('coaches')->insert([
-                'name' => $faker->name,
-                'designation' => $faker->jobTitle,
+                'user_id' => $userId,
+                'name' => $fName.' '.$lName,
+                'designation' => $jobTitle,
                 'rating' => rand(1,5),
                 'location' => $value,
                 'profile_img' => $players[$key],

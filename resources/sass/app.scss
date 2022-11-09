@@ -10,6 +10,9 @@
 body,html {
 	color: $dark-gray;
 }
+.page {
+	padding: 150px 0 0 0;
+}
 h1 {
 	font-size: 50px;
 	font-weight: 600;
@@ -106,10 +109,16 @@ nav.navbar {
 .standard-search {
 	width: 60%;
 	.form-control {
+		background: $gray;
 		padding: 12px 20px;
 		border-right: 0;
+		transition: .3s;
 		&:focus {
-			border-color: #d2d2d2;
+			border-color: $inputBorder;
+			background: #fff !important;
+			~ .input-group-text {
+				background: #fff;
+			}
 		}
 	}
 	.input-group-text {
@@ -117,6 +126,8 @@ nav.navbar {
 		border-bottom-right-radius: 100px;
 		border-left: 0;
 		background: $white;
+		background: $gray;
+		transition: .3s;
 	}
 }
 
@@ -163,7 +174,7 @@ nav.navbar {
 	.filter-cards {
 		margin-top: 30px;
 		.filters {
-			background: #FBFBFB;
+			background: $gray;
 			border-radius: $radius;
 			box-shadow: $shadow;
 			padding: 30px 20px;
@@ -215,6 +226,9 @@ nav.navbar {
 					}
 					img {
 						height: 14px;
+					}
+					* {
+						background: #fff;
 					}
 				}
 			}
@@ -367,4 +381,6 @@ nav.navbar {
 	}
 }
 
-
+.register-page {
+	background: $gray;
+}

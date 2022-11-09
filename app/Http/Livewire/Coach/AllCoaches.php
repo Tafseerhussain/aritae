@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Coach;
 
 use Livewire\Component;
 use App\Models\Coach;
+use App\Models\User;
 use App\Models\Sport;
 use App\Models\Location;
 use Livewire\WithPagination;
@@ -45,9 +46,9 @@ class AllCoaches extends Component
     public function render()
     {
         return view('livewire.coach.all-coaches', [
-            'coaches' => Coach::
+            'coaches' => User::
                             when($this->search != '', function ($q) {
-                                $q->where('name', 'like', '%'.$this->search.'%');
+                                $q->where('full_name', 'like', '%'.$this->search.'%');
                             })
                             ->when(count($this->sport) > 0, function ($q) {
                                 $q->whereIn('sport', $this->sport);
@@ -60,6 +61,7 @@ class AllCoaches extends Component
                             })
                             ->whereBetween('experience', [$this->minExp, $this->maxExp])
                             ->whereBetween('hourly_rate', [$this->minRate, $this->maxRate])
+                            ->where('user_type_id', 2)
                             ->paginate(6),
             'sports' => Sport::
                         when($this->searchCoach != '', function($q) {
