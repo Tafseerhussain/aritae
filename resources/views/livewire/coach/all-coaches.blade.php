@@ -140,8 +140,9 @@
                 <div class="profile-cards" wire:loading.remove>
                     @if ($coaches->isEmpty())
 
-                        <div class="mt-5 text-center">
-                            No Records Found 
+                        <div class="mt-5 text-center nothing-found">
+                            <img src="{{ asset('assets/icons/not-found.svg') }}" alt="nothing found">
+                            <h3 class="mt-5">No Records Found </h3>
                             @if ($search != '')
                                 for "<span class="text-danger">{{ $search }}</span>"
                             @endif
