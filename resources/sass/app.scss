@@ -11,6 +11,9 @@
   color: $white;
   background: $purple;
 }
+.page {
+	padding-top: 150px;
+}
 body,html {
 	color: $dark-gray;
 }
@@ -88,6 +91,7 @@ a:focus,
 	box-shadow: $shadow;
 	border-radius: $radius;
 	border-color: $white;
+	overflow: hidden;
 }
 
 nav.navbar {
