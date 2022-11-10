@@ -173,7 +173,7 @@
                                         <span class="exp">
                                             for {{ $coach->experience }} year(s)
                                         </span>
-                                        <span>{{ $coach->sport }}</span>
+                                        <span>{{ $coach->coach->sport }}</span>
                                     </div>
                                     <div class="rating">
                                         @for ($i = 1; $i <= $coach->coach->rating; $i++)

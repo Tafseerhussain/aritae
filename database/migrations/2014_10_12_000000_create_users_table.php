@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_type_id');
+            $table->unsignedInteger('sport_id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('full_name');
@@ -21,6 +22,10 @@ return new class extends Migration
             $table->string('gender');
             $table->unsignedInteger('experience');
             $table->unsignedInteger('hourly_rate');
+            $table->text('address');
+            $table->string('city');
+            $table->string('zip');
+            $table->string('country');
             $table->rememberToken();
             $table->timestamps();
         });

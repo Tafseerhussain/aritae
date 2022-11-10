@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\UserType;
 use App\Models\Coach;
+use App\Models\Sport;
 
 class User extends Authenticatable
 {
@@ -53,5 +54,10 @@ class User extends Authenticatable
     public function coach()
     {
         return $this->hasOne(Coach::class);
+    }
+
+    public function sports()
+    {
+        return $this->belongsTo(Sport::class);
     }
 }

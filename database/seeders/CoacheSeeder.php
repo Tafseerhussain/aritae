@@ -58,6 +58,7 @@ class CoacheSeeder extends Seeder
             $jobTitle = $faker->jobTitle;
 
             $userId = DB::table('users')->insertGetId([
+                'sport_id' => rand(1,12),
                 'user_type_id' => 2,
                 'first_name' => $fName,
                 'last_name' => $lName,
@@ -66,10 +67,14 @@ class CoacheSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
                 'remember_token' => Str::random(10),
-                'area_of_focus' => $jobTitle,
+                'area_of_focus' => $sports[$s],
                 'gender' => $gender[$g],
                 'experience' => $experience[$e],
                 'hourly_rate' => $rate[$r],
+                'address' => '0',
+                'city' => '0',
+                'zip' => '0',
+                'country' => $value,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
