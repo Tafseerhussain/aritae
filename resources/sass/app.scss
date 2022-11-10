@@ -417,7 +417,6 @@ nav.navbar {
 	}
 }
 .register-page {
-	padding: 70px 0 0;
 	.get-started,
 	.registration-form {
 		transition: .5s;
@@ -454,12 +453,23 @@ nav.navbar {
 		}
 	}
 	.registration-form {
-		background: url('/public/assets/img/register-bg.jpg') no-repeat;
-		background-size: cover;
-		margin-top: -20px;
-		padding-bottom: 50px;
+		.navbar-brand {
+			position: relative;
+			top: 13px;
+		}
+		.img-portion {
+			padding: 0;
+			overflow: hidden;
+			img {
+				object-fit:cover;
+				object-position: -50px;
+			}
+		}
 		.card {
 			padding: 50px 30px 30px;
+			background: transparent;
+			box-shadow: none;
+			border: none;
 			label {
 				font-weight: 600;
 				width: 100%;

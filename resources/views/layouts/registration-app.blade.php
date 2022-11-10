@@ -20,36 +20,10 @@
 <body>
     <div class="registration-app">
 
-        <nav>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center pt-5">
-                        <a href="/" class="navbar-brand"><img src="{{ asset('assets/img/logo.svg') }}" alt="logo"></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
         <main class="">
             @yield('content')
         </main>
 
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <div class="d-flex footer-links justify-content-center">
-                            <a href="#">
-                                Privacy Policy
-                            </a>
-                            <a href="#">
-                                Terms of Use
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
     </div>
 

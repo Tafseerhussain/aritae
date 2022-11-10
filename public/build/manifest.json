@@ -3,17 +3,13 @@
     "file": "assets/coaches-bg.6f7352cf.jpg",
     "src": "public/assets/img/coaches-bg.jpg"
   },
-  "public/assets/img/register-bg.jpg": {
-    "file": "assets/register-bg.21fb3bfb.jpg",
-    "src": "public/assets/img/register-bg.jpg"
-  },
   "resources/js/app.js": {
     "file": "assets/app.d168bcb3.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app.502d0b1d.css",
+    "file": "assets/app.543ce416.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   }
