@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="register-type" wire:click="changeStep(2)">
+                                        <div class="register-type" wire:click="changeStep(4)">
                                             <img src="{{ asset('assets/icons/player.svg') }}" alt="player">
                                             <h2>
                                                 Join as a Player
@@ -42,7 +42,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="register-type" wire:click="changeStep(3)">
+                                        <div class="register-type" wire:click="changeStep(2)">
                                             <img src="{{ asset('assets/icons/coach.svg') }}" alt="player">
                                             <h2>
                                                 Join as a Coach
@@ -84,12 +84,16 @@
         </footer>
         @endif
 
-        @if ($step == 2)
+        @if ($step == 4 || $step == 2)
         {{-- STEP 2 --}}
         <div class="row justify-content-center registration-form">
             <div class="row">
                 <div class="col-md-4 img-portion">
-                    <img src="{{ asset('assets/img/auth/player-register.jpg') }}" alt="player register">
+                    @if ($step == 2)
+                        <img src="{{ asset('assets/img/auth/coach-register.jpg') }}" alt="coach register">
+                    @elseif ($step == 4)
+                        <img src="{{ asset('assets/img/auth/player-register.jpg') }}" alt="player register">
+                    @endif
                 </div>
                 <div class="col-md-8">
                     <nav>
@@ -115,7 +119,11 @@
                                 
                                 <div class="card-head text-center">
                                     <h2>
-                                        Player Registration
+                                        @if ($step == 2)
+                                            Coach Registration
+                                        @elseif($step == 4)
+                                            Player Registration
+                                        @endif  
                                     </h2>
                                     <p class="my-4">
                                         It only takes two minutes to set up your Aritae account. Get started below!
@@ -123,15 +131,13 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <form method="POST" action="{{ route('register') }}">
-                                        @csrf
-
+                                    <form method="POST" wire:submit.prevent="submitPlayer">
                                         <div class="row mb-3">
                                             <div class="col-md-6 mb-3">
                                                 <label for="name" class="col-form-label">{{ __('First Name') }}</label>
-                                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Mike" autofocus>
+                                                <input id="name" type="text" class="form-control @error('firstName') is-invalid @enderror" placeholder="Mike" autofocus wire:model="firstName">
 
-                                                @error('name')
+                                                @error('firstName')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -139,9 +145,9 @@
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="name" class="col-form-label">{{ __('Last Name') }}</label>
-                                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Clery">
+                                                <input id="name" type="text" class="form-control @error('lastName') is-invalid @enderror" placeholder="Clery" wire:model="lastName">
 
-                                                @error('name')
+                                                @error('lastName')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -149,9 +155,9 @@
                                             </div>
                                             <div class="col-12 mb-3">
                                                 <label for="name" class="col-form-label">Email Address</label>
-                                                <input id="name" type="email" class="form-control @error('name') is-invalid @enderror" placeholder="email@gmail.com">
+                                                <input id="name" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="email@gmail.com" wire:model="email">
 
-                                                @error('name')
+                                                @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -159,7 +165,7 @@
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="name" class="col-form-label">{{ __('Password') }}</label>
-                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="*********">
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="*********" wire:model="password">
 
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
@@ -170,31 +176,46 @@
 
                                             <div class="col-md-6 mb-3">
                                                 <label for="password" class="col-form-label">{{ __('Confirm Password') }}</label>
-                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="*********">
+                                                <input id="password-confirm" type="password" class="form-control @error('confirmPassword') is-invalid @enderror" name="password_confirmation"  placeholder="*********" wire:model="confirmPassword">
+                                                @error('confirmPassword')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
 
                                             <div class="col-12 mb-3">
-                                                <label for="password" class="col-form-label">{{ __('Area of Focus') }}</label>
-                                                <select class="form-control form-select">
+                                                <label for="areaOfFocus" class="col-form-label">{{ __('Area of Focus') }}</label>
+                                                <select class="form-control form-select @error('areaOfFocus') is-invalid @enderror" wire:model="areaOfFocus">
                                                     <option value=" " disabled selected>Please Select...</option>
-                                                    <option value="one">one</option>
-                                                    <option value="two">two</option>
-                                                    <option value="three">three</option>
+                                                    @foreach ($sports as $sport)
+                                                        <option value="{{ $sport->id }}">{{ $sport->name }}</option>
+                                                    @endforeach
                                                 </select>
+                                                @error('areaOfFocus')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
 
                                             <div class="col-12 mb-3">
                                                 <label for="gender" class="col-form-label">Gender</label>
                                                 <div class="filter d-flex">
                                                     <div class="d-flex gender-preference flex-fill">
-                                                        <input class="form-check-input mt-0" type="radio" name="gender" value="male" id="male-coach">
+                                                        <input class="form-check-input mt-0" @error('gender') is-invalid @enderror type="radio" name="gender" value="male" id="male-coach" wire:model="gender">
                                                         <label for="male-coach">Male</label>
                                                     </div>
                                                     <div class="d-flex gender-preference flex-fill">
-                                                        <input class="form-check-input mt-0" type="radio" name="gender" value="female" id="female-coach">
+                                                        <input class="form-check-input mt-0 @error('gender') is-invalid @enderror" type="radio" name="gender" value="female" id="female-coach" wire:model="gender">
                                                         <label for="female-coach">Female</label>
                                                     </div>
                                                 </div>
+                                                @error('gender')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -224,9 +245,9 @@
         {{-- STEP 2 END --}}
         @endif
 
-        @if ($step == 3)
+        {{--@if ($step == 2)--}}
         {{-- STEP 2 --}}
-        <div class="row justify-content-center registration-form">
+        {{-- <div class="row justify-content-center registration-form">
             <div class="row">
                 <div class="col-md-4 img-portion">
                     <img src="{{ asset('assets/img/auth/coach-register.jpg') }}" alt="coach register">
@@ -263,7 +284,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <form method="POST" action="{{ route('register') }}">
+                                    <form method="POST" wire:submit.prevent="submitPlayer">
                                         @csrf
 
                                         <div class="row mb-3">
@@ -360,7 +381,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- STEP 2 END --}}
-        @endif
+        {{-- @endif --}}
 </div>

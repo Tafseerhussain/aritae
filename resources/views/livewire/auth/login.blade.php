@@ -29,16 +29,29 @@
                                 </p>
                             </div>
 
+                            @if (session()->has('registered'))
+                            <span class="alert alert-success font-weight-bold d-block text-center">
+                                <strong class="text-success text-center">
+                                    {{ session('registered') }}
+                                </strong>
+                            </span>
+                            @endif
+
+                            @if (session()->has('error'))
+                                <strong class="text-danger text-center">
+                                    {{ session('error') }}
+                                </strong>
+                            @endif
+                            
                             <div class="card-body">
-                                <form method="POST" action="{{ route('login') }}">
+                                <form method="POST" wire:submit.prevent="submit">
                                     @csrf
 
                                     <div class="row mb-3">
                                         <div class="col-12 mb-3">
                                             <label for="name" class="col-form-label">Your Email</label>
-                                            <input id="name" type="email" class="form-control @error('name') is-invalid @enderror" placeholder="email@gmail.com">
-
-                                            @error('name')
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" wire:model="email" autocomplete="email" autofocus>
+                                            @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -46,8 +59,7 @@
                                         </div>
                                         <div class="col-12 mb-3">
                                             <label for="name" class="col-form-label">{{ __('Your Password') }}</label>
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="*********">
-
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" wire:model="password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -55,7 +67,16 @@
                                             @enderror
                                         </div>
 
-                                        <div class="col-12 mb-3">
+                                        <div class="col-6 mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                                <label class="form-check-label" for="remember">
+                                                    {{ __('Remember Me') }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3 text-end">
                                             @if (Route::has('password.request'))
                                                 <a class="btn-link" href="{{ route('password.request') }}">
                                                     {{ __('Forgot Your Password?') }}
