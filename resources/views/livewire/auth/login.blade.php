@@ -50,7 +50,7 @@
                                     <div class="row mb-3">
                                         <div class="col-12 mb-3">
                                             <label for="name" class="col-form-label">Your Email</label>
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" wire:model="email" autocomplete="email" autofocus>
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" wire:model="email" autocomplete="email" autofocus placeholder="email@gmail.com">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="col-12 mb-3">
                                             <label for="name" class="col-form-label">{{ __('Your Password') }}</label>
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" wire:model="password">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" wire:model="password" placeholder="********">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

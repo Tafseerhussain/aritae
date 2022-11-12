@@ -93,6 +93,9 @@ a:focus,
 	border-color: $white;
 	overflow: hidden;
 }
+input[type='password'] {
+	font-family: $oswald;
+}
 
 nav.navbar {
 	border-radius: 200px;
@@ -484,6 +487,27 @@ nav.navbar {
 					top: 5px;
 					margin-right: 10px;
 				}
+			}
+		}
+	}
+}
+
+.reset-form {
+	.card {
+		padding: 50px 40px;
+		label {
+			font-weight: 600;
+			width: 100%;
+		}
+		.form-control {
+			padding: 12px 30px;
+			background: $gray;
+		}
+		.filter {
+			input {
+				position: relative;
+				top: 5px;
+				margin-right: 10px;
 			}
 		}
 	}
