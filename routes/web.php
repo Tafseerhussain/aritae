@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::group(['middleware' => 'player'], function () {
+//     Route::get('admin', 'adminController@adminDashboard');
+// });
+
+Route::group(['middleware' => 'coach'], function () {
+    Route::get('/admin', [\App\Http\Controllers\CoachController::class, 'index'])->name('coach.dashboard');
+});

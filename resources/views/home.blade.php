@@ -14,7 +14,14 @@
                         </div>
                     @endif
 
-                    Hello <strong>{{ Auth::user()->first_name }}</strong>, You are logged in as a <strong>{{ Auth::user()->userType->type }}</strong>
+                    <strong>Redirecting...</strong>
+
+                    @if (Auth::user()->user_type_id == 2)
+                        <script>window.location = "/admin";</script>
+                    @elseif (Auth::user()->user_type_id == 4)
+                        <script>window.location = "/home";</script>
+                    @endif
+                    
                 </div>
             </div>
         </div>
