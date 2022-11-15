@@ -63,6 +63,7 @@ class AllCoaches extends Component
                             ->whereBetween('hourly_rate', [$this->minRate, $this->maxRate])
                             ->where('user_type_id', 2)
                             ->paginate(6),
+            'coach' => Coach::find(4),
             'sports' => Sport::
                         when($this->searchCoach != '', function($q) {
                             $q->where('name', 'like', '%'.$this->searchCoach.'%');

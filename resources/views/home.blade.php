@@ -14,12 +14,11 @@
                         </div>
                     @endif
 
-                    <strong>Redirecting...</strong>
-
                     @if (Auth::user()->user_type_id == 2)
+                        <strong>Redirecting...</strong>
                         <script>window.location = "/admin";</script>
                     @elseif (Auth::user()->user_type_id == 4)
-                        <script>window.location = "/home";</script>
+                        Welcome Player...
                     @endif
                     
                 </div>
