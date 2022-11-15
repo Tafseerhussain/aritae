@@ -177,6 +177,14 @@
 	}
 }
 
+.admin-footer {
+	a {
+		color: $purple;
+		text-decoration: none;
+		margin: 20px 10px;
+	}
+}
+
 @media (min-width: 2200px) {
 	.container-fluid {
 		max-width: 2000px;

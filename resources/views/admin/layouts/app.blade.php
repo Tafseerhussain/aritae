@@ -144,6 +144,22 @@
                         </p>
                         @yield('content')
                     </main>
+                    <footer class="admin-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <div class="d-flex footer-links justify-content-center">
+                                        <a href="#">
+                                            Privacy Policy
+                                        </a>
+                                        <a href="#">
+                                            Terms of Use
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
                 </div>
             </div>
         </div>
