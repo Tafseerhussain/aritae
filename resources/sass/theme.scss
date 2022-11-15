@@ -16,6 +16,8 @@
 }
 body,html {
 	color: $dark-gray;
+	overflow-x: hidden;
+	position: relative;
 }
 h1 {
 	font-size: 50px;
