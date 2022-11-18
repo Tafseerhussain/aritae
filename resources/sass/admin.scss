@@ -8,6 +8,12 @@
 
 #admin-app {
 	background: #FAFAFA;
+	.sidebar-col {
+		width: 290px;
+	}
+	.dashboard-col {
+		margin-left: 18.125rem;
+	}
 }
 .top-bar {
 	padding: 12px 0;
@@ -31,6 +37,12 @@
 
 .sidebar {
 	padding: 24px 0;
+	position: fixed;
+	width: inherit;
+	padding-right: 15px;
+	overflow-y: scroll;
+	top: 0;
+	bottom: 0;
 	.sidebar-links {
 		margin-top: 50px;
 		.list-group {
@@ -81,6 +93,7 @@
 					font-weight: 600;
 					a,button.accordion-button {
 						color: $purple !important;
+						font-weight: 600;
 					}
 				}
 				button[aria-expanded="true"] {
@@ -92,6 +105,7 @@
 				.link-dark {
 					color: $dark-gray !important;
 					padding: 10px;
+					font-weight: 400;
 					i {
 						font-size: 16px;
 					}

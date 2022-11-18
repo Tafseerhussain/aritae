@@ -12,6 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
     <!-- Scripts -->
     @vite([
@@ -24,8 +25,8 @@
     <div id="admin-app">
         
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-2">
+
+                <div class="col-md-2 sidebar-col">
                     <div class="sidebar">
                         <a href="/" class="logo text-center d-block">
                             <img src="{{ asset('assets/img/logo.svg') }}" alt="">
@@ -37,7 +38,7 @@
                             <ul class="list-group">
                                 <li class="list-group-item {{ $route == 'coach.dashboard' ? 'active' : '' }}">
                                     <a href="{{ route('coach.dashboard') }}">
-                                        <i class="fa-solid fa-layer-group"></i><span>Dashboard</span>
+                                        <i class="bi bi-boxes"></i> <span>Dashboard</span>
                                     </a>
                                 </li>
                                 <li class="list-group-item drop-menu {{ $route == 'coach.profile' ? 'active' : '' }}">
@@ -52,7 +53,7 @@
                                                 data-bs-target="#panelsStayOpen-profile" 
                                                 aria-expanded="true" 
                                                 aria-controls="panelsStayOpen-profile">
-                                                <i class="fa-solid fa-user"></i>
+                                                <i class="bi bi-person"></i>
                                                 <span>Profile</span>
                                               </button>
                                         @else
@@ -63,17 +64,21 @@
                                                 data-bs-target="#panelsStayOpen-profile" 
                                                 aria-expanded="false" 
                                                 aria-controls="panelsStayOpen-profile">
-                                                <i class="fa-solid fa-user"></i>
+                                                <i class="bi bi-person"></i>
                                                 <span>Profile</span>
                                               </button>
                                         @endif
                                           
                                         </div>
-                                        <div id="panelsStayOpen-profile" class="accordion-collapse collapse {{ $route == 'coach.profile' ? 'show' : '' }}" aria-labelledby="panelsStayOpen-headingThree">
+                                        <div id="panelsStayOpen-profile" 
+                                            class="accordion-collapse collapse 
+                                                {{ $route == 'coach.profile' ? 'show' : '' }}
+                                                " 
+                                            aria-labelledby="panelsStayOpen-headingThree">
                                           <div class="accordion-body">
                                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                                 <li>
-                                                    <a href="{{ route('coach.profile') }}#info" class="link-dark rounded">
+                                                    <a href="{{ route('coach.profile') }}#" class="link-dark rounded">
                                                         <i class="fa-solid fa-circle-info"></i>
                                                         <span>Personal Information</span>
                                                     </a>
@@ -116,37 +121,37 @@
                                 </li>    
                                 <li class="list-group-item">
                                     <a href="#">
-                                        <i class="fa-solid fa-square-poll-horizontal"></i>
+                                        <i class="bi bi-activity"></i>
                                         <span>Activity</span>
                                     </a>
                                 </li>
                                 <li class="list-group-item">
                                     <a href="#">
-                                        <i class="fa-solid fa-comments"></i>
+                                        <i class="bi bi-chat-square-text"></i>
                                         <span>Messages</span>
                                     </a>
                                 </li>
                                 <li class="list-group-item">
                                     <a href="#">
-                                        <i class="fa-solid fa-people-group"></i>
+                                        <i class="bi bi-people"></i>
                                         <span>Teams</span>
                                     </a>
                                 </li>
                                 <li class="list-group-item">
                                     <a href="#">
-                                        <i class="fa-solid fa-trophy"></i>
+                                        <i class="bi bi-trophy"></i>
                                         <span>Academy</span>
                                     </a>
                                 </li>
                                 <li class="list-group-item">
                                     <a href="#">
-                                        <i class="fa-solid fa-circle-play"></i>
+                                        <i class="bi bi-play-circle"></i>
                                         <span>Videos</span>
                                     </a>
                                 </li>
                                 <li class="list-group-item">
                                     <a href="#">
-                                        <i class="fa-solid fa-calendar-days"></i>
+                                        <i class="bi bi-calendar-month"></i>
                                         <span>Events</span>
                                     </a>
                                 </li>
@@ -154,7 +159,7 @@
                         </div>  
                     </div>
                 </div>
-                <div class="col-md-10">
+                <div class="dashboard-col">
                     <div class="row top-bar align-items-center">
                         <div class="col-md-5">
                             <div class="input-group standard-search">
@@ -232,7 +237,7 @@
                         </div>
                     </footer>
                 </div>
-            </div>
+
         </div>
 
     </div>
