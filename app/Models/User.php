@@ -56,7 +56,7 @@ class User extends Authenticatable
         return $this->hasOne(Coach::class);
     }
 
-    public function sports()
+    public function sport()
     {
         return $this->belongsTo(Sport::class);
     }

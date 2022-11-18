@@ -26,5 +26,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 Route::group(['middleware' => 'coach'], function () {
-    Route::get('/admin', [\App\Http\Controllers\CoachController::class, 'index'])->name('coach.dashboard');
+    Route::get('/coach/dashboard', [\App\Http\Controllers\CoachController::class, 'index'])->name('coach.dashboard');
+    Route::get('/coach/profile', [\App\Http\Controllers\CoachController::class, 'profile'])->name('coach.profile');
 });

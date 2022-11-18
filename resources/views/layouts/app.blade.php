@@ -81,9 +81,16 @@
                                     Register
                                 </a>
                             @else
-                                <a class="dropdown-item" href="@">
-                                    Profile
-                                </a>
+
+                                @if (Auth::user()->userType->type == 'coach')
+                                    <a class="dropdown-item" href="{{ route('coach.dashboard') }}">
+                                        Dashboard
+                                    </a>
+                                @elseif (Auth::user()->userType->type == 'player')
+                                    <a class="dropdown-item" href="@">
+                                        Dashboard
+                                    </a>
+                                @endif
                                 <hr class="dropdown-divider">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

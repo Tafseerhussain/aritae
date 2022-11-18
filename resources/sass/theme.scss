@@ -47,7 +47,7 @@ a:focus,
 }
 .form-control,
 .form-select {
-	border-radius: 100px;
+	border-radius: 30px;
 }
 
 .navbar-brand {
@@ -123,4 +123,13 @@ input[type='password'] {
 }
 hr {
 	opacity: .15;
+}
+form {
+	.form-control {
+		padding: 12px 20px;
+		background: $gray;
+	}
+	textarea {
+		border-radius: 20px !important;
+	}
 }

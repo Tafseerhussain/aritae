@@ -8,6 +8,11 @@ class CoachController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        return view('coach.dashboard');
+    }
+
+    public function profile()
+    {
+        return view('coach.profile');
     }
 }

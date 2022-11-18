@@ -27,22 +27,93 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="sidebar">
-                        <a href="#" class="logo text-center d-block">
+                        <a href="/" class="logo text-center d-block">
                             <img src="{{ asset('assets/img/logo.svg') }}" alt="">
                         </a>
+                        @php
+                            $route = Route::current()->getName();
+                        @endphp
                         <div class="sidebar-links">
                             <ul class="list-group">
-                                <li class="list-group-item active">
-                                    <a href="#">
+                                <li class="list-group-item {{ $route == 'coach.dashboard' ? 'active' : '' }}">
+                                    <a href="{{ route('coach.dashboard') }}">
                                         <i class="fa-solid fa-layer-group"></i><span>Dashboard</span>
                                     </a>
                                 </li>
-                                <li class="list-group-item">
-                                    <a href="#">
-                                        <i class="fa-solid fa-user"></i>
-                                        <span>My Profile Preview</span>
-                                    </a>
-                                </li>
+                                <li class="list-group-item drop-menu {{ $route == 'coach.profile' ? 'active' : '' }}">
+                                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                                      <div class="accordion-item">
+                                        <div class="accordion-header" id="panelsStayOpen-headingThree">
+                                        @if ($route == 'coach.profile')
+                                            <button 
+                                                class="accordion-button" 
+                                                type="button" 
+                                                data-bs-toggle="collapse" 
+                                                data-bs-target="#panelsStayOpen-profile" 
+                                                aria-expanded="true" 
+                                                aria-controls="panelsStayOpen-profile">
+                                                <i class="fa-solid fa-user"></i>
+                                                <span>Profile</span>
+                                              </button>
+                                        @else
+                                            <button 
+                                                class="accordion-button collapsed" 
+                                                type="button" 
+                                                data-bs-toggle="collapse" 
+                                                data-bs-target="#panelsStayOpen-profile" 
+                                                aria-expanded="false" 
+                                                aria-controls="panelsStayOpen-profile">
+                                                <i class="fa-solid fa-user"></i>
+                                                <span>Profile</span>
+                                              </button>
+                                        @endif
+                                          
+                                        </div>
+                                        <div id="panelsStayOpen-profile" class="accordion-collapse collapse {{ $route == 'coach.profile' ? 'show' : '' }}" aria-labelledby="panelsStayOpen-headingThree">
+                                          <div class="accordion-body">
+                                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                                <li>
+                                                    <a href="{{ route('coach.profile') }}#info" class="link-dark rounded">
+                                                        <i class="fa-solid fa-circle-info"></i>
+                                                        <span>Personal Information</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('coach.profile') }}#experience" class="link-dark rounded">
+                                                        <i class="fa-solid fa-briefcase"></i>
+                                                        <span>Coaching Experience</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('coach.profile') }}#certifications" class="link-dark rounded">
+                                                        <i class="fa-solid fa-award"></i>
+                                                        <span>Certifications</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('coach.profile') }}#education" class="link-dark rounded">
+                                                        <i class="fa-solid fa-graduation-cap"></i>
+                                                        <span>Education</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('coach.profile') }}#videos" class="link-dark rounded">
+                                                        <i class="fa-solid fa-video"></i>
+                                                        <span>My Videos</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('coach.profile') }}#sessions" class="link-dark rounded">
+                                                        <i class="fa-solid fa-film"></i>
+                                                        <span>My Sessions</span>
+                                                    </a>
+                                                </li>
+                                              </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </li>    
                                 <li class="list-group-item">
                                     <a href="#">
                                         <i class="fa-solid fa-square-poll-horizontal"></i>
@@ -116,7 +187,7 @@
                                                 Register
                                             </a>
                                         @else
-                                            <a class="dropdown-item" href="@">
+                                            <a class="dropdown-item" href="#">
                                                 Profile
                                             </a>
                                             <hr class="dropdown-divider">

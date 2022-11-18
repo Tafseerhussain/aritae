@@ -1,5 +1,14 @@
 @import 'theme';
 
+@media (min-width: 2200px) {
+	.container-fluid {
+		max-width: 2000px;
+	}
+}
+
+#admin-app {
+	background: #FAFAFA;
+}
 .top-bar {
 	padding: 12px 0;
 	.welcome {
@@ -10,6 +19,7 @@
 		justify-content: end;
 		.list-group-item {
 			border: 0;
+			background: transparent;
 		}
 		.notifications {
 			position: relative;
@@ -29,16 +39,28 @@
 			.list-group-item {
 				border: 0;
 				cursor: pointer;
-				border-radius: 10px;
+				border-radius: 15px;
 				background: transparent;
 				margin-bottom: 10px;
+				overflow: hidden;
 				padding: 0;
-				a {
+				.accordion-item {
+					border: 0;
+					* {
+						background: transparent;
+					}
+				}
+				a, button {
 					text-decoration: none;
 					color: $dark-gray;
-					display: block;
 					padding: 20px;
-					transition: .3s;
+					transition: .2s;
+					border-radius: 10px;
+					color: $light-gray;
+					position: relative;
+					box-shadow: none;
+					border: 0;
+					background: #FAFAFA !important;
 					span {
 						margin-left: 10px;
 					}
@@ -47,15 +69,36 @@
 					}
 					&:hover {
 						background: $white !important;
+						color: $dark-gray;
 					}
+				}
+				a {
+					display: block;
 				}
 				&.active {
 					background: $white;
 					box-shadow: $shadow;
 					font-weight: 600;
-					a {
-						color: $purple;
+					a,button.accordion-button {
+						color: $purple !important;
 					}
+				}
+				button[aria-expanded="true"] {
+					color: $dark-gray;
+					background: $white !important;
+				}
+			}
+			.list-group-item.drop-menu {
+				.link-dark {
+					color: $dark-gray !important;
+					padding: 10px;
+					i {
+						font-size: 16px;
+					}
+				}
+				.link-dark.active {
+					color: $purple !important;
+					font-weight: 600;
 				}
 			}
 		}
@@ -185,8 +228,48 @@
 	}
 }
 
-@media (min-width: 2200px) {
-	.container-fluid {
-		max-width: 2000px;
+
+.profile-edit-page {
+	.cover-image {
+		position: relative;
+		height: 250px;
+		border-radius: 20px;
+		overflow: hidden;
+		img {
+			object-fit:cover;
+			object-position: center center;
+			height: 100%;
+		}
+	}
+	.profile-image {
+		position: relative;
+		text-align: center;
+		width: 200px;
+		margin: -110px 20px 20px;
+		img {
+			border: 2px solid $purple;
+		}
+	}
+	.profile-info {
+		.changeImage {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			background: $white;
+			box-shadow: $shadow;
+			border-radius: 50%;
+			padding: 8px 12px;
+			cursor: pointer;
+		}
+	}
+	.profile-completion {
+		margin-top: 10px;
+		width: 30%;
+		.progress {
+			border-radius: 50px;
+			.progress-bar {
+				border-radius: 50px;
+			}
+		}
 	}
 }
