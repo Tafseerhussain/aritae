@@ -13,6 +13,6 @@ class CoachController extends Controller
 
     public function profile()
     {
-        return view('coach.profile.personalInfo');
+        return view('coach.profile');
     }
 }

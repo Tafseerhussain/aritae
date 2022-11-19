@@ -4,9 +4,9 @@
 
 	<div class="profile-edit-page">
 		<div class="row">
-			<div class="col-md-8 mx-auto">
+			<div class="col-xl-9 col-lg-10 col-md-12 mx-auto">
 				{{-- PERSONAL INFO --}}
-				<h2 class="mb-2 text-center" id="info">
+				<h2 class="mb-3 text-center fs-2" id="info">
 					<i class="bi bi-info-circle"></i>
 					<span>Personal Info</span>
 				</h2>
@@ -101,7 +101,7 @@
 				</div>
 
 				{{-- COACHING EXPERINECE --}}
-				<h2 class="mb-2 mt-5 text-center" id="experience">
+				<h2 class="mb-3 mt-5 text-center fs-2" id="experience">
 					<i class="bi bi-briefcase"></i>
 					<span>Coaching Experience</span>
 				</h2>
@@ -156,7 +156,6 @@
 											    <option value='10'>October</option>
 											    <option value='11'>November</option>
 											    <option value='12'>December</option>
-											    </select> 
 											</select>
 										</div>
 										<div class="col-5">
@@ -246,7 +245,6 @@
 											    <option value='10'>October</option>
 											    <option value='11'>November</option>
 											    <option value='12'>December</option>
-											    </select> 
 											</select>
 										</div>
 										<div class="col-5">
@@ -325,11 +323,79 @@
 								</div>
 							</div>
 						</form>
+
+						<hr>
+
+						{{-- COACH EXPERIENCES --}}
+						<div class="experiences-table border">
+							<h5 class="text-center mt-3 fw-bold">Experiences</h5>
+							<hr class="mb-0">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Club Name</th>
+										<th scope="col">Position/Title</th>
+										<th scope="col">Description</th>
+										<th scope="col">Time Period</th>
+										<th scope="col">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td scope="row">1</td>
+										<td><span>Lorem Club</span></td>
+										<td><span>Football Coach</span></td>
+										<td>
+											<span class="one-line">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ea, odio incidunt mollitia eveniet inventore adipisci illo quam molestiae suscipit consequuntur magni rerum itaque aliquam officia sunt maxime, nemo veritatis!
+											</span>
+										</td>
+										<td><span>January 1999 - March 2002</span></td>
+										<td class="action">
+											<a href="#" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+											<a href="#" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+										</td>
+									</tr>
+									<tr>
+										<td scope="row">1</td>
+										<td>Lorem Club</td>
+										<td>Football Coach</td>
+										<td>
+											<span class="one-line">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ea, odio incidunt mollitia eveniet inventore adipisci illo quam molestiae suscipit consequuntur magni rerum itaque aliquam officia sunt maxime, nemo veritatis!
+											</span>
+										</td>
+										<td>January 1999 - March 2002</td>
+										<td class="action">
+											<a href="#" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+											<a href="#" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+										</td>
+									</tr>
+									<tr>
+										<td scope="row">1</td>
+										<td>Lorem Club</td>
+										<td>Football Coach</td>
+										<td>
+											<span class="one-line">
+											Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ea, odio incidunt mollitia eveniet inventore adipisci illo quam molestiae suscipit consequuntur magni rerum itaque aliquam officia sunt maxime, nemo veritatis!
+											</span>
+										</td>
+										<td>January 1999 - March 2002</td>
+										<td class="action">
+											<a href="#" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+											<a href="#" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
 					</div>
 				</div>
 
 				{{-- CERTIFICATIONS --}}
-				<h2 class="mb-2 mt-5 text-center" id="certifications">
+				<h2 class="mb-3 mt-5 text-center fs-2" id="certifications">
 					<i class="bi bi-patch-check"></i>
 					<span>Certifications</span>
 				</h2>
@@ -339,7 +405,7 @@
 				</div>
 
 				{{-- EDUCATIONS --}}
-				<h2 class="mb-2 mt-5 text-center" id="education">
+				<h2 class="mb-3 mt-5 text-center fs-2" id="education">
 					<i class="bi bi-mortarboard"></i>
 					<span>Education</span>
 				</h2>
@@ -349,7 +415,7 @@
 				</div>
 
 				{{-- VIDEOS --}}
-				<h2 class="mb-2 mt-5 text-center" id="videos">
+				<h2 class="mb-3 mt-5 text-center fs-2" id="videos">
 					<i class="bi bi-camera-video"></i>
 					<span>My Videos</span>
 				</h2>
@@ -359,7 +425,7 @@
 				</div>
 
 				{{-- SESSIONS --}}
-				<h2 class="mb-2 mt-5 text-center" id="sessions">
+				<h2 class="mb-3 mt-5 text-center fs-2" id="sessions">
 					<i class="bi bi-film"></i>
 					<span>My Sessions</span>
 				</h2>

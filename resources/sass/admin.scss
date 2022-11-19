@@ -287,3 +287,40 @@
 		}
 	}
 }
+
+.experiences-table {
+	border-radius: $radius;
+	overflow: hidden;
+	overflow-x: scroll;
+	th {
+		white-space: nowrap;
+		padding: 12px 10px;
+	}
+	td {
+		font-size: 14px;
+		white-space: nowrap;
+		span.one-line {
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: normal;
+		}
+		span {
+			align-self: center;
+		}
+	}
+	td.action {
+		font-size: 16px;
+		text-align: center;
+		.delete {
+			color: $red;
+			margin-left: 2px;
+		}
+		.edit {
+			margin-right: 2px;
+			color: $blue;
+		}
+	}
+}
