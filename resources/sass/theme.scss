@@ -59,6 +59,9 @@ a:focus,
 	border-radius: 100px;
 	padding: 12px 30px;
 }
+.btn-sm {
+	padding: 8px 20px;
+}
 .btn-theme {
 	background: $purple;
 	border-radius: 100px;
@@ -69,6 +72,9 @@ a:focus,
 .btn-theme:hover {
 	background: $blue;
 	color: $white;
+}
+.text-primary {
+	color: $purple !important;
 }
 .dropdown-menu {
 	background: rgba($black,0.7);
@@ -135,4 +141,9 @@ form {
 	label {
 		font-weight: 600;
 	}
+}
+.alert {
+	border-radius: $radius;
+	border: 0;
+	box-shadow: $shadow;
 }

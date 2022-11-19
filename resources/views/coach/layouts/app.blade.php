@@ -167,7 +167,7 @@
                                 <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
                             </div>  
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 text-center">
                             <div class="welcome">
                                 Welcome {{ Auth::user()->first_name }}
                             </div>
@@ -211,13 +211,24 @@
                         </div>
                     </div>
                     <main class="dashboard-content">
-                        <p class="incomplete-profile">
-                            Your Profile is incomplete.
-                            <a href="#">
-                                <span>Complete Profile</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </p>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="incomplete-profile">
+                                    <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                                      <i class="fa-solid fa-triangle-exclamation"></i>
+                                      <div class="ms-2">
+                                        Your Profile is incomplete. 
+                                        <a href="#">
+                                            <span>Complete Profile</span>
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </a>
+                                      </div>
+                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         @yield('content')
                     </main>
                     <footer class="admin-footer">

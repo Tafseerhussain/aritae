@@ -13,17 +13,17 @@
     "isEntry": true
   },
   "resources/sass/theme.scss": {
-    "file": "assets/theme.e5114b34.css",
+    "file": "assets/theme.94dac4c9.css",
     "src": "resources/sass/theme.scss",
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app.ee88b5e4.css",
+    "file": "assets/app.0d3fa0e5.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
   "resources/sass/admin.scss": {
-    "file": "assets/admin.726d7f70.css",
+    "file": "assets/admin.78f8becb.css",
     "src": "resources/sass/admin.scss",
     "isEntry": true
   }
