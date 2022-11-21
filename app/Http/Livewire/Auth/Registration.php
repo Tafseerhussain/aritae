@@ -6,6 +6,7 @@ use Livewire\Component;
 
 use App\Models\User;
 use App\Models\Sport;
+use App\Models\Coach;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -69,7 +70,13 @@ class Registration extends Component
         $user->country = 0;
         $user->remember_token = Str::random(10);
         $user->save();
-        
+
+        $coach = new Coach;
+        $coach->user_id = $user->id;
+        $coach->name = $user->full_name;
+        $coach->gender = $user->gender;
+        $coach->sport = $user->area_of_focus;
+        $coach->save();    
         return redirect()->route('login')->with('registered', 'Thank you for joining Aritae . You can Login to your account now.');
     }
 
