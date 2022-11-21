@@ -91,8 +91,12 @@ class PersonalInformation extends Component
 
         $user = Auth::user();
         $coach = Coach::where('id', $user->id)->first();
+        if (\File::exists($coach->profile_img)) {
+            \File::delete($coach->profile_img);
+        }
         $extension = $this->profileImage->getClientOriginalExtension();
-        $img = $this->profileImage->storeAs('coaches', 'profile-'.$user->id.'.'.$extension , 'public');
+        $imageName = md5($this->profileImage . microtime()).'.'.$this->profileImage->extension();
+        $img = $this->profileImage->storeAs('coaches', $imageName, 'public');
         $imgUrl = 'storage/'.$img;
         $coach->profile_img = $imgUrl;
         $coach->save();
@@ -109,8 +113,12 @@ class PersonalInformation extends Component
 
         $user = Auth::user();
         $coach = Coach::where('id', $user->id)->first();
+        if (\File::exists($coach->cover_img)) {
+            \File::delete($coach->cover_img);
+        }
         $extension = $this->coverImage->getClientOriginalExtension();
-        $img = $this->coverImage->storeAs('coaches', 'cover-'.$user->id.'.'.$extension , 'public');
+        $imageName = md5($this->coverImage . microtime()).'.'.$this->coverImage->extension();
+        $img = $this->coverImage->storeAs('coaches', $imageName , 'public');
         $imgUrl = 'storage/'.$img;
         $coach->cover_img = $imgUrl;
         $coach->save();
