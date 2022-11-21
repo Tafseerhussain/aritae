@@ -97,7 +97,7 @@ class PersonalInformation extends Component
         $coach->profile_img = $imgUrl;
         $coach->save();
 
-        $this->reset();
+        $this->profileImage = null;
         session()->flash('success_message', 'Profile Image Updated.');
     }
 
@@ -115,7 +115,7 @@ class PersonalInformation extends Component
         $coach->cover_img = $imgUrl;
         $coach->save();
 
-        $this->reset();
+        $this->coverImage = null;
         session()->flash('success_message', 'Cover Image Updated.');
     }
 
