@@ -16,19 +16,89 @@
     </div>
     @endif
 
+    {{-- Profile Image Modal --}}
+    <div class="modal fade" id="profileImageModal" tabindex="-1" aria-labelledby="profileImageModalLabel" aria-hidden="true" wire:ignore.self>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="profileImageModalLabel">Upload Profile Image</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+                <div class="mb-3">
+                    <label for="profileImage" class="form-label">Choose a PNG, JPG or SVG.<br>
+                    <small><code>Max Size: 2MB</code></small></label>
+                    <input class="@error('profileImage') is-invalid @enderror" type="file" id="profileImage" accept=".png, .svg, .jpeg, .jpg" wire:model.defer="profileImage">
+                    @error('profileImage')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    @if ($profileImage)
+                        <img src="{{ $profileImage->temporaryUrl() }}" class="rounded img-thumbnail mw-100 mt-2 rounded-circle h-100" style="width: 200px">
+                    @endif
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-theme" wire:click="submitProfileImage">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{-- Cover Image Modal --}}
+    <div class="modal fade" id="coverImageModal" tabindex="-1" aria-labelledby="coverImageModalLabel" aria-hidden="true" wire:ignore.self>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="coverImageModalLabel">Upload Cover Image</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+                <div class="mb-3">
+                    <label for="coverImage" class="form-label">Choose a PNG, JPG or SVG.<br>
+                    <small><code>Max Size: 2MB</code></small></label>
+                    <input class="@error('coverImage') is-invalid @enderror" type="file" id="coverImage" accept=".png, .svg, .jpeg, .jpg" wire:model.defer="coverImage">
+                    @error('coverImage')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    @if ($coverImage)
+                        <img src="{{ $coverImage->temporaryUrl() }}" class="rounded img-thumbnail mw-100 mt-2 rounded-circle h-100" style="width: 200px">
+                    @endif
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-theme" wire:click="submitCoverImage">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="card-head">
         <div class="cover-image">
-            <div class="changeImage">
+            <div class="changeImage" data-bs-toggle="modal" data-bs-target="#coverImageModal">
                 <i class="fa-solid fa-pencil"></i>
             </div>
-            <img src="{{ asset('/assets/img/default/default-cover.jpg') }}" alt="cover image" class="w-100">
+            @if ($coverImagePreview == '')
+                <img src="{{ asset('/assets/img/default/default-cover.jpg') }}" alt="cover image" class="w-100">
+            @else
+                <img src="{{ asset($coverImagePreview) }}" alt="cover image" class="w-100">
+            @endif
         </div>
         <div class="d-flex profile-meta-bar justify-content-between">
             <div class="profile-image">
-                <div class="changeImage">
+                <div class="changeImage" data-bs-toggle="modal" data-bs-target="#profileImageModal">
                     <i class="fa-solid fa-pencil"></i>
                 </div>
-                <img src="{{ asset('assets/img/players/1.jpg') }}" class="rounded-circle w-100 shadow" alt="">
+                <img src="{{ asset($profileImagePreview) }}" class="rounded-circle w-100 shadow" alt="">
             </div>
             <div class="profile-completion text-end">
                     <small>Your Profile is 25% complete</small>

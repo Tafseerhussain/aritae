@@ -6,9 +6,14 @@ use Livewire\Component;
 use App\Models\User;
 use App\Models\Coach;
 use Auth;
+use Livewire\WithFileUploads;
 
 class PersonalInformation extends Component
 {
+    use WithFileUploads;
+
+    public $profileImagePreview;
+    public $coverImagePreview;
     public $firstName;
     public $lastName;
     public $dateOfBirth;
@@ -18,6 +23,9 @@ class PersonalInformation extends Component
     public $zipCode;
     public $country;
     public $about;
+
+    public $profileImage;
+    public $coverImage;
 
     public function mount()
     {
@@ -75,6 +83,42 @@ class PersonalInformation extends Component
         session()->flash('success_message', 'Your Information has been updated.');
     }
 
+    public function submitProfileImage()
+    {
+        $this->validate([
+            'profileImage' => 'required|image|max:2048', // 2MB Max
+        ]);
+
+        $user = Auth::user();
+        $coach = Coach::where('id', $user->id)->first();
+        $extension = $this->profileImage->getClientOriginalExtension();
+        $img = $this->profileImage->storeAs('coaches', 'profile-'.$user->id.'.'.$extension , 'public');
+        $imgUrl = 'storage/'.$img;
+        $coach->profile_img = $imgUrl;
+        $coach->save();
+
+        $this->reset();
+        session()->flash('success_message', 'Profile Image Updated.');
+    }
+
+    public function submitCoverImage()
+    {
+        $this->validate([
+            'coverImage' => 'required|image|max:2048', // 2MB Max
+        ]);
+
+        $user = Auth::user();
+        $coach = Coach::where('id', $user->id)->first();
+        $extension = $this->coverImage->getClientOriginalExtension();
+        $img = $this->coverImage->storeAs('coaches', 'cover-'.$user->id.'.'.$extension , 'public');
+        $imgUrl = 'storage/'.$img;
+        $coach->cover_img = $imgUrl;
+        $coach->save();
+
+        $this->reset();
+        session()->flash('success_message', 'Cover Image Updated.');
+    }
+
     public function hideMessage()
     {
         session()->forget('success_message');
@@ -82,6 +126,9 @@ class PersonalInformation extends Component
 
     public function render()
     {
+        $coach = Coach::where('user_id', Auth::user()->id)->first();
+        $this->profileImagePreview = $coach->profile_img;
+        $this->coverImagePreview = $coach->cover_img;
         return view('livewire.coach.profile.personal-information');
     }
 }

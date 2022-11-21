@@ -63,11 +63,6 @@ class Registration extends Component
         $user->gender = $this->gender;
         $user->experience = 0;
         $user->hourly_rate = 0;
-        $user->experience = 0;
-        $user->address = 0;
-        $user->city = 0;
-        $user->zip = 0;
-        $user->country = 0;
         $user->remember_token = Str::random(10);
         $user->save();
 

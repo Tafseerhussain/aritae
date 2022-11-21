@@ -11,6 +11,9 @@
   color: $white;
   background: $purple;
 }
+.modal-content {
+	border-radius: $radius;
+}
 .page {
 	padding-top: 150px;
 }
