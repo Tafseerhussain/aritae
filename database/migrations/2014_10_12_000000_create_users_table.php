@@ -20,14 +20,25 @@ return new class extends Migration
             $table->string('password');
             $table->string('area_of_focus');
             $table->string('gender');
-            $table->unsignedInteger('experience');
-            $table->unsignedInteger('hourly_rate');
-            $table->text('address');
-            $table->string('city');
-            $table->string('zip');
-            $table->string('country');
+            $table->unsignedInteger('experience')->nullable();
+            $table->unsignedInteger('hourly_rate')->nullable();
+            $table->text('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('country')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            // COMMON WITH COACHES TABLE
+            // Area of focus (sport)
+            // gender
+            // experience
+            // hourly rate
+            // address (location)
+            // city
+            // zip
+            // country
+            // full name (name)
         });
     }
 

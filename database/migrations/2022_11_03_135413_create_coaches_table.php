@@ -17,15 +17,21 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->string('name');
-            $table->string('designation');
-            $table->unsignedInteger('rating');
-            $table->text('location');
-            $table->text('profile_img');
-            $table->text('cover_img');
+            $table->string('designation')->nullable();
+            $table->unsignedInteger('rating')->nullable();
+            $table->text('location')->nullable();
+            $table->string('city')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('country')->nullable();
+            $table->string('phone')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->text('about')->nullable();
+            $table->text('profile_img')->nullable();
+            $table->text('cover_img')->nullable();
             $table->string('sport');
             $table->string('gender');
-            $table->unsignedInteger('experience');
-            $table->unsignedInteger('hourly_rate');
+            $table->unsignedInteger('experience')->nullable();
+            $table->unsignedInteger('hourly_rate')->nullable();
             $table->timestamps();
         });
     }

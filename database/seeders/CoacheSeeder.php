@@ -71,9 +71,6 @@ class CoacheSeeder extends Seeder
                 'gender' => $gender[$g],
                 'experience' => $experience[$e],
                 'hourly_rate' => $rate[$r],
-                'address' => '0',
-                'city' => '0',
-                'zip' => '0',
                 'country' => $value,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -83,7 +80,7 @@ class CoacheSeeder extends Seeder
                 'name' => $fName.' '.$lName,
                 'designation' => $jobTitle,
                 'rating' => rand(1,5),
-                'location' => $value,
+                'country' => $value,
                 'profile_img' => $players[$key],
                 'cover_img' => $covers[$key],
                 'sport' => $sports[$s],

@@ -147,3 +147,18 @@ form {
 	border: 0;
 	box-shadow: $shadow;
 }
+
+.bg-success {
+	background-color: $green;
+}
+.toast {
+	border-radius: $radius;
+	overflow: hidden;
+	.toast-body {
+		border-bottom-left-radius: 20px;
+		border-bottom-right-radius: 20px;
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+	}
+}
+
