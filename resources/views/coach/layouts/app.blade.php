@@ -107,12 +107,12 @@
                                                         <span>My Videos</span>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                {{-- <li>
                                                     <a href="{{ route('coach.profile') }}#sessions" class="link-dark rounded">
                                                         <i class="fa-solid fa-film"></i>
                                                         <span>My Sessions</span>
                                                     </a>
-                                                </li>
+                                                </li> --}}
                                               </ul>
                                           </div>
                                         </div>
