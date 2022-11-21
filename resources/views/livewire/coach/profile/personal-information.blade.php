@@ -69,7 +69,7 @@
                         </span>
                     @enderror
                     @if ($coverImage)
-                        <img src="{{ $coverImage->temporaryUrl() }}" class="rounded img-thumbnail mw-100 mt-2 rounded-circle h-100" style="width: 200px">
+                        <img src="{{ $coverImage->temporaryUrl() }}" class="rounded img-thumbnail mw-100 mt-2 h-100" style="width: 200px">
                     @endif
                 </div>
             </form>
