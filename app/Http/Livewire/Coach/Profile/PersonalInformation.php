@@ -25,7 +25,10 @@ class PersonalInformation extends Component
         $coach = Coach::where('user_id', $user->id)->first();
         $this->firstName = $user->first_name;
         $this->lastName = $user->last_name;
-        $this->dateOfBirth = $coach->date_of_birth;
+        if ($coach->date_of_birth != '') {
+            $this->dateOfBirth = $coach->date_of_birth;
+        }
+        
         $this->phoneNumber = $coach->phone;
         $this->address = $coach->location;
         $this->city = $coach->city;
