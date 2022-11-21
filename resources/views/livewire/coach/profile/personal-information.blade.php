@@ -98,7 +98,11 @@
                 <div class="changeImage" data-bs-toggle="modal" data-bs-target="#profileImageModal">
                     <i class="fa-solid fa-pencil"></i>
                 </div>
-                <img src="{{ asset($profileImagePreview) }}" class="rounded-circle w-100 shadow" alt="">
+                @if ($profileImagePreview == '')
+                    <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="rounded-circle w-100 shadow" alt="">
+                @else
+                    <img src="{{ asset($profileImagePreview) }}" class="rounded-circle w-100 shadow" alt="">
+                @endif
             </div>
             <div class="profile-completion text-end">
                     <small>Your Profile is 25% complete</small>
