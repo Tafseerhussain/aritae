@@ -7,13 +7,13 @@ use Auth;
 
 class CoachingExperience extends Component
 {
-    public $clubName = 'asd';
-    public $position = 'asd';
-    public $description = 'asd';
-    public $startingMonth = 'April';
-    public $startingYear = '1966';
-    public $endingMonth = 'April';
-    public $endingYear = '1968';
+    public $clubName;
+    public $position;
+    public $description;
+    public $startingMonth = '';
+    public $startingYear = '';
+    public $endingMonth = '';
+    public $endingYear = '';
 
     public $editSave = 1;
     public $editRecord;
