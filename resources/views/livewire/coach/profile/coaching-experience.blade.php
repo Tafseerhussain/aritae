@@ -229,15 +229,24 @@
                     @enderror
                 </div>
                 <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-theme">
-                        Save
-                    </button>
+                    @if ($editSave == 1)
+                        <button type="submit" class="btn btn-theme">
+                            Save
+                        </button>
+                    @elseif ($editSave == 2)
+                        <button type="submit" class="btn btn-danger text-white me-1" wire:click="updateEditSave(1)">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-theme">
+                            Update
+                        </button>
+                    @endif
                 </div>
             </div>
         </form>
 
         {{-- COACH EXPERIENCES --}}
-        @if (count($experiences) == 0)
+        @if (count($experiences) <= 0)
             <hr>
             <div class="text-center">
                 No Experiences Added!
@@ -264,8 +273,8 @@
                             <td><span>{{ $exp->position }}</span></td>
                             <td><span>{{ $exp->start_month }} {{ $exp->start_year }} - {{ $exp->end_month }} {{ $exp->end_year }}</span></td>
                             <td class="action">
-                                <a href="#" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="#" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+                                <span class="edit" wire:click="editExperience({{ $exp->id }})"><i class="fa-solid fa-pen-to-square"></i></span>
+                                <span class="delete"><i class="fa-solid fa-trash-can"></i></span>
                             </td>
                         </tr>
                     @endforeach

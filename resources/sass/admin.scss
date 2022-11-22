@@ -328,10 +328,12 @@
 		.delete {
 			color: $red;
 			margin-left: 3px;
+			cursor: pointer;
 		}
 		.edit {
 			margin-right: 3px;
 			color: $blue;
+			cursor: pointer;
 		}
 	}
 }

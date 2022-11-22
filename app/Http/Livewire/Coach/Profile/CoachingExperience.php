@@ -15,6 +15,9 @@ class CoachingExperience extends Component
     public $endingMonth = '';
     public $endingYear = '';
 
+    public $editSave = 1;
+    public $editRecord;
+
     public function submit()
     {
         $this->validate([
@@ -27,8 +30,14 @@ class CoachingExperience extends Component
             'endingYear' => 'required',
         ]);
 
-        $exp = new \App\Models\CoachingExperience;
-        $exp->coach_id = Auth::user()->coach->id;
+        if ($this->editSave == 1) {
+            $exp = new \App\Models\CoachingExperience;
+            $exp->coach_id = Auth::user()->coach->id;
+        }
+        if ($this->editSave == 2) {
+            $exp = \App\Models\CoachingExperience::find($this->editRecord);
+        }
+
         $exp->club_name = $this->clubName;
         $exp->position = $this->position;
         $exp->description = $this->description;
@@ -38,13 +47,39 @@ class CoachingExperience extends Component
         $exp->end_year = $this->endingYear;
         $exp->save();
 
-        $this->reset();
-        session()->flash('success_message', 'Experience Added.');
+        
+        if ($this->editSave == 1) {
+            $this->reset();
+            session()->flash('success_message', 'Experience Added.');
+        }
+        elseif ($this->editSave == 2) {
+            $this->reset();
+            session()->flash('success_message', 'Experience Updated.');
+        }
     }
 
     public function hideMessage()
     {
         session()->forget('success_message');
+    }
+
+    public function editExperience($id)
+    {
+        $exp = \App\Models\CoachingExperience::find($id);
+        $this->clubName = $exp->club_name ;
+        $this->position = $exp->position ;
+        $this->description = $exp->description ;
+        $this->startingMonth = $exp->start_month ;
+        $this->startingYear = $exp->start_year ;
+        $this->endingMonth = $exp->end_month ;
+        $this->endingYear = $exp->end_year ;
+        $this->editRecord = $id;
+        $this->editSave = 2;
+    }
+
+    public function updateEditSave($id)
+    {
+        $this->editSave = $id;
     }
 
     public function render()
