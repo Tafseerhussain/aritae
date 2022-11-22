@@ -117,7 +117,7 @@
             <div class="row">
                 <div class="col-lg-6 mb-3">
                     <label for="firstName" class="col-form-label">First Name</label>
-                    <input id="firstName" type="text" class="form-control @error('firstName') is-invalid @enderror" value="{{ Auth::user()->first_name }}" wire:model="firstName">
+                    <input id="firstName" type="text" class="form-control @error('firstName') is-invalid @enderror" value="{{ Auth::user()->first_name }}" wire:model.defer="firstName">
                     @error('firstName')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="lastName" class="col-form-label">Last Name</label>
-                    <input id="lastName" type="text" class="form-control @error('lastName') is-invalid @enderror" value="{{ Auth::user()->last_name }}" wire:model="lastName">
+                    <input id="lastName" type="text" class="form-control @error('lastName') is-invalid @enderror" value="{{ Auth::user()->last_name }}" wire:model.defer="lastName">
                     @error('lastName')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -135,7 +135,7 @@
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="dateOfBirth" class="col-form-label">Date Of Birth</label>
-                    <input id="dateOfBirth" type="date" class="form-control @error('dateOfBirth') is-invalid @enderror" placeholder="09 Sep, 1994" wire:model="dateOfBirth">
+                    <input id="dateOfBirth" type="date" class="form-control @error('dateOfBirth') is-invalid @enderror" placeholder="09 Sep, 1994" wire:model.defer="dateOfBirth">
                     @error('dateOfBirth')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="phoneNumber" class="col-form-label">Phone Number</label>
-                    <input id="phoneNumber" type="text" class="form-control @error('phoneNumber') is-invalid @enderror" placeholder="+23 234 234" wire:model="phoneNumber">
+                    <input id="phoneNumber" type="text" class="form-control @error('phoneNumber') is-invalid @enderror" placeholder="+23 234 234" wire:model.defer="phoneNumber">
                     @error('phoneNumber')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -153,7 +153,7 @@
                 </div>
                 <div class="col-12 mb-3">
                     <label for="address" class="col-form-label">Home Address</label>
-                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Start typing your address..." wire:model="address">
+                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Start typing your address..." wire:model.defer="address">
                     @error('address')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -162,7 +162,7 @@
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="city" class="col-form-label">City</label>
-                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" placeholder="City Name" wire:model="city">
+                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" placeholder="City Name" wire:model.defer="city">
                     @error('city')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -171,7 +171,7 @@
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="zip" class="col-form-label">Zip</label>
-                    <input id="zip" type="text" class="form-control @error('zipCode') is-invalid @enderror" placeholder="Zip Code" wire:model="zipCode">
+                    <input id="zip" type="text" class="form-control @error('zipCode') is-invalid @enderror" placeholder="Zip Code" wire:model.defer="zipCode">
                     @error('zipCode')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -180,7 +180,7 @@
                 </div>
                 <div class="col-lg-4 mb-3">
                     <label for="country" class="col-form-label">Country</label>
-                    <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" placeholder="Country Name" wire:model="country">
+                    <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" placeholder="Country Name" wire:model.defer="country">
                     @error('country')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -189,7 +189,7 @@
                 </div>
                 <div class="col-12 mb-3">
                     <label for="about" class="col-form-label">About Me</label>
-                    <textarea rows="3" class="form-control @error('aboutMe') is-invalid @enderror" placeholder="Start typing about yourself here..." wire:model="about"></textarea>
+                    <textarea rows="3" class="form-control @error('aboutMe') is-invalid @enderror" placeholder="Start typing about yourself here..." wire:model.defer="about"></textarea>
                     @error('aboutMe')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

@@ -26,9 +26,9 @@
                     <div class="left">
                         <div class="d-flex">
                             @if (Auth::user()->coach->profile_img == '')
-                                <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" alt="">
+                                <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="shadow" alt="">
                             @else
-                                <img src="{{ asset(Auth::user()->coach->profile_img) }}" alt="">
+                                <img src="{{ asset(Auth::user()->coach->profile_img) }}" class="shadow" alt="">
                             @endif
                         <p class="text-capitalize">
                             <b>{{ Auth::user()->full_name }}</b>
@@ -58,7 +58,7 @@
             <div class="col-md-7">
                 <div class="profile-info">
                     <div class="card">
-                        <a href="{{ route('coach.profile') }}" class="icon">
+                        <a href="{{ route('coach.profile') }}" class="icon" data-bs-toggle="tooltip" data-bs-title="Default tooltip">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </a>
                         <h5>Profile Information</h5>
