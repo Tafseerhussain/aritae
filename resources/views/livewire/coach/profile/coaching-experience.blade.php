@@ -16,6 +16,28 @@
     </div>
     @endif
 
+    <div wire:ignore.self class="modal fade" id="deleteExperienceModal" tabindex="-1" aria-labelledby="deleteExperienceModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="deleteExperienceModalLabel">Delete Experience?</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+                <div class="">
+                    <label for="profileImage" class="form-label">Are you sure you want to remove this record? This action is irreversible.
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" wire:click="deleteExperiencePermanent()" onclick="hideModal()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="card-body">
         <form wire:submit.prevent="submit">
             <div class="row">
@@ -273,8 +295,15 @@
                             <td><span>{{ $exp->position }}</span></td>
                             <td><span>{{ $exp->start_month }} {{ $exp->start_year }} - {{ $exp->end_month }} {{ $exp->end_year }}</span></td>
                             <td class="action">
-                                <span class="edit" wire:click="editExperience({{ $exp->id }})"><i class="fa-solid fa-pen-to-square"></i></span>
-                                <span class="delete"><i class="fa-solid fa-trash-can"></i></span>
+                                <span class="edit" wire:click="editExperience({{ $exp->id }})">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </span>
+                                <span class="delete" 
+                                    wire:click="deleteExperience({{ $exp->id }})" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#deleteExperienceModal">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </span>
                             </td>
                         </tr>
                     @endforeach
@@ -289,3 +318,13 @@
 
     </div>
 </div>
+
+@push('custom-scripts')
+
+    <script>
+        function hideModal() {
+            $(".btn-close").click();
+        }
+    </script>
+
+@endpush

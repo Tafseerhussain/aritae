@@ -7,16 +7,17 @@ use Auth;
 
 class CoachingExperience extends Component
 {
-    public $clubName;
-    public $position;
-    public $description;
-    public $startingMonth = '';
-    public $startingYear = '';
-    public $endingMonth = '';
-    public $endingYear = '';
+    public $clubName = 'asd';
+    public $position = 'asd';
+    public $description = 'asd';
+    public $startingMonth = 'April';
+    public $startingYear = '1966';
+    public $endingMonth = 'April';
+    public $endingYear = '1968';
 
     public $editSave = 1;
     public $editRecord;
+    public $deleteRecord;
 
     public function submit()
     {
@@ -75,6 +76,18 @@ class CoachingExperience extends Component
         $this->endingYear = $exp->end_year ;
         $this->editRecord = $id;
         $this->editSave = 2;
+    }
+
+    public function deleteExperience($id)
+    {
+        $this->deleteRecord = $id;   
+    }
+
+    public function deleteExperiencePermanent()
+    {
+        $exp = \App\Models\CoachingExperience::find($this->deleteRecord);
+        $exp->delete();
+        session()->flash('success_message', 'Experience Deleted.');
     }
 
     public function updateEditSave($id)
