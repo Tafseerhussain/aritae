@@ -59,6 +59,7 @@ class PersonalInformation extends Component
 
         $user->first_name = $this->firstName;
         $user->last_name = $this->lastName;
+        $user->full_name = $this->firstName." ".$this->lastName;
         $coach->name = $this->firstName." ".$this->lastName;
         $coach->date_of_birth = $this->dateOfBirth;
         $user->address = $this->address;
