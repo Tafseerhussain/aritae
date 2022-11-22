@@ -234,9 +234,9 @@
                             Save
                         </button>
                     @elseif ($editSave == 2)
-                        <button type="submit" class="btn btn-danger text-white me-1" wire:click="updateEditSave(1)">
+                        <a href="#!" class="btn btn-danger text-white me-1" wire:click="updateEditSave(1)">
                             Cancel
-                        </button>
+                        </a>
                         <button type="submit" class="btn btn-theme">
                             Update
                         </button>

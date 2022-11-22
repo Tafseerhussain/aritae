@@ -80,6 +80,7 @@ class CoachingExperience extends Component
     public function updateEditSave($id)
     {
         $this->editSave = $id;
+        $this->reset();
     }
 
     public function render()
