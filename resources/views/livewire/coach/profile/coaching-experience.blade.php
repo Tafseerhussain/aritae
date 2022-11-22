@@ -257,12 +257,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($experiences as $exp)
+                    @foreach ($experiences as $key => $exp)
                         <tr>
-                            <td scope="row">1</td>
-                            <td><span>Lorem Club</span></td>
-                            <td><span>Football Coach</span></td>
-                            <td><span>January 1999 - March 2002</span></td>
+                            <td scope="row">{{ $key+1 }}</td>
+                            <td><span>{{ $exp->club_name }}</span></td>
+                            <td><span>{{ $exp->position }}</span></td>
+                            <td><span>{{ $exp->start_month }} {{ $exp->start_year }} - {{ $exp->end_month }} {{ $exp->end_year }}</span></td>
                             <td class="action">
                                 <a href="#" class="edit"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="#" class="delete"><i class="fa-solid fa-trash-can"></i></a>
