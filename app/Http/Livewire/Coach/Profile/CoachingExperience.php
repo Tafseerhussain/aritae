@@ -45,11 +45,11 @@ class CoachingExperience extends Component
     {
         session()->forget('success_message');
     }
-    
+
     public function render()
     {
         return view('livewire.coach.profile.coaching-experience', [
-            'experiences' => \App\Models\CoachingExperience::all(),
+            'experiences' => \App\Models\CoachingExperience::where('coach_id', Auth::user()->coach->id)->get(),
         ]);
     }
 }
