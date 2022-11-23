@@ -9,7 +9,22 @@
 
 ::selection {
   color: $white;
-  background: $purple;
+  background: $black;
+}
+::-webkit-input-placeholder {
+    color: red;
+}
+::-moz-placeholder {
+    color: red;
+}
+:-ms-input-placeholder {
+    color: red;
+}
+::-webkit-input-placeholder {
+    color: red;
+}
+::placeholder {
+    color: red;
 }
 .modal-content {
 	border-radius: $radius;

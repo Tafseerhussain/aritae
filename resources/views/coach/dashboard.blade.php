@@ -58,7 +58,7 @@
             <div class="col-md-7">
                 <div class="profile-info">
                     <div class="card">
-                        <a href="{{ route('coach.profile') }}" class="icon" data-bs-toggle="tooltip" data-bs-title="Default tooltip">
+                        <a href="{{ route('coach.profile') }}" class="icon" data-bs-toggle="tooltip" data-bs-title="Edit Information">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </a>
                         <h5>Profile Information</h5>

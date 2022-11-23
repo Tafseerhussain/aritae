@@ -13,18 +13,18 @@
     "isEntry": true
   },
   "resources/sass/theme.scss": {
-    "file": "assets/theme.5b6c756c.css",
+    "file": "assets/theme.828c1267.css",
     "src": "resources/sass/theme.scss",
     "isEntry": true
   },
-  "resources/sass/app.scss": {
-    "file": "assets/app.556a2136.css",
-    "src": "resources/sass/app.scss",
+  "resources/sass/admin.scss": {
+    "file": "assets/admin.e9820633.css",
+    "src": "resources/sass/admin.scss",
     "isEntry": true
   },
-  "resources/sass/admin.scss": {
-    "file": "assets/admin.d6390300.css",
-    "src": "resources/sass/admin.scss",
+  "resources/sass/app.scss": {
+    "file": "assets/app.c3c5c5f2.css",
+    "src": "resources/sass/app.scss",
     "isEntry": true
   }
 }
