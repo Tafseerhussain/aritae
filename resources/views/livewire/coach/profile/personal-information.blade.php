@@ -1,5 +1,11 @@
 <div class="card p-3 profile-info">
 
+    <div class="loader-bg" wire:loading>
+        <div class="loader-self">
+            <span class="loader"></span>
+        </div>
+    </div>
+    
     @if (session()->has('success_message'))
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div class="toast d-block border-0" role="alert" aria-live="assertive" aria-atomic="true">

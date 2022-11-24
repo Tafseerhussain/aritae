@@ -26,6 +26,56 @@
 ::placeholder {
     color: red;
 }
+
+.loader-bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: $radius;
+	background: rgba(255,255,255,0.6);
+	width: 100%;
+	height: 100%;
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+.loader-self {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid $black;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 4px solid $purple;
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
 .modal-content {
 	border-radius: $radius;
 }
@@ -98,6 +148,7 @@ a:focus,
 	background: rgba($black,0.7);
 	color: $white;
 	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
 	border-radius: 20px;
 	.dropdown-item {
 		color: $white;
