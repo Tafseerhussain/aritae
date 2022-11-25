@@ -14,7 +14,7 @@
                         </select>
                     </div>
                     <div class="input-group standard-search">
-                        <input type="text" class="form-control" placeholder="Search by name (first and last name)" wire:model="search">
+                        <input type="text" class="form-control" placeholder="Search by name (first and last name)" wire:model.lazy="search">
                         <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
                     </div>   
                 </div>
@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-group standard-search w-100">
-                                    <input type="text" class="form-control" placeholder="Search Coaches..." wire:model="searchCoach">
+                                    <input type="text" class="form-control" placeholder="Search Coaches..." wire:model.lazy="searchCoach">
                                     <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-group standard-search w-100">
-                                    <input type="text" class="form-control" placeholder="Search Locations..." wire:model="searchLocation">
+                                    <input type="text" class="form-control" placeholder="Search Locations..." wire:model.lazy="searchLocation">
                                     <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
                                 </div>
                             </div>

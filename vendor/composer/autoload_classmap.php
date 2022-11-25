@@ -43,6 +43,7 @@ return array(
     'App\\Models\\CoachVideo' => $baseDir . '/app/Models/CoachVideo.php',
     'App\\Models\\CoachingExperience' => $baseDir . '/app/Models/CoachingExperience.php',
     'App\\Models\\Location' => $baseDir . '/app/Models/Location.php',
+    'App\\Models\\Player' => $baseDir . '/app/Models/Player.php',
     'App\\Models\\Sport' => $baseDir . '/app/Models/Sport.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UserType' => $baseDir . '/app/Models/UserType.php',

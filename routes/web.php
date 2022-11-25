@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CoachController;
+use App\Http\Controllers\PlayerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // });
 
 Route::group(['middleware' => 'coach'], function () {
-    Route::get('/coach/dashboard', [\App\Http\Controllers\CoachController::class, 'index'])->name('coach.dashboard');
-    Route::get('/coach/profile', [\App\Http\Controllers\CoachController::class, 'profile'])->name('coach.profile');
+    Route::get('/coach/dashboard', [CoachController::class, 'index'])->name('coach.dashboard');
+    Route::get('/coach/profile', [CoachController::class, 'profile'])->name('coach.profile');
+});
+
+Route::group(['middleware' => 'player'], function () {
+    Route::get('/player/dashboard', [PlayerController::class, 'index'])->name('player.dashboard');
+    Route::get('/player/profile', [PlayerController::class, 'profile'])->name('player.profile');
 });

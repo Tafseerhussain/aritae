@@ -87,7 +87,7 @@
                                         Dashboard
                                     </a>
                                 @elseif (Auth::user()->userType->type == 'player')
-                                    <a class="dropdown-item" href="@">
+                                    <a class="dropdown-item" href="{{ route('player.dashboard') }}">
                                         Dashboard
                                     </a>
                                 @endif

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container pt-5">
-    <div class="row justify-content-center pt-5">
+    <div class="row justify-content-center py-5">
         <div class="col-md-8 pt-5">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
@@ -18,7 +18,8 @@
                         <strong>Redirecting...</strong>
                         <script>window.location = "/coach/dashboard";</script>
                     @elseif (Auth::user()->user_type_id == 4)
-                        Welcome Player...
+                        <strong>Redirecting...</strong>
+                        <script>window.location = "/player/dashboard";</script>
                     @endif
                     
                 </div>
