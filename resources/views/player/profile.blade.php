@@ -1,4 +1,4 @@
-@extends('coach.layouts.app')
+@extends('player.layouts.app')
 
 @section('content')
 
@@ -11,35 +11,37 @@
 					<i class="bi bi-info-circle"></i>
 					<span>Personal Info</span>
 				</h2>
-				@livewire('coach.profile.personal-information')
+				@livewire('player.profile.personal-information')
 
 				{{-- COACHING EXPERINECE --}}
 				<h2 class="mb-3 mt-5 text-center fs-2" id="experience">
 					<i class="bi bi-briefcase"></i>
-					<span>Coaching Experience</span>
+					<span>Playing Experience</span>
 				</h2>
-				@livewire('coach.profile.coaching-experience')
+
+				{{-- ATHLETIC INFORMATION --}}
+				<h2 class="mb-3 mt-5 text-center fs-2" id="athletic">
+					<i class="bi bi-file-person"></i>
+					<span>Athletic Information</span>
+				</h2>
 
 				{{-- CERTIFICATIONS --}}
 				<h2 class="mb-3 mt-5 text-center fs-2" id="certifications">
 					<i class="bi bi-patch-check"></i>
 					<span>Certifications</span>
 				</h2>
-				@livewire('coach.profile.certification')
 
 				{{-- EDUCATIONS --}}
 				<h2 class="mb-3 mt-5 text-center fs-2" id="education">
 					<i class="bi bi-mortarboard"></i>
 					<span>Education</span>
 				</h2>
-				@livewire('coach.profile.education')
 
 				{{-- VIDEOS --}}
 				<h2 class="mb-3 mt-5 text-center fs-2" id="videos">
 					<i class="bi bi-camera-video"></i>
 					<span>My Videos</span>
 				</h2>
-				@livewire('coach.profile.videos')
 
 				{{-- SESSIONS --}}
 				{{-- <h2 class="mb-3 mt-5 text-center fs-2" id="sessions">

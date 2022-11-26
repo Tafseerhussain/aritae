@@ -90,6 +90,12 @@
                                                     </a>
                                                 </li>
                                                 <li>
+                                                    <a href="{{ route('player.profile') }}#athletic" class="link-dark rounded">
+                                                        <i class="fa-solid fa-person-running"></i>
+                                                        <span>Athletic Information</span>
+                                                    </a>
+                                                </li>
+                                                <li>
                                                     <a href="{{ route('player.profile') }}#certifications" class="link-dark rounded">
                                                         <i class="fa-solid fa-award"></i>
                                                         <span>Certifications</span>
@@ -177,6 +183,7 @@
                                 <li class="list-group-item notifications">
                                     <a class="nav-link" href="#"><i class="fa-regular fa-bell"></i></a>
                                 </li>
+                                
                                 <li class="list-group-item">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle account-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         <img src="{{ asset('assets/img/account.svg') }}" alt="">
@@ -258,8 +265,6 @@
     <!-- Price nouislider-filter cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
     <script>
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))

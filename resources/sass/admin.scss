@@ -95,6 +95,9 @@
 					background: $white;
 					box-shadow: $shadow;
 					font-weight: 600;
+					a {
+						background: $white !important;
+					}
 					a,button.accordion-button {
 						color: $purple !important;
 						font-weight: 600;

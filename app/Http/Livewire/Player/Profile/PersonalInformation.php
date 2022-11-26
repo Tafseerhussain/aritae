@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Coach\Profile;
+namespace App\Http\Livewire\Player\Profile;
 
 use Livewire\Component;
 use App\Models\User;
-use App\Models\Coach;
+use App\Models\Player;
 use Auth;
 use Livewire\WithFileUploads;
 
@@ -30,16 +30,16 @@ class PersonalInformation extends Component
     public function mount()
     {
         $user = Auth::user();
-        $coach = Coach::where('user_id', $user->id)->first();
+        $player = Player::where('user_id', $user->id)->first();
         $this->firstName = $user->first_name;
         $this->lastName = $user->last_name;
-        $this->dateOfBirth = $coach->date_of_birth;
-        $this->phoneNumber = $coach->phone;
-        $this->address = $coach->location;
-        $this->city = $coach->city;
-        $this->zipCode = $coach->zip;
-        $this->country = $coach->country;
-        $this->about = $coach->about;
+        $this->dateOfBirth = $player->date_of_birth;
+        $this->phoneNumber = $player->phone;
+        $this->address = $player->location;
+        $this->city = $player->city;
+        $this->zipCode = $player->zip;
+        $this->country = $player->country;
+        $this->about = $player->about;
     }
 
     public function submit()
@@ -55,30 +55,30 @@ class PersonalInformation extends Component
         ]);
 
         $user = Auth::user();
-        $coach = Coach::where('user_id', $user->id)->first();
+        $player = Player::where('user_id', $user->id)->first();
 
         $user->first_name = $this->firstName;
         $user->last_name = $this->lastName;
         $user->full_name = $this->firstName." ".$this->lastName;
-        $coach->name = $this->firstName." ".$this->lastName;
-        $coach->date_of_birth = $this->dateOfBirth;
+        $player->name = $this->firstName." ".$this->lastName;
+        $player->date_of_birth = $this->dateOfBirth;
         $user->address = $this->address;
         $user->city = $this->city;
         $user->zip = $this->zipCode;
         $user->country = $this->country;
-        $coach->location = $this->address;
-        $coach->city = $this->city;
-        $coach->zip = $this->zipCode;
-        $coach->country = $this->country;
+        $player->location = $this->address;
+        $player->city = $this->city;
+        $player->zip = $this->zipCode;
+        $player->country = $this->country;
 
         if ($this->phoneNumber != '') {
-            $coach->phone = $this->phoneNumber;
+            $player->phone = $this->phoneNumber;
         }
         if ($this->about != '') {
-            $coach->about = $this->about;
+            $player->about = $this->about;
         }
 
-        $coach->save();
+        $player->save();
         $user->save();
 
         session()->flash('success_message', 'Your Information has been updated.');
@@ -91,16 +91,16 @@ class PersonalInformation extends Component
         ]);
 
         $user = Auth::user();
-        $coach = Coach::where('user_id', $user->id)->first();
-        if (\File::exists($coach->profile_img)) {
-            \File::delete($coach->profile_img);
+        $player = Player::where('user_id', $user->id)->first();
+        if (\File::exists($player->profile_img)) {
+            \File::delete($player->profile_img);
         }
         $extension = $this->profileImage->getClientOriginalExtension();
         $imageName = md5($this->profileImage . microtime()).'.'.$this->profileImage->extension();
-        $img = $this->profileImage->storeAs('coaches', $imageName, 'public');
+        $img = $this->profileImage->storeAs('players', $imageName, 'public');
         $imgUrl = 'storage/'.$img;
-        $coach->profile_img = $imgUrl;
-        $coach->save();
+        $player->profile_img = $imgUrl;
+        $player->save();
 
         $this->profileImage = null;
         session()->flash('success_message', 'Profile Image Updated.');
@@ -113,16 +113,16 @@ class PersonalInformation extends Component
         ]);
 
         $user = Auth::user();
-        $coach = Coach::where('user_id', $user->id)->first();
-        if (\File::exists($coach->cover_img)) {
-            \File::delete($coach->cover_img);
+        $player = Player::where('user_id', $user->id)->first();
+        if (\File::exists($player->cover_img)) {
+            \File::delete($player->cover_img);
         }
         $extension = $this->coverImage->getClientOriginalExtension();
         $imageName = md5($this->coverImage . microtime()).'.'.$this->coverImage->extension();
-        $img = $this->coverImage->storeAs('coaches', $imageName , 'public');
+        $img = $this->coverImage->storeAs('players', $imageName , 'public');
         $imgUrl = 'storage/'.$img;
-        $coach->cover_img = $imgUrl;
-        $coach->save();
+        $player->cover_img = $imgUrl;
+        $player->save();
 
         $this->coverImage = null;
         session()->flash('success_message', 'Cover Image Updated.');
@@ -135,9 +135,9 @@ class PersonalInformation extends Component
 
     public function render()
     {
-        $coach = Coach::where('user_id', Auth::user()->id)->first();
-        $this->profileImagePreview = $coach->profile_img;
-        $this->coverImagePreview = $coach->cover_img;
-        return view('livewire.coach.profile.personal-information');
+        $player = Player::where('user_id', Auth::user()->id)->first();
+        $this->profileImagePreview = $player->profile_img;
+        $this->coverImagePreview = $player->cover_img;
+        return view('livewire.player.profile.personal-information');
     }
 }
