@@ -18,30 +18,35 @@
 					<i class="bi bi-briefcase"></i>
 					<span>Playing Experience</span>
 				</h2>
+				@livewire('player.profile.playing-experience')
 
 				{{-- ATHLETIC INFORMATION --}}
 				<h2 class="mb-3 mt-5 text-center fs-2" id="athletic">
 					<i class="bi bi-file-person"></i>
 					<span>Athletic Information</span>
 				</h2>
+				@livewire('player.profile.athletic-information')
 
 				{{-- CERTIFICATIONS --}}
 				<h2 class="mb-3 mt-5 text-center fs-2" id="certifications">
 					<i class="bi bi-patch-check"></i>
 					<span>Certifications</span>
 				</h2>
+				@livewire('player.profile.certification')
 
 				{{-- EDUCATIONS --}}
 				<h2 class="mb-3 mt-5 text-center fs-2" id="education">
 					<i class="bi bi-mortarboard"></i>
 					<span>Education</span>
 				</h2>
+				@livewire('player.profile.education')
 
 				{{-- VIDEOS --}}
 				<h2 class="mb-3 mt-5 text-center fs-2" id="videos">
 					<i class="bi bi-camera-video"></i>
 					<span>My Videos</span>
 				</h2>
+				@livewire('player.profile.video')
 
 				{{-- SESSIONS --}}
 				{{-- <h2 class="mb-3 mt-5 text-center fs-2" id="sessions">

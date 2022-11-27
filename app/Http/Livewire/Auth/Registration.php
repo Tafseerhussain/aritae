@@ -69,7 +69,7 @@ class Registration extends Component
 
         if ($this->step == 2) {
 
-            $coach = new Player;
+            $coach = new Coach;
             $coach->user_id = $user->id;
             $coach->name = $user->full_name;
             $coach->gender = $user->gender;
