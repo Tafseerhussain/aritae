@@ -280,7 +280,13 @@
                             <td scope="row">{{ $key + 1 }}</td>
                             <td><span>{{ $edu->institute_name }}</span></td>
                             <td><span>{{ $edu->degree }}</span></td>
-                            <td><span>{{ $edu->start_month }} {{ $edu->start_year }} - {{ $edu->end_month }} {{ $edu->end_year }}</span></td>
+                            <td>
+                                <span>
+                                    {{ Str::limit($edu->start_month, 3, $end='') }} {{ $edu->start_year }} 
+                                    - 
+                                    {{ Str::limit($edu->end_month, 3, $end='') }} {{ $edu->end_year }}
+                                </span>
+                            </td>
                             <td class="action">
                                 <span href="#" class="edit" wire:click="editEducation({{ $edu->id }})">
                                     <i class="fa-solid fa-pen-to-square"></i>

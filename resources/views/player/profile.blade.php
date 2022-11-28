@@ -4,7 +4,7 @@
 
 	<div class="profile-edit-page">
 		<div class="row">
-			<div class="col-xl-9 col-lg-10 col-md-12 mx-auto">
+			<div class="col-xxl-9 col-xl-10 mx-auto">
 
 				{{-- PERSONAL INFO --}}
 				<h2 class="mb-3 text-center fs-2" id="info">

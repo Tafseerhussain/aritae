@@ -57,9 +57,9 @@
                     @enderror
                 </div>
                 <div class="col-lg mb-3">
-                    <label for="clubName" class="col-form-label">Club / College</label>
-                    <input id="clubName" type="text" class="form-control @error('clubName') is-invalid @enderror" placeholder="Example Club" wire:model.defer="clubName">
-                    @error('clubName')
+                    <label for="association" class="col-form-label">Club / College</label>
+                    <input id="association" type="text" class="form-control @error('association') is-invalid @enderror" placeholder="Example Club" wire:model.defer="association">
+                    @error('association')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -205,7 +205,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Certificate Name</th>
-                        <th scope="col">Club/College</th>
+                        <th scope="col">Association</th>
                         <th scope="col">Year</th>
                         <th scope="col" class="text-center">Certificate</th>
                         <th scope="col" class="text-center">Actions</th>
@@ -214,9 +214,9 @@
                 <tbody>
                     @foreach ($certificates as $key => $certificate)
                         <tr>
-                            <td scope="row">{{ $key + 1 }}</td>
+                            <td scope="row">{{ $key + 1 }} </td>
                             <td><span>{{ $certificate->certificate_name }}</span></td>
-                            <td><span>{{ $certificate->club_college }}</span></td>
+                            <td><span>{{ $certificate->association }}</span></td>
                             <td><span>{{ $certificate->certification_year }}</span></td>
                             <td class="text-center">
                                 <a href="/{{ $certificate->certificate }}" target="_blank" class="cursor-pointer text-dark" data-bs-toggle="tooltip" data-bs-title="View Certificate">

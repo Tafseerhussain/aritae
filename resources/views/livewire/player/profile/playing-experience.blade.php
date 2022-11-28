@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="position" class="col-form-label">Position / Title</label>
-                    <input id="position" type="text" class="form-control @error('position') is-invalid @enderror" placeholder="Football Coach" wire:model="position">
+                    <input id="position" type="text" class="form-control @error('position') is-invalid @enderror" placeholder="Football Coach" wire:model.defer="position">
                     @error('position')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="jerseyNumber" class="col-form-label">Jersey Number</label>
-                    <input id="jerseyNumber" type="text" class="form-control @error('jerseyNumber') is-invalid @enderror" placeholder="Football Coach" wire:model="jerseyNumber">
+                    <input id="jerseyNumber" type="text" class="form-control @error('jerseyNumber') is-invalid @enderror" placeholder="Football Coach" wire:model.defer="jerseyNumber">
                     @error('jerseyNumber')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -91,7 +91,7 @@
                 <div class="col-lg mb-3">
                     <div class="row g-2">
                         <div class="col-7">
-                            <select class="form-select form-control  @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model="startingMonth">
+                            <select class="form-select form-control  @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
                                 <option value='' disabled selected>--Select Month--</option>
                                 <option value='Janaury'>Janaury</option>
                                 <option value='February'>February</option>
@@ -108,7 +108,7 @@
                             </select>
                         </div>
                         <div class="col-5">
-                            <select class="form-select form-control  @error('startingYear') is-invalid @enderror" aria-label="Default select example" wire:model="startingYear">
+                            <select class="form-select form-control  @error('startingYear') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingYear">
                                 <option value="" selected>--Select Year--</option>
                                 <option value="1965">1965</option>
                                 <option value="1966">1966</option>
@@ -181,7 +181,7 @@
                 <div class="col-lg mb-3">
                     <div class="row g-2">
                         <div class="col-7">
-                            <select class="form-select form-control  @error('endingMonth') is-invalid @enderror" aria-label="Default select example" wire:model="endingMonth">
+                            <select class="form-select form-control  @error('endingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="endingMonth">
                                 <option selected value='' disabled>--Select Month--</option>
                                 <option value='Janaury'>Janaury</option>
                                 <option value='February'>February</option>
@@ -198,7 +198,7 @@
                             </select>
                         </div>
                         <div class="col-5">
-                            <select class="form-select form-control  @error('endingYear') is-invalid @enderror" aria-label="Default select example" wire:model="endingYear">
+                            <select class="form-select form-control  @error('endingYear') is-invalid @enderror" aria-label="Default select example" wire:model.defer="endingYear">
                                 <option value="" selected disabled>--Select Year--</option>
                                 <option value="1965">1965</option>
                                 <option value="1966">1966</option>
@@ -271,7 +271,7 @@
             <div class="row">
                 <div class="col-lg-6 mb-3">
                     <label for="coachName" class="col-form-label">Coach Name</label>
-                    <input id="coachName" type="text" class="form-control @error('coachName') is-invalid @enderror" placeholder="John Doe" wire:model="coachName">
+                    <input id="coachName" type="text" class="form-control @error('coachName') is-invalid @enderror" placeholder="John Doe" wire:model.defer="coachName">
                     @error('coachName')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -280,7 +280,7 @@
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="coachPhone" class="col-form-label">Coach Phone#</label>
-                    <input id="coachPhone" type="text" class="form-control @error('coachPhone') is-invalid @enderror" placeholder="+32 456 789" wire:model="coachPhone">
+                    <input id="coachPhone" type="text" class="form-control @error('coachPhone') is-invalid @enderror" placeholder="+32 456 789" wire:model.defer="coachPhone">
                     @error('coachPhone')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -317,11 +317,13 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col" class="fst-italic">#</th>
                         <th scope="col">Club Name</th>
-                        <th scope="col">Position/Title</th>
-                        <th scope="col">Time Period</th>
-                        <th scope="col" class="text-center">Description</th>
+                        <th scope="col">Team</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Jersey<span class="fst-italic">#</span></th>
+                        <th scope="col">Played</th>
+                        <th scope="col">Coach</th>
                         <th scope="col" class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -330,12 +332,22 @@
                         <tr>
                             <td scope="row">{{ $key+1 }}</td>
                             <td><span>{{ $exp->club_name }}</span></td>
+                            <td><span>{{ $exp->team_name }}</span></td>
                             <td><span>{{ $exp->position }}</span></td>
-                            <td><span>{{ $exp->start_month }} {{ $exp->start_year }} - {{ $exp->end_month }} {{ $exp->end_year }}</span></td>
-                            <td class="text-center">
-                                <span class="cursor-pointer" data-bs-toggle="tooltip" data-bs-title="{{ $exp->description }}">
-                                    <i class="fa-solid fa-eye"></i>
+                            <td><span>{{ $exp->jersey_number }}</span></td>
+                            <td>
+                                <span>
+                                    {{ Str::limit($exp->start_month, 3, $end='') }} {{ $exp->start_year }} 
+                                    -
+                                    {{ Str::limit($exp->end_month, 3, $end='') }} {{ $exp->end_year }}
                                 </span>
+                            </td>
+                            <td>
+                                @if ($exp->coach_name == '')
+                                    -
+                                @else
+                                    {{ $exp->coach_name }}
+                                @endif
                             </td>
                             <td class="action">
                                 <span class="edit" wire:click="editExperience({{ $exp->id }})">

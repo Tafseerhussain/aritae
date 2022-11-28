@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-12 mb-3">
                     <label for="weight" class="col-form-label">Weight (lb)</label>
                     <input id="weight" type="text" class="form-control @error('weight') is-invalid @enderror" placeholder="lb" wire:model.defer="weight">
                     @error('weight')
@@ -56,18 +56,9 @@
                     @enderror
                 </div>
                 <div class="col-12 text-end">
-                    @if ($editSave == 1)
-                        <button type="submit" class="btn btn-theme">
-                            Save
-                        </button>
-                    @elseif ($editSave == 2)
-                        <a href="#!" class="btn btn-danger text-white me-1" wire:click="updateEditSave(1)">
-                            Cancel
-                        </a>
-                        <button type="submit" class="btn btn-theme">
-                            Update
-                        </button>
-                    @endif
+                    <button type="submit" class="btn btn-theme">
+                        Save
+                    </button>
                 </div>
             </div>
         </form>
