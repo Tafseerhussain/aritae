@@ -10,6 +10,7 @@ use App\Models\Player\PlayerCertification;
 use App\Models\Player\PlayerEducation;
 use App\Models\Player\PlayerExperience;
 use App\Models\Player\PlayerVideo;
+use App\Models\Coach;
 
 class Player extends Model
 {
@@ -43,5 +44,10 @@ class Player extends Model
     public function videos()
     {
         return $this->hasMany(PlayerVideo::class);
+    }
+
+    public function coaches()
+    {
+        return $this->belongsToMany(Coach::class);
     }
 }

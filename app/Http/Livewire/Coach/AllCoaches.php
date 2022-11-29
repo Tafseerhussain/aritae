@@ -51,7 +51,15 @@ class AllCoaches extends Component
                                 $q->where('full_name', 'like', '%'.$this->search.'%');
                             })
                             ->when(count($this->sport) > 0, function ($q) {
-                                $q->whereIn('area_of_focus', $this->sport);
+
+                                // $q->whereIn('area_of_focus', $this->sport);
+                            
+                                $q->whereHas(
+                                    'sport', function($q2){
+                                        $q2->whereIn('name', $this->sport);
+                                    }
+                                );
+
                             })
                             ->when(count($this->location) > 0, function ($q) {
                                 $q->whereIn('country', $this->location);

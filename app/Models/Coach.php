@@ -9,6 +9,7 @@ use App\Models\CoachingExperience;
 use App\Models\CoachCertification;
 use App\Models\CoachEducation;
 use App\Models\CoachVideo;
+use App\Models\Player;
 
 class Coach extends Model
 {
@@ -37,5 +38,10 @@ class Coach extends Model
     public function videos()
     {
         return $this->hasMany(CoachVideo::class);
+    }
+
+    public function players()
+    {
+        return $this->belongsToMany(Player::class);
     }
 }

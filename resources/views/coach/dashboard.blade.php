@@ -167,7 +167,7 @@
             <div class="col-md-12 mt-5">
                 <div class="card">
                     <div class="icon">
-                        <i class="fa-regular fa-eye"></i>
+                        <i class="fa-regular fa-plus"></i>
                     </div>
                     <h5>
                         Your Players
@@ -175,81 +175,33 @@
 
                     <div class="conversations players">
 
-                        <div class="conversation">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('assets/img/default/chat1.jpg') }}" alt="user image">
-                                        <div class="meta">
-                                            <h6>Peterson</h6>
-                                            <small>Example Chat...</small>
+                        @if (count(Auth::user()->coach->players) <= 0)
+                            No Players Recruited...
+                        @else
+                            @foreach (Auth::user()->coach->players as $key => $player)
+                                <div class="conversation">
+                                    <div class="row align-items-center">
+                                        <div class="col-10">
+                                            <div class="d-flex">
+                                                <img src="{{ asset($player->profile_img) }}" class="rounded shadow" alt="user image">
+                                                <div class="meta">
+                                                    <h6>{{ $player->name }}</h6>
+                                                    <small>{{ $player->user->email }}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 text-end">
+                                            <a href="#" class="btn btn-theme">
+                                                {{ $player->sport }}
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2 text-end">
-                                    <a href="#" class="btn btn-theme">
-                                        Footballer
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="conversation">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('assets/img/default/chat2.jpg') }}" alt="user image">
-                                        <div class="meta">
-                                            <h6>Peterson</h6>
-                                            <small>Example Chat...</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2 text-end">
-                                    <a href="#" class="btn btn-theme">
-                                        Footballer
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="conversation">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('assets/img/default/chat3.jpg') }}" alt="user image">
-                                        <div class="meta">
-                                            <h6>Peterson</h6>
-                                            <small>Example Chat...</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2 text-end">
-                                    <a href="#" class="btn btn-theme">
-                                        Footballer
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="conversation">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('assets/img/default/chat1.jpg') }}" alt="user image">
-                                        <div class="meta">
-                                            <h6>Peterson</h6>
-                                            <small>Example Chat...</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2 text-end">
-                                    <a href="#" class="btn btn-theme">
-                                        Footballer
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                                @if(!$loop->last)
+                                    <hr>
+                                @endif
+                            @endforeach
+                        @endif
 
                     </div>
                 </div>
