@@ -151,9 +151,6 @@
                     @else
 
                     <div class="row g-3">
-                        <div class="col-12">
-                            {{ $coach->user->sports }}
-                        </div>
                         @foreach ($coaches as $coach)
                         
                         <div class="col-lg-4 col-md-6">

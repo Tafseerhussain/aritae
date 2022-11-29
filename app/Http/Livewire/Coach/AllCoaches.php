@@ -55,7 +55,7 @@ class AllCoaches extends Component
                                 // $q->whereIn('area_of_focus', $this->sport);
                             
                                 $q->whereHas(
-                                    'sport', function($q2){
+                                    'sports', function($q2){
                                         $q2->whereIn('name', $this->sport);
                                     }
                                 );

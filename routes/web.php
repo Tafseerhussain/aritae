@@ -37,8 +37,8 @@ Route::group(['middleware' => 'player'], function () {
     Route::get('/player/profile', [PlayerController::class, 'profile'])->name('player.profile');
 });
 
-// Route::get('test', function() {
-//     $coaches = \App\Models\Coach::find([2,3]); // Modren Chairs, Home Chairs
-//     $player = \App\Models\Player::find(1);
-//     $player->coaches()->attach($coaches);
-// });
+Route::get('test', function() {
+    $users = \App\Models\Coach::find([1, 2, 3]); 
+    $sport = \App\Models\Sport::find(1);
+    $sport->users()->attach($users);
+});

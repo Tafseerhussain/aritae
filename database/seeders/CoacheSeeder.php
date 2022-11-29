@@ -58,7 +58,6 @@ class CoacheSeeder extends Seeder
             $jobTitle = $faker->jobTitle;
 
             $userId = DB::table('users')->insertGetId([
-                'sport_id' => rand(1,12),
                 'user_type_id' => 2,
                 'first_name' => $fName,
                 'last_name' => $lName,
@@ -87,6 +86,12 @@ class CoacheSeeder extends Seeder
                 'gender' => $gender[$g],
                 'experience' => $experience[$e],
                 'hourly_rate' => $rate[$r],
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+            DB::table('sport_user')->insert([
+                'sport_id' => rand(1,12),
+                'user_id' => $userId,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

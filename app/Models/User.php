@@ -62,8 +62,8 @@ class User extends Authenticatable
         return $this->hasOne(Player::class);
     }
 
-    public function sport()
+    public function sports()
     {
-        return $this->belongsTo(Sport::class);
+        return $this->belongsToMany(Sport::class);
     }
 }

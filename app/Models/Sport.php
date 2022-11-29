@@ -11,8 +11,8 @@ class Sport extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }
