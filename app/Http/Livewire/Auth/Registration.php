@@ -53,7 +53,6 @@ class Registration extends Component
 
         $user = new User;
         $user->user_type_id = $this->step;
-        $user->sport_id = $this->areaOfFocus;
         $user->first_name = $this->firstName;
         $user->last_name = $this->lastName;
         $user->full_name = $this->firstName.' '.$this->lastName;
@@ -66,6 +65,9 @@ class Registration extends Component
         $user->hourly_rate = 0;
         $user->remember_token = Str::random(10);
         $user->save();
+        
+        $sport = Sport::find($this->areaOfFocus);
+        $sport->users()->attach($user);
 
         if ($this->step == 2) {
 
