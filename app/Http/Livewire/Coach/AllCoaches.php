@@ -28,6 +28,8 @@ class AllCoaches extends Component
     public $searchCoach = '';
     public $searchLocation = '';
 
+    public $quickview = '';
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -41,6 +43,11 @@ class AllCoaches extends Component
     public function updatingGender()
     {
         $this->resetPage();
+    }
+
+    public function viewProfile($id)
+    {
+        $this->quickview = User::findOrFail($id);
     }
 
     public function render()

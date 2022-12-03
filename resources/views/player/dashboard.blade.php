@@ -91,6 +91,19 @@
                                 {{ Auth::user()->country }}
                             @endif 
                         </p>
+                        <p>
+                            <strong>Skills/Sports: </strong>
+                            @if (Auth::user()->sports)
+                                @foreach (Auth::user()->sports as $sport)
+                                    {{ $sport->name }}
+                                    @if (!$loop->last)
+                                        ,
+                                    @endif
+                                @endforeach
+                            @else
+                                ---
+                            @endif
+                        </p>
                     </div>
                 </div>
             </div>

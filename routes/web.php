@@ -37,6 +37,8 @@ Route::group(['middleware' => 'player'], function () {
     Route::get('/player/profile', [PlayerController::class, 'profile'])->name('player.profile');
 });
 
+Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');
+
 Route::get('test', function() {
     $users = \App\Models\Coach::find([1, 2, 3]); 
     $sport = \App\Models\Sport::find(1);

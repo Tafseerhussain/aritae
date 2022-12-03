@@ -397,3 +397,144 @@ nav.navbar {
 		}
 	}
 }
+
+@media (min-width: 1025px) {
+	.quickview-profile {
+		width: 950px !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.quickview-profile {
+		width: 1050px !important;
+	}
+}
+
+@media (min-width: 1400px) {
+	.quickview-profile {
+		width: 1250px !important;
+	}
+}
+
+@media (min-width: 1600px) {
+	.quickview-profile {
+		width: 1350px !important;
+	}
+}
+
+@media (max-width: 1024px) {
+	.quickview-profile {
+		width: 100% !important;
+		border-radius: 0 !important;
+	}
+}
+
+.quickview-profile {
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	padding: 0;
+}
+
+.profile-preview-page {
+	padding: 150px 0 100px;
+	background: $gray;
+	.cover {
+		border-radius: $radius;
+		box-shadow: $shadow;
+		overflow: hidden;
+		max-height: 500px;
+		position: relative;
+		img {
+			object-fit:cover;
+			width: 100%;
+			height: 100%;
+			object-position: center center;
+		}
+		a.btn {
+			position: absolute;
+			left: 20px;
+			top: 20px;
+		}
+	}
+	.profile-meta {
+		.profile {
+			max-width: 100%;
+			width: 150px;
+			border-radius: 50%;
+			height: 150px;
+			overflow: hidden;
+			margin: -75px auto 20px;
+			border: 2px solid $white;
+			box-shadow: $shadow;
+			z-index: 1;
+			position: relative;
+			img {
+				object-fit:cover;
+				width: 100%;
+				height: 100%;
+				object-position: center center;
+			}
+		}
+		.title {
+			font-size: 24px;
+		}
+		.since {
+			font-size: 18px;
+			color: $blue;
+			margin-top: 10px;
+		}
+		.metas {
+			a {
+				font-size: .9rem;
+				margin-bottom: 10px;
+				display: block;
+				text-decoration: none;
+				i {
+					font-size: 20px;
+					margin-right: 6px;
+				}
+			}
+		}
+		.sessions {
+			margin-top: 50px;
+			h5 {
+				font-weight: 600;
+				color: $black;
+				margin-bottom: 0;
+			}
+			small {
+				opacity: .5;
+			}
+			.session-list {
+				margin-top: 20px;
+				.session {
+					margin-top: 20px;
+					 img {
+					 	width: 50px;
+					 }
+					div {
+						margin-left: 10px;
+						align-self: center;
+						h6 {
+							margin-bottom: 0;
+							font-weight: 600;
+						}
+					}
+				}
+			}
+			
+		}
+	}
+	.profile-review {
+		padding: 50px 0 50px 50px;
+		border-left: 1px solid $inputBorder;
+		h2 {
+			font-size: 24px;
+			font-weight: 400;
+			margin-bottom: 30px;
+		}
+		.hire-coach {
+			margin-top: 20px;
+		}
+	}
+}

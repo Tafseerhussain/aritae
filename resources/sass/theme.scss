@@ -11,21 +11,6 @@
   color: $white;
   background: $black;
 }
-::-webkit-input-placeholder {
-    color: red;
-}
-::-moz-placeholder {
-    color: red;
-}
-:-ms-input-placeholder {
-    color: red;
-}
-::-webkit-input-placeholder {
-    color: red;
-}
-::placeholder {
-    color: red;
-}
 
 .loader-bg {
 	position: absolute;
@@ -136,6 +121,30 @@ a:focus,
 	color: $white;
 	box-shadow: $shadow;
 	transition: .3s;
+}
+.icon-right-full {
+	padding: 7px 7px 7px 30px;
+	span {
+		margin-right: 10px;
+		position: relative;
+		top: -10px;
+	}
+	i {
+		font-size: 40px;
+		display: contents;
+	}
+}
+.icon-left-full {
+	padding: 7px 30px 7px 7px;
+	span {
+		margin-left: 10px;
+		position: relative;
+		top: -10px;
+	}
+	i {
+		font-size: 40px;
+		display: contents;
+	}
 }
 .btn-theme:hover {
 	background: $blue;
