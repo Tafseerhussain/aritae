@@ -124,10 +124,18 @@
                             @endif
                             
                         </p>
-                        <a href="#" class="btn btn-theme hire-coach icon-right-full">
-                            <span>Hire this coach</span>
-                            <i class="bi bi-arrow-right-circle-fill"></i>
-                        </a>
+                        
+                        @if (Auth::user())
+                            @if (Auth::user()->userType->type == 'player')
+                                @livewire('coach.request.form', ['coach_id' => $id])
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-theme hire-coach icon-right-full">
+                                <span>Hire this coach</span>
+                                <i class="bi bi-arrow-right-circle-fill"></i>
+                            </a>
+                        @endif
+                        
 
                         <h2 class="mt-5 pt-3">
                             How {{ $user->first_name }} Can Help You

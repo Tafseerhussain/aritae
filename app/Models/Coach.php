@@ -10,6 +10,7 @@ use App\Models\CoachCertification;
 use App\Models\CoachEducation;
 use App\Models\CoachVideo;
 use App\Models\Player;
+use App\Models\HireRequest;
 
 class Coach extends Model
 {
@@ -43,5 +44,10 @@ class Coach extends Model
     public function players()
     {
         return $this->belongsToMany(Player::class);
+    }
+
+    public function requests()
+    {
+        return $this->belongsToMany(HireRequest::class);
     }
 }

@@ -30,6 +30,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => 'coach'], function () {
     Route::get('/coach/dashboard', [CoachController::class, 'index'])->name('coach.dashboard');
     Route::get('/coach/profile', [CoachController::class, 'profile'])->name('coach.profile');
+    Route::get('/coach/requests', [CoachController::class, 'requests'])->name('coach.requests');
+    Route::get('/coach/requests/{id}', [CoachController::class, 'viewPlayerRequest'])->name('coach.requests.single');
 });
 
 Route::group(['middleware' => 'player'], function () {

@@ -11,6 +11,7 @@ use App\Models\Player\PlayerEducation;
 use App\Models\Player\PlayerExperience;
 use App\Models\Player\PlayerVideo;
 use App\Models\Coach;
+use App\Models\HireRequest;
 
 class Player extends Model
 {
@@ -49,5 +50,10 @@ class Player extends Model
     public function coaches()
     {
         return $this->belongsToMany(Coach::class);
+    }
+
+    public function requests()
+    {
+        return $this->belongsToMany(HireRequest::class);
     }
 }

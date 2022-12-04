@@ -569,6 +569,7 @@ class ComposerStaticInitfe55c2274a65a2458509cd9f769322c8
         'App\\Models\\CoachEducation' => __DIR__ . '/../..' . '/app/Models/CoachEducation.php',
         'App\\Models\\CoachVideo' => __DIR__ . '/../..' . '/app/Models/CoachVideo.php',
         'App\\Models\\CoachingExperience' => __DIR__ . '/../..' . '/app/Models/CoachingExperience.php',
+        'App\\Models\\HireRequest' => __DIR__ . '/../..' . '/app/Models/HireRequest.php',
         'App\\Models\\Location' => __DIR__ . '/../..' . '/app/Models/Location.php',
         'App\\Models\\Player' => __DIR__ . '/../..' . '/app/Models/Player.php',
         'App\\Models\\Player\\PlayerAthleticInformation' => __DIR__ . '/../..' . '/app/Models/Player/PlayerAthleticInformation.php',
