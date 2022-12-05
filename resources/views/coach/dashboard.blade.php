@@ -183,10 +183,10 @@
                                     <div class="row align-items-center">
                                         <div class="col-10">
                                             <div class="d-flex">
-                                                @if (Auth::user()->coach->profile_img == '')
+                                                @if ($player->profile_img == '')
                                                     <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="shadow rounded" alt="user image">
                                                 @else
-                                                    <img src="{{ asset(Auth::user()->coach->profile_img) }}" class="shadow rounded" alt="user image">
+                                                    <img src="{{ asset($player->profile_img) }}" class="shadow rounded" alt="user image">
                                                 @endif
                                                 <div class="meta">
                                                     <h6>{{ $player->name }}</h6>
