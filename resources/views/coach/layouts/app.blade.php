@@ -159,7 +159,7 @@
                                 <li class="list-group-item {{ $route == 'coach.requests' ? 'active' : '' }}">
                                     <a href="{{ route('coach.requests') }}">
                                         <i class="bi bi-person-plus"></i>
-                                        <span>Hire Requests</span>
+                                        <span>Hire Requests <span class="badge text-bg-secondary rounded-circle">{{ $hire_count }}</span></span>
                                     </a>
                                 </li>
                             </ul>

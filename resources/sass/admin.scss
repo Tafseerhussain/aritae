@@ -430,7 +430,7 @@
 	background-color: $white;
 	border-radius: $radius;
 	box-shadow: $shadow;
-	padding: 20px;
+	padding: 10px 20px;
 	overflow-x: auto;
 	.row {
 		border-bottom: 1px solid $inputBorder;
@@ -439,5 +439,29 @@
 	}
 	.row:last-child {
 		border-bottom: 0;
+	}
+}
+
+.hire-requests-page {
+	.cover {
+		height: 240px;
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit:cover;
+			object-position: center center;
+		}
+	}
+	.profile-img {
+		width: 150px;
+		height: 150px;
+		overflow: hidden;
+		margin-top: -90px;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit:cover;
+			object-position: center center;
+		}
 	}
 }

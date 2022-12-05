@@ -32,6 +32,8 @@ Route::group(['middleware' => 'coach'], function () {
     Route::get('/coach/profile', [CoachController::class, 'profile'])->name('coach.profile');
     Route::get('/coach/requests', [CoachController::class, 'requests'])->name('coach.requests');
     Route::get('/coach/requests/{id}', [CoachController::class, 'viewPlayerRequest'])->name('coach.requests.single');
+    Route::get('/coach/requests/delete/{id}', [CoachController::class, 'deletePlayerRequest'])->name('coach.requests.single.delete');
+    Route::get('/coach/requests/accept/{id}', [CoachController::class, 'acceptPlayerRequest'])->name('coach.requests.single.accept');
 });
 
 Route::group(['middleware' => 'player'], function () {

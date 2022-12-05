@@ -161,6 +161,13 @@
                                         <span>Events</span>
                                     </a>
                                 </li>
+                                <hr class="p-0 mt-2 mb-3">
+                                <li class="list-group-item">
+                                    <a href="/">
+                                        <i class="bi bi-person-plus"></i>
+                                        <span>Hire A Coach</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>  
                     </div>

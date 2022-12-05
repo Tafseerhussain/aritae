@@ -52,7 +52,7 @@
                         @enderror
                     </div>
                     <div class="col-12 text-end mb-4">
-                        <button type="submit" class="btn btn-theme">
+                        <button type="submit" class="btn btn-theme" onclick="hideModal()">
                             Send Request
                         </button>
                     </div>
@@ -72,9 +72,9 @@
     
     @else
         @if ($requested->accepted == 0)
-            <div class="btn btn-theme mt-4"><code class="text-white">Request Already Sent</code></div>
+            <div class="btn btn-primary mt-4"><code class="text-white">Request Already Sent</code></div>
         @elseif($requested->accepted == 1)
-            <div class="btn btn-theme mt-4"><code class="text-white">Hired</code></div>
+            <div class="btn btn-success mt-4"><code class="text-white">Hired</code></div>
         @endif
     @endif
 </div>
