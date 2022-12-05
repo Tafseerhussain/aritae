@@ -183,7 +183,11 @@
                                     <div class="row align-items-center">
                                         <div class="col-10">
                                             <div class="d-flex">
-                                                <img src="{{ asset($player->profile_img) }}" class="rounded shadow" alt="user image">
+                                                @if (Auth::user()->coach->profile_img == '')
+                                                    <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="shadow rounded" alt="user image">
+                                                @else
+                                                    <img src="{{ asset(Auth::user()->coach->profile_img) }}" class="shadow rounded" alt="user image">
+                                                @endif
                                                 <div class="meta">
                                                     <h6>{{ $player->name }}</h6>
                                                     <small>{{ $player->user->email }}</small>
