@@ -49,9 +49,9 @@ class CoachController extends Controller
 
     public function acceptPlayerRequest($id)
     {
-        // $coach = Coach::where('user_id', Auth::user()->id)->first();
-        // $player = Player::where('user_id', $id)->first();
-        // $player->coaches()->attach($coach);
+        $coach = Coach::where('user_id', Auth::user()->id)->first();
+        $player = Player::where('user_id', $id)->first();
+        $player->coaches()->attach($coach);
 
         $req = HireRequest::where('player_id', $id)->where('coach_id', Auth::user()->id)->first();
         $req->delete();
