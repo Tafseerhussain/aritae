@@ -57,4 +57,9 @@ class CoachController extends Controller
         $req->delete();
         return redirect()->route('coach.requests')->with('success_message', 'Request accepted and added player to your list!');
     }
+
+    public function coachChat()
+    {
+        return view('coach.messages');
+    }
 }

@@ -126,7 +126,7 @@
                                     </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="#">
+                                    <a href="{{ route('coach.chat') }}">
                                         <i class="bi bi-chat-square-text"></i>
                                         <span>Messages</span>
                                     </a>

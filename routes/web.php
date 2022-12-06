@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Livewire\Chat\CreateChat;
+use App\Http\Livewire\Chat\Main;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //     Route::get('admin', 'adminController@adminDashboard');
 // });
 
+
+// Route::get('/users', CreateChat::class)->name('users');
+// Route::get('/chat{key?}', Main::class)->name('chat');
+
 Route::group(['middleware' => 'coach'], function () {
     Route::get('/coach/dashboard', [CoachController::class, 'index'])->name('coach.dashboard');
     Route::get('/coach/profile', [CoachController::class, 'profile'])->name('coach.profile');
@@ -34,6 +40,10 @@ Route::group(['middleware' => 'coach'], function () {
     Route::get('/coach/requests/{id}', [CoachController::class, 'viewPlayerRequest'])->name('coach.requests.single');
     Route::get('/coach/requests/delete/{id}', [CoachController::class, 'deletePlayerRequest'])->name('coach.requests.single.delete');
     Route::get('/coach/requests/accept/{id}', [CoachController::class, 'acceptPlayerRequest'])->name('coach.requests.single.accept');
+    
+    // Chat Routes
+    Route::get('/coach/chat/users', [CoachController::class, 'chatUsers'])->name('coach.chat.users');
+    Route::get('/coach/chat{key?}', [CoachController::class, 'coachChat'])->name('coach.chat');
 });
 
 Route::group(['middleware' => 'player'], function () {
