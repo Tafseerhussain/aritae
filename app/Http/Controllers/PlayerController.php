@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Player;
+use App\Models\Coach;
+use App\Models\HireRequest;
+use Auth;
 
 class PlayerController extends Controller
 {
@@ -14,5 +19,15 @@ class PlayerController extends Controller
     public function profile()
     {
         return view('player.profile');
+    }
+
+    public function playerChat()
+    {
+        $player = Player::where('user_id',Auth::user()->id)->first();
+        return view('player.messages');
+    }
+    public function chatPlayers()
+    {
+        return view('player.chat-users');
     }
 }

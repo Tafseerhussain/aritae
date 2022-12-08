@@ -131,8 +131,8 @@
                                         <span>Activity</span>
                                     </a>
                                 </li>
-                                <li class="list-group-item">
-                                    <a href="#">
+                                <li class="list-group-item {{ $route == 'player.chat' ? 'active' : '' }}">
+                                    <a href="{{ route('player.chat') }}">
                                         <i class="bi bi-chat-square-text"></i>
                                         <span>Messages</span>
                                     </a>

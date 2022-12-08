@@ -14,11 +14,20 @@
             @foreach ($conversations as $conversation)
                 <a href="#!" wire:key='{{ $conversation->id }}' class="list-item d-flex text-dark" wire:click="$emit('chatUserSelected', {{ $conversation }}, {{ $this->getChatUserInstance($conversation)->id }})">
                     <div class="profile_img shadow position-relative">
-                        @if ($this->getChatUserInstance($conversation)->player->profile_img == '')
-                            <img src="{{ asset( 'assets/img/default/default-profile-pic.jpg' ) }}" class="w-100 h-100" alt="profile image">
-                        @else
-                        <img src="{{ asset( $this->getChatUserInstance($conversation)->player->profile_img ) }}" class="w-100 h-100" alt="profile image">
+                        @if (Auth::user()->user_type_id == 4)
+                            @if ($this->getChatUserInstance($conversation)->coach->profile_img == '')
+                                <img src="{{ asset( 'assets/img/default/default-profile-pic.jpg' ) }}" class="w-100 h-100" alt="profile image">
+                            @else
+                                <img src="{{ asset( $this->getChatUserInstance($conversation)->coach->profile_img ) }}" class="w-100 h-100" alt="profile image">
+                            @endif
+                        @elseif (Auth::user()->user_type_id == 2)
+                            @if ($this->getChatUserInstance($conversation)->player->profile_img == '')
+                                <img src="{{ asset( 'assets/img/default/default-profile-pic.jpg' ) }}" class="w-100 h-100" alt="profile image">
+                            @else
+                                <img src="{{ asset( $this->getChatUserInstance($conversation)->player->profile_img ) }}" class="w-100 h-100" alt="profile image">
+                            @endif
                         @endif
+                        
                         <div class="status online shadow"></div>
                     </div>
                     <div class="profile-meta">
@@ -40,7 +49,7 @@
         
         @else
             <a href="#" class="list-item d-flex text-dark">
-                Select a player to start chat with...
+                Select a user to start chat with...
             </a>
         @endif
 

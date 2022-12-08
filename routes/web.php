@@ -49,6 +49,10 @@ Route::group(['middleware' => 'coach'], function () {
 Route::group(['middleware' => 'player'], function () {
     Route::get('/player/dashboard', [PlayerController::class, 'index'])->name('player.dashboard');
     Route::get('/player/profile', [PlayerController::class, 'profile'])->name('player.profile');
+
+    // Chat Routes
+    Route::get('/player/chat/users', [PlayerController::class, 'chatPlayers'])->name('player.chat.users');
+    Route::get('/player/chat{key?}', [PlayerController::class, 'playerChat'])->name('player.chat');
 });
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');
