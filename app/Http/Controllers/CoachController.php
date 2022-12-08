@@ -60,6 +60,12 @@ class CoachController extends Controller
 
     public function coachChat()
     {
-        return view('coach.messages');
+        $coach = Coach::where('user_id',Auth::user()->id)->first();
+        $totalUsers = count($coach->players);
+        return view('coach.messages', compact('totalUsers'));
+    }
+    public function chatUsers()
+    {
+        return view('coach.chat-users');
     }
 }
