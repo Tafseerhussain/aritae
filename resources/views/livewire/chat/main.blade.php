@@ -36,6 +36,12 @@
                 height: height,
             });
         });
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     window.Echo.private('chat')
+        //     .listen('broadcastMessageReceived', (response) => { 
+        //         window.Livewire.emit('broadcastMessageReceived', response);
+        //     }
+        // });
     </script>
 
 @endpush

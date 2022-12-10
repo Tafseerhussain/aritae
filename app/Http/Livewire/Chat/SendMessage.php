@@ -2,18 +2,22 @@
 
 namespace App\Http\Livewire\Chat;
 
-use Livewire\Component;
+use App\Events\MessageSent;
 use App\Models\Chat\Conversation;
 use App\Models\Chat\Message;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
+
 
 class SendMessage extends Component
 {
     public $selectConversation;
+    public $createMessage;
     public $receiverInstance;
     public $body;
 
-    protected $listeners = ['updateSendMessage'];
+    protected $listeners = ['updateSendMessage', 'dispatchMessageSent'];
 
     public function updateSendMessage(Conversation $conversation, User $receiver)
     {
@@ -26,19 +30,31 @@ class SendMessage extends Component
         if ($this->body == null) {
             return null;
         }
-        $createMessage = Message::create([
+        $this->createMessage = Message::create([
             'conversation_id' => $this->selectConversation->id,
             'sender_id' => auth()->id(),
             'receiver_id' => $this->receiverInstance->id,
             'body' => $this->body,
         ]);
-        $this->selectConversation->last_time_message = $createMessage->created_at;
+        $this->selectConversation->last_time_message = $this->createMessage->created_at;
         $this->selectConversation->save();
 
-        $this->emitTo('chat.chatbox', 'pushMessage', $createMessage->id);
+        $this->emitTo('chat.chatbox', 'pushMessage', $this->createMessage->id);
         $this->emitTo('chat.chat-list', 'refresh');
         $this->reset('body');
         $this->dispatchBrowserEvent('chatUserSelected');
+
+        $this->emitSelf('dispatchMessageSent');
+    }
+
+    public function dispatchMessageSent()
+    {
+        broadcast(new MessageSent(
+            Auth()->user(),
+            $this->createMessage,
+            $this->selectConversation,
+            $this->receiverInstance
+        ));
     }
 
     public function render()
