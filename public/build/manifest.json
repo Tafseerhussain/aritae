@@ -8,7 +8,7 @@
     "src": "public/assets/img/coaches-bg.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app.392f02f5.js",
+    "file": "assets/app.1bc864a6.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
@@ -17,14 +17,14 @@
     "src": "resources/sass/theme.scss",
     "isEntry": true
   },
-  "resources/sass/admin.scss": {
-    "file": "assets/admin.4099ab6b.css",
-    "src": "resources/sass/admin.scss",
-    "isEntry": true
-  },
   "resources/sass/app.scss": {
     "file": "assets/app.ccd3dc4f.css",
     "src": "resources/sass/app.scss",
+    "isEntry": true
+  },
+  "resources/sass/admin.scss": {
+    "file": "assets/admin.4099ab6b.css",
+    "src": "resources/sass/admin.scss",
     "isEntry": true
   }
 }
