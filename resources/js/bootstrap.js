@@ -32,8 +32,8 @@ const options = {
 }
 
 window.Echo = new Echo({
-    // broadcaster: 'pusher',
-    // key: import.meta.env.VITE_PUSHER_APP_KEY,
+    broadcaster: 'pusher',
+    key: import.meta.env.VITE_PUSHER_APP_KEY,
     // wsHost: import.meta.env.VITE_PUSHER_HOST ?? `ws-${import.meta.env.VITE_PUSHER_APP_CLUSTER}.pusher.com`,
     // wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
     // wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
@@ -41,9 +41,9 @@ window.Echo = new Echo({
     // enabledTransports: ['ws', 'wss'],
 
     // key: '97a10d409c19c24bc88b',
-    // cluster: import.meta.env.MIX_PUSHER_APP_CLUSTER,
-    // forceTLS: false
+    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
+    forceTLS: false,
 
-    ...options,
-    client: new Pusher(options.key, options)
+    //...options,
+    //client: new Pusher(options.key, options)
 });

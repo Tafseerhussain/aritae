@@ -7,7 +7,8 @@ use Livewire\Component;
 use App\Models\Chat\Conversation;
 use App\Models\Chat\Message;
 use App\Models\User;
-
+use Auth;
+use Log;
 class Chatbox extends Component
 {
     public $selectConversation;
@@ -20,7 +21,7 @@ class Chatbox extends Component
 
     public function getListeners()
     {
-        $auth_id = auth()->user()->id;
+        $auth_id = Auth::user()->id;
         return [
             "echo-private:chat.{$auth_id},MessageSent"=>'broadcastMessageReceived',
             'loadConversation', 'pushMessage', 'loadMore', 'updateHeight',
@@ -29,7 +30,9 @@ class Chatbox extends Component
 
     public function broadcastMessageReceived($event)
     {
-        dd($event);
+        //Log::error($event);
+        //dd($event);
+        $this->pushMessage($event['message']);
     }
 
     public function loadConversation(Conversation $conversation, User $receiver)
