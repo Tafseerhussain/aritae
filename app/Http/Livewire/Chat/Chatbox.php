@@ -39,8 +39,9 @@ class Chatbox extends Component
                 $broadcastMessage->read = 1;
                 $broadcastMessage->save();
             }
+
+            $this->pushMessage($event['message']);
         }
-        $this->pushMessage($event['message']);
     }
 
     public function loadConversation(Conversation $conversation, User $receiver)
