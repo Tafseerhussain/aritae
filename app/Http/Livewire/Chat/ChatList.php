@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Chat\Conversation;
 use App\Models\User;
 use App\Models\Player;
+use Auth;
 
 class ChatList extends Component
 {
@@ -15,7 +16,16 @@ class ChatList extends Component
 
     public $selectConversation;
 
-    protected $listeners = ['chatUserSelected', 'refresh' => '$refresh'];
+    //protected $listeners = ['chatUserSelected', 'refresh' => '$refresh'];
+
+    public function getListeners()
+    {
+        $auth_id = Auth::user()->id;
+        return [
+            "echo-private:chat.{$auth_id},MessageSent"=>'$refresh',
+            'chatUserSelected', 'refresh' => '$refresh',
+        ];
+    }
 
     public function chatUserSelected(Conversation $conversation, $receiver_id)
     {
