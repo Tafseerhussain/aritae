@@ -31,7 +31,15 @@ class Chatbox extends Component
     public function broadcastMessageReceived($event)
     {
         //Log::error($event);
-        //dd($event);
+        // dd($event);
+        $broadcastMessage = Message::find($event['message']);
+
+        if ($this->selectConversation) {
+            if ((int) $this->selectConversation->id === (int)$event['conversation_id']) {
+                $broadcastMessage->read = 1;
+                $broadcastMessage->save();
+            }
+        }
         $this->pushMessage($event['message']);
     }
 
