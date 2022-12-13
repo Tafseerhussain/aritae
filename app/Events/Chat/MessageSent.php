@@ -2,6 +2,9 @@
 
 namespace App\Events\Chat;
 
+use App\Models\Chat\Conversation;
+use App\Models\Chat\Message;
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -9,9 +12,6 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\User;
-use App\Models\Chat\Message;
-use App\Models\Chat\Conversation;
 
 class MessageSent implements ShouldBroadcastNow
 {
@@ -44,6 +44,6 @@ class MessageSent implements ShouldBroadcastNow
     {
         error_log($this->user);
         error_log($this->receiver);
-        return new PrivateChannel('chat.' .$this->receiver->id);
+        return new PrivateChannel('chat.'.$this->receiver->id);
     }
 }

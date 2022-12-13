@@ -668,18 +668,20 @@
 					font-size: 18px;
 				}
 				span.time {
-					font-size: 13px;
+					font-size: 12px;
 					position: absolute;
 					right: 6px;
-					bottom: -20px;
+					bottom: -18px;
 					color: $dark-gray;
 					opacity: .6;
+					white-space: nowrap;
 				}
 			}
 			p.left-message {
 				border-bottom-left-radius: 0;
 				background: $blue;
 				color: $white;
+				padding-right: 14px;
 			}
 			p.right-message {
 				border-bottom-right-radius: 0;

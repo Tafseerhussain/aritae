@@ -22,7 +22,7 @@ class ChatList extends Component
     {
         $auth_id = Auth::user()->id;
         return [
-            "echo-private:chat.{$auth_id},MessageSent"=>'$refresh',
+            // "echo-private:chat.{$auth_id},MessageSent"=>'$refresh',
             'chatUserSelected', 'refresh' => '$refresh',
         ];
     }

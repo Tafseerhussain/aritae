@@ -41,9 +41,13 @@
                     <span class="position-absolute last-chat">
                         {{ $conversation->messages->last()->created_at->shortAbsoluteDiffForHumans() }} ago
                     </span>
-                    <span class="position-absolute new-messages">
-                        <span class="badge rounded-pill text-bg-primary text-white">2</span>
-                    </span>
+                    @if (count($conversation->messages->where('read', 0)->where('receiver_id', Auth::user()->id)))
+                        <span class="position-absolute new-messages">
+                            <span class="badge rounded-pill text-bg-primary text-white">
+                                {{ count($conversation->messages->where('read', 0)->where('receiver_id', Auth::user()->id)) }}
+                            </span>
+                        </span>
+                    @endif
                 </a>
             @endforeach
         

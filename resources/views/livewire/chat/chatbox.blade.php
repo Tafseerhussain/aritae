@@ -59,29 +59,49 @@
 
             @foreach ($messages as $message)
 
-                <p wire:key="{{ $message->id }}" class="message {{ auth()->id() == $message->sender_id ? 'right-message':'left-message' }}">
+                <p class="message {{ auth()->id() == $message->sender_id ? 'right-message':'left-message' }}">
+                        {{-- expr --}}
+                    
                     {{ $message->body }}
-                    <span class="sent {{ $message->read == 0 ? '':'read' }}">
-                        @if ($message->read == 0)
-                            <i class="bi bi-check2"></i>
-                        @elseif ($message->read == 1)
-                            <i class="bi bi-check2-all"></i>
-                        @endif
+                    @if ($message->user->id == auth()->user()->id)
                         
-                    </span>
+                            <span class="sent {{ $message->read == 0 ? '':'read' }}">
+                                <i class="message-send-icon fa-solid {{ $message->read == 0 ? 'fa-check opacity-50':'fa-check-double text-primary' }}"></i>
+                            </span>
+
+                        </span>
+                    @endif
                     <span class="time">{{ $message->created_at->shortAbsoluteDiffForHumans() }} ago</span>
                 </p>
             @endforeach
             
-            {{-- <script>
+            <script>
+                
                 $('.chatbox-body').scroll(function() {
                     var top = $('.chatbox-body').scrollTop();
                     if (top <= 0) {
                         window.livewire.emit('loadMore');
                     }
                 });
+                window.addEventListener('updatedHeight', event=> {
+                    let old = event.detail.height;
+                    let newHeight = $('.chatbox-body')[0].scrollHeight;
+                    let height = $('.chatbox-body').scrollTop(newHeight - old);
+                    window.livewire.emit('updateHeight', {
+                        height: height,
+                    });
+                });
+                window.addEventListener('markMessageAsRead', event=> {
+                    var value = document.querySelectorAll('.message-send-icon');
+                    var valueToArray = [...value];
+                    console.log(value);
+                    valueToArray.forEach(element => {
+                        element.classList.remove('fa-check');
+                        element.classList.add('fa-check-double', 'text-primary');
+                    });
+                });
                 
-            </script>   --}} 
+            </script>
         @else
             <div class="no-conversation">
                 <img src="{{ asset('assets/icons/no-chat.svg') }}" alt="no conversation">
