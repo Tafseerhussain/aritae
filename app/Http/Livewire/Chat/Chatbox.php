@@ -40,6 +40,7 @@ class Chatbox extends Component
     {
         $this->emitTo('chat.chat-list', 'refresh');
         $broadcastMessage = Message::find($event['message']);
+        $sender = User::find($event['user_id']);
 
         if ($this->selectConversation) {
             if ((int) $this->selectConversation->id === (int)$event['conversation_id']) {
@@ -48,6 +49,14 @@ class Chatbox extends Component
             }
             $this->pushMessage($event['message']);
             $this->emitSelf('broadcastedMessageRead');
+        }
+        
+        if(!isset($this->selectConversation) || (int) $this->selectConversation->id !== (int)$event['conversation_id']){
+            $this->dispatchBrowserEvent('chat_message_notification', [
+                'title' => 'New message from '.$sender->full_name,
+                'type' => 'info',
+                'message' => $broadcastMessage->body,
+            ]);
         }
     }
 
