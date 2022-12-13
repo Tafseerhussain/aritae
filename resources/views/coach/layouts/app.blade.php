@@ -305,10 +305,25 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 };
-                toastr[event.detail.type](event.detail.message,event.detail.title ?? '')
+                toastr[event.detail.type]((event.detail.message.length > 35) ? event.detail.message.slice(0, 35) + '&hellip;' : event.detail.message, event.detail.title ?? '')
             }
         );
     </script>
+
+    @if(!Route::is('coach.chat'))
+    <script type="module">
+        window.Echo.private('chat.{{Auth::user()->id}}')
+            .listen('MessageSent', (e) => {
+                var data = {
+                    "title" : "New message from "+e.user_name,
+                    "type" : "info",
+                    "message": e.message_body,
+                }
+                var event = new CustomEvent('chat_message_notification', { detail: data });
+                window.dispatchEvent(event);
+            });
+    </script>
+    @endif
 
     @stack('custom-scripts')
 </body>
