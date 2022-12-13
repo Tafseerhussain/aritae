@@ -96,69 +96,46 @@
             </div>
             <div class="col-md-5">
                 <div class="card">
-                    <div class="icon">
+                    <a href="{{ route('coach.chat') }}" class="icon">
                         <i class="fa-regular fa-eye"></i>
-                    </div>
+                    </a>
                     <h5>Conversations</h5>
                     <div class="conversations">
 
-
-                        <div class="conversation">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('assets/img/default/chat1.jpg') }}" alt="user image">
-                                        <div class="meta">
-                                            <h6>Peterson</h6>
-                                            <small>Example Chat...</small>
+                        @foreach ($conversations as $conversation)
+                            @php
+                                $user = \App\Models\User::firstWhere('id', $conversation->receiver_id);
+                            @endphp
+                            <div class="conversation">
+                                <div class="row align-items-center">
+                                    <div class="col-10">
+                                        <div class="d-flex">
+                                            @if ($user->player->profile_img == '')
+                                                <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="rounded-circle" alt="user image">
+                                            @else
+                                                <img src="{{ asset( $user->player->profile_img ) }}" class="rounded-circle" alt="user image">
+                                            @endif
+                                            
+                                            <div class="meta">
+                                                <h6 class="text-capitalize">{{ $user->full_name }}</h6>
+                                                <small class="text-truncate d-inline-block" style="max-width: 250px;">
+                                                    {{ $conversation->messages->last()->body }}
+                                                </small>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-2 text-end">
-                                    <a href="#">
-                                        Reply
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="conversation">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('assets/img/default/chat2.jpg') }}" alt="user image">
-                                        <div class="meta">
-                                            <h6>Peterson</h6>
-                                            <small>Example Chat...</small>
-                                        </div>
+                                    <div class="col-2 text-end">
+                                        <a href="{{ route('coach.chat') }}">
+                                            Reply
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="col-2 text-end">
-                                    <a href="#">
-                                        Reply
-                                    </a>
-                                </div>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="conversation">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('assets/img/default/chat3.jpg') }}" alt="user image">
-                                        <div class="meta">
-                                            <h6>Peterson</h6>
-                                            <small>Example Chat...</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2 text-end">
-                                    <a href="#">
-                                        Reply
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                            @if (!$loop->last)
+                                <hr>
+                            @endif
+                        @endforeach
+                        
 
                     </div>
                 </div>
@@ -166,9 +143,9 @@
 
             <div class="col-md-12 mt-5">
                 <div class="card">
-                    <div class="icon">
+                    {{-- <div class="icon">
                         <i class="fa-regular fa-plus"></i>
-                    </div>
+                    </div> --}}
                     <h5>
                         Your Players
                     </h5>
@@ -184,9 +161,9 @@
                                         <div class="col-10">
                                             <div class="d-flex">
                                                 @if ($player->profile_img == '')
-                                                    <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="shadow rounded" alt="user image">
+                                                    <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="shadow rounded-circle" alt="user image">
                                                 @else
-                                                    <img src="{{ asset($player->profile_img) }}" class="shadow rounded" alt="user image">
+                                                    <img src="{{ asset($player->profile_img) }}" class="shadow rounded-circle" alt="user image">
                                                 @endif
                                                 <div class="meta">
                                                     <h6>{{ $player->name }}</h6>

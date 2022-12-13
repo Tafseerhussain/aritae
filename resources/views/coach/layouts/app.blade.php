@@ -229,7 +229,7 @@
                         </div>
                     </div>
                     <main class="dashboard-content">
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-12">
                                 <div class="incomplete-profile">
                                     <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
@@ -245,7 +245,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         
                         @yield('content')
                     </main>

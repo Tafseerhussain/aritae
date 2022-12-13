@@ -7,13 +7,15 @@ use App\Models\User;
 use App\Models\Player;
 use App\Models\Coach;
 use App\Models\HireRequest;
+use App\Models\Chat\Conversation;
 use Auth;
 
 class CoachController extends Controller
 {
     public function index()
     {
-        return view('coach.dashboard');
+        $conversations = Conversation::where('sender_id', Auth::user()->id)->orderBy('last_time_message', 'DESC')->take(3)->get();
+        return view('coach.dashboard', compact('conversations'));
     }
 
     public function profile()

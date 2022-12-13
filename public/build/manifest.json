@@ -12,6 +12,11 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
+  "resources/sass/app.scss": {
+    "file": "assets/app.ccd3dc4f.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  },
   "resources/sass/theme.scss": {
     "file": "assets/theme.0a8b6a98.css",
     "src": "resources/sass/theme.scss",
@@ -20,11 +25,6 @@
   "resources/sass/admin.scss": {
     "file": "assets/admin.f225d04a.css",
     "src": "resources/sass/admin.scss",
-    "isEntry": true
-  },
-  "resources/sass/app.scss": {
-    "file": "assets/app.ccd3dc4f.css",
-    "src": "resources/sass/app.scss",
     "isEntry": true
   }
 }
