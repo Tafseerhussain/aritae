@@ -42,7 +42,7 @@ window.Echo = new Echo({
 
     // key: '97a10d409c19c24bc88b',
     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
-    forceTLS: false,
+    forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 
     //...options,
     //client: new Pusher(options.key, options)

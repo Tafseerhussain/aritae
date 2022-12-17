@@ -4,7 +4,7 @@
     <div class="chatbox-header">
         <div class="d-flex justify-content-between">
             <div class="d-flex">
-                <div class="status offline"></div>
+                <div class="status {{in_array($receiverInstance->id, $present_ids) ? 'online': 'offline'}}"></div>
                 <h5 class="m-0 fw-bold text-capitalize">
                     {{ $receiverInstance->full_name }}
                 </h5>
@@ -13,7 +13,7 @@
                 <a href="#" class="btn btn-theme btn-sm">
                     Schedule Session
                 </a>
-                <a href="#" class="icon">
+                <a href="javascript:void(0)" id="start_call" data-id="{{$receiverInstance->id}}" data-name="{{$receiverInstance->full_name}}" class="icon">
                     <i class="fa-solid fa-phone"></i>
                 </a>
                 <a href="#" class="icon">
@@ -101,6 +101,12 @@
                     });
                 });
                 
+                $('#start_call').click(function(){
+                    var id = $(this).data('id');
+                    var name = $(this).data('name');
+
+                    window.open('/call?partner_id='+id+'&partner_name='+name+'&action=init_call','Aritae Call','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
+                });
             </script>
         @else
             <div class="no-conversation">

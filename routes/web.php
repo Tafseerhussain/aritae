@@ -24,6 +24,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/call', [App\Http\Controllers\CallController::class, 'index'])->name('call');
+// Endpoints to call or receive calls.
+Route::post('/audio/call-user', [App\Http\Controllers\CallController::class, 'callUser']);
+Route::post('/audio/accept-call', [App\Http\Controllers\CallController::class, 'acceptCall']);
 
 // Route::group(['middleware' => 'player'], function () {
 //     Route::get('admin', 'adminController@adminDashboard');

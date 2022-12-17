@@ -13,7 +13,7 @@ class ChatList extends Component
     public $userType;
     public $conversations;
     public $receiverInstance;
-
+    public $present_ids = [];
     public $selectConversation;
 
     //protected $listeners = ['chatUserSelected', 'refresh' => '$refresh'];
@@ -22,9 +22,35 @@ class ChatList extends Component
     {
         $auth_id = Auth::user()->id;
         return [
-            // "echo-private:chat.{$auth_id},MessageSent"=>'$refresh',
+            "echo-presence:presence-call-channel,here"=>'initPresentUser',
+            "echo-presence:presence-call-channel,joining"=>'addPresentUser',
+            "echo-presence:presence-call-channel,leaving"=>'removePresentUser',
             'chatUserSelected', 'refresh' => '$refresh',
         ];
+    }
+
+    public function initPresentUser($users){
+        $present_ids = array();
+        foreach($users as $user){
+            array_push($this->present_ids, $user['id']);
+        }
+
+        $this->paresent_ids = array_unique($present_ids);
+
+        $this->emit('userStatus', $this->present_ids);
+    }
+    public function addPresentUser($user){
+        if(!in_array($user['id'], $this->present_ids))
+            array_push($this->present_ids, $user['id']);
+
+        $this->emit('userStatus', $this->present_ids);
+    }
+    public function removePresentUser($user){
+        $exists = array_search($user['id'], $this->present_ids);
+        if($exists)
+            unset($this->present_ids[$exists]);
+        
+        $this->emit('userStatus', $this->present_ids);
     }
 
     public function chatUserSelected(Conversation $conversation, $receiver_id)

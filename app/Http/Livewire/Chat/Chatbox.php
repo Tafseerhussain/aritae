@@ -15,6 +15,7 @@ class Chatbox extends Component
     public $selectConversation;
     public $receiverInstance;
     public $messages;
+    public $present_ids = [];
     public $paginateVar = 10;
     public $height;
 
@@ -30,6 +31,7 @@ class Chatbox extends Component
             "echo-private:chat.{$auth_id},MessageSent"=>'broadcastMessageReceived',
             "echo-private:chat.{$auth_id},MessageRead"=>'broadcastMessageRead',
             'loadConversation', 'pushMessage', 'loadMore', 'updateHeight', 'broadcastedMessageRead',
+            'userStatus',
         ];
     }
 
@@ -77,6 +79,10 @@ class Chatbox extends Component
     // ==============================================================================================
     // COMPONENT FUNCTIONS
     // ==============================================================================================
+    public function userStatus($present_ids){
+        $this->present_ids = $present_ids;
+    }
+    
     public function loadConversation(Conversation $conversation, User $receiver)
     {
         $this->selectConversation = $conversation;

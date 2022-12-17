@@ -323,5 +323,73 @@
     @endif
 
     @stack('custom-scripts')
+
+    <div class="modal" id="call_receive_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100 text-center">Incoming Call</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mb-3 text-center call-text">
+                            Someone is calling ...
+                        </div>
+                        <div class="col-12 d-flex align-items-center justify-content-center">
+                            <button class="btn btn-success btn-lg m-2" id="call_accept">Accept</button>
+                            <button class="btn btn-danger btn-lg m-2" id="call_decline">Decline</buttion>
+                        </div>
+                    </div>
+                    <input type="text" id="partner_name" hidden>
+                    <input type="text" id="partner_id" hidden>
+                    <input type="text" id="signal" hidden>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+    $(document).ready(function(){
+        var channel = window.Echo.join("presence-call-channel");
+        channel.listen("StartAudioChat", ( data ) => {
+          if (data.type === "incomingCall" && data.userToCall == '{{Auth::user()->id}}') {
+            // add a new line to the sdp to take care of error
+            const updatedSignal = {
+              ...data.signalData,
+              sdp: `${data.signalData.sdp}\n`,
+            };
+            
+            var partner_name = data.partnerName;
+            var partner_id = data.from;
+            var signal = JSON.stringify(updatedSignal);
+
+            $('#partner_name').val(partner_name);
+            $('#partner_id').val(partner_id);
+            $('#signal').val(signal);
+
+            $('.call-text').text(partner_name+" is calling ...");
+
+            $('#call_receive_modal').modal('show');
+          }
+        });
+
+        $('#call_decline').click(function(){
+            $('#call_receive_modal').modal('hide');
+        });
+        $('#call_accept').click(function(){
+            var partner_name = $('#partner_name').val();
+            var partner_id = $('#partner_id').val();
+            var signal = JSON.stringify($('#signal').val());
+
+            var words = CryptoJS.enc.Utf8.parse(signal); 
+            var base64 = CryptoJS.enc.Base64.stringify(words);
+
+
+            $('#call_receive_modal').modal('hide');
+            window.open('/call?partner_id='+partner_id+'&partner_name='+partner_name+'&action=accept_call&signal='+base64,'Aritae Call','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
+        });
+    });
+    </script>
 </body>
 </html>

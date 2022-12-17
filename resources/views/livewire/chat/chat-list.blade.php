@@ -20,15 +20,16 @@
                             @else
                                 <img src="{{ asset( $this->getChatUserInstance($conversation)->coach->profile_img ) }}" class="w-100 h-100" alt="profile image">
                             @endif
+                            <div class="status {{in_array($this->getChatUserInstance($conversation)->coach->id, $present_ids) ? 'online': 'offline'}} shadow"></div>
                         @elseif (Auth::user()->user_type_id == 2)
                             @if ($this->getChatUserInstance($conversation)->player->profile_img == '')
                                 <img src="{{ asset( 'assets/img/default/default-profile-pic.jpg' ) }}" class="w-100 h-100" alt="profile image">
                             @else
                                 <img src="{{ asset( $this->getChatUserInstance($conversation)->player->profile_img ) }}" class="w-100 h-100" alt="profile image">
                             @endif
+                            <div class="status {{in_array($this->getChatUserInstance($conversation)->player->user_id, $present_ids) ? 'online': 'offline'}} shadow"></div>
                         @endif
                         
-                        <div class="status online shadow"></div>
                     </div>
                     <div class="profile-meta">
                         <div class="name text-capitalize">
