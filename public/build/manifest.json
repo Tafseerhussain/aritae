@@ -17,9 +17,9 @@
     "src": "resources/sass/call.scss",
     "isEntry": true
   },
-  "resources/sass/theme.scss": {
-    "file": "assets/theme.0a8b6a98.css",
-    "src": "resources/sass/theme.scss",
+  "resources/sass/admin.scss": {
+    "file": "assets/admin.c58f03cc.css",
+    "src": "resources/sass/admin.scss",
     "isEntry": true
   },
   "resources/sass/app.scss": {
@@ -27,9 +27,9 @@
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
-  "resources/sass/admin.scss": {
-    "file": "assets/admin.c58f03cc.css",
-    "src": "resources/sass/admin.scss",
+  "resources/sass/theme.scss": {
+    "file": "assets/theme.0a8b6a98.css",
+    "src": "resources/sass/theme.scss",
     "isEntry": true
   }
 }
