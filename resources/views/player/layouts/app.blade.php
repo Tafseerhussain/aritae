@@ -209,7 +209,7 @@
                                                 Register
                                             </a>
                                         @else
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ route('player.profile') }}">
                                                 Profile
                                             </a>
                                             <hr class="dropdown-divider">
