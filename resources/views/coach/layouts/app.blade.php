@@ -210,7 +210,7 @@
                                                 Register
                                             </a>
                                         @else
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="{{ route('coach.profile') }}">
                                                 Profile
                                             </a>
                                             <hr class="dropdown-divider">

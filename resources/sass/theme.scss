@@ -232,11 +232,16 @@ form {
 .toast {
 	border-radius: $radius;
 	overflow: hidden;
+	.toast-head {
+		border: 0;
+	}
 	.toast-body {
 		border-bottom-left-radius: 20px;
 		border-bottom-right-radius: 20px;
 		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(10px);
+		background: $white;
+		border:0;
 	}
 }
 

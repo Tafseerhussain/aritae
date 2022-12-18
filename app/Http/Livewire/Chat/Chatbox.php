@@ -48,8 +48,8 @@ class Chatbox extends Component
             if ((int) $this->selectConversation->id === (int)$event['conversation_id']) {
                 $broadcastMessage->read = 1;
                 $broadcastMessage->save();
+                $this->pushMessage($event['message']);
             }
-            $this->pushMessage($event['message']);
             $this->emitSelf('broadcastedMessageRead');
         }
         

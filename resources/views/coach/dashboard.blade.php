@@ -101,7 +101,9 @@
                     </a>
                     <h5>Conversations</h5>
                     <div class="conversations">
-
+                        @if (count($conversations) == 0)
+                            No Conversations Started!
+                        @endif
                         @foreach ($conversations as $conversation)
                             @php
                                 $user = \App\Models\User::firstWhere('id', $conversation->receiver_id);
