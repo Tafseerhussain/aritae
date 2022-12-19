@@ -335,6 +335,7 @@
                         <div class="col-12 mb-3 text-center call-text">
                             Someone is calling ...
                         </div>
+                        <audio id="ring" autoplay hidden></audio>
                         <div class="col-12 d-flex align-items-center justify-content-center">
                             <button class="btn btn-success btn-lg m-2" id="call_accept">Accept</button>
                             <button class="btn btn-danger btn-lg m-2" id="call_decline">Decline</buttion>
@@ -388,6 +389,16 @@
 
             $('#call_receive_modal').modal('hide');
             window.open('/call?partner_id='+partner_id+'&partner_name='+partner_name+'&action=accept_call&signal='+base64,'Aritae Call','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
+        });
+
+        $('#call_receive_modal').on('show.bs.modal', function(){
+            var ring = $('#ring');
+            ring.attr("src", "{{asset('audio/ring.mp3')}}");
+            ring.trigger("play");
+        });
+        $('#call_receive_modal').on('hide.bs.modal', function(){
+            var ring = $('#ring');
+            ring.attr("src", "");
         });
     });
     </script>

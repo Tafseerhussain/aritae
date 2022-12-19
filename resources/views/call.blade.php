@@ -120,7 +120,12 @@
             });
 
             audioCallParams.peer1.on("stream", (stream) => {
-                $('#voice_call')[0].srcObject = stream;
+                var audio = $('#voice_call')[0];
+                if ('srcObject' in audio) {
+                    audio.srcObject = stream
+                } else {
+                    audio.src = window.URL.createObjectURL(stream) // for older browsers
+                }
                 $('.call-status').text('Joining')
             });
 
@@ -194,8 +199,12 @@
             });
     
             audioCallParams.peer2.on("stream", (stream) => {
-                //this.videoCallParams.callAccepted = true;
-                $('#voice_call')[0].srcObject = stream;
+                var audio = $('#voice_call')[0];
+                if ('srcObject' in audio) {
+                    audio.srcObject = stream
+                } else {
+                    audio.src = window.URL.createObjectURL(stream) // for older browsers
+                }
                 $('.call-status').text('Joining')
             });
     
