@@ -25,9 +25,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/call', [App\Http\Controllers\CallController::class, 'index'])->name('call');
+Route::get('/video_call', [App\Http\Controllers\CallController::class, 'videoCall'])->name('video_call');
+Route::post('/video_call', [App\Http\Controllers\CallController::class, 'videoCall'])->name('video_call_post');
 // Endpoints to call or receive calls.
 Route::post('/audio/call-user', [App\Http\Controllers\CallController::class, 'callUser']);
 Route::post('/audio/accept-call', [App\Http\Controllers\CallController::class, 'acceptCall']);
+Route::post('/video/call-user', [App\Http\Controllers\CallController::class, 'videoCallUser']);
+Route::post('/video/accept-call', [App\Http\Controllers\CallController::class, 'acceptVideoCall']);
 
 // Route::group(['middleware' => 'player'], function () {
 //     Route::get('admin', 'adminController@adminDashboard');

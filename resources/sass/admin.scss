@@ -730,7 +730,7 @@
 }
 
 //Incoming call alert
-#call_receive_modal{
+#call_receive_modal, #video_call_receive_modal{
     .modal-content{
         background-color: black;
 		color: white;

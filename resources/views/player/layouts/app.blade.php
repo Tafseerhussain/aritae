@@ -348,10 +348,34 @@
             </div>
         </div>
     </div>
+    <div class="modal" id="video_call_receive_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100 text-center">Incoming Video Call</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mb-3 text-center video-call-text">
+                            Someone is calling ...
+                        </div>
+                        <div class="col-12 d-flex align-items-center justify-content-center">
+                            <button class="btn btn-success btn-lg m-2" id="video_call_accept">Accept</button>
+                            <button class="btn btn-danger btn-lg m-2" id="video_call_decline">Decline</buttion>
+                        </div>
+                    </div>
+                    <input type="text" id="video_partner_name" hidden>
+                    <input type="text" id="video_partner_id" hidden>
+                    <input type="text" id="video_signal" hidden>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
     $(document).ready(function(){
+        //Incoming audio call
         var channel = window.Echo.join("presence-call-channel");
         channel.listen("StartAudioChat", ( data ) => {
           if (data.type === "incomingCall" && data.userToCall == '{{Auth::user()->id}}') {
@@ -400,7 +424,98 @@
             var ring = $('#ring');
             ring.attr("src", "");
         });
+
+        //Incoming video call
+        var video_channel = window.Echo.join("presence-video-channel");
+        video_channel.listen("StartVideoChat", ( data ) => {
+          if (data.type === "incomingCall" && data.userToCall == '{{Auth::user()->id}}') {
+            // add a new line to the sdp to take care of error
+            const updatedSignal = {
+              ...data.signalData,
+              sdp: `${data.signalData.sdp}\n`,
+            };
+            
+            var partner_name = data.partnerName;
+            var partner_id = data.from;
+            var signal = JSON.stringify(updatedSignal);
+
+            $('#video_partner_name').val(partner_name);
+            $('#video_partner_id').val(partner_id);
+            $('#video_signal').val(signal);
+
+            $('.video_call-text').text(partner_name+" is calling ...");
+
+            $('#video_call_receive_modal').modal('show');
+          }
+        });
+
+        $('#video_call_decline').click(function(){
+            $('#video_call_receive_modal').modal('hide');
+        });
+        $('#video_call_accept').click(function(){
+            var partner_name = $('#video_partner_name').val();
+            var partner_id = $('#video_partner_id').val();
+            var signal = JSON.stringify($('#video_signal').val());
+
+            var words = CryptoJS.enc.Utf8.parse(signal); 
+            var base64 = CryptoJS.enc.Base64.stringify(words);
+
+
+            $('#video_call_receive_modal').modal('hide');
+            //window.open('/video_call?partner_id='+partner_id+'&partner_name='+partner_name+'&action=accept_call&signal='+base64,'Aritae Call','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
+            openWindowWithPost("/video_call", "AritaeVideoCall", {
+                partner_id: partner_id,
+                partner_name: partner_name,
+                action: 'accept_call',
+                signal: base64
+            });
+        });
+
+        $('#video_call_receive_modal').on('show.bs.modal', function(){
+            var ring = $('#ring');
+            ring.attr("src", "{{asset('audio/ring.mp3')}}");
+            ring.trigger("play");
+        });
+        $('#video_call_receive_modal').on('hide.bs.modal', function(){
+            var ring = $('#ring');
+            ring.attr("src", "");
+        });
+
+        //Fix autoplay block problem
+        $(document).on('click', function(){
+            var ring = $('#ring');
+            ring[0].play();
+        });
     });
+
+    function openWindowWithPost(url, title, data) {
+        var form = document.createElement("form");
+        form.target = title;
+        form.method = "POST";
+        form.action = url;
+        form.style.display = "none";
+
+        for (var key in data) {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = data[key];
+            form.appendChild(input);
+        }
+        
+        //CSRF token
+        var csrf = document.querySelector('meta[name="csrf-token"]').content;
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = '_token';
+        input.value = csrf;
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+        window.open(url, title,'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
+        form.submit();
+        document.body.removeChild(form);
+    }
     </script>
 </body>
 </html>

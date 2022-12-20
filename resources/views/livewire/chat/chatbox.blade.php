@@ -16,7 +16,7 @@
                 <a href="javascript:void(0)" id="start_call" data-id="{{$receiverInstance->id}}" data-name="{{$receiverInstance->full_name}}" class="icon">
                     <i class="fa-solid fa-phone"></i>
                 </a>
-                <a href="#" class="icon">
+                <a href="javascript:void(0)" id="start_video_call" data-id="{{$receiverInstance->id}}" data-name="{{$receiverInstance->full_name}}" class="icon">
                     <i class="fa-solid fa-video"></i>
                 </a>
                 <a href="#" class="icon">
@@ -106,6 +106,12 @@
                     var name = $(this).data('name');
 
                     window.open('/call?partner_id='+id+'&partner_name='+name+'&action=init_call','Aritae Call','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
+                });
+                $('#start_video_call').click(function(){
+                    var id = $(this).data('id');
+                    var name = $(this).data('name');
+
+                    window.open('/video_call?partner_id='+id+'&partner_name='+name+'&action=init_call','Aritae Call','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
                 });
             </script>
         @else

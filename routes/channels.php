@@ -25,3 +25,7 @@ Broadcast::channel('chat.{receiver}', function(User $user, $receiver) {
 Broadcast::channel('presence-call-channel', function($user) {
     return ['id' => $user->id, 'name' => $user->name];
 });
+
+Broadcast::channel('presence-video-channel', function($user) {
+    return ['id' => $user->id, 'name' => $user->name];
+});
