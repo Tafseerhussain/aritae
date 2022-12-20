@@ -32,10 +32,10 @@ nav.navbar {
 
 }
 
-.coaches-hero {
+.coaches-hero,
+.players-hero {
 	padding: 220px 0 150px;
-	background: url('/public/assets/img/coaches-bg.jpg') no-repeat;
-	background-size: cover;
+	background-size: cover !important;
 	color: $white;
 	h1 {
 		font-family: $oswald;
@@ -54,8 +54,14 @@ nav.navbar {
 		}
 	}
 }
+.coaches-hero {
+	background: url('/public/assets/img/coaches-bg.jpg') no-repeat;
+}
+.players-hero {
+	background: url('/public/assets/img/players-bg.jpg') no-repeat;
+}
 
-.all-coaches {
+.all-users {
 	padding: 100px 0;
 	.sorting {
 		span {

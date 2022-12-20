@@ -20,6 +20,12 @@ use App\Http\Livewire\Chat\Main;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/all-players', function () {
+    return view('all-players');
+})->name('all-players');
+Route::get('/all-coaches', function () {
+    return view('all-coaches');
+})->name('all-coaches');
 
 Auth::routes();
 

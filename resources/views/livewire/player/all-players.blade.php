@@ -57,13 +57,13 @@
                     Filter Results
                     </h2>
                     <p>
-                        What kind of coach are you looking for?
+                        What kind of player are you looking for?
                     </p>
                     <div class="filter">
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-group standard-search w-100">
-                                    <input type="text" class="form-control" placeholder="Search Coaches..." wire:model.lazy="searchCoach">
+                                    <input type="text" class="form-control" placeholder="Search Players..." wire:model.lazy="searchPlayer">
                                     <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="divider"></div>
                     <p>
-                        Coach Experience (years)
+                        Player Experience (years)
                     </p>
                     <div class="filter">
                         <div id="experience-slider" wire:ignore></div>
@@ -126,15 +126,15 @@
                         </div>
                     </div>
                     <div class="divider"></div>
-                    <p>Which gender of coach do you prefer?</p>
+                    <p>Which gender of player do you prefer?</p>
                     <div class="filter d-flex">
                         <div class="d-flex gender-preference flex-fill">
-                            <input class="form-check-input mt-0" type="radio" wire:model="gender" value="male" id="male-coach">
-                            <label for="male-coach">Male</label>
+                            <input class="form-check-input mt-0" type="radio" wire:model="gender" value="male" id="male-player">
+                            <label for="male-player">Male</label>
                         </div>
                         <div class="d-flex gender-preference flex-fill">
-                            <input class="form-check-input mt-0" type="radio" wire:model="gender" value="female" id="female-coach">
-                            <label for="female-coach">Female</label>
+                            <input class="form-check-input mt-0" type="radio" wire:model="gender" value="female" id="female-player">
+                            <label for="female-player">Female</label>
                         </div>
                         <div class="d-flex gender-preference flex-fill">
                             <input class="form-check-input mt-0" type="radio" wire:model="gender" value="any" id="any-gender" checked>
@@ -146,7 +146,7 @@
                     </button> --}}
                 </div>
             </div>
-            {{-- COACHES CARDS --}}
+            {{-- PLAYERS CARDS --}}
             <div class="col-lg-9">
                 <div class="row loading-state my-5" wire:loading>
                     <div class="col-12 text-center">
@@ -156,7 +156,7 @@
                     </div>
                 </div>
                 <div class="profile-cards" wire:loading.remove>
-                    @if ($coaches->isEmpty())
+                    @if ($players->isEmpty())
                     <div class="mt-5 text-center nothing-found">
                         <img src="{{ asset('assets/icons/not-found.svg') }}" alt="nothing found">
                         <h3 class="mt-5">No Records Found </h3>
@@ -166,36 +166,36 @@
                     </div>
                     @else
                     <div class="row g-3">
-                        @foreach ($coaches as $coach)
+                        @foreach ($players as $player)
                         
                         <div class="col-lg-4 col-md-6">
                             <div class="profile-card h-100">
                                 <div class="rate">
-                                    ${{ $coach->hourly_rate }} <span>/h</span>
+                                    ${{ $player->hourly_rate }} <span>/h</span>
                                 </div>
                                 <div class="card-cover">
-                                    <img src="{{ asset($coach->coach->cover_img) }}" alt="">
+                                    <img src="{{ asset($player->player->cover_img) }}" alt="">
                                 </div>
                                 <div class="card-profile-img">
-                                    <img src="{{ asset($coach->coach->profile_img) }}" alt="">
+                                    <img src="{{ asset($player->player->profile_img) }}" alt="">
                                 </div>
                                 <div class="card-profile-meta">
                                     <div class="name">
-                                        {{ $coach->full_name }}
+                                        {{ $player->full_name }}
                                     </div>
                                     <div class="designation">
-                                        <span>{{ $coach->coach->designation }}</span><br>
+                                        <span>{{ $player->player->designation }}</span><br>
                                         <span class="exp">
-                                            for {{ $coach->experience }} year(s)
+                                            for {{ $player->experience }} year(s)
                                         </span>
-                                        <span>{{ $coach->coach->sport }}</span>
+                                        <span>{{ $player->player->sport }}</span>
                                     </div>
                                     <div class="rating">
-                                        @for ($i = 1; $i <= $coach->coach->rating; $i++)
+                                        @for ($i = 1; $i <= $player->player->rating; $i++)
                                         <span><i class="fa-solid fa-star"></i></span>
                                         @endfor
                                         @php
-                                        $starsLeft = 5 - $coach->coach->rating;
+                                        $starsLeft = 5 - $player->player->rating;
                                         @endphp
                                         @for ($j = 1; $j <= $starsLeft; $j++)
                                         <span><i class="fa-regular fa-star"></i></span>
@@ -205,9 +205,9 @@
                                     <div class="divider"></div>
                                     <div class="location">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        <span>{{ $coach->country }}</span>
+                                        <span>{{ $player->country }}</span>
                                     </div>
-                                    <a class="btn btn-theme" href="{{ route('coach.profile.preview', $coach->id) }}">
+                                    <a class="btn btn-theme" href="{{ route('coach.profile.preview', $player->id) }}">
                                         View Profile
                                     </a>
                                 </div>
@@ -219,7 +219,7 @@
                     <div class="row mt-5">
                         <div class="col-12 text-center">
                             <div class="pagination justify-content-center">
-                                {{ $coaches->links() }}
+                                {{ $players->links() }}
                             </div>
                         </div>
                     </div>
