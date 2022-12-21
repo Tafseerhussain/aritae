@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Sport;
 use App\Models\Coach;
 use App\Models\Player;
+use App\Models\PlayerParent;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,7 @@ class Registration extends Component
     public $step = 1;
 
     public $sports;
+    public $players;
 
     public $firstName = '';
     public $lastName;
@@ -27,10 +29,12 @@ class Registration extends Component
     public $confirmPassword;
     public $areaOfFocus = '';
     public $gender = 'male';
+    public $parentRelation;
 
     public function mount()
     {
         $this->sports = Sport::all();
+        $this->players = User::where('user_type_id', 4)->get();
         $this->areaOfFocus = $this->sports[0]['id'];
     }
 
@@ -49,6 +53,7 @@ class Registration extends Component
             'confirmPassword' => 'required',
             'areaOfFocus' => 'required',
             'gender' => 'required',
+            'parentRelation' => $this->step === 3 ? 'required' : 'nullable',
         ]);
 
         $user = new User;
@@ -59,7 +64,12 @@ class Registration extends Component
         $user->email = $this->email;
         $user->email_verified_at = now();
         $user->password = Hash::make($this->password);
-        $user->area_of_focus = $this->sports[$this->areaOfFocus]['name'];
+
+        if($this->step == 2 || $this->step == 4)
+            $user->area_of_focus = $this->sports[$this->areaOfFocus]['name'];
+        else
+            $user->area_of_focus = 0;
+
         $user->gender = $this->gender;
         $user->experience = 0;
         $user->hourly_rate = 0;
@@ -77,6 +87,17 @@ class Registration extends Component
             $coach->gender = $user->gender;
             $coach->sport = $user->area_of_focus;
             $coach->save();  
+
+        } elseif ($this->step == 3) {
+
+            $parent = new PlayerParent;
+            $parent->user_id = $user->id;
+            $parent->name = $user->full_name;
+            $parent->gender = $user->gender;
+            $parent->save();  
+
+            //Attach player to parent
+            $parent->players()->attach($this->parentRelation);
 
         } elseif ($this->step == 4) {
 

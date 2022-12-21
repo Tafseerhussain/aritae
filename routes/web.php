@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoachController;
+use App\Http\Controllers\ParentController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Livewire\Chat\CreateChat;
 use App\Http\Livewire\Chat\Main;
@@ -67,6 +68,11 @@ Route::group(['middleware' => 'player'], function () {
     // Chat Routes
     Route::get('/player/chat/users', [PlayerController::class, 'chatPlayers'])->name('player.chat.users');
     Route::get('/player/chat{key?}', [PlayerController::class, 'playerChat'])->name('player.chat');
+});
+
+Route::group(['middleware' => 'parent'], function () {
+    Route::get('/parent/dashboard', [ParentController::class, 'index'])->name('parent.dashboard');
+    Route::get('/parent/profile', [ParentController::class, 'profile'])->name('parent.profile');
 });
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');

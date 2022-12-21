@@ -3,27 +3,22 @@
     "file": "assets/default-cover.5cd161fc.jpg",
     "src": "public/assets/img/default/default-cover.jpg"
   },
-  "public/assets/img/players-bg.jpg": {
-    "file": "assets/players-bg.e9df78d3.jpg",
-    "src": "public/assets/img/players-bg.jpg"
-  },
   "public/assets/img/coaches-bg.jpg": {
     "file": "assets/coaches-bg.6f7352cf.jpg",
     "src": "public/assets/img/coaches-bg.jpg"
   },
+  "public/assets/img/players-bg.jpg": {
+    "file": "assets/players-bg.e9df78d3.jpg",
+    "src": "public/assets/img/players-bg.jpg"
+  },
   "resources/js/app.js": {
-    "file": "assets/app.8ce7cc7f.js",
+    "file": "assets/app.e7d71e63.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/sass/call.scss": {
     "file": "assets/call.16b26ea8.css",
     "src": "resources/sass/call.scss",
-    "isEntry": true
-  },
-  "resources/sass/theme.scss": {
-    "file": "assets/theme.c283de2f.css",
-    "src": "resources/sass/theme.scss",
     "isEntry": true
   },
   "resources/sass/app.scss": {
@@ -34,6 +29,11 @@
   "resources/sass/admin.scss": {
     "file": "assets/admin.1f9bf36a.css",
     "src": "resources/sass/admin.scss",
+    "isEntry": true
+  },
+  "resources/sass/theme.scss": {
+    "file": "assets/theme.c283de2f.css",
+    "src": "resources/sass/theme.scss",
     "isEntry": true
   }
 }

@@ -17,6 +17,9 @@
                     @if (Auth::user()->user_type_id == 2)
                         <strong>Redirecting...</strong>
                         <script>window.location = "/coach/dashboard";</script>
+                    @elseif (Auth::user()->user_type_id == 3)
+                        <strong>Redirecting...</strong>
+                        <script>window.location = "/parent/dashboard";</script>
                     @elseif (Auth::user()->user_type_id == 4)
                         <strong>Redirecting...</strong>
                         <script>window.location = "/player/dashboard";</script>

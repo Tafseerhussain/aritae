@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="register-type">
+                                        <div class="register-type" wire:click="changeStep(3)">
                                             <img src="{{ asset('assets/icons/parent.svg') }}" alt="player">
                                             <h2>
                                                 Join as a Parent
@@ -84,13 +84,15 @@
         </footer>
         @endif
 
-        @if ($step == 4 || $step == 2)
+        @if ($step == 4 || $step == 2 || $step == 3)
         {{-- STEP 2 --}}
         <div class="row justify-content-center registration-form">
             <div class="row">
                 <div class="col-md-4 img-portion">
                     @if ($step == 2)
                         <img src="{{ asset('assets/img/auth/coach-register.jpg') }}" alt="coach register">
+                    @elseif ($step == 3)
+                        <img src="{{ asset('assets/img/auth/parent-register.jpg') }}" alt="player register">
                     @elseif ($step == 4)
                         <img src="{{ asset('assets/img/auth/player-register.jpg') }}" alt="player register">
                     @endif
@@ -121,6 +123,8 @@
                                     <h2>
                                         @if ($step == 2)
                                             Coach Registration
+                                        @elseif($step == 3)
+                                            Parent Registration
                                         @elseif($step == 4)
                                             Player Registration
                                         @endif  
@@ -184,6 +188,7 @@
                                                 @enderror
                                             </div>
 
+                                            @if($step == 2 || $step == 4)
                                             <div class="col-12 mb-3">
                                                 <label for="areaOfFocus" class="col-form-label">{{ __('Area of Focus') }}</label>
                                                 <select class="form-control form-select @error('areaOfFocus') is-invalid @enderror" wire:model="areaOfFocus">
@@ -198,6 +203,22 @@
                                                     </span>
                                                 @enderror
                                             </div>
+                                            @elseif($step == 3)
+                                            <div class="col-12 mb-3">
+                                                <label for="parentRelation" class="col-form-label">{{ __('Relation with') }}</label>
+                                                <select class="form-control form-select @error('parentRelation') is-invalid @enderror" wire:model="parentRelation">
+                                                    <option value="" selected>Please Select...</option>
+                                                    @foreach ($players as $player)
+                                                        <option value="{{ $player->id }}">{{ $player->full_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('parentRelation')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            @endif
 
                                             <div class="col-12 mb-3">
                                                 <label for="gender" class="col-form-label">Gender</label>

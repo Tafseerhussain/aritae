@@ -52,6 +52,11 @@ class Player extends Model
         return $this->belongsToMany(Coach::class);
     }
 
+    public function parents()
+    {
+        return $this->belongsToMany(PlayerParent::class, 'parent_player', 'player_id', 'parent_id');
+    }
+
     public function requests()
     {
         return $this->belongsToMany(HireRequest::class);

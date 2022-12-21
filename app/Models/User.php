@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->hasOne(Coach::class);
     }
 
+    public function parent()
+    {
+        return $this->hasOne(PlayerParent::class);
+    }
+
     public function player()
     {
         return $this->hasOne(Player::class);
