@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\PlayerController;
@@ -73,6 +74,12 @@ Route::group(['middleware' => 'player'], function () {
 Route::group(['middleware' => 'parent'], function () {
     Route::get('/parent/dashboard', [ParentController::class, 'index'])->name('parent.dashboard');
     Route::get('/parent/profile', [ParentController::class, 'profile'])->name('parent.profile');
+});
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('/admin/sports', [AdminController::class, 'sports'])->name('admin.sports');
 });
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');

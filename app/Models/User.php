@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->hasOne(Player::class);
     }
 
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
     public function sports()
     {
         return $this->belongsToMany(Sport::class);
