@@ -87,6 +87,12 @@
                                                     </a>
                                                 </li>
                                                 <li>
+                                                    <a href="{{ route('coach.profile') }}#hourlyrate" class="link-dark rounded">
+                                                        <i class="bi bi-cash-coin"></i>
+                                                        <span>Hourly Rate</span>
+                                                    </a>
+                                                </li>
+                                                <li>
                                                     <a href="{{ route('coach.profile') }}#experience" class="link-dark rounded">
                                                         <i class="fa-solid fa-briefcase"></i>
                                                         <span>Coaching Experience</span>

@@ -21,7 +21,7 @@
                         <td>{{date("Y-m-d", strtotime($sport->created_at))}}</td>
                         <td>
                             <button class="btn btn-sm btn-secondary" wire:click="openEditSport({{$sport->id}})"><i class="bi bi-pencil-square"></i></button>
-                            <button class="btn btn-sm btn-danger" wire:click="deleteSport({{$sport->id}})"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-danger" wire:click="deleteSportConfirm({{$sport->id}})"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                     @endforeach
@@ -89,6 +89,27 @@
         </div>
     </div>
 
+    <div wire:ignore.self class="modal fade" id="deleteSportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form wire:submit.prevent="deleteSport">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete sport</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this sport?
+                        <input type="text" wire:model="delete_id" hidden>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         window.addEventListener('hideCreateModal', event => {
             $("#createSportModal").modal('hide');
@@ -100,6 +121,14 @@
 
         window.addEventListener('hideEditModal', event => {
             $("#editSportModal").modal('hide');
+        })
+
+        window.addEventListener('openDeleteModal', event => {
+            $("#deleteSportModal").modal('show');
+        })
+
+        window.addEventListener('hideDeleteModal', event => {
+            $("#deleteSportModal").modal('hide');
         })
     </script>
 </div>

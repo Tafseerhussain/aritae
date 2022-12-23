@@ -13,6 +13,13 @@
 				</h2>
 				@livewire('coach.profile.personal-information')
 
+				{{-- Hourly Rate --}}
+				<h2 class="mb-3 mt-5 text-center fs-2" id="hourlyrate">
+					<i class="bi bi-cash-coin"></i>
+					<span>Hourly Rate</span>
+				</h2>
+				@livewire('coach.profile.hourly-rate')
+
 				{{-- COACHING EXPERINECE --}}
 				<h2 class="mb-3 mt-5 text-center fs-2" id="experience">
 					<i class="bi bi-briefcase"></i>

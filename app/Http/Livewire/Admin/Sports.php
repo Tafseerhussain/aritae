@@ -13,6 +13,7 @@ class Sports extends Component
     public $edit_name;
     public $edit_category;
     public $edit_id;
+    public $delete_id;
 
     public function mount()
     {
@@ -35,12 +36,23 @@ class Sports extends Component
         $this->dispatchBrowserEvent('hideCreateModal');
     }
 
-    public function deleteSport($id){
+    public function deleteSportConfirm($id){
         $sport = Sport::find($id);
+        if($sport){
+            $this->delete_id = $sport->id;
+
+            $this->dispatchBrowserEvent('openDeleteModal');
+        }
+    }
+
+    public function deleteSport(){
+        $sport = Sport::find($this->delete_id);
         if($sport){
             $sport->delete();
 
             $this->sports = Sport::all();
+
+            $this->dispatchBrowserEvent('hideDeleteModal');
         }
     }
 
