@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Coach\Profile;
 
 use Livewire\Component;
+use App\Models\CoachingExperience as Experience;
 use Auth;
 
 class CoachingExperience extends Component
@@ -48,6 +49,9 @@ class CoachingExperience extends Component
         $exp->end_year = $this->endingYear;
         $exp->save();
 
+
+        //Update experience
+        $this->calculateExperience();
         
         if ($this->editSave == 1) {
             $this->reset();
@@ -87,6 +91,10 @@ class CoachingExperience extends Component
     {
         $exp = \App\Models\CoachingExperience::find($this->deleteRecord);
         $exp->delete();
+
+        //Update experience
+        $this->calculateExperience();
+
         session()->flash('success_message', 'Experience Deleted.');
     }
 
@@ -94,6 +102,40 @@ class CoachingExperience extends Component
     {
         $this->editSave = $id;
         $this->reset();
+    }
+
+    private function calculateExperience(){
+        $experiences = Experience::where('coach_id', Auth::user()->coach->id)->get();
+
+        $total_months = 0;
+        foreach($experiences as $experience){
+            $months = array(
+                'January' => 1,
+                'February' => 2,
+                'March' => 3,
+                'April' => 4,
+                'May' => 5,
+                'June' => 6,
+                'July' => 7,
+                'August' => 8,
+                'September' => 9,
+                'October' => 10,
+                'November' => 11,
+                'December' => 12,
+            );
+
+            $months = (($experience->end_year - $experience->start_year) * 12) + ($months[$experience->end_month] - $months[$experience->start_month]);
+            $total_months += $months;
+
+        }
+
+        $experience = (int) $total_months / 12;
+        $user = Auth::user();
+        $user->experience = $experience;
+        $user->save();
+
+        $user->coach->experience = $experience;
+        $user->coach->save();
     }
 
     public function render()

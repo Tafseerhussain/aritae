@@ -62,7 +62,9 @@ class PlayingExperience extends Component
 
         $exp->save();
 
-        
+        //Update experience
+        $this->calculateExperience();
+
         if ($this->editSave == 1) {
             $this->reset();
             session()->flash('success_message', 'Experience Added.');
@@ -109,11 +111,49 @@ class PlayingExperience extends Component
     {
         $exp = PlayerExperience::find($this->deleteRecord);
         $exp->delete();
+
+        //Update experience
+        $this->calculateExperience();
+
         session()->flash('success_message', 'Experience Deleted.');
     }
     public function hideMessage()
     {
         session()->forget('success_message');
+    }
+
+    private function calculateExperience(){
+        $experiences = PlayerExperience::where('player_id', Auth::user()->player->id)->get();
+
+        $total_months = 0;
+        foreach($experiences as $experience){
+            $months = array(
+                'January' => 1,
+                'February' => 2,
+                'March' => 3,
+                'April' => 4,
+                'May' => 5,
+                'June' => 6,
+                'July' => 7,
+                'August' => 8,
+                'September' => 9,
+                'October' => 10,
+                'November' => 11,
+                'December' => 12,
+            );
+
+            $months = (($experience->end_year - $experience->start_year) * 12) + ($months[$experience->end_month] - $months[$experience->start_month]);
+            $total_months += $months;
+
+        }
+
+        $experience = (int) $total_months / 12;
+        $user = Auth::user();
+        $user->experience = $experience;
+        $user->save();
+
+        $user->player->experience = $experience;
+        $user->player->save();
     }
 
     public function render()

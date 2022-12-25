@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-lg-6 mb-3">
                     <label for="position" class="col-form-label">Position / Title</label>
-                    <input id="position" type="text" class="form-control @error('position') is-invalid @enderror" placeholder="Football Coach" wire:model="position">
+                    <input id="position" type="text" class="form-control @error('position') is-invalid @enderror" placeholder="Football Coach" wire:model.defer="position">
                     @error('position')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-12 mb-3">
                     <label for="experienceDescription" class="col-form-label">Description</label>
-                    <textarea rows="3" class="form-control @error('description') is-invalid @enderror" placeholder="Start typing here..." wire:model="description"></textarea>
+                    <textarea rows="3" class="form-control @error('description') is-invalid @enderror" placeholder="Start typing here..." wire:model.defer="description"></textarea>
                     @error('description')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -80,9 +80,9 @@
                 <div class="col-lg mb-3">
                     <div class="row g-2">
                         <div class="col-7">
-                            <select class="form-select form-control  @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model="startingMonth">
+                            <select class="form-select form-control  @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
                                 <option value='' disabled selected>--Select Month--</option>
-                                <option value='Janaury'>Janaury</option>
+                                <option value='January'>January</option>
                                 <option value='February'>February</option>
                                 <option value='March'>March</option>
                                 <option value='April'>April</option>
@@ -97,7 +97,7 @@
                             </select>
                         </div>
                         <div class="col-5">
-                            <select class="form-select form-control  @error('startingYear') is-invalid @enderror" aria-label="Default select example" wire:model="startingYear">
+                            <select class="form-select form-control  @error('startingYear') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingYear">
                                 <option value="" selected>--Select Year--</option>
                                 <option value="1965">1965</option>
                                 <option value="1966">1966</option>
@@ -170,9 +170,9 @@
                 <div class="col-lg mb-3">
                     <div class="row g-2">
                         <div class="col-7">
-                            <select class="form-select form-control  @error('endingMonth') is-invalid @enderror" aria-label="Default select example" wire:model="endingMonth">
+                            <select class="form-select form-control  @error('endingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="endingMonth">
                                 <option selected value='' disabled>--Select Month--</option>
-                                <option value='Janaury'>Janaury</option>
+                                <option value='January'>January</option>
                                 <option value='February'>February</option>
                                 <option value='March'>March</option>
                                 <option value='April'>April</option>
@@ -187,7 +187,7 @@
                             </select>
                         </div>
                         <div class="col-5">
-                            <select class="form-select form-control  @error('endingYear') is-invalid @enderror" aria-label="Default select example" wire:model="endingYear">
+                            <select class="form-select form-control  @error('endingYear') is-invalid @enderror" aria-label="Default select example" wire:model.defer="endingYear">
                                 <option value="" selected disabled>--Select Year--</option>
                                 <option value="1965">1965</option>
                                 <option value="1966">1966</option>

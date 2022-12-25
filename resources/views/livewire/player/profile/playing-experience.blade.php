@@ -93,7 +93,7 @@
                         <div class="col-7">
                             <select class="form-select form-control  @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
                                 <option value='' disabled selected>--Select Month--</option>
-                                <option value='Janaury'>Janaury</option>
+                                <option value='January'>January</option>
                                 <option value='February'>February</option>
                                 <option value='March'>March</option>
                                 <option value='April'>April</option>
@@ -183,7 +183,7 @@
                         <div class="col-7">
                             <select class="form-select form-control  @error('endingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="endingMonth">
                                 <option selected value='' disabled>--Select Month--</option>
-                                <option value='Janaury'>Janaury</option>
+                                <option value='January'>January</option>
                                 <option value='February'>February</option>
                                 <option value='March'>March</option>
                                 <option value='April'>April</option>
