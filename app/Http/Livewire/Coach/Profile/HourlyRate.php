@@ -16,6 +16,10 @@ class HourlyRate extends Component
     }
 
     public function submit(){
+        $this->validate([
+            'hourlyRate' => 'required|numeric|min:1',
+        ]);
+
         $user = Auth::user();
 
         $user->hourly_rate = $this->hourlyRate;
@@ -25,6 +29,9 @@ class HourlyRate extends Component
         $user->coach->save();
 
         $this->hourlyRate = Auth::user()->hourly_rate;
+
+        //Emit score update
+        $this->emit('shouldUpdateScore');
 
         $this->emit('hourlyRateUpdated');
     }

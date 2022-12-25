@@ -78,6 +78,10 @@ class Certification extends Component
             session()->flash('success_message', 'Certificate Updated.');
             
         }
+
+        //Emit score update
+        $this->emit('shouldUpdateScore');
+
         $this->reset();
         
     }
@@ -110,6 +114,10 @@ class Certification extends Component
             \File::delete($certificate->certificate);
         }
         $certificate->delete();
+
+        //Emit score update
+        $this->emit('shouldUpdateScore');
+
         session()->flash('success_message', 'Certificate Deleted.');
     }
 

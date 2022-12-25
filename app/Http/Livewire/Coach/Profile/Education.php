@@ -44,6 +44,10 @@ class Education extends Component
         $education->end_month = $this->endingMonth;
         $education->end_year = $this->endingYear;
         $education->save();
+
+        //Emit score update
+        $this->emit('shouldUpdateScore');
+
         $this->reset();
     }
 
@@ -75,6 +79,10 @@ class Education extends Component
     {
         $education = CoachEducation::find($this->deleteRecord);
         $education->delete();
+
+        //Emit score update
+        $this->emit('shouldUpdateScore');
+
         session()->flash('success_message', 'Education Deleted.');
     }
 

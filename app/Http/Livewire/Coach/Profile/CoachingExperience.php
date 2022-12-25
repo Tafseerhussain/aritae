@@ -52,6 +52,9 @@ class CoachingExperience extends Component
 
         //Update experience
         $this->calculateExperience();
+
+        //Emit score update
+        $this->emit('shouldUpdateScore');
         
         if ($this->editSave == 1) {
             $this->reset();
@@ -94,6 +97,9 @@ class CoachingExperience extends Component
 
         //Update experience
         $this->calculateExperience();
+
+        //Emit score update
+        $this->emit('shouldUpdateScore');
 
         session()->flash('success_message', 'Experience Deleted.');
     }

@@ -30,6 +30,9 @@ class AthleticInformation extends Component
             ]
         );
 
+        //Emit score update
+        $this->emit('shouldUpdateScore');
+
         session()->flash('success_message', 'Information Updated.');
     }
 

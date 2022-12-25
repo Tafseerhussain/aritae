@@ -65,6 +65,9 @@ class PlayingExperience extends Component
         //Update experience
         $this->calculateExperience();
 
+        //Emit score update
+        $this->emit('shouldUpdateScore');
+
         if ($this->editSave == 1) {
             $this->reset();
             session()->flash('success_message', 'Experience Added.');
@@ -114,6 +117,9 @@ class PlayingExperience extends Component
 
         //Update experience
         $this->calculateExperience();
+
+        //Emit score update
+        $this->emit('shouldUpdateScore');
 
         session()->flash('success_message', 'Experience Deleted.');
     }

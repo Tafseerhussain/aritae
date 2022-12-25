@@ -27,6 +27,10 @@ class PersonalInformation extends Component
     public $profileImage;
     public $coverImage;
 
+    public $profileScore = 0;
+
+    protected $listeners = ['shouldUpdateScore' => 'updateProfileScore'];
+
     public function mount()
     {
         $user = Auth::user();
@@ -40,6 +44,59 @@ class PersonalInformation extends Component
         $this->zipCode = $coach->zip;
         $this->country = $coach->country;
         $this->about = $coach->about;
+
+        $this->profileScore = $this->profileCompleteness();
+    }
+
+    public function updateProfileScore(){
+        $this->profileScore = $this->profileCompleteness();
+    }
+
+    private function profileCompleteness(){
+        $score = 0;
+
+        //Personal information - possible score 30, 3 for each
+        $user = Auth::user();
+        $coach = Coach::where('user_id', $user->id)->with('experiences', 'certificates', 'educations')->first();
+
+        if(isset($user->first_name))
+            $score += 3;
+        if(isset($user->last_name))
+            $score += 3;
+        if(isset($coach->date_of_birth))
+            $score += 3;
+        if(isset($coach->phone))
+            $score += 3;
+        if(isset($coach->location))
+            $score += 3;
+        if(isset($coach->city))
+            $score += 3;
+        if(isset($coach->zip))
+            $score += 3;
+        if(isset($coach->country))
+            $score += 3;
+        if(isset($coach->about))
+            $score += 3;
+        if(isset($coach->profile_img))
+            $score += 3;
+
+        //Hourly Rate section, possible score 10
+        if(isset($coach->hourly_rate) && $coach->hourly_rate > 0)
+            $score += 10;
+        
+        //Coaching Experiences, possible score 20
+        if($coach->experiences()->exists())
+            $score += 20;
+        
+        //Certificates, possible score 20
+        if($coach->certificates()->exists())
+            $score += 20;
+        
+        //Educations, possible score 20
+        if($coach->educations()->exists())
+            $score += 20;
+
+        return $score;
     }
 
     public function submit()
@@ -81,6 +138,9 @@ class PersonalInformation extends Component
         $coach->save();
         $user->save();
 
+        //Emit score update
+        $this->emit('shouldUpdateScore');
+
         session()->flash('success_message', 'Your Information has been updated.');
     }
 
@@ -101,6 +161,9 @@ class PersonalInformation extends Component
         $imgUrl = 'storage/'.$img;
         $coach->profile_img = $imgUrl;
         $coach->save();
+
+        //Emit score update
+        $this->emit('shouldUpdateScore');
 
         $this->profileImage = null;
         session()->flash('success_message', 'Profile Image Updated.');
