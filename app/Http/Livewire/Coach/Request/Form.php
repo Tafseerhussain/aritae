@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Coach\Request;
 
 use Livewire\Component;
 use App\Models\HireRequest;
+use App\Events\CoachConnect;
+use App\Models\User;
 use Auth;
 
 class Form extends Component
@@ -35,6 +37,22 @@ class Form extends Component
             $request->name = Auth::user()->full_name;
             $request->email = Auth::user()->email;
             $request->save();
+
+            $coach = User::find($this->coach_id);
+
+            //Send pusher notification
+            broadcast(new CoachConnect(
+                Auth()->user(),
+                $coach,
+                'initiated'
+            ));
+
+            $this->dispatchBrowserEvent('coach_connect_notification', [
+                'title' => 'Requested sent',
+                'type' => 'info',
+                'message' => 'Your hiring request sent to coach '.$coach->full_name,
+            ]);
+
             $this->reset();
             session()->flash('success_message', 'Request Sent.');
         } else {

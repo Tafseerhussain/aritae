@@ -8,6 +8,7 @@ use App\Models\Player;
 use App\Models\Coach;
 use App\Models\HireRequest;
 use App\Models\Chat\Conversation;
+use App\Events\CoachConnect;
 use Auth;
 
 class CoachController extends Controller
@@ -44,8 +45,19 @@ class CoachController extends Controller
 
     public function deletePlayerRequest($id)
     {
+        $coach = Coach::where('user_id', Auth::user()->id)->first();
+        $player = Player::where('user_id', $id)->first();
+
         $req = HireRequest::where('player_id', $id)->where('coach_id', Auth::user()->id)->first();
         $req->delete();
+
+        //Send pusher notification
+        broadcast(new CoachConnect(
+            $coach->user,
+            $player->user,
+            'declined'
+        ));
+
         return redirect()->route('coach.requests')->with('success_message', 'Request Declined and Deleted!');
     }
 
@@ -57,6 +69,14 @@ class CoachController extends Controller
 
         $req = HireRequest::where('player_id', $id)->where('coach_id', Auth::user()->id)->first();
         $req->delete();
+
+        //Send pusher notification
+        broadcast(new CoachConnect(
+            $coach->user,
+            $player->user,
+            'accepted'
+        ));
+
         return redirect()->route('coach.requests')->with('success_message', 'Request accepted and added player to your list!');
     }
 

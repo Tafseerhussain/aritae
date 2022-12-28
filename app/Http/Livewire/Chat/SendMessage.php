@@ -8,16 +8,24 @@ use App\Models\Chat\Message;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use URL;
 
 
 class SendMessage extends Component
 {
+    use WithFileUploads;
+
     public $selectConversation;
     public $createMessage;
     public $receiverInstance;
     public $body;
+    public $image;
+    public $document;
 
-    protected $listeners = ['updateSendMessage', 'dispatchMessageSent'];
+    protected $listeners = ['updateSendMessage', 'dispatchMessageSent',
+            'upload:finished' => "fileUploadFinished",
+        ];
 
     public function updateSendMessage(Conversation $conversation, User $receiver)
     {
@@ -45,6 +53,20 @@ class SendMessage extends Component
         $this->dispatchBrowserEvent('chatUserSelected');
 
         $this->emitSelf('dispatchMessageSent');
+    }
+
+    public function fileUploadFinished($file){
+        if($file == 'image'){
+            $this->validate([
+                'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
+            ]);
+
+            $imageName = time().'.'.$this->image->extension();     
+            $this->image->storeAs('images/attachment', $imageName);
+            $this->body = URL::asset('images/attachment/'.$imageName);
+            
+            $this->sendMessage();
+        }
     }
 
     public function dispatchMessageSent()

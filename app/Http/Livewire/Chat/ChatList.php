@@ -25,6 +25,7 @@ class ChatList extends Component
             "echo-presence:presence-call-channel,here"=>'initPresentUser',
             "echo-presence:presence-call-channel,joining"=>'addPresentUser',
             "echo-presence:presence-call-channel,leaving"=>'removePresentUser',
+            'conversationStarted' => 'updateConversations',
             'chatUserSelected', 'refresh' => '$refresh',
         ];
     }
@@ -70,6 +71,15 @@ class ChatList extends Component
             $this->receiverInstance = User::firstWhere('id', $conversation->receiver_id);
         }
         return $this->receiverInstance;
+    }
+
+    public function updateConversations()
+    {
+        if (auth()->user()->user_type_id == 4) {
+            $this->conversations = Conversation::where('receiver_id', auth()->user()->id)->orderBy('last_time_message', 'DESC')->get();
+        } else if (auth()->user()->user_type_id == 2) {
+            $this->conversations = Conversation::where('sender_id', auth()->user()->id)->orderBy('last_time_message', 'DESC')->get();
+        }
     }
 
     public function mount()

@@ -314,6 +314,29 @@
                 toastr[event.detail.type]((event.detail.message.length > 35) ? event.detail.message.slice(0, 35) + '&hellip;' : event.detail.message, event.detail.title ?? '')
             }
         );
+
+        window.addEventListener('coach_connect_notification', 
+            event => {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-bottom-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+                toastr[event.detail.type](event.detail.message, event.detail.title ?? '')
+            }
+        );
     </script>
 
     @if(!Route::is('coach.chat'))
@@ -330,6 +353,22 @@
             });
     </script>
     @endif
+
+    <script type="module">
+        //Subscribe to Coach connect channel
+        window.Echo.private('coach-connect.{{Auth::user()->id}}')
+            .listen('CoachConnect', (e) => {
+                if(e.type == 'initiated'){
+                    var data = {
+                        "title" : "New player request",
+                        "type" : "info",
+                        "message": e.initiator_name + " requested to hire you as a coach",
+                    }
+                    var event = new CustomEvent('coach_connect_notification', { detail: data });
+                    window.dispatchEvent(event);
+                }
+            });
+    </script>
 
     @stack('custom-scripts')
 
