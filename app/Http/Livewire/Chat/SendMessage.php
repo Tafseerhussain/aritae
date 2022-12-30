@@ -24,7 +24,7 @@ class SendMessage extends Component
     public $document;
 
     protected $listeners = ['updateSendMessage', 'dispatchMessageSent',
-            'upload:finished' => "fileUploadFinished",
+            'upload:finished' => 'fileUploadFinished',
         ];
 
     public function updateSendMessage(Conversation $conversation, User $receiver)
@@ -55,20 +55,6 @@ class SendMessage extends Component
         $this->emitSelf('dispatchMessageSent');
     }
 
-    public function fileUploadFinished($file){
-        if($file == 'image'){
-            $this->validate([
-                'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
-            ]);
-
-            $imageName = time().'.'.$this->image->extension();     
-            $this->image->storeAs('images/attachment', $imageName);
-            $this->body = URL::asset('images/attachment/'.$imageName);
-            
-            $this->sendMessage();
-        }
-    }
-
     public function dispatchMessageSent()
     {
         broadcast(new MessageSent(
@@ -78,6 +64,32 @@ class SendMessage extends Component
             $this->receiverInstance
         ));
     }
+
+    public function fileUploadFinished($file){
+        if($file == 'image'){
+            $this->validate([
+                'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
+            ]);
+
+            $imageName = time().'_'.str_replace(' ', '_', $this->image->getClientOriginalName());     
+            $this->image->storeAs('public/images/attachment', $imageName);
+            $this->body = URL::asset('storage/images/attachment/'.$imageName);
+            
+            $this->sendMessage();
+        }
+        if($file == 'document'){
+            $this->validate([
+                'document' => ['required', 'mimes:pdf,doc,docx,txt,xls,xlsx,ppt,pptx', 'max:25600']
+            ]);
+
+            $documentName = time().'_'.str_replace(' ', '_', $this->document->getClientOriginalName());     
+            $this->document->storeAs('public/documents/attachment', $documentName);
+            $this->body = URL::asset('storage/documents/attachment/'.$documentName);
+            
+            $this->sendMessage();
+        }
+    }
+
 
     public function render()
     {

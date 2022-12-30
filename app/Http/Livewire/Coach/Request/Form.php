@@ -70,6 +70,7 @@ class Form extends Component
     {
         return view('livewire.coach.request.form',  [
             'requested' => HireRequest::where('player_id', Auth::user()->id)->where('coach_id', session('coach_id'))->first(),
+            'hired' => Auth::user()->player->coaches()->where('user_id', $this->coach_id)->first(),
         ]);
     }
 }

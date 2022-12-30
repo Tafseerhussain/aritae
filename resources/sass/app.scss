@@ -544,3 +544,22 @@ nav.navbar {
 		}
 	}
 }
+
+/* Notification Color */
+.toast-info{
+	background-color: $green !important;
+}
+
+//Incoming call alert
+#call_receive_modal, #video_call_receive_modal{
+    .modal-content{
+        background-color: black;
+		color: white;
+		border-radius: 5px;
+		.modal-header{
+			border-radius: 0px;
+			border-bottom-color: #121212;
+			text-align: center;
+		}
+    }
+}
