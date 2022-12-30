@@ -1,6 +1,10 @@
 <div class="hire-coach-component">
 
-    @if ($requested == '[]' || $requested == '')
+    @if($hired)
+        <div class="btn btn-success mt-4"><code class="text-white">Hired</code></div>
+    @elseif($requested)
+        <div class="btn btn-primary mt-4"><code class="text-white">Request Already Sent</code></div>
+    @else
     <div class="loader-bg" wire:loading>
         <div class="loader-self">
             <span class="loader"></span>
@@ -69,13 +73,6 @@
         <span>Hire this coach</span>
         <i class="bi bi-arrow-right-circle-fill"></i>
     </button>
-    
-    @else
-        @if ($requested->accepted == 0)
-            <div class="btn btn-primary mt-4"><code class="text-white">Request Already Sent</code></div>
-        @elseif($requested->accepted == 1)
-            <div class="btn btn-success mt-4"><code class="text-white">Hired</code></div>
-        @endif
     @endif
 </div>
 

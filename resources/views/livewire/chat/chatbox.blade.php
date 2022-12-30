@@ -62,7 +62,15 @@
                 <p class="message {{ auth()->id() == $message->sender_id ? 'right-message':'left-message' }}">
                         {{-- expr --}}
                     
+                    @if(filter_var($message->body, FILTER_VALIDATE_URL) === FALSE)
                     {{ $message->body }}
+                    @else
+                        @if(in_array(pathinfo($message->body, PATHINFO_EXTENSION), array('jpeg','png','jpg','gif','svg')))
+                            <img class="img-fluid" alt="Attachment" src="{{$message->body}}">
+                        @else
+                            <a href="{{$message->body}}" target="_blank">{{$message->body}}</a>
+                        @endif
+                    @endif
                     @if ($message->user->id == auth()->user()->id)
                         
                             <span class="sent {{ $message->read == 0 ? '':'read' }}">
