@@ -20,6 +20,7 @@ class SendMessage extends Component
     public $createMessage;
     public $receiverInstance;
     public $body;
+    public $url = null;
     public $image;
     public $document;
 
@@ -44,6 +45,12 @@ class SendMessage extends Component
             'receiver_id' => $this->receiverInstance->id,
             'body' => $this->body,
         ]);
+
+        if($this->url !== null){
+            $this->createMessage->url = $this->url;
+            $this->createMessage->save();
+        }
+        
         $this->selectConversation->last_time_message = $this->createMessage->created_at;
         $this->selectConversation->save();
 
@@ -73,7 +80,10 @@ class SendMessage extends Component
 
             $imageName = time().'_'.str_replace(' ', '_', $this->image->getClientOriginalName());     
             $this->image->storeAs('public/images/attachment', $imageName);
-            $this->body = URL::asset('storage/images/attachment/'.$imageName);
+            $url = URL::asset('storage/images/attachment/'.$imageName);
+            $name = $this->image->getClientOriginalName();
+            $this->url = $url;
+            $this->body = 'Image';
             
             $this->sendMessage();
         }
@@ -84,8 +94,10 @@ class SendMessage extends Component
 
             $documentName = time().'_'.str_replace(' ', '_', $this->document->getClientOriginalName());     
             $this->document->storeAs('public/documents/attachment', $documentName);
-            $this->body = URL::asset('storage/documents/attachment/'.$documentName);
-            
+            $url = URL::asset('storage/documents/attachment/'.$documentName);
+            $name = $this->document->getClientOriginalName();
+            $this->url = $url;
+            $this->body = $name;
             $this->sendMessage();
         }
     }
