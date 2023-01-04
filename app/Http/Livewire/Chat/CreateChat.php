@@ -8,10 +8,13 @@ use App\Models\User;
 use App\Models\Coach;
 use App\Models\Chat\Conversation;
 use App\Models\Chat\Message;
+use Auth;
 
 class CreateChat extends Component
 {
     public $coach;
+    public $coaches;
+    public $users;
     public $message = 'Hi';
     public $receiver_id = 0;
 
@@ -19,11 +22,12 @@ class CreateChat extends Component
 
     public function mount($coach_id)
     {
-        $this->coach = Coach::where('user_id', $coach_id)->first();    
+        
     }
 
     public function openMessageModal($receiver_id){
         $this->receiver_id = $receiver_id;
+        \Log::error($this->coaches);
 
         $this->dispatchBrowserEvent('openNewMessageModal');
     }
@@ -36,11 +40,21 @@ class CreateChat extends Component
 
         if (count($checkedConversation) == 0) {
             
-            $createConversation = Conversation::create([
-                'receiver_id' => $this->receiver_id,
-                'sender_id' => auth()->user()->id,
-                'last_time_message' => now(),
-            ]);
+            if(Auth::user()->user_type_id == 2){
+                $createConversation = Conversation::create([
+                    'receiver_id' => $this->receiver_id,
+                    'sender_id' => auth()->user()->id,
+                    'last_time_message' => now(),
+                ]);
+            }
+            else if(Auth::user()->user_type_id == 3){
+                $createConversation = Conversation::create([
+                    'sender_id' => $this->receiver_id,
+                    'receiver_id' => auth()->user()->id,
+                    'last_time_message' => now(),
+                ]);
+            }
+
             $createMessage = Message::create([
                 'conversation_id' => $createConversation->id,
                 'sender_id' => auth()->user()->id,
@@ -71,8 +85,28 @@ class CreateChat extends Component
 
     public function render()
     {
+        if(Auth::user()->user_type_id == 2)
+            $this->coach = Auth::user()->coach->players;
+        
+        else if(Auth::user()->user_type_id == 3){
+            $coach_array = array();
+            $coach_ids = array();
+            $parent = Auth::user()->parent;
+            foreach($parent->players as $player){
+                foreach($player->coaches as $coach){
+                    if(!in_array($coach->id, $coach_ids)){
+                        array_push($coach_array, $coach);
+                        array_push($coach_ids, $coach->id);
+                    }
+                }
+            }
+            $this->coaches = collect($coach_array);
+        }
+
+        $this->users = (isset($this->coach)) ? $this->coach : $this->coaches;
+        
         return view('livewire.chat.create-chat', [
-            'players' => $this->coach->players,
+            'users' => $this->users,
         ]);
     }
 }

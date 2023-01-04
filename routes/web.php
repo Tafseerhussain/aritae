@@ -74,6 +74,10 @@ Route::group(['middleware' => 'player'], function () {
 Route::group(['middleware' => 'parent'], function () {
     Route::get('/parent/dashboard', [ParentController::class, 'index'])->name('parent.dashboard');
     Route::get('/parent/profile', [ParentController::class, 'profile'])->name('parent.profile');
+    Route::get('/parent/player', [ParentController::class, 'player'])->name('parent.player');
+
+    // Chat Routes
+    Route::get('/parent/chat{key?}', [ParentController::class, 'parentChat'])->name('parent.chat');
 });
 
 Route::group(['middleware' => 'admin'], function () {

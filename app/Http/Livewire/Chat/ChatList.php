@@ -67,6 +67,8 @@ class ChatList extends Component
     {
         if (auth()->user()->user_type_id == 4) {
             $this->receiverInstance = User::firstWhere('id', $conversation->sender_id);
+        } else if (auth()->user()->user_type_id == 3) {
+            $this->receiverInstance = User::firstWhere('id', $conversation->sender_id);
         } else if (auth()->user()->user_type_id == 2) {
             $this->receiverInstance = User::firstWhere('id', $conversation->receiver_id);
         }
@@ -77,6 +79,8 @@ class ChatList extends Component
     {
         if (auth()->user()->user_type_id == 4) {
             $this->conversations = Conversation::where('receiver_id', auth()->user()->id)->orderBy('last_time_message', 'DESC')->get();
+        } else if (auth()->user()->user_type_id == 3) {
+            $this->conversations = Conversation::where('receiver_id', auth()->user()->id)->orderBy('last_time_message', 'DESC')->get();
         } else if (auth()->user()->user_type_id == 2) {
             $this->conversations = Conversation::where('sender_id', auth()->user()->id)->orderBy('last_time_message', 'DESC')->get();
         }
@@ -85,6 +89,8 @@ class ChatList extends Component
     public function mount()
     {
         if (auth()->user()->user_type_id == 4) {
+            $this->conversations = Conversation::where('receiver_id', auth()->user()->id)->orderBy('last_time_message', 'DESC')->get();
+        } else if (auth()->user()->user_type_id == 3) {
             $this->conversations = Conversation::where('receiver_id', auth()->user()->id)->orderBy('last_time_message', 'DESC')->get();
         } else if (auth()->user()->user_type_id == 2) {
             $this->conversations = Conversation::where('sender_id', auth()->user()->id)->orderBy('last_time_message', 'DESC')->get();

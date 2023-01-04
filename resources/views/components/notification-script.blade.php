@@ -48,7 +48,7 @@
     );
 </script>
 
-@if(!Route::is('coach.chat') && !Route::is('player.chat'))
+@if(!Route::is('coach.chat') && !Route::is('player.chat') && !Route::is('parent.chat'))
 <script type="module">
     window.Echo.private('chat.{{Auth::user()->id}}')
         .listen('MessageSent', (e) => {

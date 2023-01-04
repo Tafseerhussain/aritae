@@ -18,6 +18,11 @@ class PlayerParent extends Model
 
     public function players()
     {
-        return $this->belongsToMany(Player::class, 'parent_player', 'parent_id', 'player_id');
+        return $this->belongsToMany(Player::class, 'parent_player', 'player_id', 'parent_id');
+    }
+
+    public function coaches()
+    {
+        return $this->hasManyThrough(Coach::class, Player::class, 'coach_id', 'player_id');
     }
 }

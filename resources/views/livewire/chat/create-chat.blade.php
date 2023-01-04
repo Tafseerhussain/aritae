@@ -6,38 +6,38 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Player</th>
+                <th scope="col">User</th>
                 <th scope="col">Sports</th>
                 <th scope="col" class="text-center">Chat</th>
             </tr>
             </thead>
             <tbody>
-            @if (count($players) == 0)
+            @if (count($users) == 0)
                 <tr>
                     <td colspan="5" class="text-center">
-                        No Players Added!
+                        No Users Added!
                     </td>
                 </tr>
             @else
-                @foreach ($players as $key => $player)
+                @foreach ($users as $key => $user)
                     <tr>
                         <th scope="row">{{ $key+1 }}</th>
                         <td>
-                            <span>{{ $player->name }} <br>
-                            <small class="opacity-75">{{ $player->user->email }}</small></span>
+                            <span>{{ $user->name }} <br>
+                            <small class="opacity-75">{{ $user->user->email }}</small></span>
                         </td>
                         <td>
-                            @foreach ($player->user->sports as $sport)
+                            @foreach ($user->user->sports as $sport)
                                 <span class="badge text-bg-warning fw-400">{{ $sport->name }}</span>
                             @endforeach
                         </td>
                         <td class="text-center">
                             @php
-                            $conversationStarted = App\Models\Chat\Conversation::where('receiver_id', Auth::user()->id)->where('sender_id', $player->user_id)
-                                        ->orWhere('receiver_id', $player->user_id)->where('sender_id', Auth::user()->id)->first();
+                            $conversationStarted = App\Models\Chat\Conversation::where('receiver_id', Auth::user()->id)->where('sender_id', $user->user_id)
+                                        ->orWhere('receiver_id', $user->user_id)->where('sender_id', Auth::user()->id)->first();
                             @endphp
                             @if(!$conversationStarted)
-                            <a href="#" wire:click="openMessageModal({{ $player->user_id }})" class="btn btn-theme btn-sm">
+                            <a href="#" wire:click="openMessageModal({{ $user->user_id }})" class="btn btn-theme btn-sm">
                                 Start Chat
                             </a>
                             @endif
