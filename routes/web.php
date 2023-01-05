@@ -88,8 +88,8 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');
 
-// Route::get('test', function() {
-//     $users = \App\Models\Coach::find([1, 2, 3]); 
-//     $sport = \App\Models\Sport::find(1);
-//     $sport->users()->attach($users);
-// });
+Route::get('test', function() {
+    $users = \App\Models\Coach::find([1, 2, 3]); 
+    $sport = \App\Models\Sport::find(1);
+    $sport->users()->attach($users);
+});
