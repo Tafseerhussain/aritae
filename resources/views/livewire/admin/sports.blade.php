@@ -1,7 +1,7 @@
 <div>
     <div class="row">
         <div class="col-12">
-            <button class="btn btn-success float-end m-2" data-bs-toggle="modal" data-bs-target="#createSportModal">Create New Sport</button>
+            <button class="btn btn-theme float-end m-2" data-bs-toggle="modal" data-bs-target="#createSportModal">Create New Sport</button>
             <table class="table table-striped m-2">
                 <thead>
                     <tr>
@@ -21,7 +21,7 @@
                         <td>{{date("Y-m-d", strtotime($sport->created_at))}}</td>
                         <td>
                             <button class="btn btn-sm btn-secondary" wire:click="openEditSport({{$sport->id}})"><i class="bi bi-pencil-square"></i></button>
-                            <button class="btn btn-sm btn-danger" wire:click="deleteSportConfirm({{$sport->id}})"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-sm btn-danger text-white" wire:click="deleteSportConfirm({{$sport->id}})"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                     @endforeach
@@ -52,7 +52,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Create</button>
+                        <button type="submit" class="btn btn-theme">Create</button>
                     </div>
                 </form>
             </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="submit" class="btn btn-theme">Save</button>
                     </div>
                 </form>
             </div>
@@ -103,7 +103,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Confirm</button>
+                        <button type="submit" class="btn btn-danger text-white">Confirm</button>
                     </div>
                 </form>
             </div>

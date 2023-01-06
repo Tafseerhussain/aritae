@@ -1,6 +1,6 @@
 <div>
     <div class="d-flex justify-content-end align-items-center">
-        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addPlayerModal">Add Player</button>
+        <button class="btn btn-theme" data-bs-toggle="modal" data-bs-target="#addPlayerModal">Add Player</button>
     </div>
     <table class="table table-stripped m-1">
         <thead>
@@ -20,7 +20,7 @@
                 <td>{{$player->gender}}</td>
                 <td>{{$player->user->area_of_focus}}</td>
                 <td>
-                    <button class="btn btn-danger btn-sm" wire:click="removePlayer({{$player->id}})"><i class="bi bi-trash"></i></button>
+                    <button class="btn btn-danger text-white btn-sm" wire:click="removePlayer({{$player->id}})"><i class="bi bi-trash"></i></button>
                 </td>
             </tr>
             @endforeach
