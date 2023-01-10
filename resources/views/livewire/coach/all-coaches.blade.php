@@ -174,10 +174,18 @@
                                     ${{ $coach->hourly_rate }} <span>/h</span>
                                 </div>
                                 <div class="card-cover">
-                                    <img src="{{ asset($coach->coach->cover_img) }}" alt="">
+                                    @if($coach->coach->cover_img == '')
+                                        <img src="{{ asset('assets/img/default/default-cover.jpg') }}" alt="">
+                                    @else
+                                        <img src="{{ asset($coach->coach->cover_img) }}" alt="">
+                                    @endif
                                 </div>
                                 <div class="card-profile-img">
-                                    <img src="{{ asset($coach->coach->profile_img) }}" alt="">
+                                    @if($coach->coach->profile_img == '')
+                                        <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" alt="">
+                                    @else
+                                        <img src="{{ asset($coach->coach->profile_img) }}" alt="">
+                                    @endif
                                 </div>
                                 <div class="card-profile-meta">
                                     <div class="name">

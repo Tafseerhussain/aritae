@@ -6,13 +6,32 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    @if($user->userType->id == 2)
                     <div class="cover">
-                        <a href="/" class="btn btn-theme">
+                        <a href="{{ route('all-coaches') }}" class="btn btn-theme">
                             <i class="fa-solid fa-arrow-left-long"></i>
                             <span class="ms-1">Back to All Coaches</span>
                         </a>
-                        <img src="{{ asset($user->coach->cover_img) }}" class="w-100" alt="">
+                        @if($user->coach->cover_img == '')
+                            <img src="{{ asset('assets/img/default/default-cover.jpg') }}" class="w-100" alt="cover image">
+                        @else
+                            <img src="{{ asset($user->coach->cover_img) }}" alt="cover image">
+                        @endif
                     </div>
+                    @endif
+                    @if($user->userType->id == 4)
+                    <div class="cover">
+                        <a href="{{ route('all-players') }}" class="btn btn-theme">
+                            <i class="fa-solid fa-arrow-left-long"></i>
+                            <span class="ms-1">Back to All Players</span>
+                        </a>
+                        @if($user->player->cover_img == '')
+                            <img src="{{ asset('assets/img/default/default-cover.jpg') }}" class="w-100" alt="cover image">
+                        @else
+                            <img src="{{ asset($user->player->cover_img) }}" alt="cover image">
+                        @endif
+                    </div>
+                    @endif
                 </div>
             </div>
             <div class="row g-0">
@@ -20,7 +39,19 @@
 
                     <div class="profile-meta">
                         <div class="profile">
-                            <img src="{{ asset($user->coach->profile_img) }}" alt="">
+                            @if($user->userType->id == 2)
+                                @if($user->coach->profile_img == '')
+                                    <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" alt="profile image">
+                                @else
+                                    <img src="{{ asset($user->coach->profile_img) }}" alt="profile image">
+                                @endif
+                            @elseif($user->userType->id == 4)
+                                @if($user->player->profile_img == '')
+                                    <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" alt="profile image">
+                                @else
+                                    <img src="{{ asset($user->player->profile_img) }}" alt="profile image2">
+                                @endif
+                            @endif
                         </div>
                         <div class="text-center">
                             <h2 class="title">
@@ -52,7 +83,7 @@
                             <a href="#" class="text-primary">
                                 <i class="bi bi-skype"></i>
                                 <span class="purple">
-                                    Available for new players
+                                    Available
                                 </span>
                             </a>
                             <a href="#" class="text-dark">
@@ -64,7 +95,7 @@
                             <a href="#" class="text-dark">
                                 <i class="bi bi-tag"></i>
                                 <span>
-                                    $600 - $700/h
+                                    ${{ $user->hourly_rate }}
                                 </span>
                             </a>
                             <a href="#" class="text-dark">
@@ -117,23 +148,32 @@
                             About {{ $user->first_name }}
                         </h2>
                         <p>
-                            @if ($user->coach->about == '')
-                                No description added by the coach!
-                            @else
-                                {{ $user->coach->about }}
+                            @if($user->userType->id == 2)
+                                @if ($user->coach->about == '')
+                                    No description added by the coach!
+                                @else
+                                    {{ $user->coach->about }}
+                                @endif
+                            @elseif ($user->userType->id == 4)
+                                @if ($user->player->about == '')
+                                    No description added by the player!
+                                @else
+                                    {{ $user->player->about }}
+                                @endif
                             @endif
-                            
                         </p>
                         
-                        @if (Auth::user())
-                            @if (Auth::user()->userType->type == 'player')
-                                @livewire('coach.request.form', ['coach_id' => $id])
+                        @if($user->userType->id == 2)
+                            @if (Auth::user())
+                                @if (Auth::user()->userType->type == 'player')
+                                    @livewire('coach.request.form', ['coach_id' => $id])
+                                @endif
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-theme hire-coach icon-right-full">
+                                    <span>Hire this coach</span>
+                                    <i class="bi bi-arrow-right-circle-fill"></i>
+                                </a>
                             @endif
-                        @else
-                            <a href="{{ route('login') }}" class="btn btn-theme hire-coach icon-right-full">
-                                <span>Hire this coach</span>
-                                <i class="bi bi-arrow-right-circle-fill"></i>
-                            </a>
                         @endif
                         
 
