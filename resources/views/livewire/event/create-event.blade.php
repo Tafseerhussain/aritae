@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-8 pl-2">
             <form method="POST" wire:submit.prevent="submitEvent">
-                <div class="card px-2 mb-3 ms-2">
+                <div class="card p-4 mb-3 ms-2">
                     <div class="row mb-3">
                         <div class="col-md-12 mb-3">
                             <label for="event_name" class="col-form-label">{{ __('Event Name') }}</label>
