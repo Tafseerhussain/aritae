@@ -90,4 +90,9 @@ class CoachController extends Controller
     {
         return view('coach.chat-users');
     }
+
+    public function events()
+    {
+        return view('coach.events');
+    }
 }

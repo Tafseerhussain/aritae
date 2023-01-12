@@ -159,7 +159,7 @@
                                     </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="#">
+                                    <a href="{{route('all-events')}}">
                                         <i class="bi bi-calendar-month"></i>
                                         <span>Events</span>
                                     </a>

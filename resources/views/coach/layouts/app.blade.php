@@ -158,8 +158,8 @@
                                         <span>Videos</span>
                                     </a>
                                 </li>
-                                <li class="list-group-item">
-                                    <a href="#">
+                                <li class="list-group-item {{ $route == 'coach.events' ? 'active' : '' }}">
+                                    <a href="{{ route('coach.events') }}">
                                         <i class="bi bi-calendar-month"></i>
                                         <span>Events</span>
                                     </a>

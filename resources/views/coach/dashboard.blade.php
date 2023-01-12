@@ -112,12 +112,19 @@
                                 <div class="row align-items-center">
                                     <div class="col-10">
                                         <div class="d-flex">
-                                            @if ($user->player->profile_img == '')
-                                                <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="rounded-circle" alt="user image">
-                                            @else
-                                                <img src="{{ asset( $user->player->profile_img ) }}" class="rounded-circle" alt="user image">
-                                            @endif
-                                            
+                                            @if($user->user_type_id == 4)
+                                                @if ($user->player->profile_img == '')
+                                                    <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="rounded-circle" alt="user image">
+                                                @else
+                                                    <img src="{{ asset( $user->player->profile_img ) }}" class="rounded-circle" alt="user image">
+                                                @endif
+                                            @elseif($user->user_type_id == 3)
+                                                @if ($user->parent->profile_img == '')
+                                                    <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" class="rounded-circle" alt="user image">
+                                                @else
+                                                    <img src="{{ asset( $user->parent->profile_img ) }}" class="rounded-circle" alt="user image">
+                                                @endif
+                                            @endif                                            
                                             <div class="meta">
                                                 <h6 class="text-capitalize">{{ $user->full_name }}</h6>
                                                 <small class="text-truncate d-inline-block" style="max-width: 250px;">

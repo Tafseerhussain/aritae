@@ -50,4 +50,8 @@ class Coach extends Model
     {
         return $this->belongsToMany(HireRequest::class);
     }
+
+    public function events(){
+        return $this->hasMany(Event::class);
+    }
 }

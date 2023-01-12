@@ -731,6 +731,41 @@
 	}
 }
 
+//Tip card
+.tip-card{
+	.card-title{
+		color: $purple;
+	}
+}
+//Feature card
+.feature-card{
+	position: relative;
+	width: 100%;
+	max-width: 475px;
+	min-height: 800px;
+	margin: auto;
+	background-position: center top;
+	background-size: auto 100%;
+	border-radius: 20px;
+	padding: 20px 15px;
+	color: white;
+	font-family: 'Titillium Web';
+
+	.feature-card-button{
+		position: absolute;
+		bottom: 15px;
+		left: 10px;
+		right: 10px;
+		background-color: rgba(255,255,255,.30);
+		color: white;
+
+		&:hover{
+			background-color: rgba(255,255,255,.80);
+			color: black;
+		}
+	}
+}
+
 /* Notification Color */
 .toast-info{
 	background-color: $green !important;
@@ -761,5 +796,44 @@
 		width: 0%; 
 		height: 5px; 
 		background-color: $green !important;
+	}
+}
+
+//Event style
+.event-card{
+	position: relative;
+	.event-action{
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+	.dropdown-menu{
+		background-color: white;
+		.dropdown-item{
+			color: black;
+		}
+	}
+}
+.event-filter-list{
+	list-style-type: none;
+	padding-left: 0px;
+
+	li{
+		display: inline-block;
+		padding-right: 15px;
+		cursor: pointer;
+
+		&.active{
+			font-weight: bold;
+			text-decoration: underline;
+			color: $purple;
+		}
+	}
+}
+.event-sort{
+	select{
+		width: auto;
+		display: inline;
+		appearance: auto;
 	}
 }

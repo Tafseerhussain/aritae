@@ -29,6 +29,10 @@ Route::get('/all-coaches', function () {
     return view('all-coaches');
 })->name('all-coaches');
 
+//Event Routes
+Route::get('/all-events', [App\Http\Controllers\EventController::class, 'index'])->name('all-events');
+Route::get('/event-detail/{id}', [App\Http\Controllers\EventController::class, 'eventDetail'])->name('event-detail');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -60,6 +64,9 @@ Route::group(['middleware' => 'coach'], function () {
     // Chat Routes
     Route::get('/coach/chat/users', [CoachController::class, 'chatUsers'])->name('coach.chat.users');
     Route::get('/coach/chat{key?}', [CoachController::class, 'coachChat'])->name('coach.chat');
+
+    // Event Routes
+    Route::get('/coach/events', [CoachController::class, 'events'])->name('coach.events');
 });
 
 Route::group(['middleware' => 'player'], function () {
