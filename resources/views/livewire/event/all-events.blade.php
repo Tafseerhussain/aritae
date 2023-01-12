@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <div class="row my-2">
         <div class="col-12 d-flex justify-content-end align-items-center event-sort">
             Sort By
