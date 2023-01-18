@@ -30,4 +30,8 @@ class PlayerController extends Controller
     {
         return view('player.chat-users');
     }
+
+    public function payment(Request $request){
+        return view('player.payment', ['amount' => $request->amount]);
+    }
 }

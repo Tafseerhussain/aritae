@@ -61,4 +61,9 @@ class Player extends Model
     {
         return $this->belongsToMany(HireRequest::class);
     }
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
+    }
 }

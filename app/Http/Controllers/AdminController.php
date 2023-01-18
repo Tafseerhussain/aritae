@@ -20,4 +20,8 @@ class AdminController extends Controller
     {
         return view('admin.sports');
     }
+    public function events()
+    {
+        return view('admin.events');
+    }
 }

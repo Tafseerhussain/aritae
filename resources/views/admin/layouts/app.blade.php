@@ -134,6 +134,12 @@
                                         <span>Sports</span>
                                     </a>
                                 </li>
+                                <li class="list-group-item {{ $route == 'admin.events' ? 'active' : '' }}">
+                                    <a href="{{ route('admin.events') }}">
+                                        <i class="bi bi-calendar-month"></i>
+                                        <span>Events</span>
+                                    </a>
+                                </li>
                                 <hr class="p-0 mt-2 mb-3">
                             </ul>
                         </div>  

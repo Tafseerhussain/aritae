@@ -1,15 +1,15 @@
 {
-  "public/assets/img/events-bg.jpg": {
-    "file": "assets/events-bg.042eac73.jpg",
-    "src": "public/assets/img/events-bg.jpg"
+  "public/assets/img/default/default-cover.jpg": {
+    "file": "assets/default-cover.5cd161fc.jpg",
+    "src": "public/assets/img/default/default-cover.jpg"
   },
   "public/assets/img/event-detail-bg.jpg": {
     "file": "assets/event-detail-bg.08b10f67.jpg",
     "src": "public/assets/img/event-detail-bg.jpg"
   },
-  "public/assets/img/default/default-cover.jpg": {
-    "file": "assets/default-cover.5cd161fc.jpg",
-    "src": "public/assets/img/default/default-cover.jpg"
+  "public/assets/img/events-bg.jpg": {
+    "file": "assets/events-bg.042eac73.jpg",
+    "src": "public/assets/img/events-bg.jpg"
   },
   "public/assets/img/players-bg.jpg": {
     "file": "assets/players-bg.e9df78d3.jpg",
@@ -29,19 +29,19 @@
     "src": "resources/sass/call.scss",
     "isEntry": true
   },
+  "resources/sass/admin.scss": {
+    "file": "assets/admin.5cc9c430.css",
+    "src": "resources/sass/admin.scss",
+    "isEntry": true
+  },
   "resources/sass/theme.scss": {
     "file": "assets/theme.c283de2f.css",
     "src": "resources/sass/theme.scss",
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app.45919b5f.css",
+    "file": "assets/app.cab77ec9.css",
     "src": "resources/sass/app.scss",
-    "isEntry": true
-  },
-  "resources/sass/admin.scss": {
-    "file": "assets/admin.d5415dc8.css",
-    "src": "resources/sass/admin.scss",
     "isEntry": true
   }
 }

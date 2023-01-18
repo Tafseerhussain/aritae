@@ -46,6 +46,29 @@
             toastr[event.detail.type](event.detail.message, event.detail.title ?? '')
         }
     );
+
+    window.addEventListener('event_join_notification', 
+        event => {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr[event.detail.type](event.detail.message, event.detail.title ?? '')
+        }
+    );
 </script>
 
 @if(!Route::is('coach.chat') && !Route::is('player.chat') && !Route::is('parent.chat'))

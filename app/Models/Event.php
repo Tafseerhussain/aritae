@@ -17,13 +17,20 @@ class Event extends Model
         'state',
         'url',
         'type',
+        'status',
         'price',
         'description',
         'cover_image',
         'coach_id',
     ];
 
-    public function coach(){
+    public function coach()
+    {
         return $this->belongsTo(Coach::class);
+    }
+
+    public function players()
+    {
+        return $this->belongsToMany(Player::class);
     }
 }

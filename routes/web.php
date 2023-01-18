@@ -76,6 +76,9 @@ Route::group(['middleware' => 'player'], function () {
     // Chat Routes
     Route::get('/player/chat/users', [PlayerController::class, 'chatPlayers'])->name('player.chat.users');
     Route::get('/player/chat{key?}', [PlayerController::class, 'playerChat'])->name('player.chat');
+
+    //Pyament route
+    Route::get('/player/payment', [PlayerController::class, 'payment'])->name('player.payment');
 });
 
 Route::group(['middleware' => 'parent'], function () {
@@ -91,6 +94,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('/admin/sports', [AdminController::class, 'sports'])->name('admin.sports');
+
+    // Event Routes
+    Route::get('/admin/events', [AdminController::class, 'events'])->name('admin.events');
 });
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');

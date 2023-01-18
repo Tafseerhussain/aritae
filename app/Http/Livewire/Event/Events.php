@@ -14,28 +14,48 @@ class Events extends Component
     public $delete_id = '';
 
     public function mount(){
-        $this->events = Event::all()->sortBy($this->sort);
+        $this->events = Event::where('status', 'active')->get()->sortBy($this->sort);
     }
 
     public function applyFilter($filter){
         $this->filter = $filter;
 
         if($filter == 'all'){
-            $this->events = Event::all()->sortBy($this->sort);
+            $this->events = Event::where('status', 'active')->get()->sortBy($this->sort);
         }
         if($filter == 'my-events'){
-            $this->events = Auth::user()->coach->events->sortBy($this->sort);
+            $this->events = Auth::user()->coach->events()->where('status', 'active')->get()->sortBy($this->sort);
         }
         if($filter == 'upcoming'){
-            $this->events = Event::where('start', '>=', date('Y-m-d'))->get()->sortBy($this->sort);
+            $this->events = Event::where('start', '>=', date('Y-m-d'))->where('status', 'active')->get()->sortBy($this->sort);
         }
         if($filter == 'past'){
-            $this->events = Event::where('start', '<=', date("Y-m-d"))->get()->sortBy($this->sort);
+            $this->events = Event::where('start', '<=', date("Y-m-d"))->where('status', 'active')->get()->sortBy($this->sort);
+        }
+        if($filter == 'pending'){
+            $this->events = Event::where('status', 'pending')->get()->sortBy($this->sort);
         }
     }
 
     public function applySort(){
         $this->events->sortBy($this->sort);
+    }
+
+    public function showCreateEvent(){
+        $this->emit('showCreateEvent');
+    }
+
+    public function showDetail($event){
+        $this->emit('showDetail', $event);
+    }
+
+    public function approveEvent($id){
+        $event = Event::find($id);
+        $event->status = 'active';
+        $event->save();
+
+        //Reload events
+        $this->applyFilter($this->filter);
     }
 
     public function deleteEvent($id){

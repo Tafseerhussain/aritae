@@ -11,7 +11,7 @@ class AllEvents extends Component
     public $sort = 'name';
 
     public function mount(){
-        $this->events = Event::all();
+        $this->events = Event::where('status', 'active')->get();
     }
 
     public function sortEvents(){

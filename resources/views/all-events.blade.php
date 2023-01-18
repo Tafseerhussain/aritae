@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-
+    
     @livewire('event.all-events')
 
 @endsection

@@ -9,10 +9,14 @@ class Main extends Component
     //Listeners
     protected $listeners = [
         'eventCancelled' => 'eventCancelled',
-        'eventCreated' => 'eventCreated'
+        'eventCreated' => 'eventCreated',
+        'showDetail' => 'eventDetail',
+        'showCreateEvent' => 'showCreateEvent',
+        'closeEvent' => 'eventClosed',
     ];
 
     public $activeComponent = 'events';
+    public $event = null;
 
     public function changeComponent($component){
         $this->activeComponent = $component;
@@ -22,8 +26,21 @@ class Main extends Component
         $this->changeComponent('events');
     }
 
+    public function eventClosed(){
+        $this->changeComponent('events');
+    }
+
     public function eventCreated(){
         $this->changeComponent('events');
+    }
+
+    public function showCreateEvent(){
+        $this->changeComponent('create_event');
+    }
+
+    public function eventDetail($event){
+        $this->event= $event;
+        $this->changeComponent('event_detail');
     }
 
     public function render()
