@@ -91,6 +91,21 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="my-3">Joining This Event</h2>
+                <div class="row event-player-header">
+                    <div class="col-6"><h5 class="fw-bold">Name</h5></div>
+                    <div class="col-6"><h5 class="fw-bold">Email</h5></div>
+                </div>
+                @foreach($event->players as $player)
+                <div class="row event-player-body py-3 my-2">
+                    <div class="col-6"><span>{{$player->name}}</span></div>
+                    <div class="col-6"><span>{{$player->user->email}}</span></div>
+                </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 
     <script>

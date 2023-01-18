@@ -8,6 +8,11 @@ use Auth;
 class EventDetailPage extends Component
 {
     public $event;
+    public $currentURL;
+
+    public function mount(){
+        $this->currentURL = url()->current();
+    }
 
     public function eventJoin(){
         if($this->event->type == 'free'){
@@ -19,7 +24,11 @@ class EventDetailPage extends Component
             ]);
         }
         else if($this->event->type == 'paid' && $this->event->price > 0){
-            return redirect(route('player.payment'));
+            return redirect(route('player.payment', [
+                'amount' => $this->event->price,
+                'event_id' => $this->event->id,
+                'redirect_url' => $this->currentURL,
+            ]));
         }
     }
 

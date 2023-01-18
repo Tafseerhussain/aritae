@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Event;
 
 use Livewire\Component;
+use App\Models\Event;
 
 class Main extends Component
 {
@@ -39,7 +40,7 @@ class Main extends Component
     }
 
     public function eventDetail($event){
-        $this->event= $event;
+        $this->event = Event::where('id', $event['id'])->with('coach', 'players', 'players.user')->first();
         $this->changeComponent('event_detail');
     }
 

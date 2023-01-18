@@ -918,6 +918,11 @@
 		width: 100%;
 	}
 }
+.event-player-body{
+	box-shadow: $shadow;
+	background-color: $white;
+	border-radius: $radius;
+}
 
 //Payment
 .payment-method-selection{

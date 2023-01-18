@@ -66,7 +66,7 @@
                                     <div class="row">
                                         <div class="col-6 mb-2">
                                             <label for="card-date" class="col-form-label">{{ __('Expire Date') }}</label>
-                                            <input id="card-number" type="text" class="form-control @error('card_date') is-invalid @enderror" placeholder="MM / YY" wire:model="card_date">
+                                            <input id="card-number" type="text" class="form-control @error('card_date') is-invalid @enderror" placeholder="MM/YY" wire:model="card_date">
 
                                             @error('card_date')
                                                 <span class="invalid-feedback" role="alert">
@@ -90,12 +90,47 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-between w-100 my-3">
+                        <p class="text-secondary"><em>*By providing your card information, you allow Aritae to charge your card for future payments in accordance with their terms</em></p>
+                        <button type="submit" class="btn btn-theme">Confirm</button>
+                    </div>
                 </form>
-                <div class="d-flex justify-content-between w-100 my-3">
-                    <p class="text-secondary"><em>*By providing your card information, you allow Aritae to charge your card for future payments in accordance with their terms</em></p>
-                    <button type="submit" class="btn btn-theme">Confirm</button>
-                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        window.addEventListener('get_stripe_token', function(event){
+            Stripe.setPublishableKey(event.detail.stripe_key);
+            Stripe.createToken({
+                number: event.detail.number,
+                cvc: event.detail.cvc,
+                exp_month: event.detail.exp_month,
+                exp_year: event.detail.exp_year,
+            }, stripeResponseHandler);
+        });
+
+        function stripeResponseHandler(status, response){
+            if (response.error){
+                var event = new CustomEvent('event_join_notification', {
+                    "detail": {
+                        "type": "error",
+                        "title": "Payment processing error",
+                        "message": response.error.message,
+                    }
+                });
+                window.dispatchEvent(event);
+            } 
+            else {
+                var token = response['id'];
+                Livewire.emit('received_stripe_token', token);
+            }
+        }
+
+        window.addEventListener('redirect_event_page', function(event){
+            setTimeout(function(){
+                window.location.href = event.detail.url
+            }, 3000);
+        });
+    </script>
 </div>

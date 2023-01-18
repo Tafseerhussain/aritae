@@ -32,6 +32,10 @@ class PlayerController extends Controller
     }
 
     public function payment(Request $request){
-        return view('player.payment', ['amount' => $request->amount]);
+        return view('player.payment', [
+            'amount' => $request->amount,
+            'event_id' => $request->event_id,
+            'redirect_url' => $request->redirect_url,
+        ]);
     }
 }
