@@ -1,4 +1,6 @@
-<div>
+<div class="event-detail-page">
+
+    {{-- Event Detail Hero --}}
     <div class="event-detail-hero">
         <div class="container">
             <div class="row">
@@ -39,8 +41,10 @@
             </div>
         </div>
     </div>
-    <div class="container p-0">
-        <div class="row event-join">
+
+    {{-- Event Join Section --}}
+    <div class="event-join">
+        <div class="row">
             <div class="col-12 d-flex justify-content-around align-items-center">
                 <div class="event-join-text text-light">
                     <h4 class="fw-bold m-0">The competition starts soon</h4>
@@ -79,12 +83,80 @@
                 </div>
             </div>
         </div>
-        <div class="row mx-2 my-4">
-            <div class="col-md-6 justify-content-center text-center">
-                <img class="img-fluid m-3 w-75" src="{{asset('storage/images/event_cover/'.$event->cover_image)}}">
+    </div>
+
+    {{-- Event Detail Overview --}}
+    <div class="event-detail-overview">
+        <div class="container">
+            <div class="row mx-2 g-md-5">
+                <div class="col-md-6 justify-content-center text-center">
+                    <img class="img-fluid w-100" src="{{asset('storage/images/event_cover/'.$event->cover_image)}}">
+                    <h4 class="text-center fw-bold mt-3">Competition Overview</h4>
+                </div>
+                <div class="col-md-6 justify-content-center">
+                    {{-- {{$event->description}} --}}
+                    <div class="event-description">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 justify-content-center">
-                {{$event->description}}
+        </div>
+    </div>
+
+    {{-- Event Sponsors --}}
+    <div class="sponsors">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>SPONSORING THIS <span class="text-primary">TOURNAMENT</span></h1>
+                </div>
+            </div>
+            <div class="row sponsor-cards g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="sponsor-card">
+                        <img src="{{ asset('assets/img/events/company1.svg') }}" class="sponsor-img" alt="sponsor">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="sponsor-card">
+                        <img src="{{ asset('assets/img/events/company2.svg') }}" class="sponsor-img" alt="sponsor">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="sponsor-card">
+                        <img src="{{ asset('assets/img/events/company3.svg') }}" class="sponsor-img" alt="sponsor">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="sponsor-card">
+                        <img src="{{ asset('assets/img/events/company4.svg') }}" class="sponsor-img" alt="sponsor">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="sponsor-card">
+                        <img src="{{ asset('assets/img/events/company5.svg') }}" class="sponsor-img" alt="sponsor">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="sponsor-card">
+                        <img src="{{ asset('assets/img/events/company6.svg') }}" class="sponsor-img" alt="sponsor">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="sponsor-card">
+                        <img src="{{ asset('assets/img/events/company7.svg') }}" class="sponsor-img" alt="sponsor">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="sponsor-card">
+                        <img src="{{ asset('assets/img/events/company8.svg') }}" class="sponsor-img" alt="sponsor">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

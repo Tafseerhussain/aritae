@@ -7,10 +7,6 @@
     "file": "assets/event-detail-bg.08b10f67.jpg",
     "src": "public/assets/img/event-detail-bg.jpg"
   },
-  "public/assets/img/events-bg.jpg": {
-    "file": "assets/events-bg.042eac73.jpg",
-    "src": "public/assets/img/events-bg.jpg"
-  },
   "public/assets/img/players-bg.jpg": {
     "file": "assets/players-bg.e9df78d3.jpg",
     "src": "public/assets/img/players-bg.jpg"
@@ -18,6 +14,10 @@
   "public/assets/img/default/default-cover.jpg": {
     "file": "assets/default-cover.5cd161fc.jpg",
     "src": "public/assets/img/default/default-cover.jpg"
+  },
+  "public/assets/img/events-bg.jpg": {
+    "file": "assets/events-bg.042eac73.jpg",
+    "src": "public/assets/img/events-bg.jpg"
   },
   "public/assets/img/coaches-bg.jpg": {
     "file": "assets/coaches-bg.6f7352cf.jpg",
@@ -39,7 +39,7 @@
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app.cab77ec9.css",
+    "file": "assets/app.a7938188.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   },

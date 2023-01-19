@@ -1,5 +1,5 @@
-<div>
-    <div class="container events-page">
+<div class="events-page">
+    <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center w-100 px-2">
@@ -8,6 +8,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <div class="row">
             <div class="col-12">
                 <div class="event-cover">
@@ -106,7 +107,6 @@
                 @endforeach
             </div>
         </div>
-    </div>
 
     <script>
     // Set the date we're counting down to
