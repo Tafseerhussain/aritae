@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Player;
 use App\Models\Coach;
 use App\Models\HireRequest;
+use App\Models\TeamRequest;
+use App\Models\Team;
 use App\Models\Chat\Conversation;
 use App\Events\CoachConnect;
 use Auth;
@@ -94,5 +96,46 @@ class CoachController extends Controller
     public function events()
     {
         return view('coach.events');
+    }
+
+    public function teams()
+    {
+        return view('coach.teams');
+    }
+
+    public function teamRequests()
+    {
+        $team_requests = TeamRequest::where('user_id', Auth::user()->id)
+        ->whereHas('team', function($query){
+            $query->where('status', 'active');
+        })->get();
+        return view('coach.team-requests', compact('team_requests'));
+    }
+
+    public function teamRequestAccept($team_id)
+    {
+        $team_request = TeamRequest::where('user_id', Auth::user()->id)->where('team_id', $team_id)->first();
+        $team = Team::find($team_id);
+        $coach = Auth::user()->coach;
+
+        if($team_request){
+            $team->coaches()->syncWithoutDetaching([$coach->id]);
+
+            $team_request->delete();
+
+            return redirect(route('coach.teams'));
+        }
+
+        return redirect()->back();
+    }
+
+    public function teamRequestDecline($team_id)
+    {
+        $team_request = TeamRequest::where('user_id', Auth::user()->id)->where('team_id', $team_id)->first();
+        if($team_request){
+            $team_request->delete();
+        }
+
+        return redirect()->back();
     }
 }

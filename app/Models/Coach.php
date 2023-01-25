@@ -51,7 +51,17 @@ class Coach extends Model
         return $this->belongsToMany(HireRequest::class);
     }
 
-    public function events(){
+    public function events()
+    {
         return $this->hasMany(Event::class);
+    }
+
+    public function own_teams()
+    {
+        return $this->hasMany(Team::class);
+    }
+
+    public function teams(){
+        return $this->belongsToMany(Team::class);
     }
 }

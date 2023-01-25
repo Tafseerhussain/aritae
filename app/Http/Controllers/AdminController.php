@@ -24,4 +24,8 @@ class AdminController extends Controller
     {
         return view('admin.events');
     }
+    public function teams()
+    {
+        return view('admin.teams');
+    }
 }

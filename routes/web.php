@@ -67,6 +67,12 @@ Route::group(['middleware' => 'coach'], function () {
 
     // Event Routes
     Route::get('/coach/events', [CoachController::class, 'events'])->name('coach.events');
+
+    // Team Routes
+    Route::get('/coach/teams', [CoachController::class, 'teams'])->name('coach.teams');
+    Route::get('/coach/team-requests', [CoachController::class, 'teamRequests'])->name('coach.team_requests');
+    Route::get('/coach/team-request-accept/{team_id}', [CoachController::class, 'teamRequestAccept'])->name('coach.team_request_accept');
+    Route::get('/coach/team-request-decline/{team_id}', [CoachController::class, 'teamRequestDecline'])->name('coach.team_request_decline');
 });
 
 Route::group(['middleware' => 'player'], function () {
@@ -76,6 +82,12 @@ Route::group(['middleware' => 'player'], function () {
     // Chat Routes
     Route::get('/player/chat/users', [PlayerController::class, 'chatPlayers'])->name('player.chat.users');
     Route::get('/player/chat{key?}', [PlayerController::class, 'playerChat'])->name('player.chat');
+
+    // Team Routes
+    Route::get('/player/teams', [PlayerController::class, 'teams'])->name('player.teams');
+    Route::get('/player/team-requests', [PlayerController::class, 'teamRequests'])->name('player.team_requests');
+    Route::get('/player/team-request-accept/{team_id}', [PlayerController::class, 'teamRequestAccept'])->name('player.team_request_accept');
+    Route::get('/player/team-request-decline/{team_id}', [PlayerController::class, 'teamRequestDecline'])->name('player.team_request_decline');
 
     //Pyament route
     Route::get('/player/payment', [PlayerController::class, 'payment'])->name('player.payment');
@@ -97,6 +109,9 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Event Routes
     Route::get('/admin/events', [AdminController::class, 'events'])->name('admin.events');
+
+    // Team Routes
+    Route::get('/admin/teams', [AdminController::class, 'teams'])->name('admin.teams');
 });
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');

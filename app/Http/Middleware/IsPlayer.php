@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Models\TeamRequest;
 use Auth;
 
 class IsPlayer
@@ -18,7 +19,14 @@ class IsPlayer
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user() &&  Auth::user()->user_type_id == 4) {
-                return $next($request);
+            $teamRequestCount = count(TeamRequest::where('user_id' , Auth::user()->id)
+                ->whereHas('team', function($query){
+                    $query->where('status', 'active');
+                }
+            )->get());
+            \View::share('team_request_count', $teamRequestCount);
+                
+            return $next($request);
          }
         abort(404);
     }

@@ -141,8 +141,8 @@
                                         <span>Messages</span>
                                     </a>
                                 </li>
-                                <li class="list-group-item">
-                                    <a href="#">
+                                <li class="list-group-item {{ $route == 'player.teams' ? 'active' : '' }}">
+                                    <a href="{{ route('player.teams') }}">
                                         <i class="bi bi-people"></i>
                                         <span>Teams</span>
                                     </a>
@@ -170,6 +170,12 @@
                                     <a href="/">
                                         <i class="bi bi-person-plus"></i>
                                         <span>Hire A Coach</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item {{ $route == 'player.team_requests' ? 'active' : '' }}">
+                                    <a href="{{ route('player.team_requests') }}">
+                                        <i class="bi bi-people"></i>
+                                        <span>Team Requests <span class="badge text-bg-secondary rounded-circle">{{ $team_request_count }}</span></span>
                                     </a>
                                 </li>
                             </ul>

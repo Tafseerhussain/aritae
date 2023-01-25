@@ -924,7 +924,170 @@
 	border-radius: $radius;
 }
 
-//Payment
+// Payment
 .payment-method-selection{
 	border-right: 1px solid $inputBorder;
+}
+
+// Team designs
+.team-nav{
+	list-style-type: none;
+	padding-left: 0px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	border-bottom: 2px solid rgba($dark-gray, 0.1);
+
+	.team-nav-item{
+		margin: 0px 10px;
+		display: inline-block;
+	
+		&.active{
+			position: relative;
+			&::after{
+				content: "";
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				bottom: -2px;
+				height: 2px;
+				background-color: $purple;
+			}
+			a{
+				color: $purple;
+			}
+		}
+		a{
+			color: $black;
+			text-decoration: none;
+		}
+	}
+}
+.team-sport-badge{
+	background-color: rgba($black, 0.05);
+	border-radius: $radius;
+	font-weight: normal;
+}
+.team-cover{
+	background-size: 110% 110%;
+	background-position: center center;
+	border-top-left-radius: $radius;
+	border-top-right-radius: $radius;
+	min-height: 250px;
+
+	.team-logo{
+		width: 150px;
+		height: 150px;
+		position: absolute;
+		left: 20px;
+		bottom: -75px;
+		border-radius: 75px;
+		background-color: $white;
+		background-size: 100% 100%;
+		background-position: center;
+		box-shadow: $shadow;
+
+		.team-logo-button{
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			padding: 0px;
+			width: 40px;
+			height: 40px;
+			border-radius: 20px;
+			line-height: 38px;
+			vertical-align: middle;
+			text-align: center;
+			font-size: 1.2em;
+			box-shadow: $shadow;
+		}
+	}
+}
+.team-info{
+	margin-top: 100px;
+}
+.team-detail{
+	margin-top: 100px;
+	padding: 15px;
+	.team-players{
+		border: 1px solid $inputBorder;
+		border-radius: $radius;
+		.player-header{
+			background-color: rgba($dark-gray, 0.05);
+			border-top-left-radius: $radius;
+			border-top-right-radius: $radius;
+			padding: 10px 0px;
+		}
+		.player-body{
+			border-top: 1px solid $inputBorder;
+			padding: 10px 0px;
+			
+			.profile-image{
+				width: 75px;
+				height: 75px;
+				border-radius: 38px;
+				box-shadow: $shadow;
+				background-position: center center;
+				background-size: 100% auto;
+				background-repeat: no-repeat;
+			}
+		}
+	}
+	.team-coaches{
+		.coach-body{
+			background-color: rgba($dark-gray, 0.05);
+			border-radius: 10px;
+			padding: 10px;
+
+			.profile-image{
+				width: 75px;
+				height: 75px;
+				border-radius: 38px;
+				box-shadow: $shadow;
+				background-position: center center;
+				background-size: 100% auto;
+				background-repeat: no-repeat;
+			}
+		}
+	}
+}
+.team-create-players, .team-create-coaches{
+	border: 2px solid rgba($dark-gray, 0.1);
+	border-radius: $radius;
+	padding: 0px;
+
+	.player-header, .coach-header{
+		padding: 10px;
+		background-color: rgba($dark-gray, 0.05);
+		border-top-left-radius: $radius;
+		border-top-right-radius: $radius;
+		font-weight: bold;
+	}
+	.player-body, .coach-body{
+		padding: 10px;
+		border-bottom: 1px solid $inputBorder;
+	}
+}
+#playerModal{
+	.player-suggestion{
+		width: 100%;
+		margin: 8px auto;
+		padding: 5px 10px;
+		border-radius: $radius;
+		box-shadow: $shadow;
+		background-color: $white;
+		color: $black;
+		cursor: pointer;
+	}
+}
+#coachModal{
+	.coach-suggestion{
+		width: 100%;
+		margin: 8px auto;
+		padding: 5px 10px;
+		border-radius: $radius;
+		box-shadow: $shadow;
+		background-color: $white;
+		color: $black;
+		cursor: pointer;
+	}
 }

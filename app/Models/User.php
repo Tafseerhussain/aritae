@@ -76,4 +76,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Sport::class);
     }
+
+    public function team_request()
+    {
+        return $this->hasMany(TeamRequest::class);
+    }
 }

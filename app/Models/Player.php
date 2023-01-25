@@ -66,4 +66,9 @@ class Player extends Model
     {
         return $this->belongsToMany(Event::class);
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class)->withPivot('position', 'jersey');
+    }
 }
