@@ -27,6 +27,8 @@
                     @livewire('team.pending-teams')
                 @elseif($activeComponent == 'global_teams')
                     @livewire('team.global-teams')
+                @elseif($activeComponent == 'global_team_detail')
+                    @livewire('team.global-teams-single', ['team' => $team]);
                 @endif
             </div>
         </div>

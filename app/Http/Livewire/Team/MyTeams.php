@@ -141,7 +141,7 @@ class MyTeams extends Component
             'message' => 'Player removed from this team successfully',
         ));
 
-        $this->teams = Auth::user()->player->teams()->where('status', 'active')->with('players', 'coaches')->get();
+        $this->teams = Auth::user()->coach->own_teams()->where('status', 'active')->with('players', 'coaches')->get();
     }
 
     public function openCoachModal($team_id){

@@ -13,6 +13,10 @@ class GlobalTeams extends Component
         $this->teams = Team::where('status', 'active')->get();
     }
     
+    public function openDetail($team){
+        $this->emit('openGlobalTeamDetail', $team);
+    }
+
     public function render()
     {
         return view('livewire.team.global-teams');

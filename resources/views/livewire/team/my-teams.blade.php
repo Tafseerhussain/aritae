@@ -32,8 +32,8 @@
                             <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
                             @endif
                         </div>
-                        <div class="col-2 d-flex align-items-center">{{ $player->user->first_name }}</div>
-                        <div class="col-2 d-flex align-items-center">{{ $player->user->last_name }}</div>
+                        <div class="col-2 d-flex align-items-center name">{{ $player->user->first_name }}</div>
+                        <div class="col-2 d-flex align-items-center name">{{ $player->user->last_name }}</div>
                         <div class="col-2 d-flex align-items-center">{{ $player->pivot->position }}</div>
                         <div class="col-2 d-flex align-items-center">{{ $player->pivot->jersey }}</div>
                         <div class="col-2 d-flex align-items-center">
@@ -70,34 +70,34 @@
             <div class="row team-coaches mt-2">
                 @auth
                 <div class="col-sm-6 col-xl-4">
-                    <div class="coach-body">
-                        <div class="row">
-                            <div class="col-4 d-flex align-items-center">
-                                @if($team->creator->profile_img)
-                                <div class="profile-image" style="background-image: url('{{asset($team->creator->profile_img)}}')"></div>
-                                @else
-                                <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
+                    <div class="coach-body d-flex align-items-center position-relative">
+                        @if($team->creator->profile_img)
+                        <div class="profile-image" style="background-image: url('{{asset($team->creator->profile_img)}}')"></div>
+                        @else
+                        <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
+                        @endif
+                        <div class="ms-2 flex-grow-1">
+                            <h4 class="title">{{$team->creator->name}} <i class="bi bi-patch-check-fill verified"></i></h4>
+                            <p class="mb-0">
+                                <strong>Sport: </strong>{{$team->creator->sport}}
+                            </p>
+                        </div>
+                        <div class="seal">
+                            <img src="{{asset('assets/img/default/coach-seal.png')}}" width="50" height="50">
+                        </div>
+
+                        <div class="dropdown position-absolute top-0 end-0">
+                            <span class="dropdown-opener mx-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </span>
+                            <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuButton1">
+                                @if(auth()->user()->user_type_id == 4)
+                                <li><a class="dropdown-item text-dark" href="{{route('coach.profile.preview', ['id' => $team->creator->id])}}">View profile</a></li>
+                                <li><a class="dropdown-item text-dark" href="#">Send message</a></li>
+                                @elseif(auth()->user()->user_type_id == 2)
+                                <li><a class="dropdown-item text-dark" href="{{route('coach.profile.preview', ['id' => $team->creator->id])}}">View profile</a></li>
                                 @endif
-                            </div>
-                            <div class="col-8 position-relative">
-                                <h4 class="fs-5">{{$team->creator->name}}</h4>
-                                <p>
-                                    <strong>Sport: </strong>{{$team->creator->sport}}
-                                </p>
-                                <div class="dropdown position-absolute top-0 end-0">
-                                    <button class="btn btn-light btn-sm px-2 py-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-three-dots"></i>
-                                    </button>
-                                    <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuButton1">
-                                        @if(auth()->user()->user_type_id == 4)
-                                        <li><a class="dropdown-item text-dark" href="{{route('coach.profile.preview', ['id' => $team->creator->id])}}">View profile</a></li>
-                                        <li><a class="dropdown-item text-dark" href="#">Send message</a></li>
-                                        @elseif(auth()->user()->user_type_id == 2)
-                                        <li><a class="dropdown-item text-dark" href="{{route('coach.profile.preview', ['id' => $team->creator->id])}}">View profile</a></li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -105,37 +105,36 @@
                 @foreach($team->coaches as $coach)
                     @if($coach->user->user_type_id == 2)
                     <div class="col-sm-6 col-xl-4">
-                        <div class="coach-body">
-                            <div class="row">
-                                <div class="col-4 d-flex align-items-center">
-                                    @if($coach->profile_img)
-                                    <div class="profile-image" style="background-image: url('{{asset($coach->profile_img)}}')"></div>
-                                    @else
-                                    <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
-                                    @endif
-                                </div>
-                                <div class="col-8 position-relative">
-                                    <h4 class="fs-5">{{$coach->name}}</h4>
-                                    <p>
-                                        <strong>Sport: </strong>{{$coach->sport}}
-                                    </p>
+                        <div class="coach-body d-flex align-items-center position-relative">
+                            @if($coach->profile_img)
+                            <div class="profile-image" style="background-image: url('{{asset($coach->profile_img)}}')"></div>
+                            @else
+                            <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
+                            @endif
+                            <div class="ms-2 flex-grow-1">
+                                <h4 class="title">{{$coach->name}} <i class="bi bi-patch-check-fill verified"></i></h4>
+                                <p class="mb-0">
+                                    <strong>Sport: </strong>{{$coach->sport}}
+                                </p>
+                            </div>
+                            <div class="seal">
+                                <img src="{{asset('assets/img/default/coach-seal.png')}}" width="50" height="50">
+                            </div>
 
-                                    <div class="dropdown position-absolute top-0 end-0">
-                                        <button class="btn btn-light btn-sm px-2 py-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots"></i>
-                                        </button>
-                                        <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuButton1">
-                                            @if(auth()->user()->user_type_id == 4)
-                                            <li><a class="dropdown-item text-dark" href="{{route('coach.profile.preview', ['id' => $coach->id])}}">View profile</a></li>
-                                            <li><a class="dropdown-item text-dark" href="#">Send message</a></li>
-                                            @elseif(auth()->user()->user_type_id == 2)
-                                            <li><a class="dropdown-item text-dark" href="{{route('coach.profile.preview', ['id' => $coach->id])}}">View profile</a></li>
-                                            <li><a class="dropdown-item text-dark" href="#">Send message</a></li>
-                                            <li><a class="dropdown-item text-danger" href="javascript:void(0)" wire:click="removeCoach({{$coach->id}}, {{$team->id}})">Remove this player</a></li>
-                                            @endif
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="dropdown position-absolute top-0 end-0">
+                                <span class="dropdwon-opener mx-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots"></i>
+                                </span>
+                                <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuButton1">
+                                    @if(auth()->user()->user_type_id == 4)
+                                    <li><a class="dropdown-item text-dark" href="{{route('coach.profile.preview', ['id' => $coach->id])}}">View profile</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">Send message</a></li>
+                                    @elseif(auth()->user()->user_type_id == 2)
+                                    <li><a class="dropdown-item text-dark" href="{{route('coach.profile.preview', ['id' => $coach->id])}}">View profile</a></li>
+                                    <li><a class="dropdown-item text-dark" href="#">Send message</a></li>
+                                    <li><a class="dropdown-item text-danger" href="javascript:void(0)" wire:click="removeCoach({{$coach->id}}, {{$team->id}})">Remove this player</a></li>
+                                    @endif
+                                </ul>
                             </div>
                         </div>
                     </div>

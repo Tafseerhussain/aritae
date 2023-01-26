@@ -33,8 +33,8 @@
                             <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
                             @endif
                         </div>
-                        <div class="col-3 d-flex align-items-center">{{ $request->user->first_name }}</div>
-                        <div class="col-3 d-flex align-items-center">{{ $request->user->last_name }}</div>
+                        <div class="col-3 d-flex align-items-center name">{{ $request->user->first_name }}</div>
+                        <div class="col-3 d-flex align-items-center name">{{ $request->user->last_name }}</div>
                         <div class="col-2 d-flex align-items-center">{{ $request->position }}</div>
                         <div class="col-2 d-flex align-items-center">{{ $request->jersey }}</div>
                     </div>
@@ -52,21 +52,20 @@
             <div class="row team-coaches mt-2">
                 @auth
                 <div class="col-sm-6 col-xl-4">
-                    <div class="coach-body">
-                        <div class="row">
-                            <div class="col-4 d-flex align-items-center">
-                                @if($team->creator->profile_img)
-                                <div class="profile-image" style="background-image: url('{{asset($team->creator->profile_img)}}')"></div>
-                                @else
-                                <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
-                                @endif
-                            </div>
-                            <div class="col-8">
-                                <h4 class="fs-5">{{$team->creator->name}}</h4>
-                                <p>
-                                    <strong>Sport: </strong>{{$team->creator->sport}}
-                                </p>
-                            </div>
+                    <div class="coach-body d-flex align-items-center position-relative">
+                        @if($team->creator->profile_img)
+                        <div class="profile-image" style="background-image: url('{{asset($team->creator->profile_img)}}')"></div>
+                        @else
+                        <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
+                        @endif
+                        <div class="ms-2 flex-grow-1">
+                            <h4 class="title">{{$team->creator->name}} <i class="bi bi-patch-check-fill verified"></i></h4>
+                            <p class="mb-0">
+                                <strong>Sport: </strong>{{$team->creator->sport}}
+                            </p>
+                        </div>
+                        <div class="seal">
+                            <img src="{{asset('assets/img/default/coach-seal.png')}}" width="50" height="50">
                         </div>
                     </div>
                 </div>
@@ -74,21 +73,20 @@
                 @foreach($team->requests as $request)
                     @if($request->user->user_type_id == 2)
                     <div class="col-sm-6 col-xl-4">
-                        <div class="coach-body">
-                            <div class="row">
-                                <div class="col-4 d-flex align-items-center">
-                                    @if($request->user->coach->profile_img)
-                                    <div class="profile-image" style="background-image: url('{{asset($request->user->coach->profile_img)}}')"></div>
-                                    @else
-                                    <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
-                                    @endif
-                                </div>
-                                <div class="col-8">
-                                    <h4 class="fs-5">{{$request->user->full_name}}</h4>
-                                    <p>
-                                        <strong>Sport: </strong>{{$request->user->coach->sport}}
-                                    </p>
-                                </div>
+                        <div class="coach-body d-flex align-items-center position-relative">
+                            @if($request->user->coach->profile_img)
+                            <div class="profile-image" style="background-image: url('{{asset($request->user->coach->profile_img)}}')"></div>
+                            @else
+                            <div class="profile-image" style="background-image: url('{{asset('assets/img/default/default-profile-pic.jpg')}}')"></div>
+                            @endif
+                            <div class="ms-2 flex-grow-1">
+                                <h4 class="title">{{$request->user->coach->name}} <i class="bi bi-patch-check-fill verified"></i></h4>
+                                <p class="mb-0">
+                                    <strong>Sport: </strong>{{$request->user->coach->sport}}
+                                </p>
+                            </div>
+                            <div class="seal">
+                                <img src="{{asset('assets/img/default/coach-seal.png')}}" width="50" height="50">
                             </div>
                         </div>
                     </div>
