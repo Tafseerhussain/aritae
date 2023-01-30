@@ -161,6 +161,59 @@
         </div>
     </div>
 
+    {{-- Event Teams --}}
+    <div class="teams">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>JOINING THIS <span class="text-primary">TOURNAMENT</span></h1>
+                </div>
+            </div>
+            @if($event->teams && count($event->teams) > 0)
+            <div class="row my-2 pb-2 upcoming-sport">
+                <div class="col-6 d-flex justify-content-start">
+                    <img class="leag-logo" src="{{asset('assets/img/aritae-icon.png')}}" widht="50" height="50" alt="Aritae League">
+                    <div class="mx-2">
+                        <h5 class="m-0 fs-5 text-primary fw-bold">Aritae League</h5>
+                        <span>2022 - 2023</span>
+                    </div>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <h6 class="mb-2 fs-6 text-primary">Upcoming Match</h6>
+                        <div>
+                            <img class="mx-2" src="{{asset('assets/img/team-icon-2.png')}}" width="25">
+                            VS
+                            <img class="mx-2" src="{{asset('assets/img/team-icon-1.png')}}" width="25">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row team-header mt-5">
+                <div class="col-1"><h6 class="fs-6 fw-bold text-secondary">POS</h6></div>
+                <div class="col-6"><h6 class="fs-6 fw-bold text-secondary">TEAM</h6></div>
+                <div class="col-1"><h6 class="fs-6 fw-bold text-secondary">PLAYED</h6></div>
+                <div class="col-1"><h6 class="fs-6 fw-bold text-secondary">WON</h6></div>
+                <div class="col-1"><h6 class="fs-6 fw-bold text-secondary">LOST</h6></div>
+                <div class="col-2"><h6 class="fs-6 fw-bold text-dark">POINTS</h6></div>
+            </div>
+            @foreach($event->teams as $index => $team)
+            <div class="row team-body my-2 py-3">
+                <div class="col-1 d-flex align-items-center"><span>{{$index}}</span></div>
+                <div class="col-6 d-flex justify-content-start align-items-center">
+                    <img src="{{asset('storage/images/team/logo/'.$team->logo)}}" width="25" height="25">
+                    <h6 class="fs-6 fw-bold mx-2 my-0">{{$team->name}}</h6>
+                </div>
+                <div class="col-1 d-flex align-items-center"><span>{{$team->pivot->played}}</span></div>
+                <div class="col-1 d-flex align-items-center"><span>{{$team->pivot->won}}</span></div>
+                <div class="col-1 d-flex align-items-center"><span>{{$team->pivot->lost}}</span></div>
+                <div class="col-2 d-flex align-items-center"><span>{{$team->pivot->points}}</span></div>
+            </div>
+            @endforeach
+            @endif
+        </div>
+    </div>
+
     <script>
     // Set the date we're counting down to
     var countDownDate = new Date("{{$event->start}}").getTime();

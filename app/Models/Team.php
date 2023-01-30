@@ -33,4 +33,8 @@ class Team extends Model
     public function coaches(){
         return $this->belongsToMany(Coach::class);
     }
+
+    public function events(){
+        return $this->belongsToMany(Event::class)->withPivot('played', 'won', 'lost', 'points');
+    }
 }

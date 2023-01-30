@@ -716,4 +716,20 @@ nav.navbar {
 			}
 		}
 	}
+	.teams{
+		padding: 100px 0;
+		background-color: $white;
+
+		.upcoming-sport{
+			border-bottom: 2px solid rgba($dark-gray, 0.1);
+		}
+		.team-body{
+			box-shadow: $shadow;
+			border-radius: $radius;
+
+			&:nth-child(2n+1){
+				background-color: $gray;
+			}
+		}
+	}
 }

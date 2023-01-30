@@ -129,6 +129,35 @@
                                     </span>
                                 @enderror
                             </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="event_cover" class="col-form-label">{{__('Teams Joining')}}</label><br>
+                                
+                                @foreach($teams as $team)
+                                <div class="event-team my-2 w-100 d-flex justify-content-between align-items-center">
+                                    <div class="team-name d-flex justify-content-start align-items-center">
+                                        <div class="team-logo d-flex align-items-center">
+                                            <img src="{{asset('storage/images/team/logo/'.$team['logo'])}}" alt="Team Logo">
+                                        </div>
+                                        <h5 class="fw-bold fs-6">{{$team['name']}}</h5>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-light text-danger" wire:click="deleteTeam({{$team['id']}})">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                                @endforeach
+                                <div class="w-100 d-flex justify-content-center mt-3">
+                                    <button type="button" class="btn btn-theme" wire:click="openTeamModal">
+                                        + Add Team
+                                    </button>
+                                </div>
+
+                                @error('eventCover')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="upload-progress">
                             <div class="upload-progress-active"></div>
@@ -173,6 +202,41 @@
         </div>
     </div>
 
+    <!-- Team Modal -->
+    <div wire:ignore.self class="modal fade" id="teamModal" tabindex="-1" aria-labelledby="teamModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="playerModalLabel">Add Team</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="team-name" name="team_name" placeholder="Search Team" wire:model="teamName" wire:keyup="teamSuggestion">
+                        </div>
+                    </div>
+                    <div class="row team-suggestions">
+                        <div class="col-12">
+                            @foreach($teamSuggestion as $team)
+                            <div class="team-suggestion w-100 my-2 d-flex justify-content-start align-items-center" wire:click="addTeam('{{$team['name']}}', '{{$team['logo']}}', {{$team['id']}})">
+                                <div class="team-logo d-flex align-items-center">
+                                    <img src="{{asset('storage/images/team/logo/'.$team['logo'])}}" alt="Team Logo">
+                                </div>
+                                <h5 class="m-0">{{$team['name']}}</h5>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         window.addEventListener('livewire-upload-start', event => {
             $('.upload-progress').css('display', 'block');
@@ -190,6 +254,13 @@
             $('.upload-progress').css('display', 'block');
             $('#event-submit-button').prop('disabled', true);
             $('.upload-progress-active').css('width', event.detail.progress+"%");
+        });
+
+        window.addEventListener('openTeamModal', event => {
+            $('#teamModal').modal('show');
+        });
+        window.addEventListener('closeTeamModal', event => {
+            $('#teamModal').modal('hide');
         });
     </script>
 </div>

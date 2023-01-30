@@ -864,6 +864,47 @@
 	}
 }
 
+.event-team{
+	padding: 10px;
+	box-shadow: $shadow;
+	border-radius: $radius;
+
+	.team-name{
+		.team-logo{
+			width: 50px;
+			height: 50px;
+			border-radius: 25px;
+			margin-right: 10px;
+
+			img{
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+}
+
+.team-suggestions{
+	.team-suggestion{
+		padding: 10px;
+		box-shadow: $shadow;
+		border-radius: $radius;
+		cursor: pointer;
+
+		.team-logo{
+			width: 40px;
+			height: 40px;
+			border-radius: 20px;
+			margin-right: 10px;
+
+			img{
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+}
+
 //Event detail
 .event-cover{
 	background-image: url('/public/assets/img/event-detail-bg.jpg');
@@ -918,10 +959,23 @@
 		width: 100%;
 	}
 }
-.event-player-body{
+.event-player-body, .event-team-body{
 	box-shadow: $shadow;
 	background-color: $white;
 	border-radius: $radius;
+}
+.event-team-body{
+	.team-logo{
+		width: 30px;
+		height: 30px;
+		border-radius: 15px;
+		overflow: hidden;
+		margin-right: 10px;
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
 }
 
 // Payment

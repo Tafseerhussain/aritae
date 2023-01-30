@@ -22,6 +22,83 @@ class CreateEvent extends Component
     public $eventDescription;
     public $eventCover;
 
+    //Teams
+    public $teams = [];
+    public $teamSuggestion = [];
+    public $teamName;
+
+    public function teamSuggestion(){
+        if(strlen($this->teamName) > 1){
+            $teams = array();
+
+            $own_teams = Auth::user()->coach->own_teams()
+                ->where('status', 'active')
+                ->where('name', 'LIKE', '%'.$this->teamName.'%')
+                ->limit(5)->get();
+
+            $coach_teams = Auth::user()->coach->teams()
+                ->where('status', 'active')
+                ->where('name', 'LIKE', '%'.$this->teamName.'%')
+                ->limit(5)->get();
+            
+            foreach($own_teams as $team){
+                array_push($teams, array(
+                    'name' => $team->name,
+                    'logo' => $team->logo,
+                    'id' => $team->id
+                ));
+            }
+
+            foreach($coach_teams as $team){
+                array_push($teams, array(
+                    'name' => $team->name,
+                    'logo' => $team->logo,
+                    'id' => $team->id
+                ));
+            }
+
+            $this->teamSuggestion = $teams;
+        }
+        else{
+            $this->teamSuggestion = [];
+        }
+    }
+
+    public function addTeam($name, $logo, $id){
+        $team_exists = false;
+
+        foreach($this->teams as $team){
+            if($team['id'] == $id)
+                $team_exists = true;
+        }
+
+        if(!$team_exists){
+            array_push($this->teams, array(
+                'name' => $name,
+                'logo' => $logo,
+                'id' => $id,
+            ));
+        }
+
+        $this->dispatchBrowserEvent('closeTeamModal');
+        $this->teamSuggestion = [];
+        $this->teamName = '';
+    }
+
+    public function deleteTeam($id){
+        foreach($this->teams as $key => $team){
+            if($team['id'] == $id)
+                unset($this->teams[$key]);
+        }
+    }
+
+    public function openTeamModal(){
+        $this->dispatchBrowserEvent('openTeamModal');
+    }
+    public function closeTeamModal(){
+        $this->dispatchBrowserEvent('closeTeamModal');
+    }
+
     public function submitEvent(){
         $this->validate([
             'eventName' => ['required', 'string', 'min:3'],
@@ -52,6 +129,14 @@ class CreateEvent extends Component
             'cover_image' => $imageName,
             'coach_id' => Auth::user()->coach->id,
         ]);
+
+        if(count($this->teams) > 0){
+            $team_ids = [];
+            foreach($this->teams as $team)
+                array_push($team_ids, $team['id']);
+
+            $event->teams()->syncWithoutDetaching($team_ids);
+        }
 
         $this->emit('eventCreated');
     }

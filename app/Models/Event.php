@@ -33,4 +33,8 @@ class Event extends Model
     {
         return $this->belongsToMany(Player::class);
     }
+
+    public function teams(){
+        return $this->belongsToMany(Team::class)->withPivot('played', 'won', 'lost', 'points');
+    }
 }
