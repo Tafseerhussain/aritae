@@ -26,7 +26,7 @@
                     <div class="card">
                         <div class="card-head text-center">
                             <h2>
-                                What are you looking for
+                                Who are you looking for
                             </h2>
                             <p class="my-4">
                                 Find Coaches or Players
