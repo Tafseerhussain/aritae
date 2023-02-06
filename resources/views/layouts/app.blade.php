@@ -95,6 +95,14 @@
                                     <a class="dropdown-item" href="{{ route('player.dashboard') }}">
                                         Dashboard
                                     </a>
+                                @elseif (Auth::user()->userType->type == 'admin')
+                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                        Dashboard
+                                    </a>
+                                @elseif (Auth::user()->userType->type == 'parent')
+                                    <a class="dropdown-item" href="{{ route('parent.dashboard') }}">
+                                        Dashboard
+                                    </a>
                                 @endif
                                 <hr class="dropdown-divider">
                                 <a class="dropdown-item" href="{{ route('logout') }}"

@@ -24,7 +24,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="event_start" class="col-form-label">{{ __('Event Start Date') }}</label>
-                            <input id="event_start" type="date" class="form-control @error('eventStart') is-invalid @enderror" wire:model="eventStart">
+                            <input id="event_start" type="datetime-local" class="form-control @error('eventStart') is-invalid @enderror" wire:model="eventStart">
 
                             @error('eventStart')
                                 <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="event_end" class="col-form-label">{{ __('Event End Date') }}</label>
-                            <input id="event_end" type="date" class="form-control @error('eventEnd') is-invalid @enderror" wire:model="eventEnd">
+                            <input id="event_end" type="datetime-local" class="form-control @error('eventEnd') is-invalid @enderror" wire:model="eventEnd">
 
                             @error('eventEnd')
                                 <span class="invalid-feedback" role="alert">

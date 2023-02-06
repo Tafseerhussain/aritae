@@ -28,4 +28,12 @@ class AdminController extends Controller
     {
         return view('admin.teams');
     }
+    public function users()
+    {
+        return view('admin.users');
+    }
+    public function calendar()
+    {
+        return view('admin.calendar');
+    }
 }

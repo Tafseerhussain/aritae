@@ -162,6 +162,7 @@
     </div>
 
     {{-- Event Teams --}}
+    @if($event->teams && count($event->teams) > 0)
     <div class="teams">
         <div class="container">
             <div class="row">
@@ -169,7 +170,6 @@
                     <h1>JOINING THIS <span class="text-primary">TOURNAMENT</span></h1>
                 </div>
             </div>
-            @if($event->teams && count($event->teams) > 0)
             <div class="row my-2 pb-2 upcoming-sport">
                 <div class="col-6 d-flex justify-content-start">
                     <img class="leag-logo" src="{{asset('assets/img/aritae-icon.png')}}" widht="50" height="50" alt="Aritae League">
@@ -210,9 +210,9 @@
                 <div class="col-2 d-flex align-items-center"><span>{{$team->pivot->points}}</span></div>
             </div>
             @endforeach
-            @endif
         </div>
     </div>
+    @endif
 
     <script>
     // Set the date we're counting down to

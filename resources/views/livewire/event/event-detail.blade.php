@@ -92,42 +92,36 @@
                 </div>
             </div>
         </div>
+        @if($event->teams && count($event->teams) > 0)
         <div class="row mb-3">
             <div class="col-12">
                 <h2 class="my-3">Teams Joining</h2>
-                @if($event->teams && count($event->teams) > 0)
-                    <div class="row event-team-header">
-                        <div class="col-1"><h5 class="fw-bold fs-6">POS</h5></div>
-                        <div class="col-5"><h5 class="fw-bold fs-6">Name</h5></div>
-                        <div class="col-2"><h5 class="fw-bold fs-6">PLAYED</h5></div>
-                        <div class="col-1"><h5 class="fw-bold fs-6">WON</h5></div>
-                        <div class="col-1"><h5 class="fw-bold fs-6">LOST</h5></div>
-                        <div class="col-2"><h5 class="fw-bold fs-6">POINTS</h5></div>
-                    </div>
-                    @foreach($event->teams as $key => $team)
-                    <div class="row event-team-body py-3 my-2">
-                        <div class="col-1"><span>{{$key}}</span></div>
-                        <div class="col-5 d-flex justify-content-start">
-                            <div class="team-logo">
-                                <img src="{{asset('storage/images/team/logo/'.$team->logo)}}" alt="Team Logo">
-                            </div>
-                            <span>{{$team->name}}</span>
-                        </div>
-                        <div class="col-2"><span>{{$team->pivot->played}}</span></div>
-                        <div class="col-1"><span>{{$team->pivot->won}}</span></div>
-                        <div class="col-1"><span>{{$team->pivot->lost}}</span></div>
-                        <div class="col-2"><span>{{$team->pivot->points}}</span></div>
-                    </div>
-                    @endforeach
-                @else
-                <div class="row event-player-body">
-                    <div class="col-12">
-                        <p class="text-center">No records found</p>
-                    </div>
+                <div class="row event-team-header">
+                    <div class="col-1"><h5 class="fw-bold fs-6">POS</h5></div>
+                    <div class="col-5"><h5 class="fw-bold fs-6">Name</h5></div>
+                    <div class="col-2"><h5 class="fw-bold fs-6">PLAYED</h5></div>
+                    <div class="col-1"><h5 class="fw-bold fs-6">WON</h5></div>
+                    <div class="col-1"><h5 class="fw-bold fs-6">LOST</h5></div>
+                    <div class="col-2"><h5 class="fw-bold fs-6">POINTS</h5></div>
                 </div>
-                @endif
+                @foreach($event->teams as $key => $team)
+                <div class="row event-team-body py-3 my-2">
+                    <div class="col-1"><span>{{$key}}</span></div>
+                    <div class="col-5 d-flex justify-content-start">
+                        <div class="team-logo">
+                            <img src="{{asset('storage/images/team/logo/'.$team->logo)}}" alt="Team Logo">
+                        </div>
+                        <span>{{$team->name}}</span>
+                    </div>
+                    <div class="col-2"><span>{{$team->pivot->played}}</span></div>
+                    <div class="col-1"><span>{{$team->pivot->won}}</span></div>
+                    <div class="col-1"><span>{{$team->pivot->lost}}</span></div>
+                    <div class="col-2"><span>{{$team->pivot->points}}</span></div>
+                </div>
+                @endforeach
             </div>
         </div>
+        @endif
         <div class="row">
             <div class="col-12">
                 <h2 class="my-3">Joining This Event</h2>
