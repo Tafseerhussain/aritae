@@ -26,6 +26,11 @@ class CoachController extends Controller
         return view('coach.profile');
     }
 
+    public function settings()
+    {
+        return view('coach.settings');
+    }
+
     public function profilePreview($id)
     {
         $user = User::findOrFail($id);

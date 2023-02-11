@@ -23,6 +23,11 @@ class PlayerController extends Controller
         return view('player.profile');
     }
 
+    public function settings()
+    {
+        return view('player.settings');
+    }
+
     public function playerChat()
     {
         $player = Player::where('user_id',Auth::user()->id)->first();

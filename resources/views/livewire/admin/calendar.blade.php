@@ -102,6 +102,7 @@ document.addEventListener('livewire:load', function() {
     if(aritaeCalendar) {
         aritaeCalendarInit = new FullCalendar.Calendar(aritaeCalendar, {
             headerToolbar: false,
+            height: 600,
             initialView: 'timeGridWeek',
             timeZone: 'local',
             eventDisplay: 'block',
@@ -187,6 +188,7 @@ document.addEventListener('close_event_detail_modal', function(){
     if(aritaeCalendar) {
         aritaeCalendarInit = new FullCalendar.Calendar(aritaeCalendar, {
             headerToolbar: false,
+            height: 600,
             initialView: 'timeGridWeek',
             timeZone: 'local',
             navLinks: true, // can click day/week names to navigate views

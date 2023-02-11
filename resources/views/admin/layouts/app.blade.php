@@ -13,6 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
     <!-- FullCalendar -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.1/index.global.min.js'></script>
@@ -83,7 +84,7 @@
                                           <div class="accordion-body">
                                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                                 <li>
-                                                    <a href="#" class="link-dark rounded">
+                                                    <a href="{{ route('admin.profile') }}" class="link-dark rounded">
                                                         <i class="fa-solid fa-circle-info"></i>
                                                         <span>Personal Information</span>
                                                     </a>
@@ -132,7 +133,16 @@
                                 </li>    
                                 <li class="list-group-item {{ $route == 'admin.sports' ? 'active' : '' }}">
                                     <a href="{{ route('admin.sports') }}">
-                                        <i class="bi bi-xbox"></i>
+                                        <svg width="25" height="25" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_2638_5851)">
+                                                <path d="M24.2332 5.30803H24.2496L23.9804 4.98414L23.9461 4.94398C23.4689 4.36203 22.9369 3.81432 22.3655 3.31598C22.3366 3.29096 22.3076 3.26595 22.2786 3.24093L22.2128 3.18432C22.1977 3.17115 22.1825 3.15798 22.1674 3.14547L22.1529 3.13428C21.9988 3.0046 21.8678 2.89795 21.7421 2.79986L21.7046 2.7709C21.671 2.74456 21.6374 2.71823 21.6039 2.69321L21.5788 2.67412C20.9186 2.1771 20.2089 1.74195 19.4703 1.3812C19.1102 1.20543 18.7283 1.04151 18.3347 0.892732C18.3228 0.886149 18.311 0.879566 18.2985 0.873641L18.2807 0.865741C17.1886 0.452321 16.0464 0.182414 14.8831 0.0639175C13.766 -0.0381208 12.6706 -0.0177131 11.6271 0.123166L11.5758 0.130407C11.535 0.135674 11.4935 0.141598 11.4533 0.147523L11.4231 0.152131C10.6061 0.275894 9.79901 0.477996 9.02417 0.753828C8.09925 1.08298 7.19209 1.52537 6.32839 2.06848C5.63387 2.5056 4.9828 2.99604 4.39427 3.52532C3.19153 4.60495 2.2146 5.88076 1.48782 7.31917L1.46873 7.35735C1.45293 7.38829 1.43779 7.41858 1.42331 7.4482L1.4108 7.47322C1.05268 8.20526 0.751169 8.99194 0.516152 9.81088C-0.041438 11.7536 -0.149401 13.8391 0.204771 15.8417C0.552359 17.8054 1.34365 19.7014 2.49372 21.3241C3.30279 22.465 4.2784 23.4662 5.39424 24.2983C5.45678 24.3451 5.51932 24.3912 5.58318 24.4373C5.91233 24.6736 6.25531 24.8994 6.60422 25.1087L6.64569 25.1337C6.68914 25.1594 6.73259 25.1858 6.77604 25.2108C8.81154 26.3812 11.136 27.0001 13.4974 27.0001C20.9429 27.0001 27.0007 20.9423 27.0007 13.4968C27 10.5416 26.0205 7.64964 24.2332 5.30803ZM25.3464 13.7581C25.3483 13.8424 25.351 13.9352 25.351 14.0392C25.2522 16.6119 24.3358 18.9845 22.6275 21.0904C22.5018 21.2451 22.4603 21.2543 22.4557 21.255C22.4537 21.255 22.4077 21.253 22.2661 21.1101C19.9034 18.7244 17.4058 16.2294 14.8423 13.6949C14.7034 13.5573 14.6929 13.508 14.6929 13.4961C14.6929 13.4843 14.7041 13.4362 14.8397 13.3072C15.7179 12.4738 16.5632 11.614 17.2735 10.8826C17.3505 10.8036 17.392 10.7654 17.4381 10.7654C17.4795 10.7654 17.5243 10.7977 17.6026 10.8596C19.808 12.6192 22.299 13.346 25.0073 13.0195C25.2535 12.9899 25.318 13.0241 25.3338 13.0406C25.3562 13.0629 25.3747 13.1406 25.3562 13.2887C25.3385 13.4375 25.3417 13.5863 25.3464 13.7581ZM10.9346 17.6909C10.7358 17.4368 10.7364 17.3913 10.9366 17.2024C11.7344 16.4519 12.529 15.6587 13.2973 14.845C13.423 14.712 13.4737 14.7048 13.4829 14.7048C13.4829 14.7048 13.4829 14.7048 13.4836 14.7048C13.5073 14.7048 13.5639 14.7331 13.6956 14.8661C16.236 17.4229 18.7356 19.9173 21.1253 22.2806C21.251 22.405 21.2582 22.4485 21.2589 22.4511C21.2582 22.4551 21.2464 22.4959 21.1108 22.6052C18.9726 24.3319 16.527 25.2516 13.8463 25.3391H13.8377C13.4619 25.3444 13.1373 25.349 13.0781 25.2865C13.0234 25.2285 13.0412 24.9409 13.0616 24.6084L13.0682 24.4998C13.2196 21.987 12.502 19.6968 10.9346 17.6909ZM1.59842 13.3987C1.5971 13.3421 1.59578 13.2776 1.59578 13.2012C1.68795 10.4573 2.61814 7.99921 4.35938 5.89393C4.4759 5.75305 4.51737 5.7491 4.51803 5.74844C4.52066 5.74844 4.56214 5.75041 4.69643 5.88537C7.36325 8.56733 9.7944 10.9926 12.1294 13.2993C12.2624 13.4303 12.2762 13.4856 12.2762 13.5027C12.2762 13.5238 12.2558 13.5777 12.1222 13.7048C11.246 14.5395 10.4738 15.3104 9.76148 16.0609C9.58308 16.2485 9.54951 16.2492 9.31317 16.0668C7.44752 14.6238 5.39161 13.8964 3.18626 13.8964C2.7735 13.8964 2.35548 13.922 1.93284 13.9727C1.69058 14.0017 1.6287 13.9622 1.61619 13.949C1.605 13.9378 1.56945 13.8852 1.59249 13.6883C1.60302 13.5981 1.60105 13.5099 1.59842 13.3987ZM16.18 9.45473C16.2669 9.56072 16.2669 9.56072 16.1649 9.66144C15.2867 10.5251 14.4289 11.3717 13.5929 12.2341C13.5244 12.3046 13.4921 12.3144 13.4928 12.3158C13.4625 12.3079 13.3829 12.2282 13.3447 12.19C12.2479 11.088 11.1295 9.97151 10.0472 8.89122L9.01298 7.85899C8.72332 7.56999 8.43498 7.27967 8.14664 6.98936C7.40999 6.2481 6.64833 5.48182 5.87942 4.74649C5.7313 4.60495 5.72932 4.55229 5.72932 4.54636C5.72998 4.53122 5.74907 4.48251 5.91431 4.35084C8.1473 2.5655 10.6686 1.6623 13.4145 1.6623C13.5251 1.6623 13.637 1.66362 13.7482 1.66691C13.8246 1.66888 13.922 1.67151 13.9813 1.6781C13.9793 1.71694 13.974 1.7696 13.9694 1.81766C13.637 4.69119 14.3809 7.26058 16.18 9.45473ZM25.1265 11.3316C25.1133 11.348 25.0593 11.3875 24.8474 11.3882C24.6018 11.3895 24.3602 11.4086 24.1667 11.4244C24.0995 11.4297 24.0383 11.4349 23.9863 11.4382C22.0107 11.4244 20.3076 10.8543 18.779 9.69502C18.7376 9.66342 18.6428 9.59166 18.6217 9.55612C18.627 9.54229 18.648 9.50016 18.7283 9.42248C20.0055 8.18551 21.2694 6.90904 22.3366 5.82349C22.4004 5.75831 22.4346 5.73593 22.4498 5.72803C22.4636 5.73659 22.4952 5.76161 22.5525 5.83007C23.8099 7.32839 24.6742 9.08279 25.1206 11.0452C25.1693 11.2572 25.1377 11.3184 25.1265 11.3316ZM21.2029 4.63523C19.7119 6.10722 18.5783 7.24017 17.5256 8.30861C17.4815 8.35338 17.4539 8.37313 17.4394 8.38103C17.4249 8.36918 17.3979 8.34285 17.3492 8.27965C15.9101 6.41728 15.3288 4.2883 15.6211 1.9513C15.6277 1.89797 15.6369 1.87098 15.6422 1.85979C15.6573 1.85782 15.6929 1.85716 15.7745 1.87164C16.284 1.96117 16.8298 2.10863 17.4927 2.33641C17.5566 2.35813 17.6204 2.37657 17.6829 2.39171C19.0009 2.88676 20.2076 3.61551 21.2707 4.56019C21.2589 4.57664 21.2385 4.60034 21.2029 4.63523ZM1.80973 15.6448C1.80973 15.6448 1.83673 15.6192 1.95654 15.6132C2.23566 15.5994 2.51742 15.5705 2.74454 15.5474C2.82814 15.5389 2.90582 15.531 2.97561 15.5244C4.99662 15.5626 6.70889 16.1379 8.21116 17.2847C8.33755 17.3815 8.35994 17.4177 8.36257 17.4236C8.36257 17.4243 8.35533 17.4664 8.24868 17.5704C6.92284 18.8567 5.64506 20.1464 4.67997 21.1259C4.56214 21.2458 4.52264 21.2556 4.51737 21.2569C4.51605 21.2569 4.4759 21.2484 4.37847 21.1299C3.10003 19.5829 2.23895 17.7929 1.81763 15.8094C1.79064 15.6797 1.80973 15.6455 1.80973 15.6448ZM5.84387 22.2925C7.17168 20.991 8.33755 19.8264 9.40797 18.7323C9.49947 18.6388 9.54161 18.6184 9.55477 18.6138C9.56662 18.6198 9.6048 18.6454 9.68314 18.7488C10.8622 20.2984 11.4349 21.985 11.4349 23.9047C11.4145 24.1746 11.4053 24.401 11.3974 24.5834C11.3869 24.8368 11.3757 25.0989 11.3375 25.1581C11.2611 25.1798 10.9662 25.0969 10.6548 25.0087C10.5041 24.9659 10.3289 24.9165 10.1268 24.8625C8.62326 24.4616 7.18222 23.6947 5.84453 22.5821C5.73261 22.4887 5.71747 22.4492 5.71616 22.4492C5.71813 22.4399 5.73327 22.4011 5.84387 22.2925Z" fill="#333333" fill-opacity="0.7"/>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_2638_5851">
+                                                    <rect width="27" height="27" fill="white"/>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
                                         <span>Sports</span>
                                     </a>
                                 </li>
@@ -198,24 +208,55 @@
                                         <img src="{{ asset('assets/img/account.svg') }}" alt="">
                                     </a>
 
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu dropdown-menu-end bg-light user-action-menu" aria-labelledby="navbarDropdown">
                                         @guest
-                                            <a class="dropdown-item" href="{{ route('login') }}">
+                                            <a class="dropdown-item text-dark" href="{{ route('login') }}">
                                                 Login
                                             </a>
                                             <hr class="dropdown-divider">
-                                            <a class="dropdown-item" href="{{ route('register') }}">
+                                            <a class="dropdown-item text-dark" href="{{ route('register') }}">
                                                 Register
                                             </a>
                                         @else
-                                            <a class="dropdown-item" href="#">
-                                                Profile
+                                            <div class="d-flex justify-content-start align-items-center">
+                                                @if(auth()->user()->admin->profile_img)
+                                                    <img class="profile-image" src="{{asset(auth()->user()->admin->profile_img)}}" onerror="this.src='{{asset('assets/img/default/default-profile-pic.jpg')}}'" alt="Profile Photo">
+                                                @else
+                                                    <img class="profile-image" src="{{asset('assets/img/default/default-profile-pic.jpg')}}" alt="Profile Photo">
+                                                @endif
+                                                <div>
+                                                    <h6 class="m-0 text-dark profile-name">{{auth()->user()->full_name}}</h6>
+                                                    <span class="text-secondary profile-focus">Admin Account</span>
+                                                </div>
+                                            </div>
+                                            <hr class="dropdown-divider">
+                                            <a class="dropdown-item text-dark" href="{{ route('admin.dashboard') }}">
+                                                <svg class="icon" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_1890_6273)">
+                                                        <path d="M6.7252 10.9492H0.7276C0.5304 10.9492 0.3536 11.0172 0.2176 11.16C0.0816 11.3028 0 11.4796 0 11.6768V16.2736C0 16.4912 0.068 16.668 0.1972 16.7972C0.3264 16.9264 0.51 17.0012 0.7276 17.0012H6.7048C6.9224 17.0012 7.0992 16.9332 7.2284 16.804C7.3576 16.6748 7.4256 16.498 7.4256 16.2804V11.6836C7.4256 11.4864 7.3576 11.3096 7.2284 11.1736C7.0992 11.0376 6.9224 10.9492 6.7252 10.9492Z" fill="#333333"/>
+                                                        <path d="M6.7252 0H0.7276C0.5236 0 0.3536 0.068 0.2108 0.1972C0.068 0.3264 0 0.51 0 0.7276V8.1056C0 8.3028 0.068 8.4796 0.1972 8.6156C0.3264 8.7516 0.5032 8.8264 0.7208 8.8264H6.698C6.9156 8.8264 7.0924 8.7584 7.2216 8.6156C7.3508 8.4728 7.4188 8.3028 7.4188 8.1056V0.7276C7.4188 0.51 7.3508 0.3332 7.2216 0.204C7.0924 0.0748 6.9224 0 6.7252 0Z" fill="#333333"/>
+                                                        <path d="M16.8027 0.1972C16.6667 0.068 16.4899 0 16.2723 0H10.2951C10.0775 0 9.90074 0.068 9.77154 0.1972C9.64234 0.3264 9.57434 0.5032 9.57434 0.7208V5.3176C9.57434 5.5148 9.64234 5.6916 9.77154 5.8276C9.90754 5.9704 10.0707 6.0384 10.2747 6.0384H16.2723C16.4695 6.0384 16.6463 5.9704 16.7823 5.8276C16.9319 5.6984 16.9999 5.5284 16.9999 5.3244V0.7276C16.9999 0.51 16.9319 0.3332 16.8027 0.1972Z" fill="#333333"/>
+                                                        <path d="M16.2723 8.17188H10.2951C10.0775 8.17188 9.90074 8.23987 9.77154 8.38267C9.63554 8.52547 9.57434 8.69547 9.57434 8.89267V16.2707C9.57434 16.4883 9.64234 16.6651 9.77154 16.7943C9.90074 16.9235 10.0775 16.9983 10.2747 16.9983H16.2723C16.4695 16.9983 16.6463 16.9303 16.7823 16.8011C16.9183 16.6719 16.9999 16.4883 16.9999 16.2707V8.89947C16.9999 8.70227 16.9319 8.52547 16.8027 8.38947C16.6667 8.24667 16.4899 8.17188 16.2723 8.17188Z" fill="#333333"/>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1890_6273">
+                                                            <rect width="17" height="17" fill="white"/>
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                                {{__('Dashboard')}}
+                                            </a>
+                                            <a class="dropdown-item text-dark" href="{{ route('admin.profile') }}">
+                                                <i class="bi bi-person-fill icon"></i> {{__('My Profile')}}
+                                            </a>
+                                            <a class="dropdown-item text-dark" href="{{ route('admin.settings') }}">
+                                                <i class="bi bi-gear-fill icon"></i> {{__('Settings')}}
                                             </a>
                                             <hr class="dropdown-divider">
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                            <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
+                                                <i class="bi bi-power icon"></i> {{ __('Logout') }}
                                             </a>
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf
@@ -279,242 +320,7 @@
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     </script>
     @livewireScripts
-    <!-- Toastr.js -->
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        window.addEventListener('chat_message_notification', 
-            event => {
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": true,
-                    "positionClass": "toast-bottom-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
-                toastr[event.detail.type]((event.detail.message.length > 35) ? event.detail.message.slice(0, 35) + '&hellip;' : event.detail.message, event.detail.title ?? '')
-            }
-        );
-    </script>
 
-    @if(!Route::is('player.chat'))
-    <script type="module">
-        window.Echo.private('chat.{{Auth::user()->id}}')
-            .listen('MessageSent', (e) => {
-                var data = {
-                    "title" : "New message from "+e.user_name,
-                    "type" : "info",
-                    "message": e.message_body,
-                }
-                var event = new CustomEvent('chat_message_notification', { detail: data });
-                window.dispatchEvent(event);
-            });
-    </script>
-    @endif
-
-    @stack('custom-scripts')
-
-    <div class="modal" id="call_receive_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title w-100 text-center">Incoming Call</h5>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12 mb-3 text-center call-text">
-                            Someone is calling ...
-                        </div>
-                        <audio id="ring" autoplay hidden></audio>
-                        <div class="col-12 d-flex align-items-center justify-content-center">
-                            <button class="btn btn-success btn-lg m-2" id="call_accept">Accept</button>
-                            <button class="btn btn-danger btn-lg m-2" id="call_decline">Decline</buttion>
-                        </div>
-                    </div>
-                    <input type="text" id="partner_name" hidden>
-                    <input type="text" id="partner_id" hidden>
-                    <input type="text" id="signal" hidden>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="video_call_receive_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title w-100 text-center">Incoming Video Call</h5>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-12 mb-3 text-center video-call-text">
-                            Someone is calling ...
-                        </div>
-                        <div class="col-12 d-flex align-items-center justify-content-center">
-                            <button class="btn btn-success btn-lg m-2" id="video_call_accept">Accept</button>
-                            <button class="btn btn-danger btn-lg m-2" id="video_call_decline">Decline</buttion>
-                        </div>
-                    </div>
-                    <input type="text" id="video_partner_name" hidden>
-                    <input type="text" id="video_partner_id" hidden>
-                    <input type="text" id="video_signal" hidden>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-    $(document).ready(function(){
-        //Incoming audio call
-        var channel = window.Echo.join("presence-call-channel");
-        channel.listen("StartAudioChat", ( data ) => {
-          if (data.type === "incomingCall" && data.userToCall == '{{Auth::user()->id}}') {
-            // add a new line to the sdp to take care of error
-            const updatedSignal = {
-              ...data.signalData,
-              sdp: `${data.signalData.sdp}\n`,
-            };
-            
-            var partner_name = data.partnerName;
-            var partner_id = data.from;
-            var signal = JSON.stringify(updatedSignal);
-
-            $('#partner_name').val(partner_name);
-            $('#partner_id').val(partner_id);
-            $('#signal').val(signal);
-
-            $('.call-text').text(partner_name+" is calling ...");
-
-            $('#call_receive_modal').modal('show');
-          }
-        });
-
-        $('#call_decline').click(function(){
-            $('#call_receive_modal').modal('hide');
-        });
-        $('#call_accept').click(function(){
-            var partner_name = $('#partner_name').val();
-            var partner_id = $('#partner_id').val();
-            var signal = JSON.stringify($('#signal').val());
-
-            var words = CryptoJS.enc.Utf8.parse(signal); 
-            var base64 = CryptoJS.enc.Base64.stringify(words);
-
-
-            $('#call_receive_modal').modal('hide');
-            window.open('/call?partner_id='+partner_id+'&partner_name='+partner_name+'&action=accept_call&signal='+base64,'Aritae Call','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
-        });
-
-        $('#call_receive_modal').on('show.bs.modal', function(){
-            var ring = $('#ring');
-            ring.attr("src", "{{asset('audio/ring.mp3')}}");
-            ring.trigger("play");
-        });
-        $('#call_receive_modal').on('hide.bs.modal', function(){
-            var ring = $('#ring');
-            ring.attr("src", "");
-        });
-
-        //Incoming video call
-        var video_channel = window.Echo.join("presence-video-channel");
-        video_channel.listen("StartVideoChat", ( data ) => {
-          if (data.type === "incomingCall" && data.userToCall == '{{Auth::user()->id}}') {
-            // add a new line to the sdp to take care of error
-            const updatedSignal = {
-              ...data.signalData,
-              sdp: `${data.signalData.sdp}\n`,
-            };
-            
-            var partner_name = data.partnerName;
-            var partner_id = data.from;
-            var signal = JSON.stringify(updatedSignal);
-
-            $('#video_partner_name').val(partner_name);
-            $('#video_partner_id').val(partner_id);
-            $('#video_signal').val(signal);
-
-            $('.video_call-text').text(partner_name+" is calling ...");
-
-            $('#video_call_receive_modal').modal('show');
-          }
-        });
-
-        $('#video_call_decline').click(function(){
-            $('#video_call_receive_modal').modal('hide');
-        });
-        $('#video_call_accept').click(function(){
-            var partner_name = $('#video_partner_name').val();
-            var partner_id = $('#video_partner_id').val();
-            var signal = JSON.stringify($('#video_signal').val());
-
-            var words = CryptoJS.enc.Utf8.parse(signal); 
-            var base64 = CryptoJS.enc.Base64.stringify(words);
-
-
-            $('#video_call_receive_modal').modal('hide');
-            //window.open('/video_call?partner_id='+partner_id+'&partner_name='+partner_name+'&action=accept_call&signal='+base64,'Aritae Call','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
-            openWindowWithPost("/video_call", "AritaeVideoCall", {
-                partner_id: partner_id,
-                partner_name: partner_name,
-                action: 'accept_call',
-                signal: base64
-            });
-        });
-
-        $('#video_call_receive_modal').on('show.bs.modal', function(){
-            var ring = $('#ring');
-            ring.attr("src", "{{asset('audio/ring.mp3')}}");
-            ring.trigger("play");
-        });
-        $('#video_call_receive_modal').on('hide.bs.modal', function(){
-            var ring = $('#ring');
-            ring.attr("src", "");
-        });
-
-        //Fix autoplay block problem
-        $(document).on('click', function(){
-            var ring = $('#ring');
-            ring[0].play();
-        });
-    });
-
-    function openWindowWithPost(url, title, data) {
-        var form = document.createElement("form");
-        form.target = title;
-        form.method = "POST";
-        form.action = url;
-        form.style.display = "none";
-
-        for (var key in data) {
-            var input = document.createElement("input");
-            input.type = "hidden";
-            input.name = key;
-            input.value = data[key];
-            form.appendChild(input);
-        }
-        
-        //CSRF token
-        var csrf = document.querySelector('meta[name="csrf-token"]').content;
-        var input = document.createElement("input");
-        input.type = "hidden";
-        input.name = '_token';
-        input.value = csrf;
-        form.appendChild(input);
-
-        document.body.appendChild(form);
-        window.open(url, title,'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=600');
-        form.submit();
-        document.body.removeChild(form);
-    }
-    </script>--}}
+    @include('components.notification-script')
 </body>
 </html>

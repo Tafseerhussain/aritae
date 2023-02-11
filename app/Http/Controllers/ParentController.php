@@ -18,6 +18,11 @@ class ParentController extends Controller
         return view('parent.profile');
     }
 
+    public function settings()
+    {
+        return view('parent.settings');
+    }
+
     public function player()
     {
         return view('parent.player');

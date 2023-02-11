@@ -16,6 +16,10 @@ class AdminController extends Controller
     {
         return view('admin.profile');
     }
+    public function settings()
+    {
+        return view('admin.settings');
+    }
     public function sports()
     {
         return view('admin.sports');

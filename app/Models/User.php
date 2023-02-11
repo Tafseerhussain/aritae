@@ -81,4 +81,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(TeamRequest::class);
     }
+
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
+
+    public function settings(){
+        return $this->hasOne(UserSetting::class);
+    }
 }

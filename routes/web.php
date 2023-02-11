@@ -56,6 +56,7 @@ Route::post('/video/accept-call', [App\Http\Controllers\CallController::class, '
 Route::group(['middleware' => 'coach'], function () {
     Route::get('/coach/dashboard', [CoachController::class, 'index'])->name('coach.dashboard');
     Route::get('/coach/profile', [CoachController::class, 'profile'])->name('coach.profile');
+    Route::get('/coach/settings', [CoachController::class, 'settings'])->name('coach.settings');
     Route::get('/coach/requests', [CoachController::class, 'requests'])->name('coach.requests');
     Route::get('/coach/requests/{id}', [CoachController::class, 'viewPlayerRequest'])->name('coach.requests.single');
     Route::get('/coach/requests/delete/{id}', [CoachController::class, 'deletePlayerRequest'])->name('coach.requests.single.delete');
@@ -78,6 +79,7 @@ Route::group(['middleware' => 'coach'], function () {
 Route::group(['middleware' => 'player'], function () {
     Route::get('/player/dashboard', [PlayerController::class, 'index'])->name('player.dashboard');
     Route::get('/player/profile', [PlayerController::class, 'profile'])->name('player.profile');
+    Route::get('/player/settings', [PlayerController::class, 'settings'])->name('player.settings');
 
     // Chat Routes
     Route::get('/player/chat/users', [PlayerController::class, 'chatPlayers'])->name('player.chat.users');
@@ -96,6 +98,7 @@ Route::group(['middleware' => 'player'], function () {
 Route::group(['middleware' => 'parent'], function () {
     Route::get('/parent/dashboard', [ParentController::class, 'index'])->name('parent.dashboard');
     Route::get('/parent/profile', [ParentController::class, 'profile'])->name('parent.profile');
+    Route::get('/parent/settings', [ParentController::class, 'settings'])->name('parent.settings');
     Route::get('/parent/player', [ParentController::class, 'player'])->name('parent.player');
 
     // Chat Routes
@@ -105,6 +108,7 @@ Route::group(['middleware' => 'parent'], function () {
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
     Route::get('/admin/sports', [AdminController::class, 'sports'])->name('admin.sports');
 
     // Event Routes
