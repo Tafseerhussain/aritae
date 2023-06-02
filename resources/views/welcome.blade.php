@@ -19,13 +19,13 @@
             </div>
         </div>
     </div> --}}
-    <div class="register-page pt-5">
-        <div class="get-started pt-5">
+    <div class="register-page">
+        <div class="get-started">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-head text-center">
-                            <h2>
+                        <div class="card-head text-center pt-5">
+                            <h2 class="pt-5">
                                 Who are you looking for
                             </h2>
                             <p class="my-4">
