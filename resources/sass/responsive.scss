@@ -1,0 +1,153 @@
+@media(max-width: 1920px) {
+}
+
+@media(max-width: 1500px) {
+}
+
+// 1399 START
+@media(max-width: 1399px) {
+} // 1399 END
+
+@media only screen and (max-width: 1399px) and (min-width: 1200px) {
+}
+
+// 1350 START
+@media(max-width: 1350px) {
+} // 1350 END
+
+@media(max-width: 1250px) {
+}
+
+// 1199 START
+@media(max-width: 1199px) {
+	h4 {
+		font-size: 20px;
+	}
+	h2 {
+		font-size: 27px;
+	}
+	h3 {
+		font-size: 24px;
+	}
+	p {
+		font-size: 14px;
+	}
+	.form-control {
+		font-size: 14px;
+	}
+	.btn {
+		font-size: 14px;
+	}
+	.icon-right-full {
+	    padding: 5px 5px 4px 30px;
+	    i {
+	    	font-size: 38px;
+	    }
+	}
+} // 1199 END
+
+
+@media (max-width: 1024px) {
+}
+
+// 991 START
+@media (max-width: 991px) {
+	.navbar {
+	    max-width: 100%;
+	    border-radius: 0 !important;
+	    margin-top: 0 !important;
+	    .navbar-brand {
+	    	img {
+	    		height: 30px;
+	    	}
+	    }
+	    a.nav-link,
+	    a.dropdown-item {
+	    	font-size: 14px;
+	    }
+	    .account-toggle {
+	    	img {
+	    		height: 30px;
+	    	}
+	    }
+	}
+
+} //991 END
+
+// 767 START
+@media (max-width: 767px) {
+	.navbar-desktop {
+		display: none;
+	}
+	.navbar-mobile {
+		display: block;
+		.open-nav-menu {
+			font-size: 32px;
+			i {
+				color: #475569;
+			}
+		}
+		.navbar-brand {
+			margin: 0;
+			img {
+				height: 24px;
+				position: relative;
+				top: -4px;
+			}
+		}
+		.dropdown-menu {
+			position: absolute;
+		}
+	}
+	.register-page {
+		.get-started {
+			.card {
+				padding-left: 12px;
+				padding-right: 12px;
+				.card-head {
+					padding-top: 20px !important;
+					p {
+						margin: 20px 0 10px !important;
+					}
+				}
+				.card-body {
+					.row {
+						--bs-gutter-y: 1rem;
+					}
+				}
+			}
+		}
+	}
+} // 767 END
+
+// 575 START
+@media(max-width: 575px) {
+} // 575 END
+
+// 499 START
+@media (max-width: 499px) {
+} // 499 END
+
+// 454 START
+@media (max-width: 454px) {
+} // 454 END
+
+// 399 START
+@media (max-width: 399px) {
+} // 399 END
+
+// 365 START
+@media (max-width: 365px) {
+} // 365 END
+
+// 350 START
+@media (max-width: 350px) {
+} // 350 END
+
+// 335
+@media (max-width: 335px) {
+} // 335 END
+
+// 335
+@media (max-width: 320px) {
+} // 320 END

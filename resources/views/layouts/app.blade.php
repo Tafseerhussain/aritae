@@ -17,6 +17,7 @@
     <!-- Scripts -->
     @vite([
         'resources/sass/app.scss', 
+        'resources/sass/responsive.scss', 
         'resources/js/app.js'
     ])
 
@@ -27,6 +28,35 @@
 </head>
 <body>
     <div id="app">
+
+        {{-- SIDENAV FOR MOBILE --}}
+        <div id="mySidenav" class="sidenav utile">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+            <i class="bi bi-x-circle"></i>
+          </a>
+          <div id="sidenav-content" class="w-100 p-3">
+              <div class="sidenav-logo d-md-none d-block">
+                <a href="/"><img src="/assets/img/logo.png" alt=""></a>
+              </div>
+              <div class="sidenav-links text-capitalize">
+                  <a href="#"><i class="bi bi-info-circle me-1"></i> About</a>
+                  <a href="#"><i class="bi bi-chat-right-text me-1"></i> Faq</a>
+                  <a href="#"><i class="bi bi-person-rolodex me-1"></i> Contact</a>
+                  <hr class="text-white opacity-50">
+                  <a href="#"><i class="bi bi-mortarboard me-1"></i> Academy</a>
+                  <a href="#" class="sub-item"><i class="bi bi-people-fill me-1"></i> Players</a>
+                  <a href="#" class="sub-item"><i class="bi bi-person-check-fill me-1"></i> Coaches</a>
+                  <a href="#" class="sub-item"><i class="bi bi-person-hearts me-1"></i> Parents</a>
+              </div>
+              <div class="sidenav-bottom text-uppercase text-start">
+                <a class="navbar-brand" href="#!">
+                    <img src="{{ asset('assets/img/logo.svg') }}" alt="">
+                </a>
+              </div>
+            </div>
+        </div>  
+
+        {{-- DESKTOP NAVBAR --}}
         <nav class="navbar navbar-expand-md container">
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -120,6 +150,44 @@
             </div>
         </nav>
 
+        {{-- MOVILE NAVBAR --}}
+        <nav class="navbar navbar-expand-md container navbar-mobile text-white">
+            <div class="row d-flex align-items-center">
+                <div class="col-2 p-0">
+                    <a href="#!" class="open-nav-menu text-white" onclick="openNav()">
+                        <i class="bi bi-list"></i>
+                    </a>
+                </div>
+                <div class="col-8 text-center">
+                    {{-- Logo --}}
+                    <a class="navbar-brand" href="#">
+                        <img src="{{ asset('assets/img/logo.svg') }}" alt="">
+                    </a>
+                </div>
+                <div class="col-2 p-0">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown align-self-end">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle account-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <img src="{{ asset('assets/img/account.svg') }}" alt="">
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                @guest
+                                    <a class="dropdown-item" href="{{ route('login') }}">
+                                        <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a class="dropdown-item" href="{{ route('register') }}">
+                                        <i class="bi bi-plus-square me-1"></i> Register
+                                    </a>
+                                @endguest
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         <main class="">
             @yield('content')
         </main>
@@ -130,6 +198,7 @@
     <!-- Price nouislider-filter cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js"></script>
+    <script src="{{ asset('assets/js/sidebar.js') }}"></script>
     @livewireScripts
     @stack('custom-scripts')
     

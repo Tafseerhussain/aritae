@@ -1,5 +1,11 @@
 @import 'theme';
 
+* {
+	transition: 0.3s;
+}
+.navbar-mobile {
+	display: none;
+}
 nav.navbar {
 	border-radius: 200px;
 	background: rgba(255,255,255,0.8);
@@ -31,6 +37,62 @@ nav.navbar {
 	}
 
 }
+
+// SIDENAV
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 998;
+  top: 0;
+  left: 0;
+  background-color: $purple;
+  overflow-x: hidden;
+  padding-top: 60px;
+  text-align:center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  	a {
+	  padding: 8px 8px 8px 20px;
+	  text-decoration: none;
+	  color: #fff;
+	  font-size: 18px;
+	  display: block;
+	  text-align: left;
+	}
+	.closebtn {
+	    position: absolute;
+	    top: 20px;
+	    left: 50%;
+	    transform: translateX(-50%);
+	    font-size: 32px;
+	}
+	.sidenav-links {
+		a {
+			font-size: 20px;letter-spacing: 1px;
+		}
+		a.sub-item {
+			font-size: 18px;
+			padding-left: 30px;
+		}
+	}
+	.sidenav-bottom {
+	  text-align: center;
+	  margin-top: 60px;
+	  a {
+	  	margin: 0 auto;
+	  	position: absolute;
+	  	left: 50%;
+	  	bottom: 20px;
+	  	transform: translateX(-50%);
+	  	img {
+	  		height: 24px;
+	  	}
+	  }
+	}
+}
+
 
 .coaches-hero,
 .players-hero,
