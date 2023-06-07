@@ -18,7 +18,7 @@ class PlayerParent extends Model
 
     public function players()
     {
-        return $this->belongsToMany(Player::class, 'parent_player', 'player_id', 'parent_id');
+        return $this->belongsToMany(Player::class, 'parent_player', 'parent_id', 'player_id');
     }
 
     public function coaches()

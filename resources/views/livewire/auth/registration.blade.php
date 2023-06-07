@@ -189,9 +189,9 @@
                                             </div>
 
                                             @if($step == 2 || $step == 4)
-                                            <div class="col-12 mb-3">
+                                            <div class="col-12 mb-3" wire:ignore>
                                                 <label for="areaOfFocus" class="col-form-label">{{ __('Area of Focus') }}</label>
-                                                <select class="form-control form-select @error('areaOfFocus') is-invalid @enderror" wire:model="areaOfFocus">
+                                                <select id="sports-selection" class="form-control form-select @error('areaOfFocus') is-invalid @enderror" wire:model="areaOfFocus" autocomplete="off" multiple>
                                                     <option value=" " disabled selected>Please Select...</option>
                                                     @foreach ($sports as $sport)
                                                         <option value="{{ $sport->id }}">{{ $sport->name }}</option>
@@ -202,14 +202,32 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
+                                                <script>
+                                                    new TomSelect('#sports-selection', {});
+                                                </script>
+                                                <style>
+                                                    .ts-wrapper{
+                                                        padding: 7px 20px !important;
+                                                    }
+                                                    .ts-control{
+                                                        border: none !important;
+                                                        background-color: transparent !important;
+                                                    }
+                                                    .ts-control .item{
+                                                        font-size: 1rem !important;
+                                                    }
+                                                    .ts-dropdown .option{
+                                                        font-size: 1rem !important;
+                                                    }
+                                                </style>
                                             </div>
                                             @elseif($step == 3)
-                                            <div class="col-12 mb-3">
+                                            <div class="col-12 mb-3" wire:ignore>
                                                 <label for="parentRelation" class="col-form-label">{{ __('Relation with') }}</label>
-                                                <select class="form-control form-select @error('parentRelation') is-invalid @enderror" wire:model="parentRelation">
+                                                <select id="player-selection" class="form-control form-select @error('parentRelation') is-invalid @enderror" wire:model="parentRelation" autocomplete="off">
                                                     <option value="" selected>Please Select...</option>
                                                     @foreach ($players as $player)
-                                                        <option value="{{ $player->id }}">{{ $player->full_name }}</option>
+                                                        <option value="{{ $player->player->id }}">{{ $player->full_name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('parentRelation')
@@ -217,6 +235,24 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
+                                                <script>
+                                                    new TomSelect('#player-selection', {});
+                                                </script>
+                                                <style>
+                                                    .ts-wrapper{
+                                                        padding: 7px 20px !important;
+                                                    }
+                                                    .ts-control{
+                                                        border: none !important;
+                                                        background-color: transparent !important;
+                                                    }
+                                                    .ts-control .item{
+                                                        font-size: 1rem !important;
+                                                    }
+                                                    .ts-dropdown .option{
+                                                        font-size: 1rem !important;
+                                                    }
+                                                </style>
                                             </div>
                                             @endif
 

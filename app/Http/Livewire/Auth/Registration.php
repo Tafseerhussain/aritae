@@ -20,6 +20,7 @@ class Registration extends Component
     public $step = 1;
 
     public $sports;
+    public $sports_array = [];
     public $players;
 
     public $firstName = '';
@@ -34,8 +35,11 @@ class Registration extends Component
     public function mount()
     {
         $this->sports = Sport::all();
+        foreach($this->sports as $sport){
+            $this->sports_array[$sport->id] = ['id' => $sport->id, 'name' => $sport->name];
+        }
         $this->players = User::where('user_type_id', 4)->get();
-        $this->areaOfFocus = $this->sports[0]['id'];
+        $this->areaOfFocus = $this->sports->first()->id;
     }
 
     public function changeStep($step)
@@ -65,10 +69,20 @@ class Registration extends Component
         $user->email_verified_at = now();
         $user->password = Hash::make($this->password);
 
-        if($this->step == 2 || $this->step == 4)
-            $user->area_of_focus = $this->sports[$this->areaOfFocus]['name'];
-        else
-            $user->area_of_focus = 0;
+        $sports_string = '0';
+        if($this->step == 2 || $this->step == 4){
+            $sports_string = '';
+            foreach($this->areaOfFocus as $sport_id){
+                $sports_string .= $this->sports_array[$sport_id]['name'] . ", ";
+            }
+            if($sports_string)
+                $sports_string = substr($sports_string, 0, (strlen($sports_string) - 2));
+            
+            $user->area_of_focus = $sports_string;
+        }
+        else{
+            $user->area_of_focus = $sports_string;
+        }
 
         $user->gender = $this->gender;
         $user->experience = 0;
@@ -76,8 +90,7 @@ class Registration extends Component
         $user->remember_token = Str::random(10);
         $user->save();
         
-        $sport = Sport::find($this->areaOfFocus);
-        $sport->users()->attach($user);
+        $user->sports()->sync($this->areaOfFocus);
 
         if ($this->step == 2) {
 
