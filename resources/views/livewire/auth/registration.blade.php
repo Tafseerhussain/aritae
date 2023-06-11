@@ -203,17 +203,42 @@
                                                     </span>
                                                 @enderror
                                                 <script>
-                                                    new TomSelect('#sports-selection', {});
+                                                    new TomSelect('#sports-selection', {
+                                                        render: {
+                                                            item: function(data, escape){
+                                                                var item = document.createElement('div');
+                                                                item.classList.add('item', 'sports-ts-item');
+                                                                item.dataset.value = data.value;
+                                                                item.dataset.tsItem = "";
+                                                                item.textContent = data.text;
+
+                                                                var close = document.createElement('i');
+                                                                close.classList.add('fas', 'fa-times', 'ps-2');
+                                                                close.onclick = function(event){
+                                                                    var value = event.target.parentNode.dataset.value;
+                                                                    var sports_select = document.getElementById('sports-selection').tomselect;
+                                                                    sports_select.removeItem(value, false);
+                                                                }
+                                                                item.append(close);
+                                                                return item;
+                                                                //return `<div class="item sports-ts-item" data-value="${data.value}" data-ts-item="">${data.text} <i class="fas fa-times ps-2" onclick="remove_ts_item"></i></div>`;
+                                                            }
+                                                        }
+                                                    });
                                                 </script>
                                                 <style>
                                                     .ts-wrapper{
-                                                        padding: 7px 20px !important;
+                                                        padding: 5px 10px !important;
                                                     }
                                                     .ts-control{
                                                         border: none !important;
                                                         background-color: transparent !important;
                                                     }
                                                     .ts-control .item{
+                                                        padding: 5px 15px !important;
+                                                        background-color: #475569 !important;
+                                                        color: white !important;
+                                                        border-radius: 50px !important;
                                                         font-size: 1rem !important;
                                                     }
                                                     .ts-dropdown .option{
