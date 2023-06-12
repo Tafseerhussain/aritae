@@ -189,95 +189,98 @@
                                             </div>
 
                                             @if($step == 2 || $step == 4)
-                                            <div class="col-12 mb-3" wire:ignore>
-                                                <label for="areaOfFocus" class="col-form-label">{{ __('Area of Focus') }}</label>
-                                                <select id="sports-selection" class="form-control form-select @error('areaOfFocus') is-invalid @enderror" wire:model="areaOfFocus" autocomplete="off" multiple>
-                                                    <option value=" " disabled selected>Please Select...</option>
-                                                    @foreach ($sports as $sport)
-                                                        <option value="{{ $sport->id }}">{{ $sport->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                            <div class="col-12 mb-3">
+                                                <div wire:ignore>
+                                                    <label for="areaOfFocus" class="col-form-label">{{ __('Area of Focus') }}</label>
+                                                    <select id="sports-selection" class="form-control form-select @error('areaOfFocus') is-invalid @enderror" wire:model="areaOfFocus" autocomplete="off" multiple>
+                                                        <option value=" " disabled selected>Please Select...</option>
+                                                        @foreach ($sports as $sport)
+                                                            <option value="{{ $sport->id }}">{{ $sport->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <script>
+                                                        new TomSelect('#sports-selection', {
+                                                            render: {
+                                                                item: function(data, escape){
+                                                                    var item = document.createElement('div');
+                                                                    item.classList.add('item', 'sports-ts-item');
+                                                                    item.dataset.value = data.value;
+                                                                    item.dataset.tsItem = "";
+                                                                    item.textContent = data.text;
+
+                                                                    var close = document.createElement('i');
+                                                                    close.classList.add('fas', 'fa-times', 'ps-2');
+                                                                    close.onclick = function(event){
+                                                                        var value = event.target.parentNode.dataset.value;
+                                                                        var sports_select = document.getElementById('sports-selection').tomselect;
+                                                                        sports_select.removeItem(value, false);
+                                                                    }
+                                                                    item.append(close);
+                                                                    return item;
+                                                                }
+                                                            }
+                                                        });
+                                                    </script>
+                                                    <style>
+                                                        .ts-wrapper{
+                                                            padding: 5px 10px !important;
+                                                        }
+                                                        .ts-control{
+                                                            border: none !important;
+                                                            background-color: transparent !important;
+                                                        }
+                                                        .ts-control .item{
+                                                            padding: 5px 15px !important;
+                                                            background-color: #475569 !important;
+                                                            color: white !important;
+                                                            border-radius: 50px !important;
+                                                            font-size: 1rem !important;
+                                                        }
+                                                        .ts-dropdown .option{
+                                                            font-size: 1rem !important;
+                                                        }
+                                                    </style>
+                                                </div>
                                                 @error('areaOfFocus')
-                                                    <span class="invalid-feedback" role="alert">
+                                                    <span class="invalid-feedback d-block" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                                <script>
-                                                    new TomSelect('#sports-selection', {
-                                                        render: {
-                                                            item: function(data, escape){
-                                                                var item = document.createElement('div');
-                                                                item.classList.add('item', 'sports-ts-item');
-                                                                item.dataset.value = data.value;
-                                                                item.dataset.tsItem = "";
-                                                                item.textContent = data.text;
-
-                                                                var close = document.createElement('i');
-                                                                close.classList.add('fas', 'fa-times', 'ps-2');
-                                                                close.onclick = function(event){
-                                                                    var value = event.target.parentNode.dataset.value;
-                                                                    var sports_select = document.getElementById('sports-selection').tomselect;
-                                                                    sports_select.removeItem(value, false);
-                                                                }
-                                                                item.append(close);
-                                                                return item;
-                                                                //return `<div class="item sports-ts-item" data-value="${data.value}" data-ts-item="">${data.text} <i class="fas fa-times ps-2" onclick="remove_ts_item"></i></div>`;
-                                                            }
-                                                        }
-                                                    });
-                                                </script>
-                                                <style>
-                                                    .ts-wrapper{
-                                                        padding: 5px 10px !important;
-                                                    }
-                                                    .ts-control{
-                                                        border: none !important;
-                                                        background-color: transparent !important;
-                                                    }
-                                                    .ts-control .item{
-                                                        padding: 5px 15px !important;
-                                                        background-color: #475569 !important;
-                                                        color: white !important;
-                                                        border-radius: 50px !important;
-                                                        font-size: 1rem !important;
-                                                    }
-                                                    .ts-dropdown .option{
-                                                        font-size: 1rem !important;
-                                                    }
-                                                </style>
                                             </div>
                                             @elseif($step == 3)
-                                            <div class="col-12 mb-3" wire:ignore>
-                                                <label for="parentRelation" class="col-form-label">{{ __('Relation with') }}</label>
-                                                <select id="player-selection" class="form-control form-select @error('parentRelation') is-invalid @enderror" wire:model="parentRelation" autocomplete="off">
-                                                    <option value="" selected>Please Select...</option>
-                                                    @foreach ($players as $player)
-                                                        <option value="{{ $player->player->id }}">{{ $player->full_name }}</option>
-                                                    @endforeach
-                                                </select>
+                                            <div class="col-12 mb-3">
+                                                <div wire:ignore>
+                                                    <label for="parentRelation" class="col-form-label">{{ __('Relation with') }}</label>
+                                                    <select id="player-selection" class="form-control form-select @error('parentRelation') is-invalid @enderror" wire:model="parentRelation" autocomplete="off">
+                                                        <option value="" selected>Please Select...</option>
+                                                        @foreach ($players as $player)
+                                                            <option value="{{ $player->player->id }}">{{ $player->full_name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <script>
+                                                        new TomSelect('#player-selection', {});
+                                                    </script>
+                                                    <style>
+                                                        .ts-wrapper{
+                                                            padding: 7px 20px !important;
+                                                        }
+                                                        .ts-control{
+                                                            border: none !important;
+                                                            background-color: transparent !important;
+                                                        }
+                                                        .ts-control .item{
+                                                            font-size: 1rem !important;
+                                                        }
+                                                        .ts-dropdown .option{
+                                                            font-size: 1rem !important;
+                                                        }
+                                                    </style>
+                                                </div>
                                                 @error('parentRelation')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                                 @enderror
-                                                <script>
-                                                    new TomSelect('#player-selection', {});
-                                                </script>
-                                                <style>
-                                                    .ts-wrapper{
-                                                        padding: 7px 20px !important;
-                                                    }
-                                                    .ts-control{
-                                                        border: none !important;
-                                                        background-color: transparent !important;
-                                                    }
-                                                    .ts-control .item{
-                                                        font-size: 1rem !important;
-                                                    }
-                                                    .ts-dropdown .option{
-                                                        font-size: 1rem !important;
-                                                    }
-                                                </style>
                                             </div>
                                             @endif
 
