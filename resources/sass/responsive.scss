@@ -44,6 +44,9 @@
 	    	font-size: 38px;
 	    }
 	}
+	.register-page .registration-form .card {
+		padding: 50px 10px 30px;
+	}
 } // 1199 END
 
 
@@ -118,10 +121,38 @@
 			}
 		}
 	}
+	.register-page .registration-form .img-portion {
+		display: none;
+	}
+	.register-page .registration-form .navbar-brand img {
+		height: 30px;
+	}
+	.btn-link {
+		font-size: 14px;
+	}
+	.register-page .registration-form .card {
+		padding: 30px 0;
+		.card-body {
+			padding: 0;
+		}
+	}
+	.registration-form {
+		nav {
+			text-align: center;
+			.col-md-6.text-end {
+				text-align: center !important;
+				margin-bottom: 20px;
+			}
+		}
+	}
 } // 767 END
 
 // 575 START
 @media(max-width: 575px) {
+	.ts-wrapper.multi .ts-control > div {
+		padding: 3px 10px 4px !important;
+		font-size: 12px !important;
+	}
 } // 575 END
 
 // 499 START
@@ -130,6 +161,16 @@
 
 // 454 START
 @media (max-width: 454px) {
+	.btn-link {
+		font-size: 12px;
+	}
+	label {
+		font-size: 12px !important;
+	}
+	.form-control {
+		padding: 12px 20px !important;
+		font-size: 12px;
+	}
 } // 454 END
 
 // 399 START

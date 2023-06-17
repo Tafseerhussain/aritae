@@ -67,13 +67,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Faq</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="https://aritae.com/"><i class="bi bi-arrow-left"></i> Marketing Site</a>
                     </li>
                 </ul>
                 {{-- Logo --}}
@@ -82,25 +76,6 @@
                 </a>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Academy
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">
-                                Link 1
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a class="dropdown-item" href="#">
-                                Link 2
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a class="dropdown-item" href="#">
-                                Link 3
-                            </a>
-                        </div>
-                    </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle account-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <img src="{{ asset('assets/img/account.svg') }}" alt="">

@@ -102,10 +102,10 @@
                         <div class="row">
                             <div class="col-md-10 offset-md-1 mt-5">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-md-6 order-md-1 order-2">
                                         <a href="/" class="navbar-brand"><img src="{{ asset('assets/img/logo.svg') }}" alt="logo"></a>
                                     </div>
-                                    <div class="col-6 text-end">
+                                    <div class="col-md-6 text-end order-1 order-md-2">
                                         <a href="#" wire:click="changeStep(1)" class="btn btn-theme">
                                             <i class="fa-solid fa-arrow-left"></i>
                                             <span> Back</span>

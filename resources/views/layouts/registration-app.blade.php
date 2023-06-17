@@ -18,7 +18,11 @@
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite([
+        'resources/sass/app.scss',
+        'resources/sass/responsive.scss',
+        'resources/js/app.js'
+    ])
     @livewireStyles
 </head>
 <body>
