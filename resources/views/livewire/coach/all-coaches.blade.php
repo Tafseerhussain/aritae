@@ -215,8 +215,11 @@
                                         <i class="fa-solid fa-location-dot"></i>
                                         <span>{{ $coach->country }}</span>
                                     </div>
-                                    <a class="btn btn-theme" href="{{ route('coach.profile.preview', $coach->id) }}">
+                                    <a class="btn btn-dark" href="{{ route('coach.profile.preview', $coach->id) }}">
                                         View Profile
+                                    </a>
+                                    <a href="#" class="btn-link text-dark text-decoration-none mt-3 d-block">
+                                        Send Request <i class="fa-solid fa-arrow-right-long"></i>
                                     </a>
                                 </div>
                             </div>
