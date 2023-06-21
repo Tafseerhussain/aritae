@@ -34,7 +34,7 @@ class CoachController extends Controller
     public function profilePreview($id)
     {
         $user = User::findOrFail($id);
-        return view('profilePreview', compact('user', 'id'));
+        return view('coach-profile-view', compact('user', 'id'));
     }
 
     public function requests()

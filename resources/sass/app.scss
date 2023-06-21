@@ -576,7 +576,7 @@ nav.navbar {
 }
 
 .profile-preview-page {
-	padding: 150px 0 100px;
+	padding: 50px 0 100px;
 	background: $gray;
 	.cover {
 		border-radius: $radius;
@@ -597,15 +597,20 @@ nav.navbar {
 		}
 	}
 	.profile-meta {
+		background: $gray;
+		border-radius: $radius;
+		box-shadow: $shadow;
+		padding: 30px 20px;
+
 		.profile {
 			max-width: 100%;
 			width: 150px;
 			border-radius: 50%;
 			height: 150px;
 			overflow: hidden;
-			margin: -75px auto 20px;
-			border: 2px solid $white;
-			box-shadow: $shadow;
+			margin-left: 0px;
+			margin-bottom: 20px;
+			border: 2px solid $blue;
 			z-index: 1;
 			position: relative;
 			img {
@@ -615,15 +620,24 @@ nav.navbar {
 				object-position: center center;
 			}
 		}
-		.title {
-			font-size: 24px;
-		}
-		.since {
-			font-size: 18px;
-			color: $blue;
-			margin-top: 10px;
+		.profile-title{
+			width: 150px;
+			.title {
+				font-size: 24px;
+			}
+			.since {
+				font-size: 18px;
+				color: $blue;
+				margin-top: 10px;
+			}
 		}
 		.metas {
+			.certified-since{
+				font-weight: normal;
+				font-size: 18px;
+				color: $light-green;
+				text-transform: uppercase;
+			}
 			a {
 				font-size: .9rem;
 				margin-bottom: 10px;
@@ -632,6 +646,9 @@ nav.navbar {
 				i {
 					font-size: 20px;
 					margin-right: 6px;
+				}
+				&:nth-child(2n+1){
+					color: $light-blue !important;
 				}
 			}
 		}
@@ -649,13 +666,14 @@ nav.navbar {
 				margin-top: 20px;
 				.session {
 					margin-top: 20px;
-					 img {
-					 	width: 50px;
-					 }
+					img {
+						width: 50px;
+					}
 					div {
 						margin-left: 10px;
 						align-self: center;
 						h6 {
+							font-size: 1.2rem;
 							margin-bottom: 0;
 							font-weight: 600;
 						}
@@ -665,16 +683,103 @@ nav.navbar {
 			
 		}
 	}
-	.profile-review {
-		padding: 50px 0 50px 50px;
-		border-left: 1px solid $inputBorder;
+	.profile-content {
+		position: relative;
+		background: $gray;
+		border-radius: $radius;
+		box-shadow: $shadow;
+		padding: 30px 20px;
 		h2 {
 			font-size: 24px;
 			font-weight: 400;
 			margin-bottom: 30px;
 		}
+		.hire-coach-component{
+			position: absolute;
+			top: 0px;
+			right: 10px;
+		}
 		.hire-coach {
+			position: absolute;
+			top: 0px;
+			right: 10px;
 			margin-top: 20px;
+			background-color: $gray;
+			color: $black; 
+			box-shadow: none;
+
+			span{
+				top: -5px;
+			}
+			i{
+				font-size: 25px;
+			}
+		}
+
+		.experience-container{
+			background: $gray;
+			border-radius: $radius;
+			box-shadow: $shadow;
+			padding: 30px 20px;
+
+			.experience-title{
+				font-weight: 500;
+			}
+			.experience-meta{
+				.club-logo{
+					width: 80px;
+					height: 80px;
+					border-radius: 40px;
+					overflow: hidden;
+					
+					img{
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+
+		.certificate-container{
+			background: $gray;
+			border-radius: $radius;
+			box-shadow: $shadow;
+			padding: 30px 20px;
+
+			.certificate-title{
+				font-weight: 500;
+			}
+		}
+
+		.education-container{
+			background: $gray;
+			border-radius: $radius;
+			box-shadow: $shadow;
+			padding: 30px 20px;
+
+			.education-title{
+				font-weight: 500;
+			}
+		}
+		.coaching-container{
+			background: $gray;
+			border-radius: $radius;
+			box-shadow: $shadow;
+			padding: 30px 20px;
+
+			.coaching-title{
+				font-weight: 500;
+			}
+		}
+		.session-container{
+			background: $gray;
+			border-radius: $radius;
+			box-shadow: $shadow;
+			padding: 30px 20px;
+
+			.coaching-title{
+				font-weight: 500;
+			}
 		}
 	}
 }
