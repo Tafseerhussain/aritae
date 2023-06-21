@@ -1,3 +1,5 @@
+@import 'variables';
+
 @media(max-width: 1920px) {
 }
 
@@ -20,6 +22,9 @@
 
 // 1199 START
 @media(max-width: 1199px) {
+	h1 {
+		font-size: 40px;
+	}
 	h4 {
 		font-size: 20px;
 	}
@@ -47,6 +52,19 @@
 	.register-page .registration-form .card {
 		padding: 50px 10px 30px;
 	}
+	.coaches-hero p, .players-hero p, .events-hero p, .event-detail-hero p {
+		font-size: 14px;
+	}
+	.coaches-hero .points, .players-hero .points, .events-hero .points, .event-detail-hero .points {
+		font-size: 28px;
+	}
+	.navbar {
+		.navbar-brand {
+			img {
+				height: 30px;
+			}
+		}
+	}
 } // 1199 END
 
 
@@ -73,6 +91,55 @@
 	    		height: 30px;
 	    	}
 	    }
+	}
+	.all-users {
+		.filter-cards {
+			.filters {
+				position: fixed;
+				width: 90%;
+				height: 90%;
+				top: 5%;
+				right: -100%;
+				z-index: 99;
+				overflow: scroll;
+				.close-filter {
+					text-align: center;
+					span {
+						color: $purple;
+						border-radius: 50%;
+						background-color: $white;
+						border: 1px solid $inputBorder;
+						font-size: 24px;
+						height: 40px;
+						width: 40px;
+						display: inline-block;
+					}
+				}
+			}
+		}
+		.users-search-sort-area {
+			.filter-button {
+				color: $purple;
+				border-radius: 50%;
+				background-color: $gray;
+				border: 1px solid $inputBorder;
+				width: 50px;
+				margin-left: 10px;
+				margin-right: 10px;
+				text-align: center;
+				i {
+					top: 8px;
+					position: relative;
+					font-size: 20px;
+				}
+			}
+		}
+	}
+	.coaches-hero, .players-hero, .events-hero, .event-detail-hero {
+		padding: 180px 0 100px;
+	}
+	.all-users, .all-events {
+		padding: 50px 0;
 	}
 
 } //991 END
@@ -152,6 +219,62 @@
 	.ts-wrapper.multi .ts-control > div {
 		padding: 3px 10px 4px !important;
 		font-size: 12px !important;
+	}
+	h1 {
+		font-size: 32px;
+	}
+	h4 {
+		font-size: 18px;
+	}
+	h2 {
+		font-size: 24px;
+	}
+	h3 {
+		font-size: 21px;
+	}
+	p {
+		font-size: 12px;
+	}
+	.form-control, .form-select {
+		font-size: 12px;
+	}
+	.btn {
+		font-size: 12px;
+	}
+	.coaches-hero .points, .players-hero .points, .events-hero .points, .event-detail-hero .points {
+		font-size: 18px;
+	}
+	.all-users {
+		.users-search-sort-area {
+			position: relative;
+			padding-top: 60px;
+			.standard-search {
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+			.form-select {
+				height: 40px;
+			}
+			.filter-button {
+				height: 40px;
+				width: 40px;
+				margin-right: 0;
+				i {
+					font-size: 18px;
+					top: 6px;
+				}
+			}
+		}
+		.filter-cards {
+			.filters {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				top:0;
+				height: 100%;
+				width: 95%;
+			}
+		}
 	}
 } // 575 END
 

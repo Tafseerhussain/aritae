@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-9">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between users-search-sort-area">
                     <div class="sorting d-flex">
                         <span class="text-nowrap">Sort by </span>
                         <select class="form-select">
@@ -41,6 +41,9 @@
                             <option>Experience</option>
                             <option>Rating</option>
                         </select>
+                    </div>
+                    <div class="filter-button d-lg-none">
+                        <i class="bi bi-funnel"></i>
                     </div>
                     <div class="input-group standard-search">
                         <input type="text" class="form-control" placeholder="Search by name (first and last name)" wire:model.lazy="search">
@@ -51,8 +54,11 @@
         </div>
         <div class="row filter-cards">
             {{-- FILTERS --}}
-            <div class="col-lg-3">
+            <div class="col-xl-3 col-lg-4">
                 <div class="filters">
+                    <div class="close-filter d-lg-none">
+                        <span><i class="bi bi-arrow-right-short"></i></span>
+                    </div>
                     <h2>
                     Filter Results
                     </h2>
@@ -70,7 +76,7 @@
                         </div>
                         <div class="row">
                             @foreach ($sports as $sport)
-                            <div class="col-lg-6">
+                            <div class="col-6">
                                 <div class="filter-value d-flex">
                                     <input class="form-check-input mt-0" name="sports[]" wire:model="sport" value="{{ $sport->name }}" type="checkbox" value="" id="{{ $sport->name }}">
                                     <label for="{{ $sport->name }}">{{ $sport->name }}</label>
@@ -115,7 +121,7 @@
                         </div>
                         <div class="row">
                             @foreach ($locations as $location)
-                            <div class="col-lg-6">
+                            <div class="col-6">
                                 <div class="filter-value d-flex">
                                     <input class="form-check-input mt-0" name="locations[]" wire:model="location" value="{{ $location->location }}" type="checkbox" value="" id="{{ $location->location }}">
                                     <label for="{{ $location->location }}">{{ $location->location }}</label>
@@ -147,7 +153,7 @@
                 </div>
             </div>
             {{-- PLAYERS CARDS --}}
-            <div class="col-lg-9">
+            <div class="col-xl-9 col-lg-8">
                 <div class="row loading-state my-5" wire:loading>
                     <div class="col-12 text-center">
                         <div class="spinner-border" role="status">
@@ -168,7 +174,7 @@
                     <div class="row g-3">
                         @foreach ($players as $player)
                         
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-xl-4 col-md-6">
                             <div class="profile-card h-100">
                                 <div class="rate">
                                     ${{ $player->hourly_rate }} <span>/h</span>

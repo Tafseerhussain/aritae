@@ -23,3 +23,29 @@
     @livewire('player.all-players')
 
 @endsection
+
+@push('custom-scripts')
+
+    <script>
+        if($(window).width() <= 575) {
+            $('.users-search-sort-area .filter-button').on('click', function() {
+                $('.all-users .filter-cards .filters').css({
+                    'right': '0',
+                })
+            })
+        } else {
+              $('.users-search-sort-area .filter-button').on('click', function() {
+                $('.all-users .filter-cards .filters').css({
+                    'right': '5%',
+                })
+            })
+        }
+        
+        $('.all-users .filters .close-filter').on('click', function() {
+            $('.all-users .filter-cards .filters').css({
+                'right': '-100%',
+            })
+        })
+    </script>
+
+@endpush
