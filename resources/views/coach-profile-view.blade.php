@@ -209,26 +209,63 @@
                             </div>
                         </div>
 
-                        <h2 class="mt-3 mb-2 pt-3">
-                            Active Coaching
+                        <h2 class="mt-3 mb-4 pt-3">
+                            Active Training
                         </h2>
                         <div class="row">
-                            <div class="col-12">
-                                <div class="coaching-container my-3 d-flex flex-column justify-content-center align-items-center">
-                                    <h4 class="fw-bold">No active coaching found</h4>
-                                    <p>Active coacing information will be visible here.</p>
+                            <div class="col-12 d-flex flex-wrap justify-content-start">
+                                <div class="training-container me-3 mb-3">
+                                    <div class="training-meta d-flex align-items-center">
+                                        <div class="training-logo">
+                                            <img src="{{asset('assets/img/profile-1.jpg')}}" alt="Training Logo">
+                                        </div>
+                                        <div class="meta-description ms-2">
+                                            <h5 class="meta-title m-0">Soccer Training</h5>
+                                            <small class="text-secondary">June 22, 2022 - July 22, 2022</small><br>
+                                            <small class="text-secondary me-3"><i class="bi bi-camera-video"></i> Video Session</small> <small class="text-secondary me-3"><i class="bi bi-telephone-plus"></i> +92332541782</small>
+                                        </div>
+                                    </div>
+                                    <p class="mt-2 mb-0">
+                                        <strong>Sport: </strong>Baseball<br>
+                                        <strong>Coach: </strong>Micheal Henry<br>
+                                        <strong>Duration: </strong>20 days
+                                    </p>
+                                </div>
+                                <div class="training-container me-3 mb-3">
+                                    <div class="training-meta d-flex align-items-center">
+                                        <div class="training-logo">
+                                            <img src="{{asset('assets/img/profile-1.jpg')}}" alt="Training Logo">
+                                        </div>
+                                        <div class="meta-description ms-2">
+                                            <h5 class="meta-title m-0">Soccer Training</h5>
+                                            <small class="text-secondary">June 22, 2022 - July 22, 2022</small><br>
+                                            <small class="text-secondary me-3"><i class="bi bi-camera-video"></i> Video Session</small> <small class="text-secondary me-3"><i class="bi bi-telephone-plus"></i> +92332541782</small>
+                                        </div>
+                                    </div>
+                                    <p class="mt-2 mb-0">
+                                        <strong>Sport: </strong>Baseball<br>
+                                        <strong>Coach: </strong>Micheal Henry<br>
+                                        <strong>Duration: </strong>20 days
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <h2 class="mt-3 mb-2 pt-3">
-                            Coaching Sessing
+                        <h2 class="mt-3 mb-4 pt-3">
+                            Training Session
                         </h2>
                         <div class="row">
-                            <div class="col-12">
-                                <div class="session-container my-3 d-flex flex-column justify-content-center align-items-center">
-                                    <h4 class="fw-bold">No coaching session found</h4>
-                                    <p>Coacing session will be visible here.</p>
-                                </div>
+                        <div class="col-12 d-flex flex-wrap justify-content-start">
+                            <div class="session-container me-3 mb-3">
+                                <video class="session-video" controls>
+                                    <source src="{{asset('assets/videos/sample1.mp4')}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video> 
+                            </div>
+                            <div class="session-container me-3 mb-3">
+                                <video class="session-video" controls>
+                                    <source src="{{asset('assets/videos/sample1.mp4')}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video> 
                             </div>
                         </div>
                     </div>
