@@ -28,6 +28,12 @@ class PlayerController extends Controller
         return view('player.settings');
     }
 
+    public function profilePreview($id)
+    {
+        $user = User::findOrFail($id);
+        return view('player-profile-view', compact('user', 'id'));
+    }
+
     public function playerChat()
     {
         $player = Player::where('user_id',Auth::user()->id)->first();

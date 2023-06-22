@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    @if($user->coach->cover_img == '')
+    @if($user->player->cover_img == '')
     <div class="coaches-hero"></div>
     @else
-    <div class="coaches-hero" style="background-image: url('{{ asset($user->coach->cover_img) }}'); background-size: cover; background-position: center;"></div>
+    <div class="coaches-hero" style="background-image: url('{{ asset($user->player->cover_img) }}'); background-size: cover; background-position: center;"></div>
     @endif
 
     <div class="profile-preview-page">
@@ -13,10 +13,10 @@
                 <div class="col-lg-3 mb-3">
                     <div class="profile-meta">
                         <div class="profile">
-                            @if($user->coach->profile_img == '')
+                            @if($user->player->profile_img == '')
                                 <img src="{{ asset('assets/img/default/default-profile-pic.jpg') }}" alt="profile image">
                             @else
-                                <img src="{{ asset($user->coach->profile_img) }}" alt="profile image">
+                                <img src="{{ asset($user->player->profile_img) }}" alt="profile image">
                             @endif
                         </div>
                         <div class="text-center profile-title">
@@ -30,7 +30,7 @@
                                         ,
                                     @endif
                                 @endforeach
-                                Coach
+                                Player
                             </small>
                         </div>
 
@@ -56,12 +56,6 @@
                                     {{ $user->country }}
                                 </span>
                             </a>
-                            {{--<a href="#" class="text-secondary">
-                                <i class="bi bi-cash"></i>
-                                <span>
-                                    ${{ $user->coach->hourly_rate }} / Hour
-                                </span>
-                            </a>--}}
                             <a href="#" class="text-secondary">
                                 <i class="bi bi-camera-video"></i>
                                 <span>
@@ -112,34 +106,20 @@
                             About {{ $user->first_name }}
                         </h2>
                         <p>
-                            @if ($user->coach->about == '')
+                            @if ($user->player->about == '')
                                 No description available!
                             @else
-                                {{ $user->coach->about }}
+                                {{ $user->player->about }}
                             @endif
                         </p>
                         
-                        @if($user->userType->id == 2)
-                            @if (Auth::user())
-                                @if (Auth::user()->userType->type == 'player')
-                                    @livewire('coach.request.form', ['coach_id' => $id])
-                                @endif
-                            @else
-                                <a href="{{ route('login') }}" class="btn btn-theme hire-coach icon-right-full">
-                                    <span class="m-0">Send Request</span>
-                                    <i class="bi bi-arrow-right-short"></i>
-                                </a>
-                            @endif
-                        @endif
-                        
-
                         <h2 class="mt-3 mb-2 pt-3">
-                            Coaching Experience
+                            Playing Experience
                         </h2>
                         <div class="row">
                             <div class="col-12">
-                                @if($user->coach->experiences && count($user->coach->experiences) > 0)
-                                @foreach($user->coach->experiences as $experience)
+                                @if($user->player->experiences && count($user->player->experiences) > 0)
+                                @foreach($user->player->experiences as $experience)
                                 <div class="experience-container my-3">
                                     <h4 class="experience-title"><strong>{{$experience->club_name}}</strong></h4>
                                     <div class="experience-meta d-flex align-items-center">
@@ -152,14 +132,15 @@
                                         </div>
                                     </div>
                                     <p class="mt-3">
-                                        {{$experience->description}}
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultrices eget erat ut mattis. Integer eleifend lorem a arcu tincidunt, non fermentum turpis pharetra.
+                                        {{--$experience->description--}}
                                     </p>
                                 </div>
                                 @endforeach
                                 @else
                                 <div class="experience-container my-3 d-flex flex-column justify-content-center align-items-center">
                                     <h4 class="fw-bold">No experience posted yet...</h4>
-                                    <p>Let coach get to know you better by showing them your coaching experiences.</p>
+                                    <p>Let coach get to know you better by showing them your playing experiences.</p>
                                 </div>
                                 @endif
                             </div>
@@ -170,11 +151,11 @@
                         </h2>
                         <div class="row">
                             <div class="col-12">
-                                @if($user->coach->certificates && count($user->coach->certificates) > 0)
-                                @foreach($user->coach->certificates as $certificate)
+                                @if($user->player->certificates && count($user->player->certificates) > 0)
+                                @foreach($user->player->certificates as $certificate)
                                 <div class="certificate-container my-3">
                                     <h4 class="certificate-title"><strong>{{$certificate->certificate_name}}</strong></h4>
-                                    <p class="m-0"><span class="text-secondary">{{$certificate->club_college}}</span></p>
+                                    <p class="m-0"><span class="text-secondary">{{$certificate->association}}</span></p>
                                     <p class="m-0"><span class="text-secondary">{{$certificate->certification_year}}</span></p>
                                 </div>
                                 @endforeach
@@ -192,8 +173,8 @@
                         </h2>
                         <div class="row">
                             <div class="col-12">
-                                @if($user->coach->educations && count($user->coach->educations) > 0)
-                                @foreach($user->coach->educations as $education)
+                                @if($user->player->educations && count($user->player->educations) > 0)
+                                @foreach($user->player->educations as $education)
                                 <div class="education-container my-3">
                                     <h4 class="education-title"><strong>{{$education->degree}}</strong></h4>
                                     <p class="m-0"><span class="text-secondary">{{$education->institute_name}}</span></p>

@@ -221,7 +221,7 @@
                                         <i class="fa-solid fa-location-dot"></i>
                                         <span>{{ $player->country }}</span>
                                     </div>
-                                    <a class="btn btn-theme" href="{{ route('coach.profile.preview', $player->id) }}">
+                                    <a class="btn btn-theme" href="{{ route('player.profile.preview', $player->id) }}">
                                         View Profile
                                     </a>
                                 </div>
