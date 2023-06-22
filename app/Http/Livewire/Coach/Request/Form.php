@@ -14,11 +14,12 @@ class Form extends Component
     public $proposalMessage;
 
     public $coach_id;
+    public $coach;
     protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function mount($coach_id)
     {
-        session()->put('coach_id', $coach_id);
+        //session()->put('coach_id', $coach_id);
     }
 
     public function submit()
@@ -54,9 +55,15 @@ class Form extends Component
             ]);
 
             $this->reset();
-            session()->flash('success_message', 'Request Sent.');
+            $this->emit('hiringRequestSent');
+            //session()->flash('success_message', 'Request Sent.');
         } else {
-            session()->flash('success_message', 'Request already sent.');
+            $this->dispatchBrowserEvent('coach_connect_notification', [
+                'title' => 'Requested sent',
+                'type' => 'warning',
+                'message' => 'Your hiring request already sent to coach '.$coach->full_name,
+            ]);
+            //session()->flash('success_message', 'Request already sent.');
         }
         
     }
@@ -69,7 +76,7 @@ class Form extends Component
     public function render()
     {
         return view('livewire.coach.request.form',  [
-            'requested' => HireRequest::where('player_id', Auth::user()->id)->where('coach_id', session('coach_id'))->first(),
+            'requested' => HireRequest::where('player_id', Auth::user()->id)->where('coach_id', $this->coach_id)->first(),
             'hired' => Auth::user()->player->coaches()->where('user_id', $this->coach_id)->first(),
         ]);
     }

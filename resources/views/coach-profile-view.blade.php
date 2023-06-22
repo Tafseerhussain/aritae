@@ -126,8 +126,8 @@
                                 @endif
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-theme hire-coach icon-right-full">
-                                    <span class="m-0">Send Request</span>
-                                    <i class="bi bi-arrow-right-short"></i>
+                                    <span class="me-2">Send Request</span>
+                                    <i class="fa-solid fa-arrow-right-long"></i>
                                 </a>
                             @endif
                         @endif

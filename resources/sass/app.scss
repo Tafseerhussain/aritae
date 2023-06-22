@@ -362,6 +362,27 @@ nav.navbar {
 			&:hover {
 				border-color: $purple;
 			}
+
+			.hire-coach-component{
+				display: flex;
+				justify-content: center;
+			}
+			.hire-coach {
+				margin-top: 20px;
+				background-color: transparent;
+				color: $black; 
+				box-shadow: none;
+				padding: 5px 15px 4px 15px;
+				&:hover{
+					background-color: $blue;
+				}
+				span{
+					top: -2px;
+				}
+				i{
+					font-size: var(--bs-body-font-size);
+				}
+			}
 		}
 
 	}
@@ -698,6 +719,7 @@ nav.navbar {
 			position: absolute;
 			top: 0px;
 			right: 10px;
+			min-width: 250px;
 		}
 		.hire-coach {
 			position: absolute;
@@ -709,10 +731,10 @@ nav.navbar {
 			box-shadow: none;
 
 			span{
-				top: -5px;
+				top: -2px;
 			}
 			i{
-				font-size: 25px;
+				font-size: var(--bs-body-font-size);
 			}
 		}
 

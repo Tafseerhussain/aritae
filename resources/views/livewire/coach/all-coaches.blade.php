@@ -224,9 +224,18 @@
                                     <a class="btn btn-dark" href="{{ route('coach.profile.preview', $coach->id) }}">
                                         View Profile
                                     </a>
-                                    <a href="#" class="btn-link text-dark text-decoration-none mt-3 d-block">
-                                        Send Request <i class="fa-solid fa-arrow-right-long"></i>
-                                    </a>
+                                    @if($coach->userType->id == 2)
+                                        @if (Auth::user())
+                                            @if (Auth::user()->userType->type == 'player')
+                                                <livewire:coach.request.form :coach_id="$coach->id" :key="'article-form-key' . time()" />
+                                            @endif
+                                        @else
+                                            <a href="{{ route('login') }}" class="btn btn-theme hire-coach icon-right-full">
+                                                <span class="me-2">Send Request</span>
+                                                <i class="fa-solid fa-arrow-right-long"></i>
+                                            </a>
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -12,6 +12,9 @@ use Livewire\WithPagination;
 class AllCoaches extends Component
 {
     use WithPagination;
+
+    protected $listeners = ['hiringRequestSent' => '$refresh'];
+
     protected $paginationTheme = 'bootstrap';
 
     public $search = '';
