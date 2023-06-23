@@ -213,8 +213,8 @@
                             Active Training
                         </h2>
                         <div class="row">
-                            <div class="col-12 d-flex flex-wrap justify-content-start">
-                                <div class="training-container me-3 mb-3">
+                            <div class="col-md-6">
+                                <div class="training-container mb-3">
                                     <div class="training-meta d-flex align-items-center">
                                         <div class="training-logo">
                                             <img src="{{asset('assets/img/profile-1.jpg')}}" alt="Training Logo">
@@ -231,7 +231,9 @@
                                         <strong>Duration: </strong>30 days
                                     </p>
                                 </div>
-                                <div class="training-container me-3 mb-3">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="training-container mb-3">
                                     <div class="training-meta d-flex align-items-center">
                                         <div class="training-logo">
                                             <img src="{{asset('assets/img/profile-1.jpg')}}" alt="Training Logo">
@@ -254,16 +256,18 @@
                             Training Session
                         </h2>
                         <div class="row">
-                        <div class="col-12 d-flex flex-wrap justify-content-start">
-                            <div class="session-container me-3 mb-3">
-                                <img class="session-video" src="{{asset('assets/img/session-placeholder.jpg')}}">
+                        <div class="col-md-6">
+                            <div class="session-container mb-3">
+                                <img class="session-video w-100" src="{{asset('assets/img/session-placeholder.jpg')}}">
                                 {{--<video class="session-video" controls>
                                     <source src="{{asset('assets/videos/sample1.mp4')}}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>--}} 
                             </div>
-                            <div class="session-container me-3 mb-3">
-                                <img class="session-video" src="{{asset('assets/img/session-placeholder.jpg')}}">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="session-container mb-3">
+                                <img class="session-video w-100" src="{{asset('assets/img/session-placeholder.jpg')}}">
                                 {{--<video class="session-video" controls>
                                     <source src="{{asset('assets/videos/sample1.mp4')}}" type="video/mp4">
                                     Your browser does not support the video tag.
