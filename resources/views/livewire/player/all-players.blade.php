@@ -229,7 +229,7 @@
                                         <i class="fa-solid fa-location-dot"></i>
                                         <span>{{ $player->country }}</span>
                                     </div>
-                                    <a class="btn btn-theme" href="{{ route('player.profile.preview', $player->user_id) }}">
+                                    <a class="btn btn-dark" href="{{ route('player.profile.preview', $player->user_id) }}">
                                         View Profile
                                     </a>
                                 </div>
