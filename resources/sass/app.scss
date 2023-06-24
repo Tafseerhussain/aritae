@@ -368,13 +368,15 @@ nav.navbar {
 				justify-content: center;
 			}
 			.hire-coach {
-				margin-top: 20px;
+				margin-top: 10px;
 				background-color: transparent;
-				color: $black; 
+				color: $purple; 
 				box-shadow: none;
+				font-size: 14px;
 				padding: 5px 15px 4px 15px;
 				&:hover{
 					background-color: $blue;
+					color: $white;
 				}
 				span{
 					top: -2px;

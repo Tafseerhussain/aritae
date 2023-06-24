@@ -1,9 +1,9 @@
 <div class="hire-coach-component">
 
     @if($hired)
-        <div class="btn btn-success mt-4"><code class="text-white">Hired</code></div>
+        <div class="btn btn-success mt-2 badge fw-normal"><code class="text-white">Hired</code></div>
     @elseif($requested)
-        <div class="btn btn-primary mt-4"><code class="text-white">Request Already Sent</code></div>
+        <div class="btn btn-primary mt-2 badge fw-bormal"><code class="text-white">Request Already Sent</code></div>
     @else
     <div class="loader-bg" wire:loading>
         <div class="loader-self">
@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <button class="btn btn-theme hire-coach icon-right-full" 
+    <button class="btn btn-theme hire-coach icon-right-full badge fw-normal" 
         data-bs-toggle="modal" 
         data-bs-target="#hireCoachModal-{{$coach_id}}">
         <span class="me-2">Send Request</span>

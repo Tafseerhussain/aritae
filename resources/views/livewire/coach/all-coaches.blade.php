@@ -69,7 +69,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-group standard-search w-100">
-                                    <input type="text" class="form-control" placeholder="Search Coaches..." wire:model.defer="searchCoach">
+                                    <input type="text" class="form-control" placeholder="Search Profession..." wire:model.defer="searchCoach">
                                     <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                             @endforeach
                             {{-- <a href="#" class="more">more choices...</a> --}}
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
+                        <button type="button" class="btn btn-dark btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
                     </div>
                     <div class="divider"></div>
                     <p>
@@ -97,7 +97,7 @@
                             <input type="number" class="form-control me-1" wire:model.defer='minExp' id="minExp">
                             <input type="number" class="form-control ms-1" wire:model.defer='maxExp' id="maxExp">
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
+                        <button type="button" class="btn btn-dark btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
                     </div>
                     <div class="divider"></div>
                     <p>
@@ -109,7 +109,7 @@
                             <input type="number" class="form-control me-1" wire:model.defer='minRate' id="minRate">
                             <input type="number" class="form-control ms-1" wire:model.defer='maxRate' id="maxRate">
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
+                        <button type="button" class="btn btn-dark btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
                     </div>
                     <div class="divider"></div>
                     <p>Where are you located?</p>
@@ -133,7 +133,7 @@
                             @endforeach
                             {{-- <a href="#" class="more">more choices...</a> --}}
                         </div>
-                        <button type="button" class="btn btn-primary btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
+                        <button type="button" class="btn btn-dark btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
                     </div>
                     <div class="divider"></div>
                     <p>Which gender of coach do you prefer?</p>
@@ -151,9 +151,9 @@
                             <label for="any-gender">Any</label>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
+                    <button type="button" class="btn btn-dark btn-sm px-3 py-1 mt-2 d-none d-lg-block" wire:click="apply_filter">Apply</button>
                     <div class="w-100 d-flex justify-content-center mt-4 d-lg-none">
-                        <button type="button" class="btn btn-primary" wire:click="apply_filter">Apply</button>
+                        <button type="button" class="btn btn-dark w-100" wire:click="apply_filter">Apply filters</button>
                     </div>
                     {{-- <button class="btn btn-theme mt-4 d-block w-100" wire:click="filterResults">
                     Filter Results
@@ -238,7 +238,7 @@
                                                 <livewire:coach.request.form :coach_id="$coach->user_id" :key="'article-form-key' . time()" />
                                             @endif
                                         @else
-                                            <a href="{{ route('login') }}" class="btn btn-theme hire-coach icon-right-full">
+                                            <a href="{{ route('login') }}" class="badge">
                                                 <span class="me-2">Send Request</span>
                                                 <i class="fa-solid fa-arrow-right-long"></i>
                                             </a>
