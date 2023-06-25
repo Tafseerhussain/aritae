@@ -32,7 +32,7 @@ class Registration extends Component
     public $gender = 'male';
     public $parentRelation;
 
-    public function mount()
+    public function mount($email = '')
     {
         $this->sports = Sport::all();
         foreach($this->sports as $sport){

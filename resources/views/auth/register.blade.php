@@ -2,6 +2,6 @@
 
 @section('content')
     
-    @livewire('auth.registration')
+    @livewire('auth.registration', ['email' => request()->get('email')])
 
 @endsection
