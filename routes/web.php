@@ -122,6 +122,9 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Calendar Routes
     Route::get('/admin/calendar', [AdminController::class, 'calendar'])->name('admin.calendar');
+
+    // Users Routes
+    Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact');
 });
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');

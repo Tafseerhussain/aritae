@@ -179,6 +179,12 @@
                                         <span>Events</span>
                                     </a>
                                 </li>
+                                <li class="list-group-item {{ $route == 'admin.contact' ? 'active' : '' }}">
+                                    <a href="{{ route('admin.contact') }}">
+                                        <i class="bi bi-envelope"></i>
+                                        <span>Contact</span>
+                                    </a>
+                                </li>
                                 <hr class="p-0 mt-2 mb-3">
                             </ul>
                         </div>  

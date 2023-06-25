@@ -36,6 +36,10 @@ class AdminController extends Controller
     {
         return view('admin.users');
     }
+    public function contact()
+    {
+        return view('admin.contact');
+    }
     public function calendar()
     {
         return view('admin.calendar');

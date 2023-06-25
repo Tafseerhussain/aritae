@@ -1354,3 +1354,37 @@
 		}
 	}
 }
+
+// Admin all users section
+.admin-contact-response{
+	.card{
+		overflow: visible;
+	}
+	.search-filter{
+		.search-input{
+			.form-control-sm{
+				border-top-left-radius: $radius;
+				border-bottom-left-radius: $radius;
+				background-color: $gray;
+				border-color: $inputBorder;
+				border-right-color: transparent;
+				&:focus{
+					background-color: $white;
+					border-color: $inputBorder;
+					border-right-color: transparent;
+				}
+			}
+			.input-group-text{
+				border-top-right-radius: $radius;
+				border-bottom-right-radius: $radius;
+				background-color: $gray;
+				border-color: $inputBorder;
+				border-left-color: transparent;
+			}
+		}
+	}
+	.response-body{
+		box-shadow: $shadow;
+		border-radius: $radius;
+	}
+}
