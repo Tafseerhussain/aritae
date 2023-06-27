@@ -7,8 +7,8 @@
                     <div class="search-filter">
                         <div class="d-flex">
                             <div class="input-group input-group-sm mx-2 search-input">
-                                <input type="text" class="form-control form-control-sm" placeholder="Search">
-                                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                <input type="text" class="form-control form-control-sm" placeholder="Search" wire:model="search">
+                                <span class="input-group-text" wire:click="search_responses"><i class="bi bi-search"></i></span>
                             </div>
                         </div>
                     </div>

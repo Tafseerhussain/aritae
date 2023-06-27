@@ -19,13 +19,12 @@ class ContactForm extends Component
     public $search = '';
 
     public function mount(){
-        $this->responses = ContactResponse::limit($this->per_page)->get();
+        $this->responses = ContactResponse::limit($this->per_page)->orderBy('created_at', 'DESC')->get();
         $this->total_response = ContactResponse::count();
         $this->total_page = ceil($this->total_response / $this->per_page);
     }
 
-    public function search($search_key){
-        $this->search = $search_key;
+    public function search_responses(){
         $this->reloadResponses();
         $this->total_page = ceil($this->total_response / $this->per_page);
     }
@@ -39,26 +38,27 @@ class ContactForm extends Component
     }
 
     private function reloadResponses(){
-                if($this->search == ''){
-                    $start = ($this->current_page - 1) * $this->per_page;
+        if($this->search == ''){
+            $start = ($this->current_page - 1) * $this->per_page;
 
-                    $this->responses = ContactResponse::offset($start)->limit($this->per_page)->get();
-                    $this->total_response = ContactResponse::count();
-                }
-                else{
-                    $start = ($this->current_page - 1) * $this->per_page;
+            $this->responses = ContactResponse::offset($start)->limit($this->per_page)->orderBy('created_at', 'DESC')->get();
+            $this->total_response = ContactResponse::count();
+        }
+        else{
+            $start = ($this->current_page - 1) * $this->per_page;
 
-                    $this->responses = ContactResponse::where('email', 'LIKE', '%'.$this->search.'%')
-                        ->orWhere('first_name', 'LIKE', '%'.$this->search.'%')
-                        ->orWhere('last_name', 'LIKE', '%'.$this->search.'%')
-                        ->orWhere('message', 'LIKE', '%'.$this->search.'%')
-                        ->offset($start)->limit($this->per_page)->get();
-                    
-                    if($this->responses)
-                        $this->total_response = count($this->responses);
-                    else
-                        $this->total_response = 0;
-                }
+            $this->responses = ContactResponse::where('email', 'LIKE', '%'.$this->search.'%')
+                ->orWhere('first_name', 'LIKE', '%'.$this->search.'%')
+                ->orWhere('last_name', 'LIKE', '%'.$this->search.'%')
+                ->orWhere('message', 'LIKE', '%'.$this->search.'%')
+                ->offset($start)->limit($this->per_page)
+                ->orderBy('created_at', 'DESC')->get();
+            
+            if($this->responses)
+                $this->total_response = count($this->responses);
+            else
+                $this->total_response = 0;
+        }
     }
 
     public function render()
