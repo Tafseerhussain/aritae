@@ -50,6 +50,6 @@ class ContactFormSubmission implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('admin-notification'.$this->admin->id);
+        return new PrivateChannel('admin-notification.'.$this->admin->id);
     }
 }

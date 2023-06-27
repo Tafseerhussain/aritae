@@ -113,7 +113,7 @@
     //Subscribe to Admin notification channel
     window.Echo.private('admin-notification.{{Auth::user()->id}}')
         .listen('ContactFormSubmission', (e) => {
-            if(e.type == 'contact-from-response'){
+            if(e.type == 'contact-form-response'){
                 var data = {
                     "title" : "New contact form submission received",
                     "type" : "info",
