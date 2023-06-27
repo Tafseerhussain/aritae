@@ -26,6 +26,10 @@ Broadcast::channel('coach-connect.{receiver}', function(User $user, $receiver) {
     return (int) $user->id === (int) $receiver;
 });
 
+Broadcast::channel('admin-notification.{receiver}', function(User $user, $receiver) {
+    return (int) $user->id === (int) $receiver;
+});
+
 Broadcast::channel('presence-call-channel', function($user) {
     return ['id' => $user->id, 'name' => $user->name];
 });

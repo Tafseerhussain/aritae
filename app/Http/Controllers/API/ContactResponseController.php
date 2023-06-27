@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ContactResponse;
+use App\Models\User;
+use App\Events\ContactFormSubmission;
 use Validator;
 
 class ContactResponseController extends Controller
@@ -41,6 +43,15 @@ class ContactResponseController extends Controller
             $response->user_type = $request->user_type;
 
         $response->save();
+
+        $admin = User::where('user_type_id', 1)->first();
+
+        //Send pusher notification
+        broadcast(new ContactFormSubmission(
+            $response,
+            $admin,
+            'contact-form-response'
+        ));
 
         return response()->json([
             'status' => 'success',

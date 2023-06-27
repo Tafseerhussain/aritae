@@ -110,6 +110,20 @@
 @endif
 
 <script type="module">
+    //Subscribe to Admin notification channel
+    window.Echo.private('admin-notification.{{Auth::user()->id}}')
+        .listen('ContactFormSubmission', (e) => {
+            if(e.type == 'contact-from-response'){
+                var data = {
+                    "title" : "New contact form submission received",
+                    "type" : "info",
+                    "message": e.contact_name + " submitted a contact form request.",
+                }
+                var event = new CustomEvent('notify', { detail: data });
+                window.dispatchEvent(event);
+            }
+        });
+
     //Subscribe to Coach connect channel
     window.Echo.private('coach-connect.{{Auth::user()->id}}')
         .listen('CoachConnect', (e) => {
