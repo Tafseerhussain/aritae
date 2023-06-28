@@ -1,15 +1,11 @@
 {
-  "public/assets/img/default/default-cover.jpg": {
-    "file": "assets/default-cover.5cd161fc.jpg",
-    "src": "public/assets/img/default/default-cover.jpg"
-  },
   "public/assets/img/events/event-fee-card-bg.jpg": {
     "file": "assets/event-fee-card-bg.98f2dfe5.jpg",
     "src": "public/assets/img/events/event-fee-card-bg.jpg"
   },
-  "public/assets/img/events-bg.jpg": {
-    "file": "assets/events-bg.042eac73.jpg",
-    "src": "public/assets/img/events-bg.jpg"
+  "public/assets/img/default/default-cover.jpg": {
+    "file": "assets/default-cover.5cd161fc.jpg",
+    "src": "public/assets/img/default/default-cover.jpg"
   },
   "public/assets/img/event-detail-bg.jpg": {
     "file": "assets/event-detail-bg.08b10f67.jpg",
@@ -18,6 +14,10 @@
   "public/assets/img/coaches-bg.jpg": {
     "file": "assets/coaches-bg.d08237e0.jpg",
     "src": "public/assets/img/coaches-bg.jpg"
+  },
+  "public/assets/img/events-bg.jpg": {
+    "file": "assets/events-bg.042eac73.jpg",
+    "src": "public/assets/img/events-bg.jpg"
   },
   "public/assets/img/players-bg.jpg": {
     "file": "assets/players-bg.e9df78d3.jpg",
@@ -49,7 +49,7 @@
     "isEntry": true
   },
   "resources/sass/admin.scss": {
-    "file": "assets/admin.dacc437f.css",
+    "file": "assets/admin.a0ed94da.css",
     "src": "resources/sass/admin.scss",
     "isEntry": true
   }

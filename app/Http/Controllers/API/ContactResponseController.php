@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\ContactResponse;
 use App\Models\User;
 use App\Events\ContactFormSubmission;
+use App\Traits\CreateNotification;
 use Validator;
 
 class ContactResponseController extends Controller
 {
+    use CreateNotification;
+
     public function create(Request $request){
         $validator = Validator::make($request->all(), [
             'first_name' => ['required', 'min:2'],
@@ -52,6 +55,8 @@ class ContactResponseController extends Controller
             $admin,
             'contact-form-response'
         ));
+
+        $this->pushAdminNotification('contact-form', 'Contact form response', 'New contact form response received from ' . $request->first_name . ' ' . $request->last_name );
 
         return response()->json([
             'status' => 'success',

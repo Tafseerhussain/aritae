@@ -44,4 +44,8 @@ class AdminController extends Controller
     {
         return view('admin.calendar');
     }
+    public function notification()
+    {
+        return view('admin.notification');
+    }
 }

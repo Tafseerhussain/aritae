@@ -90,4 +90,8 @@ class User extends Authenticatable
     public function settings(){
         return $this->hasOne(UserSetting::class);
     }
+
+    public function notifications(){
+        return $this->hasMany(Notification::class);
+    }
 }
