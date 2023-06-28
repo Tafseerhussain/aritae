@@ -13,7 +13,7 @@ class AdminNotification extends Component
 
     public $notifications;
 
-    public $per_page = 5;
+    public $per_page = 10;
     public $current_page = 1;
     public $total_notification;
     public $total_page;

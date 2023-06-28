@@ -8,12 +8,12 @@
             </div>
             @foreach($notifications as $notification)
             <div class="row mx-0 my-3">
-                <div class="col-12 px-3 py-2 notification-body">
+                <div class="col-12 px-3 py-2 notification-body d-flex justify-content-between align-items-center">
                     <div>
-                        <h5 class="mt-2 mb-2"><strong>{{$notification->title}}</strong></h5>
-                        <p>{{$notification->description}}</p>
+                        <h5 class="mt-2 mb-0"><strong>{{$notification->title}}</strong></h5>
+                        <p class="text-secondary mb-2">{{$notification->created_at->diffForHumans()}}</p>
                     </div>
-                    <p class="text-secondary"><i class="bi bi-clock"></i> {{$notification->created_at->diffForHumans()}}</p>
+                    <a href="{{route('admin.contact')}}" class="btn btn-secondary action-btn">View Request</a>
                 </div>
             </div>
             @endforeach
