@@ -110,6 +110,11 @@
 	overflow-y: scroll;
 	top: 0;
 	bottom: 0;
+	.logo {
+		img {
+			max-width: 80%;
+		}
+	}
 	.sidebar-links {
 		margin-top: 50px;
 		.list-group {

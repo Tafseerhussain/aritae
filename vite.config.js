@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/sass/call.scss',
                 'resources/js/app.js',
                 'resources/sass/admin.scss',
+                'resources/sass/admin-responsive.scss',
             ],
             refresh: true,
         }),

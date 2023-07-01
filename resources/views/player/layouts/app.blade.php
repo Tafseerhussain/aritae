@@ -18,6 +18,7 @@
     <!-- Scripts -->
     @vite([
         'resources/sass/admin.scss',
+        'resources/sass/admin-responsive.scss',
         'resources/js/app.js'
     ])
     @livewireStyles
@@ -30,10 +31,13 @@
         
         <div class="container-fluid">
 
-                <div class="col-md-2 sidebar-col">
+                <div class="col-xl-2 sidebar-col">
                     <div class="sidebar">
-                        <a href="/" class="logo text-center d-block">
+                        <a href="/" class="logo text-center d-lg-block d-none">
                             <img src="{{ asset('assets/img/logo.svg') }}" alt="">
+                        </a>
+                        <a href="#!" class="dashboard-menu-close d-lg-none mx-auto d-block text-center" onclick="closeNav()">
+                            <i class="bi bi-arrow-left-short"></i>
                         </a>
                         @php
                             $route = Route::current()->getName();
@@ -184,18 +188,25 @@
                 </div>
                 <div class="dashboard-col">
                     <div class="row top-bar align-items-center">
-                        <div class="col-md-5">
+                        <div class="col-lg-5 order-lg-1 order-2">
                             <div class="input-group standard-search">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-text"><img src="{{ asset('assets/img/search.svg') }}" alt=""></span>
                             </div>  
                         </div>
-                        <div class="col-md-2 text-center">
+                        <div class="col-lg-2 text-center order-lg-2 order-2">
                             <div class="welcome">
                                 Welcome {{ Auth::user()->first_name }}
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-lg-5 order-1 order-lg-3 position-relative">
+                            <a href="#!" class="open-dashboard-menu d-lg-none" onclick="openNav()">
+                                <i class="bi bi-list"></i>
+                            </a>
+                            <a class="navbar-brand mobile-navbar-logo d-lg-none" href="#">
+                                <img src="{{ asset('assets/img/logo.svg') }}" alt="">
+                            </a>
+
                             <ul class="list-group list-group-horizontal">
                                 <li class="list-group-item notifications">
                                     <a class="nav-link" href="#"><i class="fa-regular fa-bell"></i></a>
@@ -313,6 +324,7 @@
     <!-- Price nouislider-filter cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js"></script>
+    <script src="{{ asset('assets/js/adminSidebar.js') }}"></script>
     <script>
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))

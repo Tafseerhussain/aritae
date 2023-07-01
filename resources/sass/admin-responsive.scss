@@ -1,0 +1,152 @@
+@import 'variables';
+
+@media(max-width: 1920px) {
+}
+
+@media(max-width: 1500px) {
+}
+
+// 1399 START
+@media(max-width: 1399px) {
+	h1 {
+		font-size: 40px;
+	}
+	h4 {
+		font-size: 20px;
+	}
+	h2 {
+		font-size: 27px;
+	}
+	h3 {
+		font-size: 24px;
+	}
+	h4 {
+		font-size: 20px;
+	}
+	h5 {
+		font-size: 18px;
+	}
+	p {
+		font-size: 14px;
+	}
+	.form-control {
+		font-size: 14px;
+	}
+	.btn {
+		font-size: 14px;
+	}
+	.icon-right-full {
+	    padding: 5px 5px 4px 30px;
+	    i {
+	    	font-size: 38px;
+	    }
+	}
+	.dashboard-cards .card {
+		padding: 20px;
+	}
+	.conversations .conversation .col-2 {
+		padding-left: 0;
+		a {
+			font-size: 12px;
+		}
+	}
+	#admin-app  {
+		.sidebar-col {
+			width: 270px;
+		}
+		.dashboard-col {
+		    margin-left: 17.125rem;
+		}
+	}
+} // 1399 END
+
+@media only screen and (max-width: 1399px) and (min-width: 1200px) {
+}
+
+// 1350 START
+@media(max-width: 1350px) {
+} // 1350 END
+
+// 1250 START
+@media(max-width: 1250px) {
+} // 1250 END
+
+// 1199 START
+@media(max-width: 1199px) {
+} // 1199 END
+
+// 991 START
+@media(max-width: 991px) {
+	.dashboard-col {
+		.top-bar {
+			.standard-search {
+				margin: 0 auto;
+				width: 100%;
+			}
+			.welcome {
+				padding: 20px 0 10px;
+			}
+			.list-group-item {
+				padding-right: 0;
+				padding-bottom: 20px;
+			}
+		}
+	}
+	#admin-app  {
+		.sidebar-col {
+			width: 300px;
+			z-index: 999;
+			position: fixed;
+			left: -300px;
+			transition: .3s;
+			.sidebar {
+				background-color: $white;
+				padding-top: 10px;
+				box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+				.sidebar-links {
+					margin-top: 10px;
+				}
+			}
+		}
+		.dashboard-col {
+		    margin-left: 0;
+		}
+	}
+	.open-dashboard-menu {
+		position: absolute;
+		font-size: 32px;
+		top: 50%;
+		transform: translateY(-50%);
+				padding-bottom: 20px;
+		i {
+			color: #475569;
+		}
+	}
+	.dashboard-menu-close {
+		font-size: 32px;
+	}
+	.mobile-navbar-logo {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		padding-bottom: 20px;
+		img {
+			height: 30px;
+		}
+	}
+} // 991 END
+
+// 767 START
+@media(max-width: 767px) {
+} // 767 END
+
+// 575 START
+@media(max-width: 575px) {
+	#admin-app  {
+		.sidebar-col {
+			width: 100%;
+			left: -1000px;
+		}
+	}
+} // 575 END

@@ -55,7 +55,7 @@
 
     <div class="dashboard-cards">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-xl-7 mb-5 mb-xl-0">
                 <div class="profile-info">
                     <div class="card">
                         <a href="{{ route('coach.profile') }}" class="icon" data-bs-toggle="tooltip" data-bs-title="Edit Information">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-xl-5">
                 <div class="card">
                     <a href="{{ route('coach.chat') }}" class="icon">
                         <i class="fa-regular fa-eye"></i>
