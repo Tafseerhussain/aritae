@@ -1,4 +1,13 @@
 <div class="w-100">
+    @if (count($teams) == 0)
+        <div class="row mt-4">
+            <div class="col-12">
+                <p class="text-center alert">
+                    No Pending Teams Found!
+                </p>
+            </div>
+        </div>
+    @endif
     @foreach($teams as $team)
     <div class="mt-3 mb-1 w-100 d-flex justify-content-between">
         <h4 class="mt-3">{{$team->name}} <span class="badge team-sport-badge text-dark">{{$team->sport}}</span></h4>

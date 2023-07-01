@@ -74,6 +74,9 @@ Route::group(['middleware' => 'coach'], function () {
     Route::get('/coach/team-requests', [CoachController::class, 'teamRequests'])->name('coach.team_requests');
     Route::get('/coach/team-request-accept/{team_id}', [CoachController::class, 'teamRequestAccept'])->name('coach.team_request_accept');
     Route::get('/coach/team-request-decline/{team_id}', [CoachController::class, 'teamRequestDecline'])->name('coach.team_request_decline');
+
+    // Session Routes
+    Route::get('/coach/sessions', [CoachController::class, 'allSessions'])->name('coach.all_sessions');
 });
 
 Route::group(['middleware' => 'player'], function () {

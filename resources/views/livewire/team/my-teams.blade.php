@@ -1,4 +1,13 @@
 <div class="w-100">
+    @if (count($teams) == 0)
+        <div class="row mt-4">
+            <div class="col-12">
+                <p class="text-center alert">
+                    No Teams Found!
+                </p>
+            </div>
+        </div>
+    @endif
     @foreach($teams as $team)
     <h4 class="mt-3">{{$team->name}} <span class="badge team-sport-badge text-dark">{{$team->sport}}</span></h4>
     <div class="card w-100 pb-2">

@@ -924,12 +924,12 @@
 
 	li{
 		display: inline-block;
-		padding-right: 15px;
+		margin-right: 15px;
 		cursor: pointer;
 
 		&.active{
 			font-weight: bold;
-			text-decoration: underline;
+			border-bottom: 2px solid $purple;
 			color: $purple;
 		}
 	}
@@ -1061,14 +1061,13 @@
 }
 
 // Team designs
-.team-nav{
+.multi-option-pages-nav {
 	list-style-type: none;
 	padding-left: 0px;
 	margin-top: 10px;
 	margin-bottom: 0px;
-	border-bottom: 2px solid rgba($dark-gray, 0.1);
 
-	.team-nav-item{
+	.multi-option-pages-nav-item {
 		margin: 0px 10px;
 		display: inline-block;
 	
@@ -1085,6 +1084,7 @@
 			}
 			a{
 				color: $purple;
+				font-weight: 600;
 			}
 		}
 		a{

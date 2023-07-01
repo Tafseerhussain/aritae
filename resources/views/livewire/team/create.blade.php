@@ -14,7 +14,7 @@
             <input type="file" name="logo" id="logo" wire:model="logo" hidden>
         </div>
 
-        <div class="row team-info p-2">
+        <div class="row team-info p-2 g-3 px-3">
             <div class="col-12">
                 <div class="upload-progress">
                     <div class="upload-progress-active"></div>
@@ -45,7 +45,7 @@
                 @enderror
             </div>
         </div>
-        <div class="row mb-3 p-2">
+        <div class="row mb-3 p-2 px-3 g-3">
             <div class="col-12">
                 <label class="col-form-label fs-5 fw-bold">{{ __('Team Players') }}</label>
                 <div class="team-create-players">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-3 p-2">
+        <div class="row mb-3 p-2 px-3 g-3">
             <div class="col-12">
                 <label class="col-form-label fs-5 fw-bold">{{ __('Team Coaches') }}</label>
                 <div class="team-create-coaches">

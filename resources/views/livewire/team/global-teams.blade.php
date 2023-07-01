@@ -1,4 +1,13 @@
 <div class="w-100">
+    @if (count($teams) == 0)
+        <div class="row mt-4">
+            <div class="col-12">
+                <p class="text-center alert">
+                    No Teams Found!
+                </p>
+            </div>
+        </div>
+    @endif
     @foreach($teams as $team)
     <div class="card w-100 mt-3">
         <div class="px-4 py-2 w-100 d-flex justify-content-between align-items-center">

@@ -143,4 +143,9 @@ class CoachController extends Controller
 
         return redirect()->back();
     }
+
+    public function allSessions()
+    {
+        return view('coach.sessions');
+    }
 }

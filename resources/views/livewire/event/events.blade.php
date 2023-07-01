@@ -1,24 +1,38 @@
-<div>
-    <div class="row events-page">
+<div class="events-page multi-option-page">
+    <div class="row">
+        
+        {{-- PAGE HEADING --}}
         <div class="col-12">
-            <div class="d-flex justify-content-between w-100 px-2">
-                <h2 class="fs-2 text-black">All Events</h2>
+            <div class="d-flex justify-content-between w-100 page-heading">
+                <h2 class="fs-2 text-black">Events</h2>
                 @if(auth()->user()->user_type_id == 2)
                 <a href="javascript:void(0)" class="btn btn-theme" wire:click="showCreateEvent"> + Add Event </a>
                 @endif
             </div>
         </div>
     </div>
+
+    {{-- PAGE CONTENT --}}
     <div class="row">
         <div class="col-12 d-flex justify-content-between align-items-center">
-            <ul class="event-filter-list p-2">
-                <li class="{{($filter == 'all') ? 'active' : ''}}" wire:click="applyFilter('all')">{{ __('All') }}</li>
+            <ul class="multi-option-pages-nav p-2">
+                <li class="multi-option-pages-nav-item {{($filter == 'all') ? 'active' : ''}}">
+                    <a href="javascript:void(0)" wire:click="applyFilter('all')">{{ __('All') }}</a>
+                </li>
                 @if(auth()->user()->user_type_id == 2)
-                <li class="{{($filter == 'my-events') ? 'active' : ''}}" wire:click="applyFilter('my-events')">{{ __('My Events') }}</li>
+                <li class="multi-option-pages-nav-item {{($filter == 'my-events') ? 'active' : ''}}">
+                    <a href="javascript:void(0)" wire:click="applyFilter('my-events')">{{ __('My Events') }}</a>
+                </li>
                 @endif
-                <li class="{{($filter == 'upcoming') ? 'active' : ''}}" wire:click="applyFilter('upcoming')">{{ __('Upcoming') }}</li>
-                <li class="{{($filter == 'past') ? 'active' : ''}}" wire:click="applyFilter('past')">{{ __('Past') }}</li>
-                <li class="{{($filter == 'pending') ? 'active' : ''}}" wire:click="applyFilter('pending')">{{ __('Pending') }}</li>
+                <li class="multi-option-pages-nav-item {{($filter == 'upcoming') ? 'active' : ''}}"> 
+                    <a href="javascript:void(0)" wire:click="applyFilter('upcoming')">{{ __('Upcoming') }}</a>
+                </li>
+                <li class="multi-option-pages-nav-item {{($filter == 'past') ? 'active' : ''}}"> 
+                    <a href="javascript:void(0)" wire:click="applyFilter('past')">{{ __('Past') }}</a>
+                </li>
+                <li class="multi-option-pages-nav-item {{($filter == 'pending') ? 'active' : ''}}"> 
+                    <a href="javascript:void(0)" wire:click="applyFilter('pending')">{{ __('Pending') }}</a>
+                </li>
             </ul>
             <div class="event-sort">
                 <label>Sort by</label>
@@ -30,6 +44,11 @@
         </div>
     </div>
     <div class="row">
+        @if (count($events) == 0)
+            <div class="col-12 mt-4">
+                <p class="text-center alert">No Events Found!</p>
+            </div>
+        @endif
         @foreach($events as $event)
         <div class="col-md-6 col-xl-4 mb-3">
             <div class="card event-card">

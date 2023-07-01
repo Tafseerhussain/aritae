@@ -205,7 +205,7 @@
                     <h5>
                         Your Videos
                     </h5>
-                    <div class="row videos">
+                    <div class="row videos g-3">
                         <div class="col-md-4">
                             <div class="video">
                                 <iframe width="100%" height="270" src="https://www.youtube.com/embed/06C-XxqYXT8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -145,6 +145,12 @@
                                         <span>Messages</span>
                                     </a>
                                 </li>
+                                <li class="list-group-item {{ $route == 'coach.all_sessions' ? 'active' : '' }}">
+                                    <a href="{{ route('coach.all_sessions') }}">
+                                        <i class="bi bi-stopwatch"></i>
+                                        <span>Sessions</span>
+                                    </a>
+                                </li>
                                 <li class="list-group-item {{ $route == 'coach.teams' ? 'active' : '' }}">
                                     <a href="{{ route('coach.teams') }}">
                                         <i class="bi bi-people"></i>
