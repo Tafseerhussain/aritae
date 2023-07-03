@@ -53,6 +53,7 @@ Route::post('/video/accept-call', [App\Http\Controllers\CallController::class, '
 // Route::get('/users', CreateChat::class)->name('users');
 // Route::get('/chat{key?}', Main::class)->name('chat');
 
+// COACH MIDDLEWARE
 Route::group(['middleware' => 'coach'], function () {
     Route::get('/coach/dashboard', [CoachController::class, 'index'])->name('coach.dashboard');
     Route::get('/coach/profile', [CoachController::class, 'profile'])->name('coach.profile');
@@ -77,8 +78,11 @@ Route::group(['middleware' => 'coach'], function () {
 
     // Session Routes
     Route::get('/coach/sessions', [CoachController::class, 'allSessions'])->name('coach.all_sessions');
+
+    Route::get('/coach/registration-complete', [CoachController::class, 'registrationComplete'])->name('coach.registrationComplete');
 });
 
+// PLAYER MIDDLEWARE
 Route::group(['middleware' => 'player'], function () {
     Route::get('/player/dashboard', [PlayerController::class, 'index'])->name('player.dashboard');
     Route::get('/player/profile', [PlayerController::class, 'profile'])->name('player.profile');
@@ -98,6 +102,7 @@ Route::group(['middleware' => 'player'], function () {
     Route::get('/player/payment', [PlayerController::class, 'payment'])->name('player.payment');
 });
 
+// PARENT MIDDLEWARE
 Route::group(['middleware' => 'parent'], function () {
     Route::get('/parent/dashboard', [ParentController::class, 'index'])->name('parent.dashboard');
     Route::get('/parent/profile', [ParentController::class, 'profile'])->name('parent.profile');
@@ -108,6 +113,7 @@ Route::group(['middleware' => 'parent'], function () {
     Route::get('/parent/chat{key?}', [ParentController::class, 'parentChat'])->name('parent.chat');
 });
 
+// ADMIN MIDDLEWARE
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');

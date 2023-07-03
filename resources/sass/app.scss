@@ -942,3 +942,131 @@ nav.navbar {
 		}
 	}
 }
+
+
+
+.coach-participation-page {
+	.coach-participation-form {
+		.col-1 {
+			.border {
+				width: 1px;
+				height: 100%;
+			}
+			.number-line {
+				.number {
+					position: absolute;
+					background: $purple;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					color: $white;
+					width: 30px;
+					height: 30px;
+					text-align: center;
+					border-radius: 50%;
+					padding: 2px;
+					font-size: 16px;
+				}
+			}
+		}
+		.col-11 {
+			.completion-box {
+				border-radius: $radius;
+				padding: 50px;
+				&:before {
+				    content: "";
+				    position: absolute;
+				    top: 50%;
+				    left: -27px;
+				    transform: translateY(-50%);
+				    border-top: 14px solid transparent;
+				    border-bottom: 14px solid transparent;
+				    border-left: 14px solid transparent;
+				    border-right: 14px solid $purple;
+				    opacity: 1;
+				}
+				.top-left-dots {
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 30%;
+					pointer-events: none;
+				}
+				.bottom-right-dots {
+					position: absolute;
+					right: 0;
+					bottom: 0;
+					transform: rotate(180deg);
+					width: 30%;
+					pointer-events: none;
+				}
+				.completed {
+					position: relative;
+					padding: 30px;
+					&:before {
+					  content: "\2B22";
+					  color: rgba(255,255,255,0.1);
+					  font-size:235px;
+					  position: absolute;
+					  top: 32%;
+					  left: 50%;
+					  transform: translate(-50%, -50%);
+					}
+					h6 {
+						letter-spacing: 1px;
+					}
+				}
+				.heading {
+					letter-spacing: 1px;
+				}
+			}
+		}
+		.first-box-questions {
+			.number-line {
+				.number {
+					background: $blue;
+				}
+			}
+			.question {
+				box-shadow: $shadow;
+				padding: 20px 20px 24px;
+				border-radius: $radius;
+				background: $white;
+				margin: 10px 0;
+				position: relative;
+				.before {
+					position: absolute;
+					left: -21px;
+					top: 50%;
+					transform: translateY(-50%);
+					transition: 0.1s;
+				}
+				.after {
+					display: none;
+				}
+				p {
+					margin-bottom: 10px;
+				}
+				.form-control {
+					color: $blue;
+					font-size: 14px;
+					padding: 10px;
+				}
+					p {
+						transition: 0.1s;
+					}
+				&:hover {
+					background: $purple;
+					color: $white;
+					.after {
+						display: block;
+					}
+					.form-control {
+						background-color: rgba(255,255,255,0.2);
+						color: $white;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,12 +1,4 @@
 {
-  "public/assets/img/events/event-fee-card-bg.jpg": {
-    "file": "assets/event-fee-card-bg.98f2dfe5.jpg",
-    "src": "public/assets/img/events/event-fee-card-bg.jpg"
-  },
-  "public/assets/img/players-bg.jpg": {
-    "file": "assets/players-bg.65edb63b.jpg",
-    "src": "public/assets/img/players-bg.jpg"
-  },
   "public/assets/img/event-detail-bg.jpg": {
     "file": "assets/event-detail-bg.08b10f67.jpg",
     "src": "public/assets/img/event-detail-bg.jpg"
@@ -14,6 +6,14 @@
   "public/assets/img/default/default-cover.jpg": {
     "file": "assets/default-cover.5cd161fc.jpg",
     "src": "public/assets/img/default/default-cover.jpg"
+  },
+  "public/assets/img/events/event-fee-card-bg.jpg": {
+    "file": "assets/event-fee-card-bg.98f2dfe5.jpg",
+    "src": "public/assets/img/events/event-fee-card-bg.jpg"
+  },
+  "public/assets/img/players-bg.jpg": {
+    "file": "assets/players-bg.65edb63b.jpg",
+    "src": "public/assets/img/players-bg.jpg"
   },
   "public/assets/img/events-bg.jpg": {
     "file": "assets/events-bg.042eac73.jpg",
@@ -28,6 +28,11 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
+  "resources/sass/responsive.scss": {
+    "file": "assets/responsive.d1698d6d.css",
+    "src": "resources/sass/responsive.scss",
+    "isEntry": true
+  },
   "resources/sass/call.scss": {
     "file": "assets/call.16b26ea8.css",
     "src": "resources/sass/call.scss",
@@ -38,23 +43,18 @@
     "src": "resources/sass/admin-responsive.scss",
     "isEntry": true
   },
-  "resources/sass/responsive.scss": {
-    "file": "assets/responsive.d1698d6d.css",
-    "src": "resources/sass/responsive.scss",
-    "isEntry": true
-  },
   "resources/sass/theme.scss": {
-    "file": "assets/theme.e6388dba.css",
+    "file": "assets/theme.30aa9e15.css",
     "src": "resources/sass/theme.scss",
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app.a4fb0957.css",
+    "file": "assets/app.7a4182ac.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
   "resources/sass/admin.scss": {
-    "file": "assets/admin.19cf48b4.css",
+    "file": "assets/admin.771d2067.css",
     "src": "resources/sass/admin.scss",
     "isEntry": true
   }
