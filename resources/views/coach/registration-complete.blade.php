@@ -5,10 +5,16 @@
     <div class="coach-participation-page pb-5">
         <nav>
             <div class="container">
-                <div class="row">
-                    <div class="col-12 py-5 text-center">
+                <div class="row py-5 align-items-center">
+                    <div class="col-md-9 text-md-start text-center">
                         <a href="/" class="navbar-brand"><img src="{{ asset('assets/img/logo.svg') }}" alt="logo"></a>
                         <h2 class="text-primary fw-light my-4">ARITAE SELF LEADERSHIP ACADEMY</h2>
+                    </div>
+                    <div class="col-md-3 text-md-end text-center">
+                        <a href="{{ route('coach.dashboard') }}" class="btn btn-theme">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span> Return To Dashboard</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -50,11 +56,11 @@
                                 <h2 class="fw-light">
                                     12%
                                 </h2>
-                                <h6 class="text-uppercase text-secondary titilium">
+                                <h6 class="text-uppercase text-blue titilium">
                                     COMPLETE
                                 </h6>
                             </div>
-                            <h6 class="text-uppercase text-secondary titilium heading my-4 position-relative">
+                            <h6 class="text-uppercase text-blue titilium heading my-4 position-relative">
                                 YOUR PASSIONS
                             </h6>
                             <p class="position-relative">
@@ -94,12 +100,19 @@
                                 <div class="question">
                                     <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
                                     <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
-                                    <p>My friends and/or family have been coming to me for advice and guidance for years</p>
-                                    <select class="form-select form-control w-50  @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
-                                        <option value='' disabled selected>--Select Option--</option>
-                                        <option value='Yes'>Yes</option>
-                                        <option value='No'>No</option>
-                                    </select>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>My friends and/or family have been coming to me for advice and guidance for years</p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -118,12 +131,19 @@
                                 <div class="question">
                                     <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
                                     <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
-                                    <p>My friends and/or family have been coming to me for advice and guidance for years</p>
-                                    <select class="form-select form-control w-50  @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
-                                        <option value='' disabled selected>--Select Option--</option>
-                                        <option value='Yes'>Yes</option>
-                                        <option value='No'>No</option>
-                                    </select>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I enjoy helping people feel loved, happy, and significant </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -142,16 +162,333 @@
                                 <div class="question">
                                     <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
                                     <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
-                                    <p>My friends and/or family have been coming to me for advice and guidance for years</p>
-                                    <select class="form-select form-control w-50  @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
-                                        <option value='' disabled selected>--Select Option--</option>
-                                        <option value='Yes'>Yes</option>
-                                        <option value='No'>No</option>
-                                    </select>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I enjoy working with people and helping them feel successful </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
+
+                        {{-- Question 4 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        4
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I feel a sense of satisfaction when I help others become better people </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 5 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        5
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I am excited and passionate about life </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 6 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        6
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I value honesty and integrity </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 7 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        7
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I have leadership qualities that I could utilize to be an ARITAE Self-Leadership Coach </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 8 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        8
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I have worked with people in the past helping them achieve and/or learn something </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 9 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        9
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I love to laugh and be happy </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 10 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I love to help others feel great about themselves </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 11 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        11
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I have self-confidence </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 12 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        12
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I am motivated to work on improving myself </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 13 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        13
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-9">
+                                            <p>I have the desire/determination to become an ARITAE Self-Leadership Coach? </p> 
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                                <option value='' disabled selected>--Select Option--</option>
+                                                <option value='Yes'>Yes</option>
+                                                <option value='No'>No</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>

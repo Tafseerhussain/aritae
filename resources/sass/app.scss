@@ -1029,11 +1029,15 @@ nav.navbar {
 			}
 			.question {
 				box-shadow: $shadow;
-				padding: 20px 20px 24px;
+				padding: 20px;
 				border-radius: $radius;
 				background: $white;
 				margin: 10px 0;
 				position: relative;
+				transition: 0.1s;
+				.form-control {
+					text-align: center;
+				}
 				.before {
 					position: absolute;
 					left: -21px;
@@ -1041,20 +1045,27 @@ nav.navbar {
 					transform: translateY(-50%);
 					transition: 0.1s;
 				}
+				.row {
+					transition: 0s;
+					.col-md-9 {
+						transition: 0s;
+					}
+				}
 				.after {
 					display: none;
 				}
 				p {
-					margin-bottom: 10px;
+					margin-bottom: 0;
+					transition: 0s !important;
 				}
 				.form-control {
 					color: $blue;
 					font-size: 14px;
 					padding: 10px;
 				}
-					p {
-						transition: 0.1s;
-					}
+				p {
+					transition: 0.1s;
+				}
 				&:hover {
 					background: $purple;
 					color: $white;
