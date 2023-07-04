@@ -7,6 +7,10 @@
     "file": "assets/default-cover.5cd161fc.jpg",
     "src": "public/assets/img/default/default-cover.jpg"
   },
+  "public/assets/img/events-bg.jpg": {
+    "file": "assets/events-bg.042eac73.jpg",
+    "src": "public/assets/img/events-bg.jpg"
+  },
   "public/assets/img/events/event-fee-card-bg.jpg": {
     "file": "assets/event-fee-card-bg.98f2dfe5.jpg",
     "src": "public/assets/img/events/event-fee-card-bg.jpg"
@@ -15,22 +19,13 @@
     "file": "assets/players-bg.65edb63b.jpg",
     "src": "public/assets/img/players-bg.jpg"
   },
-  "public/assets/img/events-bg.jpg": {
-    "file": "assets/events-bg.042eac73.jpg",
-    "src": "public/assets/img/events-bg.jpg"
-  },
   "public/assets/img/coaches-bg.jpg": {
     "file": "assets/coaches-bg.d08237e0.jpg",
     "src": "public/assets/img/coaches-bg.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app.8ce7cc7f.js",
+    "file": "assets/app.e7d71e63.js",
     "src": "resources/js/app.js",
-    "isEntry": true
-  },
-  "resources/sass/responsive.scss": {
-    "file": "assets/responsive.d1698d6d.css",
-    "src": "resources/sass/responsive.scss",
     "isEntry": true
   },
   "resources/sass/call.scss": {
@@ -43,18 +38,23 @@
     "src": "resources/sass/admin-responsive.scss",
     "isEntry": true
   },
+  "resources/sass/responsive.scss": {
+    "file": "assets/responsive.d1698d6d.css",
+    "src": "resources/sass/responsive.scss",
+    "isEntry": true
+  },
   "resources/sass/theme.scss": {
-    "file": "assets/theme.30aa9e15.css",
+    "file": "assets/theme.d25d8417.css",
     "src": "resources/sass/theme.scss",
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app.7a4182ac.css",
+    "file": "assets/app.7c264a0f.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
   "resources/sass/admin.scss": {
-    "file": "assets/admin.771d2067.css",
+    "file": "assets/admin.4948b8e1.css",
     "src": "resources/sass/admin.scss",
     "isEntry": true
   }
