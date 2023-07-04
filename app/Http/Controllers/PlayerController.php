@@ -100,4 +100,9 @@ class PlayerController extends Controller
 
         return redirect()->back();
     }
+
+    public function allSessions()
+    {
+        return view('player.sessions');
+    }
 }

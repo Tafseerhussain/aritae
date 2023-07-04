@@ -94,4 +94,8 @@ class User extends Authenticatable
     public function notifications(){
         return $this->hasMany(Notification::class);
     }
+
+    public function sessions(){
+        return $this->hasMany(Session::class);
+    }
 }

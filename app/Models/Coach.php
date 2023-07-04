@@ -64,4 +64,8 @@ class Coach extends Model
     public function teams(){
         return $this->belongsToMany(Team::class);
     }
+
+    public function sessions(){
+        return $this->belongsToMany(Session::class);
+    }
 }

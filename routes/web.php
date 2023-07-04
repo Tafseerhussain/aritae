@@ -94,6 +94,9 @@ Route::group(['middleware' => 'player'], function () {
     Route::get('/player/team-request-accept/{team_id}', [PlayerController::class, 'teamRequestAccept'])->name('player.team_request_accept');
     Route::get('/player/team-request-decline/{team_id}', [PlayerController::class, 'teamRequestDecline'])->name('player.team_request_decline');
 
+    // Session Routes
+    Route::get('/player/sessions', [PlayerController::class, 'allSessions'])->name('player.all_sessions');
+
     //Pyament route
     Route::get('/player/payment', [PlayerController::class, 'payment'])->name('player.payment');
 });

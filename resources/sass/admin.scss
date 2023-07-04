@@ -1441,3 +1441,272 @@
 		}
 	}
 }
+
+// Session
+.sessions-page{
+	.session-logo{
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+		overflow: hidden;
+
+		img{
+			width: 100%;
+		}
+	}
+	.session-player-head{
+		position: relative;
+		width: 155px;
+		height: 50px;
+		img, .count{
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			border: 1px solid white;
+			border-radius: 25px;
+			top: 0px;
+	
+			&:nth-child(1){ left: 0px; }
+			&:nth-child(2){ left: 35px; z-index: 1; }
+			&:nth-child(3){ left: 70px; z-index: 2; }
+			&:nth-child(4){ left: 105px; z-index: 3; }
+		}
+	}
+}
+.session-create-page{
+	.session-coach-container{
+		max-height: 600px;
+		overflow: auto;
+		.session-coach{
+			cursor: pointer;
+			border-bottom: 1px solid $border-color;
+			&:last-child{
+				border-bottom-color: transparent;
+			}
+			.coach-image{
+				width: 70px;
+				height: 70px;
+				overflow: hidden;
+				border-radius: 10px;
+				img{
+					width: 100%;
+					height: auto;
+				}
+			}
+
+			&.selected{
+				background-color: var(--bs-dark);
+				border-bottom-color: $light-gray;
+
+				.coach-detail{
+					.coach-name{
+						color: white !important;
+					}
+					.coach-sport{
+						span{
+							color: white !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.schedule-session-page{
+	.session-athlete{
+		.athlete-container{
+			border-radius: $radius;
+			
+			.athlete-image{
+				width: 100px;
+				height: 100px;
+				border-radius: 50px;
+				overflow: hidden;
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+	.session-coach{
+		.coach-container{
+			border-radius: $radius;
+			
+			.coach-image{
+				width: 100px;
+				height: 100px;
+				border-radius: 50px;
+				overflow: hidden;
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+	.calendar-timezone{
+		width: 360px;
+		padding: 5px;
+		border-right: 1px solid $border-color;
+		.calendar-container {
+			width: 100%;
+			border-radius: 10px;
+			box-shadow: none;
+
+			header {
+				display: flex;
+				align-items: center;
+				padding: 25px 5px 10px;
+				justify-content: space-between;
+
+				.calendar-navigation {
+					display: flex;
+					border: none;
+
+					span {
+						height: 38px;
+						width: 38px;
+						margin: 0 1px;
+						cursor: pointer;
+						text-align: center;
+						line-height: 38px;
+						border-radius: 50%;
+						user-select: none;
+						color: $black;
+						font-size: 1.2rem;
+						
+						&:hover {
+							background: $gray;
+						}
+						&:last-child {
+							margin-right: -10px;
+						}
+					}
+				}
+				.calendar-current-date {
+					font-weight: 500;
+					font-size: 1.45rem;
+				}
+			}
+			.calendar-body {
+				padding: 20px 0px;
+
+				ul {
+					padding: 0px;
+					list-style: none;
+					flex-wrap: wrap;
+					display: flex;
+					text-align: center;
+				}
+				li {
+					width: calc(100% / 7);
+					font-size: 1rem;
+					color: #414141;
+				}
+				.calendar-dates {
+					margin-bottom: 20px;
+
+					li {
+						margin-top: 15px;
+						position: relative;
+						z-index: 1;
+						cursor: pointer;
+
+						&.inactive {
+							color: $light-gray;
+						}
+						&.active {
+							color: $white;
+							font-weight: bold;
+
+							&::before {
+								background: $light-blue;
+							}
+						}
+						&::before {
+							position: absolute;
+							content: "";
+							z-index: -1;
+							top: 50%;
+							left: 50%;
+							width: 35px;
+							height: 35px;
+							border-radius: 50%;
+							transform: translate(-50%, -50%);
+						}
+						&:not(.active):hover::before {
+							background: $gray;
+						}
+					}
+				}
+				.calendar-weekdays li {
+					cursor: default;
+					font-weight: 500;
+				}
+			}
+		}
+	}
+
+	.time-slot-container{
+		flex: 1 0 200px;
+		max-height: 600px;
+		overflow: auto;
+		padding: 0px 10px;
+		margin-top: 15px;
+		
+		.time-slot{
+			border: 1px solid $black;
+			border-radius: 8px;
+			width: 100%;
+			max-width: 250px;
+			text-align: center;
+			padding: 5px;
+			margin: 5px 0px;
+			cursor: pointer;
+			&.active{
+				background-color: $black;
+				color: $white;
+			}
+		}
+	}
+}
+
+.confirm-schedule-page{
+	.session-schedule{
+		border-bottom: 1px solid $border-color;
+		@media screen and (min-width: 1200px){
+			border-right: 1px solid $border-color;
+			border-bottom: none;
+		}
+	}
+	.session-athlete{
+		.athlete-container{
+			border-radius: $radius;
+			
+			.athlete-image{
+				width: 100px;
+				height: 100px;
+				border-radius: 50px;
+				overflow: hidden;
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+	.session-coach{
+		.coach-container{
+			border-radius: $radius;
+			
+			.coach-image{
+				width: 100px;
+				height: 100px;
+				border-radius: 50px;
+				overflow: hidden;
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+}
