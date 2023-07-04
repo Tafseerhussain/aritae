@@ -21,6 +21,11 @@ class CoachController extends Controller
         return view('coach.dashboard', compact('conversations'));
     }
 
+    public function registrationComplete()
+    {
+        return view('coach.registration-complete');
+    }
+
     public function profile()
     {
         return view('coach.profile');

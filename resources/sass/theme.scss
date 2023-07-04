@@ -153,6 +153,12 @@ a:focus,
 .text-primary {
 	color: $purple !important;
 }
+.text-secondary {
+	color: $blue !important;
+}
+.bg-primary {
+	background: $purple !important;
+}
 .dropdown-menu {
 	background: rgba($black,0.7);
 	color: $white;
