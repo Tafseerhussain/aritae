@@ -1444,6 +1444,12 @@
 
 // Session
 .sessions-page{
+	.session-action-menu{
+		background-color: $white;
+		box-shadow: $shadow;
+		border: none;
+		border-radius: $radius;
+	}
 	.session-logo{
 		width: 100px;
 		height: 100px;
@@ -1471,6 +1477,10 @@
 			&:nth-child(3){ left: 70px; z-index: 2; }
 			&:nth-child(4){ left: 105px; z-index: 3; }
 		}
+	}
+	.week-btn{
+		width: 90%;
+		max-width: 500px;
 	}
 }
 .session-create-page{
@@ -1508,6 +1518,15 @@
 						}
 					}
 				}
+			}
+		}
+	}
+	.feature-guide{
+		p{
+			font-size: 1.1rem;
+			i.bi{
+				font-size: 1.8rem;
+				color: $blue;
 			}
 		}
 	}

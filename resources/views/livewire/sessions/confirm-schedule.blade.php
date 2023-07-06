@@ -13,7 +13,7 @@
                             <i class="bi bi-clock-fill me-2"></i> {{(count($session_data['time_slot']) * 30) . ' min'}}
                         </p>
                         <p class="m-2 session-time text-secondary">
-                            <i class="bi bi-calendar-check-fill me-2"></i> {{$time_string . ', ' . date('l, M d, Y', $session_data['date'])}}
+                            <i class="bi bi-calendar-check-fill me-2"></i> {{$this->getTimeRange($session_data['time_slot']) . ', ' . date('l, M d, Y', $session_data['date'])}}
                         </p>
                         <p class="m-2 session-timezone text-secondary">
                             <i class="bi bi-globe-americas me-2"></i> {{$session_data['timezone']}} Time
@@ -35,13 +35,15 @@
                         </div>
                         <div class="session-athlete">
                             <div class="d-flex justify-content-start align-items-center flex-wrap">
-                                <h4 class="fw-bold me-2">{{__('Athelete')}}</h4>
+                                <h4 class="fw-bold me-2">{{__('Host')}}</h4>
                                 <span class="badge rounded-pill bg-light text-secondary fw-normal">{{__('Session Organizer')}}</span>
                             </div>
                             <div class="p-3 d-flex justify-content-start align-items-center bg-light athlete-container">
                                 <div class="athlete-image">
                                     @if(auth()->user()->user_type_id == 4 && auth()->user()->player->profile_img)
                                     <img src="{{asset(auth()->user()->player->profile_img)}}" alt="Athlete image">
+                                    @elseif(auth()->user()->user_type_id == 2 && auth()->user()->coach->profile_img)
+                                    <img src="{{asset(auth()->user()->coach->profile_img)}}" alt="Athlete image">
                                     @else
                                     <img src="{{asset('assets/img/profile-1.jpg')}}" alt="Athlete image">
                                     @endif
@@ -51,6 +53,8 @@
                                     <strong>Location: </strong><span class="text-secondary">{{auth()->user()->city . ', ' . auth()->user()->country}}</span><br>
                                     @if(auth()->user()->user_type_id == 4)
                                     <strong>Contact No: </strong><a href="tel:{{auth()->user()->player->phone}}">{{auth()->user()->player->phone}}</a>
+                                    @elseif(auth()->user()->user_type_id == 2)
+                                    <strong>Contact No: </strong><a href="tel:{{auth()->user()->coach->phone}}">{{auth()->user()->coach->phone}}</a>
                                     @endif
                                 </div>
                             </div>

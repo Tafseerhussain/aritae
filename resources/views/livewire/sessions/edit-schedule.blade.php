@@ -4,16 +4,16 @@
             <div class="card w-100 h-100 my-2 p-3">
                 <h4 class="fw-bold">{{__('Session Information')}}</h4>
                 <div class="session-details">
-                    <h6 class="fw-bold m-0">{{$session_data['name']}}</h6>
+                    <h6 class="fw-bold m-0">{{$session_data->name}}</h6>
                     <p class="mb-2">
-                        <span class="text-secondary me-3"><i class="fas fa-basketball-ball"></i> {{$session_data['sport']}}</span>
-                        @if($session_data['video_session'])
+                        <span class="text-secondary me-3"><i class="fas fa-basketball-ball"></i> {{$session_data->sport->name}}</span>
+                        @if($session_data->video_session)
                         <span class="text-secondary me-3"><i class="bi bi-camera-video"></i> Video Session</span>
                         @else
                         <span class="text-secondary me-3"><i class="bi bi-geo-alt-fill"></i> On Site</span>
                         @endif
                     </p>
-                    <p>{{$session_data['description']}}</p>
+                    <p>{{$session_data->description}}</p>
                 </div>
                 <div class="session-athlete">
                     <div class="d-flex justify-content-start align-items-center flex-wrap">
@@ -24,8 +24,6 @@
                         <div class="athlete-image">
                             @if(auth()->user()->user_type_id == 4 && auth()->user()->player->profile_img)
                             <img src="{{asset(auth()->user()->player->profile_img)}}" alt="Athlete image">
-                            @elseif(auth()->user()->user_type_id == 2 && auth()->user()->coach->profile_img)
-                            <img src="{{asset(auth()->user()->coach->profile_img)}}" alt="Athlete image">
                             @else
                             <img src="{{asset('assets/img/profile-1.jpg')}}" alt="Athlete image">
                             @endif
@@ -130,7 +128,7 @@
     </div>
     <div class="row mt-5">
         <div class="col-12 d-flex justify-content-end">
-            <button class="btn btn-dark" wire:click="submitSchedule">{{__('Continue')}}</button>
+            <button class="btn btn-dark" wire:click="submitSchedule">{{__('Update Schedule')}}</button>
         </div>
     </div>
     

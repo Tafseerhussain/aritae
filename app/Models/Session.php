@@ -23,7 +23,7 @@ class Session extends Model
         'user_id',
     ];
 
-    public function host(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
     public function sport(){

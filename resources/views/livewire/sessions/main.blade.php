@@ -19,7 +19,7 @@
                     @if(auth()->user()->user_type_id == 2)
                     <li class="multi-option-pages-nav-item {{($activeComponent == 'upcoming_sessions') ? 'active' : ''}}"><a href="javascript:void(0)" wire:click="changeComponent('upcoming_sessions')">{{__('Upcoming Sessions')}}</a></li>
                     @endif
-                    @if(auth()->user()->user_type_id == 4)
+                    @if(auth()->user()->user_type_id == 2)
                     <li class="multi-option-pages-nav-item {{($activeComponent == 'create_session') ? 'active' : ''}}"><a href="javascript:void(0)" wire:click="changeComponent('create_session')">{{__('Create Your Sessions')}}</a></li>
                     @endif
                     @endauth
@@ -35,6 +35,12 @@
                     @livewire('sessions.schedule-session', ['session_data' => $session_data])
                 @elseif($activeComponent == 'confirm_schedule')
                     @livewire('sessions.confirm-schedule', ['session_data' => $confirm_session_data])
+                @elseif($activeComponent == 'confirm_join')
+                    @livewire('sessions.confirm-join', ['session_id' => $session_id])
+                @elseif($activeComponent == 'edit_session')
+                    @livewire('sessions.edit-session', ['session_id' => $session_id])
+                @elseif($activeComponent == 'edit_schedule')
+                    @livewire('sessions.edit-schedule', ['session_id' => $session_id])
                 @endif
 
             </div>

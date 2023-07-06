@@ -682,6 +682,7 @@ class ComposerStaticInitfe55c2274a65a2458509cd9f769322c8
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Traits\\CreateNotification' => __DIR__ . '/../..' . '/app/Traits/CreateNotification.php',
+        'App\\Traits\\SessionTrait' => __DIR__ . '/../..' . '/app/Traits/SessionTrait.php',
         'App\\View\\Components\\Auth\\Registration' => __DIR__ . '/../..' . '/app/View/Components/Auth/Registration.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',

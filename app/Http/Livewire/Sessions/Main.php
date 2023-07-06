@@ -6,11 +6,22 @@ use Livewire\Component;
 
 class Main extends Component
 {
-    protected $listeners = ['createSession', 'scheduleSession', 'sessionCreated'];
+    protected $listeners = [
+        'createSession', 
+        'scheduleSession', 
+        'sessionCreated', 
+        'joinSession',
+        'sessionCoachJoined',
+        'editSession',
+        'sessionUpdated',
+        'rescheduleSession',
+        'scheduleUpdated',
+    ];
 
     public $activeComponent = 'my_sessions';
     public $session_data = [];
     public $confirm_session_data = [];
+    public $session_id = null;
 
     public function changeComponent($component){
         $this->activeComponent = $component;
@@ -27,6 +38,32 @@ class Main extends Component
     }
 
     public function sessionCreated(){
+        $this->activeComponent = 'my_sessions';
+    }
+
+    public function joinSession($data){
+        $this->session_id = $data;
+        $this->activeComponent = 'confirm_join';
+    }
+
+    public function sessionCoachJoined(){
+        $this->activeComponent = 'my_sessions';
+    }
+
+    public function editSession($id){
+        $this->session_id = $id;
+        $this->activeComponent = 'edit_session';
+    }
+
+    public function sessionUpdated(){
+        $this->activeComponent = 'my_sessions';
+    }
+
+    public function rescheduleSession($id){
+        $this->session_id = $id;
+        $this->activeComponent = 'edit_schedule';
+    }
+    public function scheduleUpdated(){
         $this->activeComponent = 'my_sessions';
     }
 

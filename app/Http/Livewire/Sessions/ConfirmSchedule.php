@@ -6,10 +6,13 @@ use Livewire\Component;
 use App\Models\Coach;
 use App\Models\Session;
 use App\Models\Sport;
+use App\Traits\SessionTrait;
 use Auth;
 
 class ConfirmSchedule extends Component
 {
+    use SessionTrait;
+
     public $session_data = [];
     public $time_string = '';
     public $coaches = [];
@@ -30,8 +33,8 @@ class ConfirmSchedule extends Component
             'name' => $this->session_data['name'],
             'sport_id' => $sport->id,
             'phone' => $this->session_data['phone'],
-            'video_session' => $this->session_data['video_session'],
-            'site_session' => $this->session_data['site_session'],
+            'video_session' => $this->session_data['video_session'] ? 1 : 0,
+            'site_session' => $this->session_data['site_session'] ? 1 : 0,
             'location' => $this->session_data['location'],
             'description' => $this->session_data['description'],
             'timezone' => $this->session_data['timezone'],
@@ -49,27 +52,6 @@ class ConfirmSchedule extends Component
             'title' => 'Session created',
             'message' => 'Session created successfully.',
         ));
-    }
-
-    private function getTimeRange($time_slot){
-        sort($time_slot);
-        $time_string = '';
-
-        //Start Time
-        $start_time = $time_slot[0];
-        $start_time = $start_time > 26 ? ($start_time - 24) : $start_time;
-
-        $time_string .= ($start_time / 2) == 0 ? intval($start_time/2) . ':00 ' : intval($start_time/2) . ':30 ';
-        $time_string .= $time_slot[0] > 24 ? 'PM - ' : 'AM - ';
-        
-        //End Time
-        $end_time = $time_slot[count($time_slot) - 1];
-        $end_time = $end_time > 26 ? ($end_time - 24) : $end_time;
-
-        $time_string .= ($end_time / 2) == 0 ? intval($end_time/2) . ':29 ' : intval($end_time/2) . ':59 ';
-        $time_string .= $time_slot[count($time_slot) - 1] > 24 ? 'PM' : 'AM';
-        
-        return $time_string;
     }
 
     public function render()

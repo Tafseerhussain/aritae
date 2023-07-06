@@ -132,6 +132,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Traits\\CreateNotification' => $baseDir . '/app/Traits/CreateNotification.php',
+    'App\\Traits\\SessionTrait' => $baseDir . '/app/Traits/SessionTrait.php',
     'App\\View\\Components\\Auth\\Registration' => $baseDir . '/app/View/Components/Auth/Registration.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Brick\\Math\\BigDecimal' => $vendorDir . '/brick/math/src/BigDecimal.php',

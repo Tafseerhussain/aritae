@@ -4,38 +4,73 @@ namespace App\Http\Livewire\Sessions;
 
 use Livewire\Component;
 use App\Models\Session;
+use App\Traits\SessionTrait;
 use Auth;
 
 class Sessions extends Component
 {
+    use SessionTrait;
+
     public $sessions = [];
+    public $cancel_id = null;
 
     public function mount(){
-        if(Auth::user()->user_type_id == 4)
-            $this->sessions = Auth::user()->sessions;
-        else if(Auth::user()->user_type_id == 2)
-            $this->sessions = Auth::user()->coach->sessions;
+        if(Auth::user()->user_type_id == 2){
+            $invited_sessions = Auth::user()->coach->sessions;
+            $my_sessions = Auth::user()->sessions;
+            $this->sessions = $my_sessions->merge($invited_sessions)->sortByDesc('updated_at');
+        }
     }
 
-    public function getTimeRange($time_slot){
-        sort($time_slot);
-        $time_string = '';
+    public function leaveSession($session_id){
+        if(Auth::user()->user_type_id == 2){
+            Auth::user()->coach->sessions()->detach($session_id);
+            
+            //Reload Sessions
+            $invited_sessions = Auth::user()->coach->sessions;
+            $my_sessions = Auth::user()->sessions;
+            $this->sessions = $my_sessions->merge($invited_sessions)->sortByDesc('updated_at');
+        }
+    }
 
-        //Start Time
-        $start_time = $time_slot[0];
-        $start_time = $start_time > 26 ? ($start_time - 24) : $start_time;
+    public function editSession($id){
+        $session = Session::where('user_id', Auth::id())->where('id', $id)->first();
+        if($session){
+            $this->emit('editSession', $id);
+        }
+    }
 
-        $time_string .= ($start_time / 2) == 0 ? intval($start_time/2) . ':00 ' : intval($start_time/2) . ':30 ';
-        $time_string .= $time_slot[0] > 24 ? 'PM - ' : 'AM - ';
-        
-        //End Time
-        $end_time = $time_slot[count($time_slot) - 1];
-        $end_time = $end_time > 26 ? ($end_time - 24) : $end_time;
+    public function rescheduleSession($id){
+        $session = Session::where('user_id', Auth::id())->where('id', $id)->first();
+        if($session){
+            $this->emit('rescheduleSession', $id);
+        }
+    }
 
-        $time_string .= ($end_time / 2) == 0 ? intval($end_time/2) . ':29 ' : intval($end_time/2) . ':59 ';
-        $time_string .= $time_slot[count($time_slot) - 1] > 24 ? 'PM' : 'AM';
-        
-        return $time_string;
+    public function confirmCancel($id){
+        $this->cancel_id = $id;
+        $this->dispatchBrowserEvent('openCancelSessionModal');
+    }
+
+    public function cancelSession(){
+        $session = Session::find($this->cancel_id);
+        if($session){
+            $session->coaches()->sync([]);
+            $session->delete();
+
+            $this->dispatchBrowserEvent('notify', array(
+                'type' => 'info',
+                'title' => 'Session Cancelled',
+                'message' => 'Session cancelled successfully',
+            ));
+            $this->dispatchBrowserEvent('hideCancelSessionModal');
+        }
+
+        if(Auth::user()->user_type_id == 2){
+            $invited_sessions = Auth::user()->coach->sessions;
+            $my_sessions = Auth::user()->sessions;
+            $this->sessions = $my_sessions->merge($invited_sessions)->sortByDesc('updated_at');
+        }
     }
 
     public function render()
