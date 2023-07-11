@@ -72,7 +72,7 @@
 
 
                     {{-- FIRST BOX QUESTIONS --}}
-                    <div class="col-12 first-box-questions">
+                    <div class="col-12 first-box-questions" id="continue">
                         <div class="row">
                             <div class="col-1">
                                 <div class="position-relative h-100">
@@ -105,7 +105,7 @@
                                             <p>My friends and/or family have been coming to me for advice and guidance for years</p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -136,7 +136,7 @@
                                             <p>I enjoy helping people feel loved, happy, and significant </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -167,7 +167,7 @@
                                             <p>I enjoy working with people and helping them feel successful </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -198,7 +198,7 @@
                                             <p>I feel a sense of satisfaction when I help others become better people </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -229,7 +229,7 @@
                                             <p>I am excited and passionate about life </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -260,7 +260,7 @@
                                             <p>I value honesty and integrity </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -291,7 +291,7 @@
                                             <p>I have leadership qualities that I could utilize to be an ARITAE Self-Leadership Coach </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -322,7 +322,7 @@
                                             <p>I have worked with people in the past helping them achieve and/or learn something </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -353,7 +353,7 @@
                                             <p>I love to laugh and be happy </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -384,7 +384,7 @@
                                             <p>I love to help others feel great about themselves </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -415,7 +415,7 @@
                                             <p>I have self-confidence </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -446,7 +446,7 @@
                                             <p>I am motivated to work on improving myself </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -477,7 +477,7 @@
                                             <p>I have the desire/determination to become an ARITAE Self-Leadership Coach? </p> 
                                         </div>
                                         <div class="col-md-3 text-center">
-                                            <select class="form-select form-control w-100 @error('startingMonth') is-invalid @enderror" aria-label="Default select example" wire:model.defer="startingMonth">
+                                            <select class="form-select form-control w-100" aria-label="Default select example" wire:model.defer="startingMonth">
                                                 <option value='' disabled selected>--Select Option--</option>
                                                 <option value='Yes'>Yes</option>
                                                 <option value='No'>No</option>
@@ -489,6 +489,172 @@
                             </div>
                         </div>
 
+                        {{-- Question 14 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        14
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question scoring">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-12">
+                                            <h5 class="fw-semibold mb-3">Add up your score:</h5>
+                                        </div>
+                                        {{-- FIRST --}}
+                                        <div class="col-md-9">
+                                            <p>
+                                                You have the heart, desire, and natural ability to become an ARITAE Coach. You should consider taking the ARITAE Self-Leadership Coach Training program and become an ARITAE Coach 
+                                            </p> 
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text">90</span>
+                                                <input type="text" class="form-control">
+                                                <span class="input-group-text">120</span>
+                                            </div>
+                                        </div>  
+                                        <div class="col-12">
+                                            <hr class="my-4">
+                                        </div>
+                                        {{-- SECOND --}}
+                                        <div class="col-md-9">
+                                            <p>
+                                                You have the potential to become an ARITAE Coach. We recommend that you take the ARITAE Self-Leadership Coach training program. It is also recommended you improve your personal attributes and coaching skills by listening to podcasts or reading literature that will improve your ability to work with young people.
+                                            </p> 
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text">70</span>
+                                                <input type="text" class="form-control">
+                                                <span class="input-group-text">90.0</span>
+                                            </div>
+                                        </div>  
+                                        <div class="col-12">
+                                            <hr class="my-4">
+                                        </div>
+                                        {{-- SECOND --}}
+                                        <div class="col-md-9">
+                                            <p>
+                                                You have the potential to become an ARITAE Coach. We recommend that you take the ARITAE Self-Leadership Coach training program. It is also recommended you improve your personal attributes and coaching skills by listening to podcasts or reading literature that will improve your ability to work with young people.
+                                            </p> 
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group">
+                                                <span class="input-group-text">00</span>
+                                                <input type="text" class="form-control">
+                                                <span class="input-group-text">70.0</span>
+                                            </div>
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 15 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        15
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question textarea">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-12">
+                                            <h6 class="fw-semibold mb-3">
+                                                The number of training openings to become an ARITAE Self-Leadership Coach are limited. Please write, in as many words as you feel necessary, why you should be one of the people selected to become an ARITAE Coach.
+                                            </h6>
+                                            <textarea name="" id="" cols="30" rows="8" class="form-control text-start" placeholder="Write here..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Question 16 --}}
+                        <div class="row question-box">
+                            <div class="col-1">
+                                <div class="position-relative h-100 number-line">
+                                    <div class="border mx-auto"></div>
+                                    <div class="number">
+                                        16
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-11">
+                                <div class="question contact-info">
+                                    <img src="{{ asset('assets/img/polygon-before.svg') }}" class="before" alt="triangle">
+                                    <img src="{{ asset('assets/img/polygon-after.svg') }}" class="before after" alt="triangle">
+                                    <div class="row align-items-center">
+                                        <div class="col-12 mb-4">
+                                            <h6 class="fw-semibold mb-3">
+                                                If you are interested in being considered for the ARITAE Self-Leadership Coach Training program, please complete the following information. Also please include a CV, Resume, or other additional background information that you feel would be helpful for us in our evaluation. ARITAE performs background checks on all participants selected into the Training Program.
+                                            </h6>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="programAgreeCheck">
+                                                <label class="form-check-label" for="programAgreeCheck">
+                                                    Yes, I would like to be considered as one of the coaches selected for the ASLC program.
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="backgroundAgreeCheck">
+                                                <label class="form-check-label" for="backgroundAgreeCheck">
+                                                    If selected for the academy, I agree to a background check by ARITAE.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 form-box">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="" class="form-label">Coach Name</label>
+                                                        <input type="text" class="form-control" placeholder="John Doe">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="form-label">Email</label>
+                                                        <input type="email" class="form-control" placeholder="example@email.com">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="form-label">Phone</label>
+                                                        <input type="text" class="form-control" placeholder="+12 012 345 6789">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 contact-box">
+                                            <h5 class="fw-semibold">Contact Information:</h5>
+                                            <p>ARITAE SELF-LEADERSHIP ACADEMY</p>
+                                            <p>44 East Genesee St.</p>
+                                            <p>Skaneateles, NY 13152</p>
+                                            <a href="#" class="my-3 d-block">Info@ARITAE.com</a>
+                                            <img src="{{ asset('assets/img/logo.svg') }}" class="logo" alt="logo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> 
+                    {{-- FIRST QUESTION BOXES END --}}
+
+                    <div class="col-12 text-end mt-4">
+                        <a href="#" class="btn btn-dark">Continue</a>
                     </div>
 
                 </div>
