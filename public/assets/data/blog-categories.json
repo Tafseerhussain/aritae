@@ -1,0 +1,42 @@
+[
+    {
+        "id": "1",
+        "name": "Training Techniques",
+        "slug": "training-techniques"
+    },
+    {
+        "id": "2",
+        "name": "Game Strategies and Tactics",
+        "slug": "game-strategies-and-tactics"
+    },
+    {
+        "id": "3",
+        "name": "Leadership and Communication",
+        "slug": "leadership-and-communication"
+    },
+    {
+        "id": "4",
+        "name": "Team Building and Cohesion",
+        "slug": "team-building-and-cohesion"
+    },
+    {
+        "id": "5",
+        "name": "Athlete Development",
+        "slug": "athlete-development"
+    },
+    {
+        "id": "6",
+        "name": "Sports Psychology",
+        "slug": "sports-psychology"
+    },
+    {
+        "id": "7",
+        "name": "Coaching Philosophy and Ethics",
+        "slug": "coaching-philosophy-and-ethics"
+    },
+    {
+        "id": "8",
+        "name": "Coach Development and Career Growth",
+        "slug": "coach-development-and-career-growth"
+    }
+]
