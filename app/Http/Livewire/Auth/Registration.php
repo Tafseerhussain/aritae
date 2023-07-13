@@ -39,7 +39,7 @@ class Registration extends Component
             $this->sports_array[$sport->id] = ['id' => $sport->id, 'name' => $sport->name];
         }
         $this->players = User::where('user_type_id', 4)->get();
-        $this->areaOfFocus = $this->sports->first()->id;
+        $this->areaOfFocus = [$this->sports->first()->id];
     }
 
     public function changeStep($step)

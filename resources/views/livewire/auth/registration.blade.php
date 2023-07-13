@@ -193,7 +193,7 @@
                                                 <div wire:ignore>
                                                     <label for="areaOfFocus" class="col-form-label">{{ __('Area of Focus') }}</label>
                                                     <select id="sports-selection" class="form-control form-select @error('areaOfFocus') is-invalid @enderror" wire:model="areaOfFocus" autocomplete="off" multiple>
-                                                        <option value=" " disabled selected>Please Select...</option>
+                                                        <option value="" disabled selected>Please Select...</option>
                                                         @foreach ($sports as $sport)
                                                             <option value="{{ $sport->id }}">{{ $sport->name }}</option>
                                                         @endforeach
