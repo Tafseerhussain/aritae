@@ -44,7 +44,7 @@
                         <div class="position-relative h-100 number-line">
                             <div class="border mx-auto"></div>
                             <div class="number">
-                                <i class="fa-solid fa-question"></i>
+                                <i class="bi bi-question"></i>
                             </div>
                         </div>
                     </div>
