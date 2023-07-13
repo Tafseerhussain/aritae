@@ -69,7 +69,7 @@ class Coach extends Model
         return $this->belongsToMany(Session::class);
     }
 
-    public function participation_form(){
+    public function participation(){
         return $this->hasOne(CoachParticipation::class);
     }
 }

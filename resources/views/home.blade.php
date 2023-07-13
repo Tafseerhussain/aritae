@@ -18,7 +18,11 @@
                         <script>window.location = "/admin/dashboard";</script>
                     @elseif (Auth::user()->user_type_id == 2)
                         <strong>Redirecting...</strong>
+                        @if(Auth::user()->coach->participation)
                         <script>window.location = "/coach/dashboard";</script>
+                        @else
+                        <script>window.location = "/coach/registration-complete";</script>
+                        @endif
                     @elseif (Auth::user()->user_type_id == 3)
                         <strong>Redirecting...</strong>
                         <script>window.location = "/parent/dashboard";</script>

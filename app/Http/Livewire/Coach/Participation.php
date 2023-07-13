@@ -77,7 +77,34 @@ class Participation extends Component
             ));
         }
         else{
-            
+            CoachParticipation::updateOrCreate([
+                'coach_id' => Auth::user()->coach->id,
+            ],[
+                'name' => $this->coach_name,
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'question1' => $this->question1,
+                'question2' => $this->question2,
+                'question3' => $this->question3,
+                'question4' => $this->question4,
+                'question5' => $this->question5,
+                'question6' => $this->question6,
+                'question7' => $this->question7,
+                'question8' => $this->question8,
+                'question9' => $this->question9,
+                'question10' => $this->question10,
+                'question11' => $this->question11,
+                'question12' => $this->question12,
+                'question13' => $this->question13,
+                'question14_1' => $this->question14_1,
+                'question14_2' => $this->question14_2,
+                'question14_3' => $this->question14_3,
+                'question15' => $this->question15,
+                'question16_1' => $this->question16_1 ? 1 : 0,
+                'question16_2' => $this->question16_2 ? 1 : 0,
+            ]);
+
+            return redirect(route('coach.dashboard'));
         }
     }
 

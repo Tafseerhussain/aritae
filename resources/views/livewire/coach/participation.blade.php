@@ -101,11 +101,7 @@
                                         <p>My friends and/or family have been coming to me for advice and guidance for years</p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question1">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question1">
                                     </div>
                                     
                                 </div>
@@ -132,11 +128,7 @@
                                         <p>I enjoy helping people feel loved, happy, and significant </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question2">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question2">
                                     </div>
                                     
                                 </div>
@@ -163,11 +155,7 @@
                                         <p>I enjoy working with people and helping them feel successful </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question3">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question3">
                                     </div>
                                     
                                 </div>
@@ -194,11 +182,7 @@
                                         <p>I feel a sense of satisfaction when I help others become better people </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question4">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question4">
                                     </div>
                                     
                                 </div>
@@ -225,11 +209,7 @@
                                         <p>I am excited and passionate about life </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question5">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question5">
                                     </div>
                                     
                                 </div>
@@ -256,11 +236,7 @@
                                         <p>I value honesty and integrity </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question6">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question6">
                                     </div>
                                     
                                 </div>
@@ -287,11 +263,7 @@
                                         <p>I have leadership qualities that I could utilize to be an ARITAE Self-Leadership Coach </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question7">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question7">
                                     </div>
                                     
                                 </div>
@@ -318,11 +290,7 @@
                                         <p>I have worked with people in the past helping them achieve and/or learn something </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question8">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question8">
                                     </div>
                                     
                                 </div>
@@ -349,11 +317,7 @@
                                         <p>I love to laugh and be happy </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question9">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question9">
                                     </div>
                                     
                                 </div>
@@ -380,11 +344,7 @@
                                         <p>I love to help others feel great about themselves </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question10">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question10">
                                     </div>
                                     
                                 </div>
@@ -411,11 +371,7 @@
                                         <p>I have self-confidence </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question11">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question11">
                                     </div>
                                     
                                 </div>
@@ -442,11 +398,7 @@
                                         <p>I am motivated to work on improving myself </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question12">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question12">
                                     </div>
                                     
                                 </div>
@@ -473,11 +425,7 @@
                                         <p>I have the desire/determination to become an ARITAE Self-Leadership Coach? </p> 
                                     </div>
                                     <div class="col-md-3 text-center">
-                                        <select class="form-select form-control w-100" aria-label="Default select example" wire:model="question13">
-                                            <option value='' disabled selected>--Select Option--</option>
-                                            <option value='Yes'>Yes</option>
-                                            <option value='No'>No</option>
-                                        </select>
+                                        <input type="text" class="form-control w-100" aria-label="Default select example" wire:model="question13">
                                     </div>
                                     
                                 </div>
@@ -622,7 +570,7 @@
                                             <div class="col-xl-6">
                                                 <div class="form-group">
                                                     <label for="" class="form-label">Email</label>
-                                                    <input type="email" class="form-control" placeholder="example@email.com" wire:model="email">
+                                                    <input type="email" class="form-control" placeholder="example@email.com" wire:model="email" readonly>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6">

@@ -11,6 +11,9 @@ class CoachParticipation extends Model
 
     protected $fillable = [
         'coach_id',
+        'name',
+        'email',
+        'phone',
         'question1',
         'question2',
         'question3',
