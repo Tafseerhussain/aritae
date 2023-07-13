@@ -1038,6 +1038,9 @@ nav.navbar {
 				margin: 10px 0;
 				position: relative;
 				transition: 0.1s;
+				.form-select option{
+					color: $black;
+				}
 				.form-control {
 					text-align: center;
 				}
