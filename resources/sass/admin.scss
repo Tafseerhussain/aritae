@@ -1729,3 +1729,280 @@
 		}
 	}
 }
+
+
+// PLAYBOOK PAGE
+.playbook-header {
+	border-radius: $radius;
+	background: linear-gradient(rgba($purple, 0.5), rgba(0,0,0, 0.5)), url('/public/assets/img/playbook/playbook-bg.jpg');
+	background-size: cover;
+	background-position: center;
+	padding: 100px 10px;
+	img {
+		width: 250px;
+		margin-bottom: 20px;
+	}
+}
+.playbook {
+	padding: 50px 0;
+	.playbook-sidebar {
+		border-radius: $radius;
+		box-shadow: $shadow;
+		overflow: hidden;
+		.head {
+			background-color: $blue;
+			padding: 20px 0;
+			h5 {
+				font-family: $oswald;
+				text-transform: uppercase;
+				margin: 0;
+			}
+		}
+		.list-group {
+			.list-group-item {
+				border: 0;
+				border-bottom: 1px solid $border-color;
+				padding: 1rem;
+				img {
+					width: 24px;
+					height: 24px;
+					margin-right: 6px;
+					position: relative;
+					top: -1px;
+				}
+				&:hover {
+					color: $blue;
+					background-color: rgba($blue, 0.01);
+					img {
+						filter: invert(69%) sepia(88%) saturate(356%) hue-rotate(3deg) brightness(88%) contrast(90%);
+					}
+				}
+			}
+		}
+	}
+}
+
+.playbook-page {
+	.playbook-main {
+		.main-text {
+			position: absolute;
+			left: 50%;
+			bottom: 10%;
+			transform: translateX(-50%);
+		}
+	}
+	.playbook-quote {
+		padding: 70px 0;
+		background-color: $border-color;
+		h4 {
+			font-weight: 300;
+			font-size: 27px;
+			line-height: 40px;
+		}
+		h6 {
+			color: $purple;
+			font-weight: 600;
+			font-size: 24px;
+			margin: 12px 0;
+		}
+		p {
+			color: $light-gray;
+		}
+	}
+	.playbook-asla {
+		padding: 70px 0 100px;
+		.four-tenets {
+			.four-tenets-head {
+				font-family: $oswald;
+				background-color: $border-color;
+				border-radius: 100px;
+				padding: 12px 30px;
+				font-size: 22px;
+				display: inline-block;
+				margin: 20px 0 10px;
+			}
+			.col-xl-3 {
+				padding: 0 50px;
+			}
+			.tenet-circle {
+				border-radius: 50%;
+				width: 100%;
+				aspect-ratio: 1 / 1;
+				position: relative;
+				transition: 0.3s;
+				span {
+					font-family: $oswald;
+					margin-top: 10px;
+					font-size: 20px;
+					font-weight: 600;
+					display: block;
+				}
+				.tenet-content {
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
+				.tenet-num {
+					position: absolute;
+					top: 0;
+					right: 10px;
+					border-radius: 50%;
+					width: 40px;
+					height: 40px;
+					border: 4px solid $white;
+					text-align: center;
+					color: $white;
+					box-shadow: $shadow;
+					padding: 3px;
+				}
+				.tenet-border {
+					position: absolute;
+					width: 112%;
+					height: 112%;
+					left: -6%;
+					top: -6%;
+				}
+				.tenet-arrow {
+					position: absolute;
+					left: 100%;
+					top: 50%;
+					transform: translate(17%, -50%);
+					width: 25%;
+				}
+				.tenet-text {
+					display: none;
+					border-radius: 50%;
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					span {
+						font-family: $titilium;
+						font-size: 13px;
+						text-align: center;
+						color: $white;
+						font-weight: 400;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						border-radius: 50%;
+						transform: translate(-50%, -50%);
+						width: 90%;
+						line-height: 1.1;
+					}
+				}
+				&.love {
+					background-color: rgba($pb-orange, 0.1);
+					.tenet-num {
+						background-color: $pb-orange;
+					}
+					&:hover {
+						background-color: $pb-orange;
+					}
+				}
+				&.happiness {
+					background-color: rgba($pb-green, 0.1);
+					.tenet-num {
+						background-color: $pb-green;
+					}
+					&:hover {
+						background-color: $pb-green;
+					}
+				}
+				&.significance {
+					background-color: rgba($pb-purple, 0.1);
+					.tenet-num {
+						background-color: $pb-purple;
+					}
+					&:hover {
+						background-color: $pb-purple;
+					}
+				}
+				&.success {
+					background-color: rgba($pb-light-orange, 0.1);
+					.tenet-num {
+						background-color: $pb-light-orange;
+					}
+					&:hover {
+						background-color: $pb-light-orange;
+					}
+				}
+				&:hover {
+					color: $white;
+					.tenet-content {
+						display: none;
+						img {
+							filter: brightness(100);
+						}
+					}
+					.tenet-text {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+	// ARITAE MODULES
+	.aritae-modules {
+		background-color: rgba($blue, 0.1);
+		padding: 70px 0;
+		.modules-text {
+			p {
+				font-size: 24px;
+			}
+		}
+		.module-boxes {
+			margin-top: 100px;
+			.module-box {
+				border-radius: $radius;
+				background: $purple;
+				padding: 0 20px 10px;
+				height: 100%;
+				position: relative;
+				.module-box-meta {
+					position: relative;
+					img {
+						width: 80px;
+						border-radius: 50%;
+						border: 2px solid $purple;
+						transition: 0.2s;
+					}
+					h4 {
+						margin: 10px 0;
+						font-size: 20px;
+						transition: 0.2s;
+						color: $blue;
+						font-family: $oswald;
+					}
+					p {
+						font-size: 14px;
+					}
+					.number {
+						font-size: 24px;
+						font-weight: 600;
+						line-height: 0;
+						margin-bottom: 40px;
+						color: $purple;
+					}
+				}
+				.module-curve {
+					position: absolute;
+					left: 50%;
+					top: 0;
+					transform: translateX(-50%);
+					width: 50%;
+				}
+				&:hover {
+					img {
+						border-color: $blue;
+					}
+					.number {
+						color: $blue;
+					}
+				}
+			}
+		}
+	}
+}

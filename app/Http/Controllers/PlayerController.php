@@ -105,4 +105,9 @@ class PlayerController extends Controller
     {
         return view('player.sessions');
     }
+
+    public function playbook()
+    {
+        return view('player.playbook.index');
+    }
 }
