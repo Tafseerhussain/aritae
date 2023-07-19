@@ -11,13 +11,17 @@
     "file": "assets/event-detail-bg.08b10f67.jpg",
     "src": "public/assets/img/event-detail-bg.jpg"
   },
-  "public/assets/img/players-bg.jpg": {
-    "file": "assets/players-bg.65edb63b.jpg",
-    "src": "public/assets/img/players-bg.jpg"
+  "public/assets/img/events-bg.jpg": {
+    "file": "assets/events-bg.042eac73.jpg",
+    "src": "public/assets/img/events-bg.jpg"
   },
   "public/assets/img/playbook/playbook-bg.jpg": {
     "file": "assets/playbook-bg.43d9a2da.jpg",
     "src": "public/assets/img/playbook/playbook-bg.jpg"
+  },
+  "public/assets/img/players-bg.jpg": {
+    "file": "assets/players-bg.65edb63b.jpg",
+    "src": "public/assets/img/players-bg.jpg"
   },
   "public/assets/img/playbook/discovery-bg.jpg": {
     "file": "assets/discovery-bg.ad7c68e3.jpg",
@@ -27,23 +31,19 @@
     "file": "assets/coaches-bg.d08237e0.jpg",
     "src": "public/assets/img/coaches-bg.jpg"
   },
-  "public/assets/img/events-bg.jpg": {
-    "file": "assets/events-bg.042eac73.jpg",
-    "src": "public/assets/img/events-bg.jpg"
-  },
   "resources/js/app.js": {
     "file": "assets/app.8ce7cc7f.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
-  "resources/sass/responsive.scss": {
-    "file": "assets/responsive.b63585f0.css",
-    "src": "resources/sass/responsive.scss",
-    "isEntry": true
-  },
   "resources/sass/call.scss": {
     "file": "assets/call.16b26ea8.css",
     "src": "resources/sass/call.scss",
+    "isEntry": true
+  },
+  "resources/sass/responsive.scss": {
+    "file": "assets/responsive.b63585f0.css",
+    "src": "resources/sass/responsive.scss",
     "isEntry": true
   },
   "resources/sass/admin-responsive.scss": {
@@ -62,7 +62,7 @@
     "isEntry": true
   },
   "resources/sass/admin.scss": {
-    "file": "assets/admin.db39ccb2.css",
+    "file": "assets/admin.8cec0a32.css",
     "src": "resources/sass/admin.scss",
     "isEntry": true
   }

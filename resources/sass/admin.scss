@@ -2055,6 +2055,76 @@
 			.form-completion-progress {
 				margin: 50px 0 20px;
 			}
+			.modules-form {
+				.card {
+					.card-ribbon {
+						position: absolute;
+						left: 0;
+						top: 0;
+						padding: 15px;
+						img.bg {
+							position: absolute;
+							left: 0;
+							width: 220px;
+							top: 0;
+						}
+						.ribbon-content {
+							position: relative;
+							img.icon {
+								width: 50px;
+								margin-bottom: 6px;
+								filter: brightness(100);
+							}
+						}
+					}
+					.card-head {
+						.head {
+							display: inline-block;
+							background-color: $border-color;
+							border-radius: 100px;
+							padding: 12px 60px;
+							margin-bottom: 20px;
+						}
+					}
+					.card-body {
+						.form {
+							margin-top: 20px;
+							.dots {
+								.dot {
+									width: 6px;
+									height: 6px;
+									background-color: $inputBorder;
+									display: inline-block;
+									border-radius: 50%;
+									margin: 0 3px;
+									position: relative;
+									&.active {
+										background-color: $blue;
+										width: 8px;
+										height: 8px;
+										top: 1px;
+									}
+									&.complete {
+										background-color: $light-gray;
+									}
+								}
+							}
+							.form-group {
+								.btn {
+									margin-left: 10px;
+									span {
+										position: relative;
+										top: -7px;
+									}
+									i {
+										font-size: 32px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
