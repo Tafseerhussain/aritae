@@ -29,8 +29,8 @@
 			</div>
 
 			{{-- PLAYBOOK SIDEBAR --}}
-			<div class="col-xl-3 position-relative">
-				<div class="playbook-sidebar">
+			<div class="col-xl-3" style="height: 1000px;">
+				<div class="playbook-sidebar sticky-top">
 					<div class="head text-center text-white">
 						<h5>Aritae Program Modules</h5>
 					</div>
@@ -41,7 +41,6 @@
 						<a href="#" class="list-group-item">
 							<img src="{{ asset('assets/icons/action.svg') }}" alt="icon"> Focus
 						</a>
-
 						<a href="#" class="list-group-item">
 							<img src="{{ asset('assets/icons/focus.svg') }}" alt="icon"> Action
 						</a>
@@ -54,6 +53,7 @@
 					</ul>
 				</div>
 			</div>
+
 
 			{{-- PLAYBOOK CONTENT --}}
 			<div class="col-xl-9">

@@ -1973,10 +1973,12 @@
 	.playbook-sidebar {
 		border-radius: $radius;
 		box-shadow: $shadow;
-		overflow: hidden;
+		position: -webkit-sticky;
 		.head {
 			background-color: $blue;
 			padding: 20px 0;
+			border-top-left-radius: $radius;
+			border-top-right-radius: $radius;
 			h5 {
 				font-family: $oswald;
 				text-transform: uppercase;
@@ -2001,6 +2003,10 @@
 					img {
 						filter: invert(69%) sepia(88%) saturate(356%) hue-rotate(3deg) brightness(88%) contrast(90%);
 					}
+				}
+				&:last-child {
+					border-bottom-left-radius: $radius;
+					border-bottom-right-radius: $radius;
 				}
 			}
 		}
