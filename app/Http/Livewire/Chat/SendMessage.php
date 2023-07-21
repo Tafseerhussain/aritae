@@ -49,6 +49,7 @@ class SendMessage extends Component
         if($this->url !== null){
             $this->createMessage->url = $this->url;
             $this->createMessage->save();
+            $this->url = null;
         }
         
         $this->selectConversation->last_time_message = $this->createMessage->created_at;
