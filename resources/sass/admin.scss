@@ -1834,56 +1834,6 @@
 
 
 // PLAYBOOK PAGE
-.playbook-header {
-	border-radius: $radius;
-	background: linear-gradient(rgba($purple, 0.5), rgba(0,0,0, 0.5)), url('/public/assets/img/playbook/playbook-bg.jpg');
-	background-size: cover;
-	background-position: center;
-	padding: 100px 10px;
-	img {
-		width: 250px;
-		margin-bottom: 20px;
-	}
-}
-.playbook {
-	padding: 50px 0;
-	.playbook-sidebar {
-		border-radius: $radius;
-		box-shadow: $shadow;
-		overflow: hidden;
-		.head {
-			background-color: $blue;
-			padding: 20px 0;
-			h5 {
-				font-family: $oswald;
-				text-transform: uppercase;
-				margin: 0;
-			}
-		}
-		.list-group {
-			.list-group-item {
-				border: 0;
-				border-bottom: 1px solid $border-color;
-				padding: 1rem;
-				img {
-					width: 24px;
-					height: 24px;
-					margin-right: 6px;
-					position: relative;
-					top: -1px;
-				}
-				&:hover {
-					color: $blue;
-					background-color: rgba($blue, 0.01);
-					img {
-						filter: invert(69%) sepia(88%) saturate(356%) hue-rotate(3deg) brightness(88%) contrast(90%);
-					}
-				}
-			}
-		}
-	}
-}
-
 .playbook-page {
 	.playbook-main {
 		.main-text {
@@ -2102,6 +2052,184 @@
 					}
 					.number {
 						color: $blue;
+					}
+				}
+			}
+		}
+	}
+}
+
+.playbook-header {
+	border-radius: $radius;
+	background: linear-gradient(rgba($purple, 0.5), rgba(0,0,0, 0.5)), url('/public/assets/img/playbook/playbook-bg.jpg');
+	background-size: cover;
+	background-position: center;
+	padding: 100px 10px;
+	img {
+		width: 250px;
+		margin-bottom: 20px;
+	}
+}
+.playbook {
+	padding: 50px 0;
+	.playbook-sidebar {
+		border-radius: $radius;
+		box-shadow: $shadow;
+		position: -webkit-sticky;
+		.head {
+			background-color: $blue;
+			padding: 20px 0;
+			border-top-left-radius: $radius;
+			border-top-right-radius: $radius;
+			h5 {
+				font-family: $oswald;
+				text-transform: uppercase;
+				margin: 0;
+			}
+		}
+		.list-group {
+			.list-group-item {
+				border: 0;
+				border-bottom: 1px solid $border-color;
+				padding: 1rem;
+				img {
+					width: 24px;
+					height: 24px;
+					margin-right: 6px;
+					position: relative;
+					top: -1px;
+				}
+				&:hover {
+					color: $blue;
+					background-color: rgba($blue, 0.01);
+					img {
+						filter: invert(69%) sepia(88%) saturate(356%) hue-rotate(3deg) brightness(88%) contrast(90%);
+					}
+				}
+				&:last-child {
+					border-bottom-left-radius: $radius;
+					border-bottom-right-radius: $radius;
+				}
+			}
+		}
+	}
+	.playbook-content {
+		.content-hero {
+			border-radius: $radius;
+			overflow: hidden;
+			.head {
+				padding: 17px 0;
+				font-family: $oswald;
+			}
+			.body {
+				background: linear-gradient(rgba(255,255,255, 0.3), rgba(0,0,0, 0.3)), url('/public/assets/img/playbook/discovery-bg.jpg');
+				background-size: cover;
+				background-position: center;
+				padding: 50px 0;
+				.img-box {
+					width: 100px;
+					height: 100px;
+					border-radius: 50%;
+					margin: 0 auto;
+					background: rgba(255,255,255,0.1);
+					position: relative;
+					img {
+						filter: brightness(100);
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						transform: translate(-50%, -50%);
+						width: 60%;
+					}
+					margin-bottom: 20px;
+				}
+				p {
+					margin: 20px 0 10px;
+				}
+			}
+		}
+		.content-body {
+			padding: 50px 0;
+			.content-desc {
+				p {
+					margin: 10px 0 30px;
+				}
+			}
+			img {
+				width: 90%;
+				margin: 0 auto;
+				display: block;
+			}
+			.form-completion-progress {
+				margin: 50px 0 20px;
+			}
+			.modules-form {
+				.card {
+					.card-ribbon {
+						position: absolute;
+						left: 0;
+						top: 0;
+						padding: 15px;
+						img.bg {
+							position: absolute;
+							left: 0;
+							width: 220px;
+							top: 0;
+						}
+						.ribbon-content {
+							position: relative;
+							img.icon {
+								width: 50px;
+								margin-bottom: 6px;
+								filter: brightness(100);
+							}
+						}
+					}
+					.card-head {
+						.head {
+							display: inline-block;
+							background-color: $border-color;
+							border-radius: 100px;
+							padding: 12px 60px;
+							margin-bottom: 20px;
+						}
+					}
+					.card-body {
+						.form {
+							margin-top: 20px;
+							.dots {
+								.dot {
+									width: 6px;
+									height: 6px;
+									background-color: $inputBorder;
+									display: inline-block;
+									border-radius: 50%;
+									margin: 0 3px;
+									position: relative;
+									&.active {
+										background-color: $blue;
+										width: 8px;
+										height: 8px;
+										top: 1px;
+									}
+									&.complete {
+										background-color: $light-gray;
+									}
+								}
+							}
+							.form-group {
+								.btn {
+									margin-left: 10px;
+									span {
+										position: relative;
+										top: -7px;
+									}
+									i {
+										font-size: 32px;
+									}
+								}
+							}
+						}
 					}
 				}
 			}
