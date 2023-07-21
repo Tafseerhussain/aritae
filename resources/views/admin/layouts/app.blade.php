@@ -183,6 +183,12 @@
                                         <span>Events</span>
                                     </a>
                                 </li>
+                                <li class="list-group-item {{ $route == 'admin.blog' ? 'active' : '' }}">
+                                    <a href="{{ route('admin.blog') }}">
+                                        <i class="bi bi-pencil-square"></i>
+                                        <span>Blog</span>
+                                    </a>
+                                </li>
                                 <li class="list-group-item {{ $route == 'admin.contact' ? 'active' : '' }}">
                                     <a href="{{ route('admin.contact') }}">
                                         <i class="bi bi-envelope"></i>
@@ -339,5 +345,7 @@
     @livewireScripts
 
     @include('components.notification-script')
+
+    @stack('custom-script')
 </body>
 </html>

@@ -142,6 +142,9 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Notification Routes
     Route::get('/admin/notification', [AdminController::class, 'notification'])->name('admin.notification');
+
+    // Blog Routes
+    Route::get('/admin/blog', [AdminController::class, 'blog'])->name('admin.blog');
 });
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');

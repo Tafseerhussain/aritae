@@ -48,4 +48,8 @@ class AdminController extends Controller
     {
         return view('admin.notification');
     }
+    public function blog()
+    {
+        return view('admin.blog');
+    }
 }
