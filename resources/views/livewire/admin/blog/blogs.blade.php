@@ -49,12 +49,16 @@
                             </p>
                         </div>
                     </div>
-                    <div>
-                        <button class="btn btn-sm btn-theme" wire:click="editPost({{$article->id}})">
+                    <div class="ms-2">
+                        <a class="btn btn-sm btn-theme mb-2" href="{{config('frontend.url').'/blogs/'.$article->id.'/'.strtolower(str_replace(' ', '-', $article->title))}}" target="_blank">
+                            <i class="bi bi-eye"></i>
+                            View
+                        </a>
+                        <button class="btn btn-sm btn-theme mb-2" wire:click="editPost({{$article->id}})">
                             <i class="bi bi-pen"></i>
                             Edit
                         </button>
-                        <button class="btn btn-sm btn-danger text-white" wire:click="deleteConfirm({{$article->id}})">
+                        <button class="btn btn-sm btn-danger text-white mb-2" wire:click="deleteConfirm({{$article->id}})">
                             <i class="bi bi-trash"></i>
                             Delete
                         </button>
