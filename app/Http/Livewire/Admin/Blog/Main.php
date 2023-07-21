@@ -14,6 +14,7 @@ class Main extends Component
 
     public $active_component = '';
     public $post_id = null;
+    public $long_text = '';
 
     public function mount(){
         $this->active_component = 'blogs';
@@ -30,6 +31,10 @@ class Main extends Component
     public function editPost($post_id){
         $this->post_id = $post_id;
         $this->active_component = 'edit_post';
+    }
+
+    public function updatedLongText(){
+        $this->emit('updateLongTextProperty', $this->long_text);
     }
 
     public function render()

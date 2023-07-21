@@ -13,6 +13,7 @@ class CreatePost extends Component
 
     protected $listeners = [
         'removeImage',
+        'updateLongTextProperty',
     ];
 
     public $title = '';
@@ -64,6 +65,10 @@ class CreatePost extends Component
         unset($this->more_img_urls[$index]);
         $this->more_img_urls = array_values($this->more_img_urls);
         $this->dispatchBrowserEvent('update_more_imgs', ['more_img_urls' => $this->more_img_urls]);
+    }
+
+    public function updateLongTextProperty($text){
+        $this->long_text = $text;
     }
 
     public function createPost(){
