@@ -186,7 +186,7 @@
                                 <li class="list-group-item {{ $route == 'admin.blog' ? 'active' : '' }}">
                                     <a href="{{ route('admin.blog') }}">
                                         <i class="bi bi-pencil-square"></i>
-                                        <span>Blog</span>
+                                        <span>Blogs</span>
                                     </a>
                                 </li>
                                 <li class="list-group-item {{ $route == 'admin.contact' ? 'active' : '' }}">

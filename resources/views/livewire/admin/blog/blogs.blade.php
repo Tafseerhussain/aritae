@@ -1,14 +1,14 @@
 <div class="admin-blog">
     <div class="row">
         <div class="col-12 d-flex justify-content-end align-items-center">
-            <button class="btn btn-theme my-2" wire:click="createPost">Create New Post</button>
+            <button class="btn btn-theme my-2" wire:click="createPost">Add A Blog</button>
         </div>
     </div>
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
-                    <h3 class="fs-4 fw-bold">Blog</h3>
+                    <h3 class="fs-4 fw-bold">Blogs</h3>
                     <div class="search-filter">
                         <div class="d-flex">
                             <div class="input-group input-group-sm mx-2 search-input">
@@ -36,9 +36,13 @@
                     <div class="blog-info d-flex justify-content-start align-items-center">
                         
                         @if($article->img)
-                        <img class="article-image me-2" src="{{asset($article->img)}}" alt="{{$article->title}}" onerror="this.src='{{asset('assets/img/default/placeholder-image.png')}}'">
+                        <div class="article-image me-2">
+                            <img src="{{asset($article->img)}}" alt="{{$article->title}}" onerror="this.src='{{asset('assets/img/default/placeholder-image.png')}}'">
+                        </div>
                         @else
-                        <img class="article-image me-2" src="{{asset('assets/img/default/placeholder-image.png')}}" alt="{{$article->title}}">
+                        <div class="article-image me-2">
+                            <img src="{{asset('assets/img/default/placeholder-image.png')}}" alt="{{$article->title}}">
+                        </div>
                         @endif
 
                         <div>
@@ -50,11 +54,11 @@
                         </div>
                     </div>
                     <div class="ms-2">
-                        <a class="btn btn-sm btn-theme mb-2" href="{{config('frontend.url').'/blogs/'.$article->id.'/'.strtolower(str_replace(' ', '-', $article->title))}}" target="_blank">
+                        <a class="btn btn-sm btn-dark mb-2 me-1" href="{{config('frontend.url').'/blogs/'.$article->id.'/'.strtolower(str_replace(' ', '-', $article->title))}}" target="_blank">
                             <i class="bi bi-eye"></i>
                             View
                         </a>
-                        <button class="btn btn-sm btn-theme mb-2" wire:click="editPost({{$article->id}})">
+                        <button class="btn btn-sm btn-theme mb-2 me-1" wire:click="editPost({{$article->id}})">
                             <i class="bi bi-pen"></i>
                             Edit
                         </button>
