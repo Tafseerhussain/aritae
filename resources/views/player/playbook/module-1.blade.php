@@ -29,7 +29,7 @@
 			</div>
 
 			{{-- PLAYBOOK SIDEBAR --}}
-			<div class="col-xl-3" style="height: 1000px;">
+			<div class="col-xl-3 playbook-sidebar-col">
 				<div class="playbook-sidebar sticky-top">
 					<div class="head text-center text-white">
 						<h5>Aritae Program Modules</h5>
@@ -187,3 +187,27 @@
 </div>
 
 @endsection
+
+@push('custom-scripts')
+	<script>
+		var fixmeTop = $('.playbook-sidebar').offset().top;
+
+		$(window).scroll(function() {
+
+		    var currentScroll = $(window).scrollTop();
+		    var new_width = $('.playbook-sidebar-col').width();
+		    if (currentScroll >= fixmeTop) {
+		        $('.playbook-sidebar').css({
+		            position: 'fixed',
+		            top: 10,
+		            width: new_width,
+		        });
+		    } else {
+		        $('.playbook-sidebar').css({
+		            position: 'static',
+		        });
+		    }
+
+		});
+	</script>
+@endpush
