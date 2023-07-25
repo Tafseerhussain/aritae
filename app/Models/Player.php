@@ -71,4 +71,8 @@ class Player extends Model
     {
         return $this->belongsToMany(Team::class)->withPivot('position', 'jersey');
     }
+
+    public function player_playbooks(){
+        return $this->hasMany(PlayerPlaybook::class);
+    }
 }

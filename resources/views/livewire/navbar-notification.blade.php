@@ -16,12 +16,20 @@
                 <h5><strong>{{$notification->title}}</strong></h5>
                 <span class="text-secondary">{{$notification->created_at->diffForHumans()}}</span>
             </div>
+            @if($notification->type == 'contact-form')
             <a href="{{route('admin.contact')}}" class="btn btn-secondary action-btn">View Request</a>
+            @elseif($notification->type == 'playbook-request')
+            <a href="{{route('player.playbook')}}" class="btn btn-secondary action-btn">View Playbook</a>
+            @endif
         </div>
         @endforeach
         
         <div class="px-0 py-2">
+            @if(auth()->user()->user_type_id == 1)
             <a class="fw-bold text-primary" href="{{route('admin.notification')}}">See All Notifications</a>
+            @elseif(auth()->user()->user_type_id == 4)
+            <a class="fw-bold text-primary" href="{{route('player.notification')}}">See All Notifications</a>
+            @endif
         </div>
     </div>
 

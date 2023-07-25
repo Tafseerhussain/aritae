@@ -14,7 +14,8 @@ class Notification extends Model
         'type',
         'title',
         'description',
-        'read'
+        'read',
+        'resource'
     ];
 
     public function user(){

@@ -153,4 +153,9 @@ class CoachController extends Controller
     {
         return view('coach.sessions');
     }
+
+    public function playbook()
+    {
+        return view('coach.playbook');
+    }
 }

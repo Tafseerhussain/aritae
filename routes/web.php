@@ -80,6 +80,8 @@ Route::group(['middleware' => 'coach'], function () {
     Route::get('/coach/sessions', [CoachController::class, 'allSessions'])->name('coach.all_sessions');
 
     Route::get('/coach/registration-complete', [CoachController::class, 'registrationComplete'])->name('coach.registrationComplete');
+
+    Route::get('/coach/playbook', [CoachController::class, 'playbook'])->name('coach.playbook');
 });
 
 // PLAYER MIDDLEWARE
@@ -104,6 +106,10 @@ Route::group(['middleware' => 'player'], function () {
     //Pyament route
     Route::get('/player/payment', [PlayerController::class, 'payment'])->name('player.payment');
 
+    // Notification Routes
+    Route::get('/player/notification', [PlayerController::class, 'notification'])->name('player.notification');
+
+    Route::get('/player/playbook-request', [PlayerController::class, 'playbookRequest'])->name('player.playbook_request');
     Route::get('/player/playbook', [PlayerController::class, 'playbook'])->name('player.playbook');
     Route::get('/player/playbook/module-1', [PlayerController::class, 'playbookModule1'])->name('player.playbook.module1');
 });

@@ -1,4 +1,4 @@
-<div class="admin-notifications">
+<div class="user-notifications">
     <div class="card">
         <div class="card-body">
             <div class="row">
@@ -13,7 +13,11 @@
                         <h5 class="mt-2 mb-0"><strong>{{$notification->title}}</strong></h5>
                         <p class="text-secondary mb-2">{{$notification->created_at->diffForHumans()}}</p>
                     </div>
+                    @if($notification->type == 'contact-form')
                     <a href="{{route('admin.contact')}}" class="btn btn-secondary action-btn">View Request</a>
+                    @elseif($notification->type == 'playbook-request')
+                    <a href="{{route('player.playbook')}}" class="btn btn-secondary action-btn">View Playbook</a>
+                    @endif
                 </div>
             </div>
             @endforeach

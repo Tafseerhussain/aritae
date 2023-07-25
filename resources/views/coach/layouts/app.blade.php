@@ -133,10 +133,10 @@
                                       </div>
                                     </div>
                                 </li>    
-                                <li class="list-group-item">
-                                    <a href="#">
-                                        <i class="bi bi-activity"></i>
-                                        <span>Activity</span>
+                                <li class="list-group-item {{ $route == 'coach.playbook' ? 'active' : '' }}">
+                                    <a href="{{ route('coach.playbook') }}">
+                                        <i class="bi bi-clipboard2-pulse"></i>
+                                        <span>Playbook</span>
                                     </a>
                                 </li>
                                 <li class="list-group-item {{ $route == 'coach.chat' ? 'active' : '' }}">

@@ -9,6 +9,7 @@ use App\Models\Coach;
 use App\Models\HireRequest;
 use App\Models\TeamRequest;
 use App\Models\Team;
+use App\Models\PlayerPlaybook;
 use Auth;
 
 class PlayerController extends Controller
@@ -104,6 +105,17 @@ class PlayerController extends Controller
     public function allSessions()
     {
         return view('player.sessions');
+    }
+
+    public function notification()
+    {
+        return view('player.notification');
+    }
+
+    public function playbookRequest()
+    {
+        $playbooks = Auth::user()->player->player_playbooks()->where('status', 'requested')->get();
+        return view('player.playbook.request', ['playbooks' => $playbooks]);
     }
 
     public function playbook()

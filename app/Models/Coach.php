@@ -72,4 +72,8 @@ class Coach extends Model
     public function participation(){
         return $this->hasOne(CoachParticipation::class);
     }
+
+    public function player_playbooks(){
+        return $this->hasMany(PlayerPlaybook::class);
+    }
 }

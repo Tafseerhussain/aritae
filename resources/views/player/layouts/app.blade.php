@@ -188,6 +188,14 @@
                                         <span>Team Requests <span class="badge text-bg-secondary rounded-circle">{{ $team_request_count }}</span></span>
                                     </a>
                                 </li>
+                                @if($playbook_request_count)
+                                <li class="list-group-item {{ $route == 'player.playbook_request' ? 'active' : '' }}">
+                                    <a href="{{ route('player.playbook_request') }}">
+                                        <i class="bi bi-people"></i>
+                                        <span>Playbook <span class="badge text-bg-secondary rounded-circle">{{ $playbook_request_count }}</span></span>
+                                    </a>
+                                </li>
+                                @endif
                             </ul>
                         </div>  
                     </div>
@@ -214,9 +222,7 @@
                             </a>
 
                             <ul class="list-group list-group-horizontal">
-                                <li class="list-group-item notifications">
-                                    <a class="nav-link" href="#"><i class="fa-regular fa-bell"></i></a>
-                                </li>
+                                <livewire:navbar-notification />
                                 
                                 <li class="list-group-item">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle account-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

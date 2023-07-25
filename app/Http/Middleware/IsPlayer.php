@@ -24,7 +24,10 @@ class IsPlayer
                     $query->where('status', 'active');
                 }
             )->get());
+            $playbookRequestCount = Auth::user()->player->player_playbooks()
+            ->where('status', 'requested')->count();
             \View::share('team_request_count', $teamRequestCount);
+            \View::share('playbook_request_count', $playbookRequestCount);
                 
             return $next($request);
          }

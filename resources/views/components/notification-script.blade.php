@@ -155,6 +155,20 @@
                 window.dispatchEvent(event);
             }
         });
+
+    //Subscribe to Playbook request channel
+    window.Echo.private('playbook-request.{{Auth::user()->id}}')
+        .listen('PlaybookRequest', (e) => {
+            if(e.type == 'playbook-requested'){
+                var data = {
+                    "title" : "Playbook received",
+                    "type" : "info",
+                    "message": 'Playbook request received from ' + e.coach_name,
+                }
+                var event = new CustomEvent('notify', { detail: data });
+                window.dispatchEvent(event);
+            }
+        });
 </script>
 
 <div class="modal" id="call_receive_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">

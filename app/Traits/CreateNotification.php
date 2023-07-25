@@ -16,4 +16,14 @@ trait CreateNotification {
             ]);
         }
     }
+
+    public function pushUserNotification($user, $type, $title, $description, $resource){
+        $user->notifications()->create([
+            'type' => $type,
+            'title' => $title,
+            'description' => $description,
+            'resource' => $resource,
+        ]);
+
+    }
 }
