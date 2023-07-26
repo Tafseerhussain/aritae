@@ -19,7 +19,7 @@
             @if($notification->type == 'contact-form')
             <a href="{{route('admin.contact')}}" class="btn btn-secondary action-btn">View Request</a>
             @elseif($notification->type == 'playbook-request')
-            <a href="{{route('player.playbook')}}" class="btn btn-secondary action-btn">View Playbook</a>
+            <a href="{{route('player.playbook', ['id' => intval($notification->resource)])}}" class="btn btn-secondary action-btn">View Playbook</a>
             @endif
         </div>
         @endforeach

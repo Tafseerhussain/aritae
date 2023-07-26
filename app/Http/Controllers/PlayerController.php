@@ -118,13 +118,21 @@ class PlayerController extends Controller
         return view('player.playbook.request', ['playbooks' => $playbooks]);
     }
 
-    public function playbook()
+    public function playbook($id)
     {
-        return view('player.playbook.index');
+        $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
+        if($playbook)
+            return view('player.playbook.index', ['id' => $id]);
+        else
+            abort(404);
     }
 
-    public function playbookModule1()
+    public function playbookModule1($id)
     {
-        return view('player.playbook.module-1');
+        $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
+        if($playbook)
+            return view('player.playbook.module-1', ['id' => $id]);
+        else
+            abort(404);
     }
 }

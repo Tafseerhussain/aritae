@@ -17,7 +17,7 @@
                         <h5 class="mt-2 mb-0"><strong>Requested By: </strong>{{$playbook->coach->name}}</h5>
                         <p class="text-secondary mb-2">{{$playbook->created_at->diffForHumans()}}</p>
                     </div>
-                    <a href="{{route('player.playbook')}}" class="btn btn-theme">View Playbook</a>
+                    <a href="{{route('player.playbook', ['id' => $playbook->id])}}" class="btn btn-theme">View Playbook</a>
                 </div>
             </div>
             @endforeach

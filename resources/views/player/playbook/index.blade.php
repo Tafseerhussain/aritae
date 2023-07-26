@@ -200,7 +200,11 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="row mt-3">
+		<div class="col-12 d-flex justify-content-end">
+			<a class="btn btn-theme" href="{{route('player.playbook.module1', ['id' => $id])}}">Next</a>
+		</div>
+	</div>
 	
 </div>
 
