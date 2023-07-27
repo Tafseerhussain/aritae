@@ -59,18 +59,18 @@
 			<div class="col-xl-9">
 				<div class="playbook-content">
 					<div class="content-hero text-center text-white">
-						<div class="head bg-module3">
-							<h4 class="m-0">MODULE - 3</h4>
+						<div class="head bg-module4">
+							<h4 class="m-0">MODULE - 4</h4>
 						</div>
-						<div class="body" style="background-image: url('{{asset('assets/img/playbook/action-bg.jpg')}}')">
+						<div class="body" style="background-image: url('{{asset('assets/img/playbook/strategy-bg.jpg')}}')">
 							<div class="img-box">
-								<img src="{{ asset('assets/icons/action.svg') }}" alt="discovery">
+								<img src="{{ asset('assets/icons/strategy.svg') }}" alt="discovery">
 							</div>
-							<h2 class="fw-light text-uppercase">Action</h2>
-							<h2 class="text-uppercase">YOU READY TO GET TO WORK?</h2>
+							<h2 class="fw-light text-uppercase">Strategy</h2>
+							<h2 class="text-uppercase">HOW DO YOU MAKE IT ALL HAPPEN?</h2>
 							<div class="quote">
-								<p>Motivation is based on fear. Inspiration is based on love.”</p>
-								<i class="fw-bold">—Lance Secretan</i>
+								<p>“Tell me and I forget. Show me and I remember. Involve me and I understand.”</p>
+								<i class="fw-bold">—Ancient Chinese Proverb</i>
 							</div>
 						</div>
 					</div>
@@ -101,12 +101,12 @@
 								</div>
 							</div>
 							<div class="col-xl-5">
-								<img src="{{ asset('assets/img/playbook/action-img.png') }}" alt="Action">
+								<img src="{{ asset('assets/img/playbook/strategy-img.png') }}" alt="Action">
 							</div>
 						</div>
 
-						{{-- FORM COMPLETION PROGRESS AND MODULE 3 FORMS --}}
-						@livewire('player.playbook.module3.main', ['playbook_id' => $id])
+						{{-- FORM COMPLETION PROGRESS AND MODULE 4 FORMS --}}
+						@livewire('player.playbook.module4.main', ['playbook_id' => $id])
 
 					</div>
 				</div>

@@ -167,6 +167,48 @@ class PlayerController extends Controller
             abort(404);
     }
 
+    public function playbookModule4($id)
+    {
+        $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
+        if($playbook){
+            if($this->moduleCompleteness(3, $playbook) >= 100)
+                return view('player.playbook.module-4', ['id' => $id]);
+            else if($this->moduleCompleteness(2, $playbook) >= 100)
+                return redirect(route('player.playbook.module3', ['id' => $id]))
+                    ->with('error', 'You need to complete Module 3 first');
+            else if($this->moduleCompleteness(1, $playbook) >= 100)
+                return redirect(route('player.playbook.module2', ['id' => $id]))
+                    ->with('error', 'You need to complete Module 2 first');
+            else
+                return redirect(route('player.playbook.module1', ['id' => $id]))
+                    ->with('error', 'You need to complete Module 1 first');
+        }
+        else
+            abort(404);
+    }
+
+    public function playbookModule5($id)
+    {
+        $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
+        if($playbook){
+            if($this->moduleCompleteness(4, $playbook) >= 100)
+                return view('player.playbook.module-5', ['id' => $id]);
+            else if($this->moduleCompleteness(3, $playbook) >= 100)
+                return redirect(route('player.playbook.module4', ['id' => $id]))
+                    ->with('error', 'You need to complete Module 4 first');
+            else if($this->moduleCompleteness(2, $playbook) >= 100)
+                return redirect(route('player.playbook.module3', ['id' => $id]))
+                    ->with('error', 'You need to complete Module 3 first');
+            else if($this->moduleCompleteness(1, $playbook) >= 100)
+                return redirect(route('player.playbook.module2', ['id' => $id]))
+                    ->with('error', 'You need to complete Module 2 first');
+            else
+                return redirect(route('player.playbook.module1', ['id' => $id]))
+                    ->with('error', 'You need to complete Module 1 first');
+        }
+        else
+            abort(404);
+    }
 
     private function moduleCompleteness($module, $playbook){
         $completeness = 0;
@@ -215,6 +257,57 @@ class PlayerController extends Controller
                 if(isset($response['module2']['playsheet5']['learning']))
                     $completeness += 5;
                 if(isset($response['module2']['playsheet5']['work_need']))
+                    $completeness += 5;
+            }
+        }
+
+        if($module == 3){
+            if($playbook->response){
+                $response = json_decode($playbook->response, true);
+
+                if(isset($response['module3']['playsheet1']['home']))
+                    $completeness += 13;
+                if(isset($response['module3']['playsheet1']['school']))
+                    $completeness += 13;
+                if(isset($response['module3']['playsheet1']['activity']))
+                    $completeness += 13;
+                if(isset($response['module3']['playsheet1']['other']))
+                    $completeness += 13;
+                if(isset($response['module3']['playsheet2']['objective']))
+                    $completeness += 12;
+                if(isset($response['module3']['playsheet2']['requirement']))
+                    $completeness += 12;
+                if(isset($response['module3']['playsheet2']['learning']))
+                    $completeness += 12;
+                if(isset($response['module3']['playsheet2']['work_need']))
+                    $completeness += 12;
+            }
+        }
+
+        if($module == 4){
+            if($playbook->response){
+                $response = json_decode($playbook->response, true);
+                
+                for($x=2; $x<=11; $x++){
+                    if(isset($response['module4']['playsheet'.$x]['area']) && isset($response['module4']['playsheet'.$x]['date']))
+                        $completeness += 1;
+                    if(isset($response['module4']['playsheet'.$x]['action1']) && isset($response['module4']['playsheet'.$x]['obstacle1']) && isset($response['module4']['playsheet'.$x]['solution1']))
+                        $completeness += 2;
+                    if(isset($response['module4']['playsheet'.$x]['action2']) && isset($response['module4']['playsheet'.$x]['obstacle2']) && isset($response['module4']['playsheet'.$x]['solution2']))
+                        $completeness += 2;
+                    if(isset($response['module4']['playsheet'.$x]['action3']) && isset($response['module4']['playsheet'.$x]['obstacle3']) && isset($response['module4']['playsheet'.$x]['solution3']))
+                        $completeness += 2;
+                    if(isset($response['module4']['playsheet'.$x]['goal']) && isset($response['module4']['playsheet'.$x]['reward']))
+                        $completeness += 1;
+                }
+    
+                if(isset($response['module4']['playsheet12']['objective']))
+                    $completeness += 5;
+                if(isset($response['module4']['playsheet12']['requirement']))
+                    $completeness += 5;
+                if(isset($response['module4']['playsheet12']['learning']))
+                    $completeness += 5;
+                if(isset($response['module4']['playsheet12']['work_need']))
                     $completeness += 5;
             }
         }

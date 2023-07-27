@@ -59,18 +59,18 @@
 			<div class="col-xl-9">
 				<div class="playbook-content">
 					<div class="content-hero text-center text-white">
-						<div class="head bg-module3">
-							<h4 class="m-0">MODULE - 3</h4>
+						<div class="head bg-module5">
+							<h4 class="m-0">MODULE - 5</h4>
 						</div>
-						<div class="body" style="background-image: url('{{asset('assets/img/playbook/action-bg.jpg')}}')">
+						<div class="body" style="background-image: url('{{asset('assets/img/playbook/personal-plan-bg.jpg')}}')">
 							<div class="img-box">
-								<img src="{{ asset('assets/icons/action.svg') }}" alt="discovery">
+								<img src="{{ asset('assets/icons/personal-plan.svg') }}" alt="discovery">
 							</div>
-							<h2 class="fw-light text-uppercase">Action</h2>
-							<h2 class="text-uppercase">YOU READY TO GET TO WORK?</h2>
+							<h2 class="fw-light text-uppercase">Personal Plan</h2>
+							<h2 class="text-uppercase">WHAT’S NEXT FOR ME?</h2>
 							<div class="quote">
-								<p>Motivation is based on fear. Inspiration is based on love.”</p>
-								<i class="fw-bold">—Lance Secretan</i>
+								<p>“You control your future, your destiny. What you think about, comes about. By recording your dreams and goals on paper, you set in motion the process of becoming the person you most want to be. Put your future in good hands—your own.”</p>
+								<i class="fw-bold">—Mark Victor Hansen</i>
 							</div>
 						</div>
 					</div>
@@ -90,23 +90,23 @@
 										Objective
 									</h4>
 									<p>
-										Establish and formalize a set of personal goals that align with your Purpose and Vision.
+										Review and complete your Final Personal Plan.
 									</p>
 									<h4 class="text-primary text-uppercase font-oswald">
 										Task
 									</h4>
 									<p>
-										Write your goals for each of the various areas of your life.
+										Review Modules 2-4, take the information, refine it if necessary, and fill out the Playsheets in Module 5.
 									</p>
 								</div>
 							</div>
 							<div class="col-xl-5">
-								<img src="{{ asset('assets/img/playbook/action-img.png') }}" alt="Action">
+								<img src="{{ asset('assets/img/playbook/personal-plan-img.png') }}" alt="Action">
 							</div>
 						</div>
 
-						{{-- FORM COMPLETION PROGRESS AND MODULE 3 FORMS --}}
-						@livewire('player.playbook.module3.main', ['playbook_id' => $id])
+						{{-- FORM COMPLETION PROGRESS AND MODULE 5 FORMS --}}
+						@livewire('player.playbook.module4.main', ['playbook_id' => $id])
 
 					</div>
 				</div>
