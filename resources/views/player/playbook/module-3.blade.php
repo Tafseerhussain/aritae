@@ -59,18 +59,18 @@
 			<div class="col-xl-9">
 				<div class="playbook-content">
 					<div class="content-hero text-center text-white">
-						<div class="head bg-primary">
-							<h4 class="m-0">MODULE - 1</h4>
+						<div class="head bg-module2">
+							<h4 class="m-0">MODULE - 3</h4>
 						</div>
-						<div class="body">
+						<div class="body" style="background-image: url('{{asset('assets/img/playbook/focus-bg.jpg')}}')">
 							<div class="img-box">
-								<img src="{{ asset('assets/icons/discovery.svg') }}" alt="discovery">
+								<img src="{{ asset('assets/icons/focus.svg') }}" alt="discovery">
 							</div>
-							<h2 class="fw-light text-uppercase">DISCOVERY</h2>
-							<h2 class="text-uppercase">What's Your Story?</h2>
+							<h2 class="fw-light text-uppercase">Focus</h2>
+							<h2 class="text-uppercase">WHY ARE YOU DOING ALL THIS?</h2>
 							<div class="quote">
-								<p>“What is necessary to change a person, is to change his awareness of himself.”</p>
-								<i class="fw-bold">— Benjamin Disraeli</i>
+								<p>“The greatest good you could do for another is not just to share your riches, but to reveal to him his own.”</p>
+								<i class="fw-bold">—Benjamin Disraeli</i>
 							</div>
 						</div>
 					</div>
@@ -84,29 +84,29 @@
 										Summary
 									</h4>
 									<p>
-										Who are you? What are you really about? These are not questions you’re faced with answering on a daily basis, but they’re absolutely crucial to your success in this program. Think of yourself as the hero in your own personal story. You can’t write a story about a character you don’t fully understand, right? So, let’s get to know you.
+										Chances are, you discovered a lot about yourself in Module 1 that you may not have realized. Now that you’ve gained clarity and explored various aspects of your past, present, and future, you’re going to focus on turning those ideas into a clear purpose and vision for the future. This is a crucial step in the Aritae process.
 									</p>
 									<h4 class="text-primary text-uppercase font-oswald">
 										Objective
 									</h4>
 									<p>
-										To quiet all of the outside voices and explore who you are and what you’re all about.
+										Develop a clear articulation of who you are today, what you want in the future, and why you want what you want.
 									</p>
 									<h4 class="text-primary text-uppercase font-oswald">
 										Task
 									</h4>
 									<p>
-										Identify your personal interests, responsibilities, priorities, challenges, issues, values, convictions, needs, wants, dreams, as well as your most inspirational memories. Reflecting honestly in this way will help you achieve a deeper sense of self-awareness and uncover what is real in your heart. You will come to understand the importance of living with integrity and the power it will have in propelling you toward reaching your potential.
+										Create a Purpose and Vision Statement to guide your path to living a life filled with Love, Happiness, Significance, and Success.
 									</p>
 								</div>
 							</div>
 							<div class="col-xl-5">
-								<img src="{{ asset('assets/img/playbook/discovery-img.png') }}" alt="discovery">
+								<img src="{{ asset('assets/img/playbook/focus-img.png') }}" alt="discovery">
 							</div>
 						</div>
 
-						{{-- FORM COMPLETION PROGRESS AND MODULE 1 FORMS --}}
-						@livewire('player.playbook.module1.main', ['playbook_id' => $id])
+						{{-- FORM COMPLETION PROGRESS AND MODULE 2 FORMS --}}
+						@livewire('player.playbook.module2.main', ['playbook_id' => $id])
 
 					</div>
 				</div>

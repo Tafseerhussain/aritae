@@ -2,54 +2,54 @@
     <div class="col-12">
         <div class="card p-md-4 p-3 position-relative">
             <div class="card-ribbon">
-                <img src="{{ asset('assets/img/playbook/form-ribbon.svg') }}" class="bg" alt="ribbon">
+                <img src="{{ asset('assets/img/playbook/form-ribbon-module2.svg') }}" class="bg" alt="ribbon">
                 <div class="ribbon-content text-center text-white">
-                    <img src="{{ asset('assets/icons/discovery.svg') }}" class="icon" alt="discovery">
-                    <h6 class="text-uppercase font-oswald fw-light">discovery</h6>
+                    <img src="{{ asset('assets/icons/focus.svg') }}" class="icon" alt="discovery">
+                    <h6 class="text-uppercase font-oswald fw-light">Focus</h6>
                 </div>
             </div>
             <div class="card-head text-center">
                 <div class="head text-uppercase font-oswald text-primary">
                     <h5 class="fw-light">Playsheet #{{$playsheet}}</h5>
-                    <h4>RESPONSIBILITIES</h4>
+                    <h4>Assessment</h4>
                 </div>
                 <p>
-                    List the responsibilities you currently have in the various areas of your life. Examples could be: chores, homework, being respectful to parents and teachers, etc.
+                    Now it's time to reflect on the exercises you went through in Module 2. Answer the questions below to assess your progress in the program.
                 </p>
             </div>
             <div class="card-body p-0">
                 <form action="#" class="form">
                     <div class="form-group mb-3">
-                        <label for="" class="mb-1">Home</label>
-                        <input type="text" class="form-control" wire:model="home">
-                        @error('home')
+                        <label for="" class="mb-1">What was my objective for this step?</label>
+                        <input type="text" class="form-control" wire:model="objective">
+                        @error('objective')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="" class="mb-1">School</label>
-                        <input type="text" class="form-control" wire:model="school">
-                        @error('school')
+                        <label for="" class="mb-1">Did I meet my objective? If so, in what way(s)?</label>
+                        <input type="text" class="form-control" wire:model="requirement">
+                        @error('requirement')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="" class="mb-1">Arts, music, athletics, etc.</label>
-                        <input type="text" class="form-control" wire:model="activity">
-                        @error('activity')
+                        <label for="" class="mb-1">What is something I learned during this step?</label>
+                        <input type="text" class="form-control" wire:model="learning">
+                        @error('learning')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="" class="mb-1">Other (work, social settings, etc.)</label>
-                        <input type="text" class="form-control" wire:model="other">
-                        @error('other')
+                        <label for="" class="mb-1">What is something I am still unclear about and need to work on in the next Module?</label>
+                        <input type="text" class="form-control" wire:model="work_need">
+                        @error('work_need')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -57,16 +57,10 @@
                     </div>
                     <div class="dots text-center">
                         <span class="dot complete"></span>
+                        <span class="dot complete"></span>
+                        <span class="dot complete"></span>
+                        <span class="dot complete"></span>
                         <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
                     </div>
                     <div class="form-group text-end">
                         <button type="button" class="btn btn-light border" wire:click="previous">

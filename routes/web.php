@@ -112,6 +112,8 @@ Route::group(['middleware' => 'player'], function () {
     Route::get('/player/playbook-request', [PlayerController::class, 'playbookRequest'])->name('player.playbook_request');
     Route::get('/player/playbook/{id}', [PlayerController::class, 'playbook'])->name('player.playbook');
     Route::get('/player/playbook/{id}/module-1', [PlayerController::class, 'playbookModule1'])->name('player.playbook.module1');
+    Route::get('/player/playbook/{id}/module-2', [PlayerController::class, 'playbookModule2'])->name('player.playbook.module2');
+    Route::get('/player/playbook/{id}/module-3', [PlayerController::class, 'playbookModule3'])->name('player.playbook.module3');
 });
 
 // PARENT MIDDLEWARE

@@ -171,6 +171,19 @@
         });
 </script>
 
+<!-- Laravel flash message -->
+@if(session()->has("error"))
+<script type="text/javascript">
+    var data = {
+        "title" : "Error!",
+        "type" : "error",
+        "message": "{{session('error')}}",
+    }
+    var event = new CustomEvent('notify', { detail: data });
+    window.dispatchEvent(event);
+</script>
+@endif
+
 <div class="modal" id="call_receive_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
