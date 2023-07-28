@@ -19,6 +19,20 @@
             </div>
             <div class="card-body p-0">
                 <form action="#" class="form">
+                    <div class="row">
+                        <div class="col-6 col-lg-9"></div>
+                        <div class="col-6 col-lg-3">
+                            <div class="form-group mb-3">
+                                <label for="" class="mb-1">Today's Date</label>
+                                <input type="date" class="form-control" wire:model="date">
+                                @error('date')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group mb-3">
                         <label for="" class="mb-1">What was my objective for this step?</label>
                         <input type="text" class="form-control" wire:model="objective">

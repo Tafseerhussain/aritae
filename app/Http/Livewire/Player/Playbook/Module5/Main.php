@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Player\Playbook\Module5;
 
 use Livewire\Component;
 use App\Models\PlayerPlaybook;
+use App\Events\PlaybookRequest;
+use Auth;
 
 class Main extends Component
 {
@@ -34,6 +36,14 @@ class Main extends Component
         if($playsheet >= 14 && $this->completeness >= 100){
             $this->playbook->status = 'submitted';
             $this->playbook->save();
+
+            //Send pusher notification
+            broadcast(new PlaybookRequest(
+                $this->playbook->coach,
+                Auth::user()->player,
+                $this->playbook,
+                'playbook-submitted',
+            ));
 
             return redirect(route('player.dashboard'))->with('info', 'Playbook submitted successfully.');
         }

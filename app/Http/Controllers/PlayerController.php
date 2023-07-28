@@ -247,17 +247,25 @@ class PlayerController extends Controller
             if($playbook->response){
                 $response = json_decode($playbook->response, true);
 
-                for($x = 1; $x <= 11; $x++){
+                for($x = 1; $x <= 10; $x++){
                     if(isset($response['module1']['playsheet'.$x]['home']))
                         $completeness += 3;
                     if(isset($response['module1']['playsheet'.$x]['school']))
                         $completeness += 3;
                     if(isset($response['module1']['playsheet'.$x]['activity']))
                         $completeness += 3;
-                
-                    if($x == 11)
-                        $completeness += 1;
                 }
+
+                if(isset($response['module1']['playsheet11']['objective']))
+                    $completeness += 2;
+                if(isset($response['module1']['playsheet11']['requirement']))
+                    $completeness += 2;
+                if(isset($response['module1']['playsheet11']['learning']))
+                    $completeness += 2;
+                if(isset($response['module1']['playsheet11']['work_need']))
+                    $completeness += 2;
+                if(isset($response['module1']['playsheet11']['date']))
+                    $completeness += 2;
             }
         }
         if($module == 2){

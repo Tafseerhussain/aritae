@@ -14,6 +14,7 @@ class Playsheet12 extends Component
     public $requirement = '';
     public $learning = '';
     public $work_need = '';
+    public $date = '';
 
     public function mount($playbook_id){
         $this->playbook_id = $playbook_id;
@@ -27,6 +28,7 @@ class Playsheet12 extends Component
                 $this->requirement = $response['module4']['playsheet'.$this->playsheet]['requirement'];
                 $this->learning = $response['module4']['playsheet'.$this->playsheet]['learning'];
                 $this->work_need = $response['module4']['playsheet'.$this->playsheet]['work_need'];
+                $this->date = $response['module4']['playsheet'.$this->playsheet]['date'];
             }
         }
     }
@@ -37,6 +39,7 @@ class Playsheet12 extends Component
             'requirement' => ['required', 'min:2'],
             'learning' => ['required', 'min:2'],
             'work_need' => ['required', 'min:2'],
+            'date' => ['required', 'date'],
         ]);
 
         $response = [];
@@ -48,6 +51,7 @@ class Playsheet12 extends Component
             'requirement' => $this->requirement,
             'learning' => $this->learning,
             'work_need' => $this->work_need,
+            'date' => $this->date,
         ];
 
         $this->playbook->response = json_encode($response);

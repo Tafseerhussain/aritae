@@ -66,7 +66,8 @@ class Players extends Component
         broadcast(new PlaybookRequest(
             Auth::user()->coach,
             $player,
-            $playbook
+            $playbook,
+            'playbook-requested',
         ));
 
         $this->pushUserNotification(
@@ -164,6 +165,10 @@ class Players extends Component
                 }
             }
         }
+    }
+
+    public function viewPlaybook($playbook_id){
+        $this->emit('viewPlaybook', $playbook_id);
     }
 
     public function render()

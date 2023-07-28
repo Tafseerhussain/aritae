@@ -19,37 +19,51 @@
             </div>
             <div class="card-body p-0">
                 <form action="#" class="form">
+                    <div class="row">
+                        <div class="col-6 col-lg-9"></div>
+                        <div class="col-6 col-lg-3">
+                            <div class="form-group mb-3">
+                                <label for="" class="mb-1">Today's Date</label>
+                                <input type="date" class="form-control" wire:model="date">
+                                @error('date')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group mb-3">
-                        <label for="" class="mb-1">Home</label>
-                        <input type="text" class="form-control" wire:model="home">
-                        @error('home')
+                        <label for="" class="mb-1">What was my objective for this step?</label>
+                        <input type="text" class="form-control" wire:model="objective">
+                        @error('objective')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="" class="mb-1">School</label>
-                        <input type="text" class="form-control" wire:model="school">
-                        @error('school')
+                        <label for="" class="mb-1">Did I meet my objective? If so, in what way(s)?</label>
+                        <input type="text" class="form-control" wire:model="requirement">
+                        @error('requirement')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="" class="mb-1">Arts, music, athletics, etc.</label>
-                        <input type="text" class="form-control" wire:model="activity">
-                        @error('activity')
+                        <label for="" class="mb-1">What is something I learned during this step?</label>
+                        <input type="text" class="form-control" wire:model="learning">
+                        @error('learning')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="" class="mb-1">Other (work, social settings, etc.)</label>
-                        <input type="text" class="form-control" wire:model="other">
-                        @error('other')
+                        <label for="" class="mb-1">What is something I am still unclear about and need to work on in the next Module?</label>
+                        <input type="text" class="form-control" wire:model="work_need">
+                        @error('work_need')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

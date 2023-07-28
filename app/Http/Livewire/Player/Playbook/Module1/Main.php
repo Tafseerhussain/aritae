@@ -46,17 +46,26 @@ class Main extends Component
         if($this->playbook->response){
             $response = json_decode($this->playbook->response, true);
 
-            for($x = 1; $x <= 11; $x++){
+            for($x = 1; $x <= 10; $x++){
                 if(isset($response['module1']['playsheet'.$x]['home']))
                     $this->completeness += 3;
                 if(isset($response['module1']['playsheet'.$x]['school']))
                     $this->completeness += 3;
                 if(isset($response['module1']['playsheet'.$x]['activity']))
                     $this->completeness += 3;
-            
-                if($x == 11)
-                    $this->completeness += 1;
             }
+
+            if(isset($response['module1']['playsheet11']['objective']))
+                $this->completeness += 2;
+            if(isset($response['module1']['playsheet11']['requirement']))
+                $this->completeness += 2;
+            if(isset($response['module1']['playsheet11']['learning']))
+                $this->completeness += 2;
+            if(isset($response['module1']['playsheet11']['work_need']))
+                $this->completeness += 2;
+            if(isset($response['module1']['playsheet11']['date']))
+                $this->completeness += 2;
+
         }
     }
 

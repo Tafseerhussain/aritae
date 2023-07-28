@@ -168,6 +168,15 @@
                 var event = new CustomEvent('notify', { detail: data });
                 window.dispatchEvent(event);
             }
+            else if(e.type == 'playbook-submitted'){
+                var data = {
+                    "title" : "Playbook response",
+                    "type" : "info",
+                    "message": 'Playbook response submitted from ' + e.player_name,
+                }
+                var event = new CustomEvent('notify', { detail: data });
+                window.dispatchEvent(event);
+            }
         });
 </script>
 

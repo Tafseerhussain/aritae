@@ -59,7 +59,7 @@
                         Send Playbook
                     </button>
                     @elseif($status == 'Submitted')
-                    <button class="btn btn-theme">
+                    <button class="btn btn-theme" wire:click="viewPlaybook({{$playbook->id}})">
                         <i class="bi bi-eye"></i>
                         View Playbook
                     </button>

@@ -20,6 +20,7 @@ class PlaybookRequest implements ShouldBroadcastNow
     public $coach;
     public $player;
     public $playbook;
+    public $type;
 
 
     /**
@@ -27,11 +28,12 @@ class PlaybookRequest implements ShouldBroadcastNow
      *
      * @return void
      */
-    public function __construct(Coach $coach, Player $player, PlayerPlaybook $playbook)
+    public function __construct(Coach $coach, Player $player, PlayerPlaybook $playbook, $type)
     {
         $this->coach = $coach;
         $this->player = $player;
         $this->playbook = $playbook;
+        $this->type = $type;
     }
 
     public function broadcastWith()
@@ -42,7 +44,7 @@ class PlaybookRequest implements ShouldBroadcastNow
             'player_name' => $this->player->name,
             'player_id' => $this->player->id,
             'playbook' => $this->playbook->id,
-            'type' => 'playbook-requested'
+            'type' => $this->type,
         ];
     }
 
@@ -53,6 +55,9 @@ class PlaybookRequest implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('playbook-request.'.$this->player->user->id);
+        if($this->type == 'playbook-requested')
+            return new PrivateChannel('playbook-request.'.$this->player->user->id);
+        else if($this->type == 'playbook-submitted')
+            return new PrivateChannel('playbook-request.'.$this->coach->user->id);
     }
 }
