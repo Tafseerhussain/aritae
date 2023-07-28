@@ -71,7 +71,7 @@
                     <div class="form-group text-end">
                         <button type="button" class="btn btn-light border" wire:click="previous">
                             Previous
-                        </a>
+                        </button>
                         <button type="button" class="btn icon-right-full btn-dark border-0" wire:click="save">
                             <span>Save & Next</span>
                             <i class="bi bi-arrow-right-circle-fill"></i>

@@ -26,11 +26,13 @@ class Main extends Component
     }
 
     public function playsheetSaved($playsheet){
-        if($playsheet < 5){
+        if($playsheet < 5)
             $this->playsheet++;
-        }
         
         $this->calculateCompleteness();
+
+        if($playsheet >= 5 && $this->completeness >= 100)
+            return redirect(route('player.playbook.module3', ['id' => $this->playbook_id]));
     }
 
     public function playsheetBack($playsheet){

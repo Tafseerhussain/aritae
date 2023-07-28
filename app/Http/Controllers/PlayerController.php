@@ -114,14 +114,16 @@ class PlayerController extends Controller
 
     public function playbookRequest()
     {
-        $playbooks = Auth::user()->player->player_playbooks()->where('status', 'requested')->get();
+        $playbooks = Auth::user()->player->player_playbooks;
         return view('player.playbook.request', ['playbooks' => $playbooks]);
     }
 
     public function playbook($id)
     {
         $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
-        if($playbook)
+        if($playbook && $playbook->status == 'submitted')
+            return redirect()->back()->with('error', 'Playbook already submitted');
+        else if($playbook)
             return view('player.playbook.index', ['id' => $id]);
         else
             abort(404);
@@ -130,8 +132,10 @@ class PlayerController extends Controller
     public function playbookModule1($id)
     {
         $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
-        if($playbook)
-            return view('player.playbook.module-1', ['id' => $id]);
+        if($playbook && $playbook->status == 'submitted')
+            return redirect(route('player.dashboard'))->with('error', 'Playbook already submitted');
+        else if($playbook)
+            return view('player.playbook.module-1', ['id' => $id, 'completeness' => $this->playbookCompleteness($playbook)]);
         else
             abort(404);
     }
@@ -139,9 +143,11 @@ class PlayerController extends Controller
     public function playbookModule2($id)
     {
         $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
-        if($playbook){
+        if($playbook && $playbook->status == 'submitted')
+            return redirect(route('player.dashboard'))->with('error', 'Playbook already submitted');
+        else if($playbook){
             if($this->moduleCompleteness(1, $playbook) >= 100)
-                return view('player.playbook.module-2', ['id' => $id]);
+                return view('player.playbook.module-2', ['id' => $id, 'completeness' => $this->playbookCompleteness($playbook)]);
             else
                 return redirect(route('player.playbook.module1', ['id' => $id]))
                     ->with('error', 'You need to complete Module 1 first');
@@ -153,9 +159,11 @@ class PlayerController extends Controller
     public function playbookModule3($id)
     {
         $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
-        if($playbook){
+        if($playbook && $playbook->status == 'submitted')
+            return redirect(route('player.dashboard'))->with('error', 'Playbook already submitted');
+        else if($playbook){
             if($this->moduleCompleteness(2, $playbook) >= 100)
-                return view('player.playbook.module-3', ['id' => $id]);
+                return view('player.playbook.module-3', ['id' => $id, 'completeness' => $this->playbookCompleteness($playbook)]);
             else if($this->moduleCompleteness(1, $playbook) >= 100)
                 return redirect(route('player.playbook.module2', ['id' => $id]))
                     ->with('error', 'You need to complete Module 2 first');
@@ -170,9 +178,11 @@ class PlayerController extends Controller
     public function playbookModule4($id)
     {
         $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
-        if($playbook){
+        if($playbook && $playbook->status == 'submitted')
+            return redirect(route('player.dashboard'))->with('error', 'Playbook already submitted');
+        else if($playbook){
             if($this->moduleCompleteness(3, $playbook) >= 100)
-                return view('player.playbook.module-4', ['id' => $id]);
+                return view('player.playbook.module-4', ['id' => $id, 'completeness' => $this->playbookCompleteness($playbook)]);
             else if($this->moduleCompleteness(2, $playbook) >= 100)
                 return redirect(route('player.playbook.module3', ['id' => $id]))
                     ->with('error', 'You need to complete Module 3 first');
@@ -190,9 +200,11 @@ class PlayerController extends Controller
     public function playbookModule5($id)
     {
         $playbook = Auth::user()->player->player_playbooks()->where('id', $id)->first();
-        if($playbook){
+        if($playbook && $playbook->status == 'submitted')
+            return redirect(route('player.dashboard'))->with('error', 'Playbook already submitted');
+        else if($playbook){
             if($this->moduleCompleteness(4, $playbook) >= 100)
-                return view('player.playbook.module-5', ['id' => $id]);
+                return view('player.playbook.module-5', ['id' => $id, 'completeness' => $this->playbookCompleteness($playbook)]);
             else if($this->moduleCompleteness(3, $playbook) >= 100)
                 return redirect(route('player.playbook.module4', ['id' => $id]))
                     ->with('error', 'You need to complete Module 4 first');
@@ -208,6 +220,24 @@ class PlayerController extends Controller
         }
         else
             abort(404);
+    }
+
+    private function playbookCompleteness($playbook){
+        $module1 = $this->moduleCompleteness(1, $playbook);
+        $module2 = $this->moduleCompleteness(2, $playbook);
+        $module3 = $this->moduleCompleteness(3, $playbook);
+        $module4 = $this->moduleCompleteness(4, $playbook);
+        $module5 = $this->moduleCompleteness(5, $playbook);
+
+        $module1_percent = $module1 * 0.2;
+        $module2_percent = $module2 * 0.2;
+        $module3_percent = $module3 * 0.2;
+        $module4_percent = $module4 * 0.2;
+        $module5_percent = $module5 * 0.2;
+
+        $total = $module1_percent + $module2_percent + $module3_percent + $module4_percent + $module5_percent;
+        
+        return intval($total);
     }
 
     private function moduleCompleteness($module, $playbook){
@@ -309,6 +339,30 @@ class PlayerController extends Controller
                     $completeness += 5;
                 if(isset($response['module4']['playsheet12']['work_need']))
                     $completeness += 5;
+            }
+        }
+
+        if($module == 5){
+            if($playbook->response){
+                $response = json_decode($playbook->response, true);
+
+                for($x=3; $x<=14; $x++){
+                    if(isset($response['module5']['playsheet'.$x]['area']) && isset($response['module5']['playsheet'.$x]['date']))
+                        $completeness += 1;
+                    if(isset($response['module5']['playsheet'.$x]['action1']) && isset($response['module5']['playsheet'.$x]['obstacle1']) && isset($response['module5']['playsheet'.$x]['solution1']))
+                        $completeness += 2;
+                    if(isset($response['module5']['playsheet'.$x]['action2']) && isset($response['module5']['playsheet'.$x]['obstacle2']) && isset($response['module5']['playsheet'.$x]['solution2']))
+                        $completeness += 2;
+                    if(isset($response['module5']['playsheet'.$x]['action3']) && isset($response['module5']['playsheet'.$x]['obstacle3']) && isset($response['module5']['playsheet'.$x]['solution3']))
+                        $completeness += 2;
+                    if(isset($response['module5']['playsheet'.$x]['goal']) && isset($response['module5']['playsheet'.$x]['reward']))
+                        $completeness += 1;
+                }
+    
+                if(isset($response['module5']['playsheet1']['purpose']))
+                    $completeness += 2;
+                if(isset($response['module5']['playsheet1']['vision']))
+                    $completeness += 2;
             }
         }
 

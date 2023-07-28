@@ -17,13 +17,13 @@
 	</div>
 
 	{{-- PLAYBOOK --}}
-	<div class="playbook">
+	<div class="playbook module4">
 		<div class="row">
 			<div class="col-xl-9 offset-xl-3 mb-4">
 				<div class="module-completion">
-					<small>You have completed 27% of <b>Aritae Modules</b></small>
+					<small>You have completed {{$completeness}}% of <b>Aritae Modules</b></small>
 					<div class="progress mt-1">
-						<div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 27%;" aria-valuenow="27" aria-valuemin="0" aria-valuemax="100">27%</div>
+						<div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: {{$completeness}}%;" aria-valuenow="{{$completeness}}" aria-valuemin="0" aria-valuemax="100">{{$completeness}}%</div>
 					</div>
 				</div>
 			</div>
@@ -35,19 +35,19 @@
 						<h5>Aritae Program Modules</h5>
 					</div>
 					<ul class="list-group rounded-0">
-						<a href="#" class="list-group-item">
+						<a href="{{route('player.playbook.module1', ['id' => $id])}}" class="list-group-item {{Route::is('player.playbook.module1', ['id' => $id]) ? 'active' : ''}}">
 							<img src="{{ asset('assets/icons/discovery.svg') }}" alt="icon"> Discovery
 						</a>
-						<a href="#" class="list-group-item">
+						<a href="{{route('player.playbook.module2', ['id' => $id])}}" class="list-group-item {{Route::is('player.playbook.module2', ['id' => $id]) ? 'active' : ''}}">
 							<img src="{{ asset('assets/icons/focus.svg') }}" alt="icon"> Focus
 						</a>
-						<a href="#" class="list-group-item">
+						<a href="{{route('player.playbook.module3', ['id' => $id])}}" class="list-group-item {{Route::is('player.playbook.module3', ['id' => $id]) ? 'active' : ''}}">
 							<img src="{{ asset('assets/icons/action.svg') }}" alt="icon"> Action
 						</a>
-						<a href="#" class="list-group-item">
+						<a href="{{route('player.playbook.module4', ['id' => $id])}}" class="list-group-item {{Route::is('player.playbook.module4', ['id' => $id]) ? 'active' : ''}}">
 							<img src="{{ asset('assets/icons/strategy.svg') }}" alt="icon"> Strategy
 						</a>
-						<a href="#" class="list-group-item">
+						<a href="{{route('player.playbook.module5', ['id' => $id])}}" class="list-group-item {{Route::is('player.playbook.module5', ['id' => $id]) ? 'active' : ''}}">
 							<img src="{{ asset('assets/icons/personal-plan.svg') }}" alt="icon"> Personal Plan
 						</a>
 					</ul>
@@ -59,7 +59,7 @@
 			<div class="col-xl-9">
 				<div class="playbook-content">
 					<div class="content-hero text-center text-white">
-						<div class="head bg-module4">
+						<div class="head">
 							<h4 class="m-0">MODULE - 4</h4>
 						</div>
 						<div class="body" style="background-image: url('{{asset('assets/img/playbook/strategy-bg.jpg')}}')">

@@ -183,6 +183,17 @@
     window.dispatchEvent(event);
 </script>
 @endif
+@if(session()->has("info"))
+<script type="text/javascript">
+    var data = {
+        "title" : "Info",
+        "type" : "info",
+        "message": "{{session('info')}}",
+    }
+    var event = new CustomEvent('notify', { detail: data });
+    window.dispatchEvent(event);
+</script>
+@endif
 
 <div class="modal" id="call_receive_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog">

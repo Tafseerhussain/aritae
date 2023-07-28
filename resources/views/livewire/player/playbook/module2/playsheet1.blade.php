@@ -45,6 +45,9 @@
                         <span class="dot"></span>
                     </div>
                     <div class="form-group text-end">
+                        <a href="{{route('player.playbook.module1', ['id' => $playbook_id])}}" class="btn btn-light border">
+                            Previous
+                        </a>
                         <button type="button" class="btn icon-right-full btn-dark border-0" wire:click="save">
                             <span>Save & Next</span>
                             <i class="bi bi-arrow-right-circle-fill"></i>

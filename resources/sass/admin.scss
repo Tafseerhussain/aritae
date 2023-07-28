@@ -2138,6 +2138,57 @@
 }
 .playbook {
 	padding: 50px 0;
+
+	&.module1{
+		.playbook-content{
+			.content-hero .head{
+				background-color: $playbook-module1;
+			}
+			.card-head .head{
+				background-color: rgba($playbook-module1, 0.1);
+			}
+		}
+	}
+	&.module2{
+		.playbook-content{
+			.content-hero .head{
+				background-color: $playbook-module2;
+			}
+			.card-head .head{
+				background-color: rgba($playbook-module2, 0.1);
+			}
+		}
+	}
+	&.module3{
+		.playbook-content{
+			.content-hero .head{
+				background-color: $playbook-module3;
+			}
+			.card-head .head{
+				background-color: rgba($playbook-module3, 0.1);
+			}
+		}
+	}
+	&.module4{
+		.playbook-content{
+			.content-hero .head{
+				background-color: $playbook-module4;
+			}
+			.card-head .head{
+				background-color: rgba($playbook-module4, 0.1);
+			}
+		}
+	}
+	&.module5{
+		.playbook-content{
+			.content-hero .head{
+				background-color: $playbook-module5;
+			}
+			.card-head .head{
+				background-color: rgba($playbook-module5, 0.1);
+			}
+		}
+	}
 	.playbook-sidebar {
 		border-radius: $radius;
 		box-shadow: $shadow;
@@ -2172,6 +2223,13 @@
 						filter: invert(69%) sepia(88%) saturate(356%) hue-rotate(3deg) brightness(88%) contrast(90%);
 					}
 				}
+				&.active {
+					color: $blue;
+					background-color: rgba($blue, 0.01);
+					img {
+						filter: invert(69%) sepia(88%) saturate(356%) hue-rotate(3deg) brightness(88%) contrast(90%);
+					}
+				}
 				&:last-child {
 					border-bottom-left-radius: $radius;
 					border-bottom-right-radius: $radius;
@@ -2180,19 +2238,6 @@
 		}
 	}
 	.playbook-content {
-		.bg-module2{
-			background-color: #F4A261;
-		}
-		.bg-module3{
-			background-color: #E9C46A;
-		}
-		.bg-module4{
-			background-color: #2A9D8F;
-		}
-		.bg-module5{
-			background-color: #E76F51;
-		}
-
 		.content-hero {
 			border-radius: $radius;
 			overflow: hidden;
@@ -2258,7 +2303,7 @@
 						.ribbon-content {
 							position: relative;
 							img.icon {
-								width: 50px;
+								width: 25px;
 								margin-bottom: 6px;
 								filter: brightness(100);
 							}
@@ -2267,7 +2312,6 @@
 					.card-head {
 						.head {
 							display: inline-block;
-							background-color: $border-color;
 							border-radius: 100px;
 							padding: 12px 60px;
 							margin-bottom: 20px;
@@ -2318,7 +2362,7 @@
 									color: $dark-gray;
 								}
 							}
-							.strategy-quote{
+							.strategy-quote, .personal-plan-quote{
 								margin-top: 30px;
 								margin-bottom: 30px;
 								padding: 30px;
