@@ -52,7 +52,10 @@ class CoachController extends Controller
     {
         $player = User::findOrFail($id);
         $req = HireRequest::where('player_id', $id)->where('coach_id', Auth::user()->id)->first();
-        return view('coach.request-single', compact(['player', 'req']));
+        if($req)
+            return view('coach.request-single', compact(['player', 'req']));
+        else
+            abort(404);
     }
 
     public function deletePlayerRequest($id)
@@ -152,6 +155,11 @@ class CoachController extends Controller
     public function allSessions()
     {
         return view('coach.sessions');
+    }
+
+    public function notification()
+    {
+        return view('coach.notification');
     }
 
     public function playbook()

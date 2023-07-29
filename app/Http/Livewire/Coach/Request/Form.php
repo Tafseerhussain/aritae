@@ -6,10 +6,13 @@ use Livewire\Component;
 use App\Models\HireRequest;
 use App\Events\CoachConnect;
 use App\Models\User;
+use App\Traits\CreateNotification;
 use Auth;
 
 class Form extends Component
 {
+    use CreateNotification;
+    
     public $requestTitle;
     public $proposalMessage;
 
@@ -39,20 +42,28 @@ class Form extends Component
             $request->email = Auth::user()->email;
             $request->save();
 
-            $coach = User::find($this->coach_id);
+            $this->coach = User::find($this->coach_id);
 
             //Send pusher notification
             broadcast(new CoachConnect(
                 Auth()->user(),
-                $coach,
+                $this->coach,
                 'initiated'
             ));
 
             $this->dispatchBrowserEvent('coach_connect_notification', [
                 'title' => 'Requested sent',
                 'type' => 'info',
-                'message' => 'Your hiring request sent to coach '.$coach->full_name,
+                'message' => 'Your hiring request sent to coach '.$this->coach->full_name,
             ]);
+
+            $this->pushUserNotification(
+                $this->coach,
+                'coach-hire-request', 
+                'New player request', 
+                Auth::user()->full_name. ' requested to hire you as a coach',
+                Auth::id(),
+            );
 
             $this->reset();
             $this->emit('hiringRequestSent');
@@ -61,7 +72,7 @@ class Form extends Component
             $this->dispatchBrowserEvent('coach_connect_notification', [
                 'title' => 'Requested sent',
                 'type' => 'warning',
-                'message' => 'Your hiring request already sent to coach '.$coach->full_name,
+                'message' => 'Your hiring request already sent to coach '.$this->coach->full_name,
             ]);
             //session()->flash('success_message', 'Request already sent.');
         }

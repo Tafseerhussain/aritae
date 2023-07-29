@@ -19,17 +19,17 @@
     "file": "assets/discovery-bg.ad7c68e3.jpg",
     "src": "public/assets/img/playbook/discovery-bg.jpg"
   },
-  "public/assets/img/coaches-bg.jpg": {
-    "file": "assets/coaches-bg.d08237e0.jpg",
-    "src": "public/assets/img/coaches-bg.jpg"
+  "public/assets/img/players-bg.jpg": {
+    "file": "assets/players-bg.65edb63b.jpg",
+    "src": "public/assets/img/players-bg.jpg"
   },
   "public/assets/img/events-bg.jpg": {
     "file": "assets/events-bg.042eac73.jpg",
     "src": "public/assets/img/events-bg.jpg"
   },
-  "public/assets/img/players-bg.jpg": {
-    "file": "assets/players-bg.65edb63b.jpg",
-    "src": "public/assets/img/players-bg.jpg"
+  "public/assets/img/coaches-bg.jpg": {
+    "file": "assets/coaches-bg.d08237e0.jpg",
+    "src": "public/assets/img/coaches-bg.jpg"
   },
   "resources/js/app.js": {
     "file": "assets/app.e7d71e63.js",
@@ -51,14 +51,14 @@
     "src": "resources/sass/admin-responsive.scss",
     "isEntry": true
   },
-  "resources/sass/theme.scss": {
-    "file": "assets/theme.f33b9efa.css",
-    "src": "resources/sass/theme.scss",
-    "isEntry": true
-  },
   "resources/sass/app.scss": {
     "file": "assets/app.fc8baa5b.css",
     "src": "resources/sass/app.scss",
+    "isEntry": true
+  },
+  "resources/sass/theme.scss": {
+    "file": "assets/theme.f33b9efa.css",
+    "src": "resources/sass/theme.scss",
     "isEntry": true
   },
   "resources/sass/admin.scss": {

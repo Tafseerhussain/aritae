@@ -79,6 +79,9 @@ Route::group(['middleware' => 'coach'], function () {
     // Session Routes
     Route::get('/coach/sessions', [CoachController::class, 'allSessions'])->name('coach.all_sessions');
 
+    // Notification Routes
+    Route::get('/coach/notification', [CoachController::class, 'notification'])->name('coach.notification');
+    
     Route::get('/coach/registration-complete', [CoachController::class, 'registrationComplete'])->name('coach.registrationComplete');
 
     Route::get('/coach/playbook', [CoachController::class, 'playbook'])->name('coach.playbook');

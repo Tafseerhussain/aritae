@@ -28,7 +28,19 @@
                     @if(isset($response['module1']))
                         @for($x=1; $x<=10; $x++)
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #{{$x}}</h2>
+                            @php
+                            if($x == 1) $name = 'INTERESTS & ACTIVITIES';
+                            if($x == 2) $name = 'RESPONSIBILITIES';
+                            if($x == 3) $name = 'PRIORITIES';
+                            if($x == 4) $name = 'CHALLENGES & ISSUES';
+                            if($x == 5) $name = 'VALUES & CONVICTIONS';
+                            if($x == 6) $name = 'INTEGRITY';
+                            if($x == 7) $name = 'NEEDS & WANTS';
+                            if($x == 8) $name = 'DREEAMS & FUTURE';
+                            if($x == 9) $name = 'INSPIRATIONAL MEMORIES';
+                            if($x == 10) $name = 'GRATITUDE';
+                            @endphp
+                            <h2 class="title">Playsheet #{{$x}} -- {{$name}}</h2>
                             <p>
                                 <strong>Home: </strong>
                                 {{$response['module1']['playsheet'.$x]['home']}}
@@ -48,7 +60,7 @@
                         </div>
                         @endfor
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #11</h2>
+                            <h2 class="title">Playsheet #11 -- ASSESSMENT</h2>
                             <p>
                                 <strong>Date: </strong>
                                 {{$response['module1']['playsheet11']['date']}}
@@ -75,7 +87,7 @@
                 <div class="tab-pane module2 fade" id="module2-tab-pane" role="tabpanel" aria-labelledby="module2-tab" tabindex="0">
                     @if(isset($response['module2']))
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #1</h2>
+                            <h2 class="title">Playsheet #1 -- DEVELOPING YOUR PURPOSE STATEMENT</h2>
                             <p>
                                 <strong>Characteristic: </strong>
                                 {{$response['module2']['playsheet1']['characteristic']}}
@@ -86,7 +98,7 @@
                             </p>
                         </div>
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #2</h2>
+                            <h2 class="title">Playsheet #2 -- VISION STATEMENT</h2>
                             <p>
                                 <strong>Draft #1: </strong>
                                 {{$response['module2']['playsheet2']['draft1']}}
@@ -97,7 +109,7 @@
                             </p>
                         </div>
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #3</h2>
+                            <h2 class="title">Playsheet #3 -- VISION STATEMENT, CONTINUED</h2>
                             <p>
                                 <strong>Draft #3: </strong>
                                 {{$response['module2']['playsheet3']['draft3']}}
@@ -108,7 +120,7 @@
                             </p>
                         </div>
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #4</h2>
+                            <h2 class="title">Playsheet #4 -- DEVELOPING YOUR PURPOSE STATEMENT</h2>
                             <p>
                                 <strong>Final Purpose Statement: </strong>
                                 {{$response['module2']['playsheet4']['purpose']}}
@@ -119,7 +131,7 @@
                             </p>
                         </div>
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #5</h2>
+                            <h2 class="title">Playsheet #5 -- ASSESSMENT</h2>
                             <p>
                                 <strong>Date: </strong>
                                 {{$response['module2']['playsheet5']['date']}}
@@ -146,7 +158,7 @@
                 <div class="tab-pane module3 fade" id="module3-tab-pane" role="tabpanel" aria-labelledby="module3-tab" tabindex="0">
                     @if(isset($response['module3']))
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #1</h2>
+                            <h2 class="title">Playsheet #1 -- GOAL SETTING</h2>
                             <p>
                                 <strong>Home: </strong>
                                 {{$response['module3']['playsheet1']['home']}}
@@ -165,7 +177,7 @@
                             </p>
                         </div>
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #2</h2>
+                            <h2 class="title">Playsheet #2 -- ASSESSMENT</h2>
                             <p>
                                 <strong>Date: </strong>
                                 {{$response['module3']['playsheet2']['date']}}
@@ -193,7 +205,7 @@
                     @if(isset($response['module4']))
                         @for($x=2; $x<=11; $x++)
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #{{$x}}</h2>
+                            <h2 class="title">Playsheet #{{$x}} -- MICROPLAN - {{$x-1}}</h2>
                             <div class="row mb-4">
                                 <div class="col-6">
                                     <strong>Area of life: </strong>{{$response['module4']['playsheet'.$x]['area']}}
@@ -246,7 +258,7 @@
                         </div>
                         @endfor
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #12</h2>
+                            <h2 class="title">Playsheet #12 -- ASSESSMENT</h2>
                             <p>
                                 <strong>Date: </strong>
                                 {{$response['module4']['playsheet12']['date']}}
@@ -273,7 +285,7 @@
                 <div class="tab-pane module5 fade" id="module5-tab-pane" role="tabpanel" aria-labelledby="module5-tab" tabindex="0">
                     @if(isset($response['module5']))
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #1</h2>
+                            <h2 class="title">Playsheet #1 -- FINAL PURPOSE AND VISION STATEMENT</h2>
                             <p>
                                 <strong>Final Purpose Statement: </strong>
                                 {{$response['module5']['playsheet1']['purpose']}}
@@ -285,7 +297,7 @@
                         </div>
                         @for($x=3; $x<=14; $x++)
                         <div class="playsheet">
-                            <h2 class="title">Playsheet #{{$x}}</h2>
+                            <h2 class="title">Playsheet #{{$x}} -- MICROPLAN - {{$x-2}}</h2>
                             <div class="row mb-4">
                                 <div class="col-6">
                                     <strong>Area of life: </strong>{{$response['module5']['playsheet'.$x]['area']}}

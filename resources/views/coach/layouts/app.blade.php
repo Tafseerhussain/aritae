@@ -213,17 +213,8 @@
                                 <img src="{{ asset('assets/img/logo.svg') }}" alt="">
                             </a>
                             <ul class="list-group list-group-horizontal">
-                                {{-- <li class="list-group-item notifications">
-                                    <a class="nav-link dropdown-toggle dropdown-end" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-regular fa-bell"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-
-                                            <a class="dropdown-item" href="#">Action</a>
-                                        </li>
-                                    </ul>
-                                </li> --}}
+                                <livewire:navbar-notification />
+                                
                                 <li class="list-group-item">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle account-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         <img src="{{ asset('assets/img/account.svg') }}" alt="">

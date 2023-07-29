@@ -20,6 +20,8 @@
             <a href="{{route('admin.contact')}}" class="btn btn-secondary action-btn">View Request</a>
             @elseif($notification->type == 'playbook-request')
             <a href="{{route('player.playbook', ['id' => intval($notification->resource)])}}" class="btn btn-secondary action-btn">View Playbook</a>
+            @elseif($notification->type == 'coach-hire-request')
+            <a href="{{route('coach.requests.single', ['id' => intval($notification->resource)])}}" class="btn btn-secondary action-btn">View Request</a>
             @endif
         </div>
         @endforeach
@@ -27,6 +29,8 @@
         <div class="px-0 py-2">
             @if(auth()->user()->user_type_id == 1)
             <a class="fw-bold text-primary" href="{{route('admin.notification')}}">See All Notifications</a>
+            @elseif(auth()->user()->user_type_id == 2)
+            <a class="fw-bold text-primary" href="{{route('coach.notification')}}">See All Notifications</a>
             @elseif(auth()->user()->user_type_id == 4)
             <a class="fw-bold text-primary" href="{{route('player.notification')}}">See All Notifications</a>
             @endif
