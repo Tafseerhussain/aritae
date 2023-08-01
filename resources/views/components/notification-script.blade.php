@@ -122,6 +122,17 @@
                 var event = new CustomEvent('notify', { detail: data });
                 window.dispatchEvent(event);
             }
+        })
+        .listen('CoachApplicationSubmission', (e) => {
+            if(e.type == 'coach-application-submission'){
+                var data = {
+                    "title" : "New coach application submitted",
+                    "type" : "info",
+                    "message": e.coach_name + " registered to the system and completed participation form.",
+                }
+                var event = new CustomEvent('notify', { detail: data });
+                window.dispatchEvent(event);
+            }
         });
 
     //Subscribe to Coach connect channel

@@ -196,6 +196,14 @@
                                     </a>
                                 </li>
                                 <hr class="p-0 mt-2 mb-3">
+                                @if($coach_count)
+                                <li class="list-group-item {{ $route == 'admin.coach_approval' ? 'active' : '' }}">
+                                    <a href="{{ route('admin.coach_approval') }}">
+                                        <i class="bi bi-person-plus"></i>
+                                        <span>Coach Applications <span class="badge text-bg-secondary rounded-circle">{{ $coach_count }}</span></span>
+                                    </a>
+                                </li>
+                                @endif
                             </ul>
                         </div>  
                     </div>

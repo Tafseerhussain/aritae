@@ -1307,6 +1307,52 @@
 	}
 }
 
+// Admin coach approval
+.coach-approval{
+	.card{
+		overflow: visible;
+	}
+	.search-filter{
+		.search-input{
+			.form-control-sm{
+				border-top-left-radius: $radius;
+				border-bottom-left-radius: $radius;
+				background-color: $gray;
+				border-color: $inputBorder;
+				border-right-color: transparent;
+				&:focus{
+					background-color: $white;
+					border-color: $inputBorder;
+					border-right-color: transparent;
+				}
+			}
+			.input-group-text{
+				border-top-right-radius: $radius;
+				border-bottom-right-radius: $radius;
+				background-color: $gray;
+				border-color: $inputBorder;
+				border-left-color: transparent;
+			}
+		}
+	}
+	.coach-body{
+		box-shadow: $shadow;
+		border-radius: $radius;
+
+		.coach-image{
+			border-radius: 10px;
+			width: 70px;
+			height: auto;
+		}
+	}
+	.question-box{
+		box-shadow: $shadow;
+		border-radius: $radius;
+		padding: 15px;
+		margin: 5px 0px;
+	}
+}
+
 //FullCalendar
 .fc-timegrid-slot-minor{
 	display: none;

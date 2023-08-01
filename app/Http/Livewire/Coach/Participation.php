@@ -4,10 +4,15 @@ namespace App\Http\Livewire\Coach;
 
 use Livewire\Component;
 use App\Models\CoachParticipation;
+use App\Events\CoachApplicationSubmission;
+use App\Traits\CreateNotification;
+use App\Models\User;
 use Auth;
 
 class Participation extends Component
 {
+    use CreateNotification;
+
     public $question1 = "";
     public $question2 = "";
     public $question3 = "";
@@ -103,6 +108,16 @@ class Participation extends Component
                 'question16_1' => $this->question16_1 ? 1 : 0,
                 'question16_2' => $this->question16_2 ? 1 : 0,
             ]);
+
+            $admin = User::where('user_type_id', 1)->first();
+            //Send pusher notification
+            broadcast(new CoachApplicationSubmission(
+                Auth::user()->coach,
+                $admin,
+                'coach-application-submission'
+            ));
+
+            $this->pushAdminNotification('coach-application', 'New coach application submitted', Auth::user()->coach->name.' registered to the system and completed participation form.', Auth::user()->coach->id);
 
             return redirect(route('coach.dashboard'));
         }

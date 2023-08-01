@@ -22,6 +22,8 @@
             <a href="{{route('player.playbook', ['id' => intval($notification->resource)])}}" class="btn btn-secondary action-btn">View Playbook</a>
             @elseif($notification->type == 'coach-hire-request')
             <a href="{{route('coach.requests.single', ['id' => intval($notification->resource)])}}" class="btn btn-secondary action-btn">View Request</a>
+            @elseif($notification->type == 'coach-application')
+            <a href="{{route('admin.coach_approval', ['id' => intval($notification->resource)])}}" class="btn btn-secondary action-btn">View</a>
             @endif
         </div>
         @endforeach

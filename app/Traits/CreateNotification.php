@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 trait CreateNotification {
-    public function pushAdminNotification($type, $title, $description){
+    public function pushAdminNotification($type, $title, $description, $resource = ''){
         $admins = User::where('user_type_id', 1)->get();
         foreach($admins as $admin){
             $admin->notifications()->create([
                 'type' => $type,
                 'title' => $title,
                 'description' => $description,
+                'resource' => $resource,
             ]);
         }
     }

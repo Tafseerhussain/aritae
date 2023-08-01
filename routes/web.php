@@ -159,6 +159,9 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Blog Routes
     Route::get('/admin/blog', [AdminController::class, 'blog'])->name('admin.blog');
+
+    // Coach Approval Routes
+    Route::get('/admin/coach-approval/{id?}', [AdminController::class, 'coachApproval'])->name('admin.coach_approval');
 });
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');

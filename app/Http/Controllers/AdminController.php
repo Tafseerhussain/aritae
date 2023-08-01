@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Coach;
 
 class AdminController extends Controller
 {
@@ -51,5 +52,16 @@ class AdminController extends Controller
     public function blog()
     {
         return view('admin.blog');
+    }
+    public function coachApproval($id = null)
+    {
+        if($id){
+            $coach = Coach::find($id);
+            if($coach && $coach->participation && $coach->participation->approval == 'submitted')
+                return view('admin.coach-approval', ['coach_id' => $id]);
+            else abort(404);
+        }
+        else
+            return view('admin.coach-approval', ['coach_id' => $id]);
     }
 }
