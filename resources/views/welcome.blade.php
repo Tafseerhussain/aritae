@@ -23,7 +23,7 @@
         <div class="get-started">
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
+                    <div class="card shadow-none">
                         <div class="card-head text-center pt-5">
                             <h2 class="pt-5">
                                 Who are you looking for

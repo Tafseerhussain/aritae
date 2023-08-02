@@ -7,7 +7,7 @@
                     <h2 class="text-primary fw-light my-4">ARITAE SELF LEADERSHIP ACADEMY</h2>
                 </div>
                 <div class="col-md-3 text-md-end text-center">
-                    <a href="{{ config('frontend.url') }}" class="btn btn-theme">
+                    <a href="{{ route('welcome') }}" class="btn btn-theme">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span> Visit Website</span>
                     </a>

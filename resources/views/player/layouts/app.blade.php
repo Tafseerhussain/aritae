@@ -177,7 +177,7 @@
                                 </li>
                                 <hr class="p-0 mt-2 mb-3">
                                 <li class="list-group-item">
-                                    <a href="/">
+                                    <a href="{{ route('all-coaches') }}">
                                         <i class="bi bi-person-plus"></i>
                                         <span>Hire A Coach</span>
                                     </a>

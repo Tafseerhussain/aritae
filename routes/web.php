@@ -21,7 +21,7 @@ use App\Http\Livewire\Chat\Main;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 Route::get('/all-players', function () {
     return view('all-players');
 })->name('all-players');
