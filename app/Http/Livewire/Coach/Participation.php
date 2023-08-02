@@ -37,8 +37,12 @@ class Participation extends Component
     public $phone = "";
 
     public $percent_complete = 0;
+    public $form_submitted = false;
 
     public function mount(){
+        if(Auth::user()->coach->participation && Auth::user()->coach->participation->approval == 'submitted')
+            $this->form_submitted = true;
+
         $this->coach_name = Auth::user()->full_name;
         $this->email = Auth::user()->email;
         if(Auth::user()->user_type_id == 2)
@@ -119,7 +123,7 @@ class Participation extends Component
 
             $this->pushAdminNotification('coach-application', 'New coach application submitted', Auth::user()->coach->name.' registered to the system and completed participation form.', Auth::user()->coach->id);
 
-            return redirect(route('coach.dashboard'));
+            $this->form_submitted = true;
         }
     }
 

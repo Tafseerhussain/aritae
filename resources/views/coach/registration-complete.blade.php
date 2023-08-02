@@ -2,6 +2,6 @@
 
 @section('content')
     
-@livewire('coach.participation');
+@livewire('coach.participation')
 
 @endsection

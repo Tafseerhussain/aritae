@@ -7,9 +7,9 @@
                     <h2 class="text-primary fw-light my-4">ARITAE SELF LEADERSHIP ACADEMY</h2>
                 </div>
                 <div class="col-md-3 text-md-end text-center">
-                    <a href="{{ route('coach.dashboard') }}" class="btn btn-theme">
+                    <a href="{{ config('frontend.url') }}" class="btn btn-theme">
                         <i class="fa-solid fa-arrow-left"></i>
-                        <span> Return To Dashboard</span>
+                        <span> Visit Website</span>
                     </a>
                 </div>
             </div>
@@ -36,6 +36,28 @@
                 </div>
 
                 {{-- COMPLETION BOX --}}
+                @if($form_submitted)
+                <div class="col-1">
+                    <div class="position-relative h-100 number-line">
+                        <div class="border mx-auto"></div>
+                        <div class="number">
+                            <i class="bi bi-question"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-11">
+                    <div class="completion-box bg-primary text-white position-relative text-center">
+                        <img src="{{ asset('assets/img/corner-dots.svg') }}" class="top-left-dots" alt="dots">
+                        <img src="{{ asset('assets/img/corner-dots.svg') }}" class="bottom-right-dots" alt="dots">
+                        <h6 class="text-uppercase text-blue titilium heading my-4 position-relative">
+                            FORM SUBMITTED ALREADY!
+                        </h6>
+                        <p class="position-relative">
+                            Your information has been been sent for review.
+                        </p>
+                    </div>
+                </div>
+                @else
                 <div class="col-1">
                     <div class="position-relative h-100 number-line">
                         <div class="border mx-auto"></div>
@@ -652,7 +674,7 @@
                 <div class="col-12 text-end mt-4">
                     <a href="javascript:void(0)" class="btn btn-dark" wire:click="submitParticipation">Continue</a>
                 </div>
-
+                @endif
             </div>
         </div>
     </div>
