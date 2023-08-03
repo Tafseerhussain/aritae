@@ -186,12 +186,12 @@
                         <span class="dot complete"></span>
                         <span class="dot active"></span>
                     </div>
-                    <div class="form-group text-end">
+                    <div class="form-group d-flex justify-content-end align-items-center">
                         <button type="button" class="btn btn-light border" wire:click="previous">
                             Previous
                         </button>
-                        <button type="button" class="btn icon-right-full btn-dark border-0" wire:click="save">
-                            <span>Submit</span>
+                        <button type="button" class="btn icon-right-full btn-dark border-0 fw-bold" wire:click="confirm" style="transform: scale(1.2); margin: 30px;">
+                            <span>Confirm and Submit</span>
                             <i class="bi bi-arrow-right-circle-fill"></i>
                         </button>
                     </div>
@@ -199,4 +199,34 @@
             </div>
         </div>
     </div>
+
+    <div wire:ignore.self class="modal fade" id="submitPlaybookModal" tabindex="-1" aria-labelledby="submitPlaybookModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form wire:submit.prevent="save">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="submitPlaybookModalLabel">Submit Playbook</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to submit the playbook?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-theme text-white">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('openSubmitModal', event => {
+            $("#submitPlaybookModal").modal('show');
+        })
+
+        window.addEventListener('hideSubmitModal', event => {
+            $("#submitPlaybookModal").modal('hide');
+        })
+    </script>
 </div>

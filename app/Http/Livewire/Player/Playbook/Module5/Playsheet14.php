@@ -49,6 +49,25 @@ class Playsheet14 extends Component
         }
     }
 
+    public function confirm(){
+        $this->validate([
+            'area' => ['required', 'min:2'],
+            'date' => ['required', 'date'],
+            'action1' => ['required', 'min:2'],
+            'action2' => ['required', 'min:2'],
+            'action3' => ['required', 'min:2'],
+            'obstacle1' => ['required', 'min:2'],
+            'obstacle2' => ['required', 'min:2'],
+            'obstacle3' => ['required', 'min:2'],
+            'solution1' => ['required', 'min:2'],
+            'solution2' => ['required', 'min:2'],
+            'solution3' => ['required', 'min:2'],
+            'goal' => ['required', 'min:2'],
+            'reward' => ['required', 'min:2'],
+        ]);
+        $this->dispatchBrowserEvent('openSubmitModal');
+    }
+
     public function save(){
         $this->validate([
             'area' => ['required', 'min:2'],
@@ -89,6 +108,7 @@ class Playsheet14 extends Component
         $this->playbook->response = json_encode($response);
         $this->playbook->save();
 
+        $this->dispatchBrowserEvent('hideSubmitModal');
         $this->emit('playsheetSaved', $this->playsheet);
     }
 
