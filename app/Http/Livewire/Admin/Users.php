@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
@@ -28,8 +29,22 @@ class Users extends Component
     public function mount(){
         $this->sports = Sport::all();
         $this->user_types = UserType::all();
-        $this->users = User::where('user_type_id', '!=', 1)->limit($this->per_page)->get();
-        $this->total_user = User::where('user_type_id', '!=', 1)->count();
+        $this->users = User::where(function(Builder $query){
+            $query->where('user_type_id', 2)
+            ->whereHas('coach.participation', function($query){
+                $query->where('approval', 'approved');
+            });
+        })
+        ->orWhereIn('user_type_id', [3, 4])
+        ->limit($this->per_page)->get();
+        $this->total_user = User::where(function(Builder $query){
+            $query->where('user_type_id', 2)
+            ->whereHas('coach.participation', function($query){
+                $query->where('approval', 'approved');
+            });
+        })
+        ->orWhereIn('user_type_id', [3, 4])
+        ->count();
         $this->total_page = ceil($this->total_user / $this->per_page);
     }
 
@@ -69,8 +84,22 @@ class Users extends Component
                 if($this->type == 'All'){
                     $start = ($this->current_page - 1) * $this->per_page;
 
-                    $this->users = User::where('user_type_id', '!=', 1)->offset($start)->limit($this->per_page)->get();
-                    $this->total_user = User::where('user_type_id', '!=', 1)->count();
+                    $this->users = User::where(function(Builder $query){
+                        $query->where('user_type_id', 2)
+                        ->whereHas('coach.participation', function($query){
+                            $query->where('approval', 'approved');
+                        });
+                    })
+                    ->orWhereIn('user_type_id', [3, 4])
+                    ->offset($start)->limit($this->per_page)->get();
+                    $this->total_user = User::where(function(Builder $query){
+                        $query->where('user_type_id', 2)
+                        ->whereHas('coach.participation', function($query){
+                            $query->where('approval', 'approved');
+                        });
+                    })
+                    ->orWhereIn('user_type_id', [3, 4])
+                    ->count();
                 }
                 else{
                     $type_code = 2;
@@ -79,8 +108,26 @@ class Users extends Component
                     else $type_code = 4;
                     $start = ($this->current_page - 1) * $this->per_page;
 
-                    $this->users = User::where('user_type_id', $type_code)->offset($start)->limit($this->per_page)->get();
-                    $this->total_user = User::where('user_type_id', $type_code)->count();
+                    if($type_code == 2){
+                        $this->users = User::where(function(Builder $query){
+                            $query->where('user_type_id', 2)
+                            ->whereHas('coach.participation', function($query){
+                                $query->where('approval', 'approved');
+                            });
+                        })
+                        ->offset($start)->limit($this->per_page)->get();
+                        $this->total_user = User::where(function(Builder $query){
+                            $query->where('user_type_id', 2)
+                            ->whereHas('coach.participation', function($query){
+                                $query->where('approval', 'approved');
+                            });
+                        })
+                        ->count();
+                    }
+                    else{
+                        $this->users = User::where('user_type_id', $type_code)->offset($start)->limit($this->per_page)->get();
+                        $this->total_user = User::where('user_type_id', $type_code)->count();
+                    }
                 }
             }
             else{
@@ -89,8 +136,30 @@ class Users extends Component
                 if($this->type == 'All'){
                     $start = ($this->current_page - 1) * $this->per_page;
 
-                    $this->users = User::where('user_type_id', '!=', 1)->where('status', $status)->offset($start)->limit($this->per_page)->get();
-                    $this->total_user = User::where('user_type_id', '!=', 1)->where('status', $status)->count();
+                    $this->users = User::where(function(Builder $query) use ($status){
+                        $query->where('user_type_id', 2)
+                        ->where('status', $status)
+                        ->whereHas('coach.participation', function($query){
+                            $query->where('approval', 'approved');
+                        });
+                    })
+                    ->orWhere(function(Builder $query) use ($status){
+                        $query->whereIn('user_type_id', [3, 4])
+                        ->where('status', $status);
+                    })
+                    ->offset($start)->limit($this->per_page)->get();
+                    $this->total_user = User::where(function(Builder $query) use ($status){
+                        $query->where('user_type_id', 2)
+                        ->where('status', $status)
+                        ->whereHas('coach.participation', function($query){
+                            $query->where('approval', 'approved');
+                        });
+                    })
+                    ->orWhere(function(Builder $query) use ($status){
+                        $query->whereIn('user_type_id', [3, 4])
+                        ->where('status', $status);
+                    })
+                    ->count();
                 }
                 else{
                     $type_code = 2;
@@ -99,8 +168,36 @@ class Users extends Component
                     else $type_code = 4;
                     $start = ($this->current_page - 1) * $this->per_page;
 
-                    $this->users = User::where('user_type_id', $type_code)->where('status', $status)->offset($start)->limit($this->per_page)->get();
-                    $this->total_user = User::where('user_type_id', $type_code)->where('status', $status)->count();
+                    if($type_code == 2){
+                        $this->users = User::where(function(Builder $query) use ($status){
+                            $query->where('user_type_id', 2)
+                            ->where('status', $status)
+                            ->whereHas('coach.participation', function($query){
+                                $query->where('approval', 'approved');
+                            });
+                        })
+                        ->offset($start)->limit($this->per_page)->get();
+                        $this->total_user = User::where(function(Builder $query) use($status){
+                            $query->where('user_type_id', 2)
+                            ->where('status', $status)
+                            ->whereHas('coach.participation', function($query){
+                                $query->where('approval', 'approved');
+                            });
+                        })
+                        ->count();
+                    }
+                    else{
+                        $this->users = User::where(function(Builder $query) use ($status, $type_code){
+                            $query->where('user_type_id', $type_code)
+                            ->where('status', $status);
+                        })
+                        ->offset($start)->limit($this->per_page)->get();
+                        $this->total_user = User::where(function(Builder $query) use ($status, $type_code){
+                            $query->where('user_type_id', $type_code)
+                            ->where('status', $status);
+                        })
+                        ->count();
+                    }
                 }
             }
         }
@@ -108,9 +205,31 @@ class Users extends Component
             if($this->status == 'All'){
                 if($this->type == 'All'){
                     $start = ($this->current_page - 1) * $this->per_page;
-
-                    $this->users = User::where('user_type_id', '!=', 1)->where('area_of_focus', $this->sport)->offset($start)->limit($this->per_page)->get();
-                    $this->total_user = User::where('user_type_id', '!=', 1)->where('area_of_focus', $this->sport)->count();
+                    $sport = $this->sport;
+                    $this->users = User::where(function(Builder $query) use($sport){
+                        $query->where('user_type_id', 2)
+                        ->where('area_of_focus', $sport)
+                        ->whereHas('coach.participation', function($query){
+                            $query->where('approval', 'approved');
+                        });
+                    })
+                    ->orWhere(function(Builder $query) use($sport){
+                        $query->where('area_of_focus', $sport)
+                        ->whereIn('user_type_id', [3, 4]);
+                    })
+                    ->offset($start)->limit($this->per_page)->get();
+                    $this->total_user = User::where(function(Builder $query) use($sport){
+                        $query->where('user_type_id', 2)
+                        ->where('area_of_focus', $sport)
+                        ->whereHas('coach.participation', function($query){
+                            $query->where('approval', 'approved');
+                        });
+                    })
+                    ->orWhere(function(Builder $query) use($sport){
+                        $query->where('area_of_focus', $sport)
+                        ->whereIn('user_type_id', [3, 4]);
+                    })
+                    ->count();
                 }
                 else{
                     $type_code = 2;
@@ -118,19 +237,75 @@ class Users extends Component
                     else if($this->type == 'Parent') $type_code = 3;
                     else $type_code = 4;
                     $start = ($this->current_page - 1) * $this->per_page;
+                    $sport = $this->sport;
 
-                    $this->users = User::where('user_type_id', $type_code)->where('area_of_focus', $this->sport)->offset($start)->limit($this->per_page)->get();
-                    $this->total_user = User::where('user_type_id', $type_code)->where('area_of_focus', $this->sport)->count();
+                    if($type_code == 2){
+                        $this->users = User::where(function(Builder $query) use ($sport){
+                            $query->where('user_type_id', 2)
+                            ->where('area_of_focus', $sport)
+                            ->whereHas('coach.participation', function($query){
+                                $query->where('approval', 'approved');
+                            });
+                        })
+                        ->offset($start)->limit($this->per_page)->get();
+                        $this->total_user = User::where(function(Builder $query) use($sport){
+                            $query->where('user_type_id', 2)
+                            ->where('area_of_focus', $sport)
+                            ->whereHas('coach.participation', function($query){
+                                $query->where('approval', 'approved');
+                            });
+                        })
+                        ->count();
+                    }
+                    else{
+                        $this->users = User::where(function(Builder $query) use ($sport, $type_code){
+                            $query->where('user_type_id', $type_code)
+                            ->where('area_of_focus', $sport);
+                        })
+                        ->offset($start)->limit($this->per_page)->get();
+                        $this->total_user = User::where(function(Builder $query) use ($sport, $type_code){
+                            $query->where('user_type_id', $type_code)
+                            ->where('area_of_focus', $sport);
+                        })
+                        ->count();
+                    }
                 }
             }
             else{
                 $status = $this->status == 'Active' ? 'active' : 'suspended';
+                $sport = $this->sport;
 
                 if($this->type == 'All'){
                     $start = ($this->current_page - 1) * $this->per_page;
 
-                    $this->users = User::where('user_type_id', '!=', 1)->where('status', $status)->where('area_of_focus', $this->sport)->offset($start)->limit($this->per_page)->get();
-                    $this->total_user = User::where('user_type_id', '!=', 1)->where('status', $status)->where('area_of_focus', $this->sport)->count();
+                    $this->users = User::where(function(Builder $query) use ($status, $sport){
+                        $query->where('user_type_id', 2)
+                        ->where('status', $status)
+                        ->where('area_of_focus', $sport)
+                        ->whereHas('coach.participation', function($query){
+                            $query->where('approval', 'approved');
+                        });
+                    })
+                    ->orWhere(function(Builder $query) use ($status, $sport){
+                        $query->where('status', $status)
+                        ->where('area_of_focus', $sport)
+                        ->whereIn('user_type_id', [3, 4]);
+                    })
+                    ->offset($start)->limit($this->per_page)->get();
+                    $this->total_user = User::where(function(Builder $query) use ($status, $sport){
+                        $query->where('user_type_id', 2)
+                        ->where('status', $status)
+                        ->where('area_of_focus', $sport)
+                        ->whereHas('coach.participation', function($query){
+                            $query->where('approval', 'approved');
+                        });
+                    })
+                    ->orWhere(function(Builder $query) use ($status, $sport){
+                        $query->where('status', $status)
+                        ->where('area_of_focus', $sport)
+                        ->whereIn('user_type_id', [3, 4]);
+                    })
+                    ->count();
                 }
                 else{
                     $type_code = 2;
@@ -139,8 +314,40 @@ class Users extends Component
                     else $type_code = 4;
                     $start = ($this->current_page - 1) * $this->per_page;
 
-                    $this->users = User::where('user_type_id', $type_code)->where('status', $status)->where('area_of_focus', $this->sport)->offset($start)->limit($this->per_page)->get();
-                    $this->total_user = User::where('user_type_id', $type_code)->where('status', $status)->where('area_of_focus', $this->sport)->count();
+                    if($type_code == 2){
+                        $this->users = User::where(function(Builder $query) use ($sport, $status){
+                            $query->where('user_type_id', 2)
+                            ->where('area_of_focus', $sport)
+                            ->where('status', $status)
+                            ->whereHas('coach.participation', function($query){
+                                $query->where('approval', 'approved');
+                            });
+                        })
+                        ->offset($start)->limit($this->per_page)->get();
+                        $this->total_user = User::where(function(Builder $query) use($sport, $status){
+                            $query->where('user_type_id', 2)
+                            ->where('area_of_focus', $sport)
+                            ->where('status', $status)
+                            ->whereHas('coach.participation', function($query){
+                                $query->where('approval', 'approved');
+                            });
+                        })
+                        ->count();
+                    }
+                    else{
+                        $this->users = User::where(function(Builder $query) use ($sport, $type_code, $status){
+                            $query->where('user_type_id', $type_code)
+                            ->where('area_of_focus', $sport)
+                            ->where('status', $status);
+                        })
+                        ->offset($start)->limit($this->per_page)->get();
+                        $this->total_user = User::where(function(Builder $query) use ($sport, $type_code, $status){
+                            $query->where('user_type_id', $type_code)
+                            ->where('area_of_focus', $sport)
+                            ->where('status', $status);
+                        })
+                        ->count();
+                    }
                 }
             }
         }

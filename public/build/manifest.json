@@ -1,8 +1,4 @@
 {
-  "public/assets/img/default/default-cover.jpg": {
-    "file": "assets/default-cover.5cd161fc.jpg",
-    "src": "public/assets/img/default/default-cover.jpg"
-  },
   "public/assets/img/events/event-fee-card-bg.jpg": {
     "file": "assets/event-fee-card-bg.98f2dfe5.jpg",
     "src": "public/assets/img/events/event-fee-card-bg.jpg"
@@ -15,21 +11,41 @@
     "file": "assets/playbook-bg.43d9a2da.jpg",
     "src": "public/assets/img/playbook/playbook-bg.jpg"
   },
-  "public/assets/img/events-bg.jpg": {
-    "file": "assets/events-bg.042eac73.jpg",
-    "src": "public/assets/img/events-bg.jpg"
+  "public/assets/img/playbook/discovery-bg.jpg": {
+    "file": "assets/discovery-bg.ad7c68e3.jpg",
+    "src": "public/assets/img/playbook/discovery-bg.jpg"
+  },
+  "public/assets/img/playbook/focus-bg.jpg": {
+    "file": "assets/focus-bg.59bce1e6.jpg",
+    "src": "public/assets/img/playbook/focus-bg.jpg"
+  },
+  "public/assets/img/playbook/personal-plan-bg.jpg": {
+    "file": "assets/personal-plan-bg.2ae63ff7.jpg",
+    "src": "public/assets/img/playbook/personal-plan-bg.jpg"
+  },
+  "public/assets/img/playbook/action-bg.jpg": {
+    "file": "assets/action-bg.4b02203c.jpg",
+    "src": "public/assets/img/playbook/action-bg.jpg"
+  },
+  "public/assets/img/playbook/strategy-bg.jpg": {
+    "file": "assets/strategy-bg.50899cc8.jpg",
+    "src": "public/assets/img/playbook/strategy-bg.jpg"
+  },
+  "public/assets/img/default/default-cover.jpg": {
+    "file": "assets/default-cover.5cd161fc.jpg",
+    "src": "public/assets/img/default/default-cover.jpg"
   },
   "public/assets/img/coaches-bg.jpg": {
     "file": "assets/coaches-bg.d08237e0.jpg",
     "src": "public/assets/img/coaches-bg.jpg"
   },
-  "public/assets/img/playbook/discovery-bg.jpg": {
-    "file": "assets/discovery-bg.ad7c68e3.jpg",
-    "src": "public/assets/img/playbook/discovery-bg.jpg"
-  },
   "public/assets/img/players-bg.jpg": {
     "file": "assets/players-bg.65edb63b.jpg",
     "src": "public/assets/img/players-bg.jpg"
+  },
+  "public/assets/img/events-bg.jpg": {
+    "file": "assets/events-bg.042eac73.jpg",
+    "src": "public/assets/img/events-bg.jpg"
   },
   "resources/js/app.js": {
     "file": "assets/app.e7d71e63.js",
@@ -51,19 +67,19 @@
     "src": "resources/sass/admin-responsive.scss",
     "isEntry": true
   },
-  "resources/sass/app.scss": {
-    "file": "assets/app.fc8baa5b.css",
-    "src": "resources/sass/app.scss",
-    "isEntry": true
-  },
-  "resources/sass/admin.scss": {
-    "file": "assets/admin.196d3fad.css",
-    "src": "resources/sass/admin.scss",
-    "isEntry": true
-  },
   "resources/sass/theme.scss": {
     "file": "assets/theme.f33b9efa.css",
     "src": "resources/sass/theme.scss",
+    "isEntry": true
+  },
+  "resources/sass/admin.scss": {
+    "file": "assets/admin.c0a4d571.css",
+    "src": "resources/sass/admin.scss",
+    "isEntry": true
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app.fc8baa5b.css",
+    "src": "resources/sass/app.scss",
     "isEntry": true
   }
 }

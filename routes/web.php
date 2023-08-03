@@ -162,6 +162,8 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Coach Approval Routes
     Route::get('/admin/coach-approval/{id?}', [AdminController::class, 'coachApproval'])->name('admin.coach_approval');
+
+    Route::get('/admin/playbook/{id}', [AdminController::class, 'playbook'])->name('admin.playbook');
 });
 
 Route::get('/coach/profile/{id}', [CoachController::class, 'profilePreview'])->name('coach.profile.preview');

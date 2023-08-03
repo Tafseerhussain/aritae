@@ -18,6 +18,8 @@ class Playsheet5 extends Component
     public function mount($playbook_id){
         $this->playbook_id = $playbook_id;
 
+        $this->date = date('Y-m-d', time());
+
         $this->playbook = PlayerPlaybook::find($this->playbook_id);
         if($this->playbook->response){
             $response = json_decode($this->playbook->response, true);

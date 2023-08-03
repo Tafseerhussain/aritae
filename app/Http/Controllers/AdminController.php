@@ -64,4 +64,9 @@ class AdminController extends Controller
         else
             return view('admin.coach-approval', ['coach_id' => $id]);
     }
+
+    public function playbook($id)
+    {
+        return view('admin.playbook', ['coach_id' => $id]);
+    }
 }

@@ -80,7 +80,16 @@
                             </p>
                         </div>
                     </div>
-                    <i class="bi bi-chevron-right"></i>
+                    <div class="dropdown">
+                        <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-three-dots"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            @if($user->user_type_id == 2)
+                            <li><a class="dropdown-item" href="{{route('admin.playbook', ['id' => $user->coach->id])}}">Players</a></li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
             </div>
             @endforeach

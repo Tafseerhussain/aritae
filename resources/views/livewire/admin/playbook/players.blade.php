@@ -30,7 +30,7 @@
                 <div class="col-12 p-3 d-flex justify-content-between align-items-center">
                     @php
                     $status = 'Not Requested';
-                    if($playbook = $player->player_playbooks()->where('coach_id', auth()->user()->coach->id)->first()){
+                    if($playbook = $player->player_playbooks()->where('coach_id', $coach_id)->first()){
                         if($playbook->status == 'requested')
                             $status = 'Requested';
                         else if($playbook->status == 'submitted')
@@ -51,12 +51,7 @@
                         </div>
                     </div>
                     <div>
-                        @if($status == 'Not Requested')
-                        <button class="btn btn-theme" wire:click="sendPlaybook({{$player->id}})">
-                            <i class="bi bi-send"></i>
-                            Send Playbook
-                        </button>
-                        @elseif($status == 'Requested')
+                        @if($status == 'Requested')
                         <span class="badge bg-warning text-dark mx-2">Pending</span></h2>
                         <button class="btn btn-theme" wire:click="viewPlaybook({{$playbook->id}})">
                             <i class="bi bi-eye"></i>

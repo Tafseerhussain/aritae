@@ -62,7 +62,7 @@
 						<div class="head">
 							<h4 class="m-0">MODULE - 4</h4>
 						</div>
-						<div class="body" style="background-image: url('{{asset('assets/img/playbook/strategy-bg.jpg')}}')">
+						<div class="body">
 							<div class="img-box">
 								<img src="{{ asset('assets/icons/strategy.svg') }}" alt="discovery">
 							</div>
