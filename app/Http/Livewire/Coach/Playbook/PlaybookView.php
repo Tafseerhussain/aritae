@@ -13,7 +13,7 @@ class PlaybookView extends Component
 
     public function mount($playbook_id){
         $this->playbook_id = $playbook_id;
-        $this->playbook = PlayerPlaybook::where('id', $this->playbook_id)->where('status', 'submitted')->first();
+        $this->playbook = PlayerPlaybook::where('id', $this->playbook_id)->first();
         if($this->playbook){
             $this->response = json_decode($this->playbook->response, true);
         }
